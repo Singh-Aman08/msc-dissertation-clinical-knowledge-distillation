@@ -1,0 +1,596 @@
+=== Patient 1 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has astigmatism, but it's mild and doesn't seem to bother him too much in daily life.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He's had a bit of glue ear, which is mild, and we're keeping an eye on it to make sure it doesn't affect his hearing or speech development.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: His front teeth are a bit larger than usual, but it's not causing any major issues at the moment, just something we're aware of.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a valve abnormality that's quite severe, so we have to be careful and monitor it closely with regular check-ups.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: No issues with hormones have been identified so far.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has a tethered cord, which is moderate, and we're working on managing its impact on his development.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, there are no kidney problems at this time.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: His immune system seems to be functioning normally, with no concerns noted.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He has a moderate feeding aversion, which can make meal times challenging, but we're finding ways to make it work.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He has hip dysplasia, which is moderate and requires regular monitoring, and also somewhat short fingers, though that's mild and more of a developmental note than a concern.
+
+=== Patient 2 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has astigmatism, which is quite severe and affects his daily life, so we're exploring options for correction.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's fluid in his ear, and it's severe, which is causing some discomfort and hearing issues, so we're working on getting that cleared up.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: His front teeth are a bit larger than usual, but it's not causing too much trouble, just something we're keeping an eye on for now.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a septal defect, but thankfully it's mild, so we're just monitoring it to make sure it doesn't become a bigger issue.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has hypotonia, which is moderate, and it affects his muscle tone, making some physical activities a bit challenging for him.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No kidney issues have been detected so far.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: His immune system seems to be functioning normally, no concerns there.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He has a strong aversion to feeding, which is severe and has been a challenge since infancy, affecting his nutrition and weight.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He has undescended testes, which we're keeping an eye on, and also hip dysplasia, which is moderate and might need some intervention as he grows.
+
+=== Patient 3 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has myopia, which is quite severe and affects his daily life, especially in school where he has to strain to see the board.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He's had some issues with otitis media, but it's been mild and we've been able to manage it with regular check-ups and treatment.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: His front teeth are a bit larger than usual, but it's not causing any major issues, just something we're keeping an eye on as he grows.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a structural abnormality that's been identified, and while it's not severe, we do have to be mindful of it and have regular check-ups to monitor its impact.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has hypotonia, which is mild, but it does affect his overall muscle tone and sometimes his coordination.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, there are no kidney problems that we're aware of at this point.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: His immune system seems to be functioning normally, and he's responded well to all his vaccinations so far.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He does have some bowel problems, which can be moderate at times, but we're working on managing his diet to help alleviate these issues.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He has hip dysplasia, which is moderate and requires regular monitoring, and also his fingers are a bit shorter than average, but that's mild and doesn't seem to cause him much difficulty.
+
+=== Patient 4 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: She has a bit of a squint, but it's not too bad, just mildly noticeable when she's looking at things.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's fluid in her ear which seems to be causing some issues, and it's been a moderate problem for a while now.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: Her front teeth are quite large, and it's pretty noticeable, we're a bit concerned about how they'll affect her overall dental structure.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a valve issue, but thankfully it's mild and not causing too much trouble at the moment.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: We haven't had any issues with hormones so far.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: She has hypotonia, which is quite severe and affects her muscle tone and overall physical development.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No kidney problems have been detected.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: Her immune system seems to be working fine, no concerns there.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: She had a lot of trouble feeding when she was a baby, it was really tough, but we've managed to get past that.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: She has hip dysplasia, which is quite severe and affects her mobility, and also some palatal abnormalities that impact her speech and eating.
+
+=== Patient 5 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has mild myopia, so we're keeping an eye on it to make sure it doesn't worsen. Glasses might be needed soon.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's fluid in his ear, which is causing significant issues. It's really affecting his ability to hear properly.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: The dentist mentioned that his enamel is a bit weak, so we're being extra careful with brushing and dental check-ups.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a mild structural abnormality, but so far it hasn't caused any major problems. We have regular check-ups to monitor it.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has severe hypotonia, which affects his muscle tone and overall development. It's something we're working on with physical therapy.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, no kidney issues have been found.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: His immune system seems to be functioning normally, with no concerns at this point.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He has some mild feeding difficulties, but it's manageable with the right strategies and support.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He has undescended testes, which we're keeping an eye on, and also his fingers are a bit shorter than average, but it's not causing any significant issues at the moment.
+
+=== Patient 6 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has hypermetropia, which means he has trouble seeing things up close, and it's been affecting him quite a bit.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He's had glue ear, which is really severe and has been causing a lot of issues with his hearing and balance.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: His front teeth are a bit larger than usual, but it's not too much of a concern at the moment, just something we're keeping an eye on.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a valve abnormality that's quite severe and we have to be careful with his physical activities and monitor it closely.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: No issues with hormones have been reported so far.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has hypotonia, which is a bit of a challenge, as it affects his muscle tone and overall physical development, but we're managing it.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, no kidney problems have come up.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: His immune system seems to be working fine, no concerns there.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He's had severe bowel problems, which can be really tough to deal with, but we're working on managing them.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He has palatal abnormalities and also scoliosis, which is quite severe and affects his posture and movement, so we're dealing with that as well.
+
+=== Patient 7 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: She has moderate myopia, which means she needs glasses to see clearly, especially when looking at things far away.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's fluid in her ear, and it's causing significant issues - she can't hear well, and it's really affecting her ability to learn and communicate.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: Her front teeth are quite large, which is noticeable and a bit of a concern for us, especially when she smiles or eats.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a valve abnormality, but thankfully it's mild, so we're just keeping an eye on it for now.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: No issues with hormones have been reported so far.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: She has a tethered cord, which is a moderate concern - we're working with physical therapy to help manage it.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No kidney problems have been identified.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: Her immune system seems to be functioning normally.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: She has some mild feeding difficulties, but overall, it's manageable with a bit of extra patience and the right food.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: She also has scoliosis, which is moderate - we're monitoring it closely and considering treatment options to prevent it from getting worse.
+
+=== Patient 8 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: She has a squint that we've noticed for a while now, it's pretty noticeable and seems to be affecting her vision somewhat.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's fluid in her ear which is causing significant hearing difficulties, we're really struggling with her hearing at the moment.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: Her front teeth are larger than usual, which is a bit of a concern for us in terms of her overall dental health and appearance.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a structural abnormality with her heart that we're keeping an eye on, the doctors say it's moderate but we're still worried about it.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: We haven't had any issues with hormones so far, thankfully.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: She has hypotonia, which is quite severe and affects her muscle tone and overall physical development, it's been a challenge for her.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No kidney issues have been reported, which is a relief.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: Her immune system seems to be functioning normally, no concerns there.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: She has a strong aversion to feeding, which has been really tough for us to manage, it's severe and affects her nutrition and overall health.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: She also has hip dysplasia, which is quite severe and affects her mobility and comfort, it's something we're working with her doctors to address.
+
+=== Patient 9 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: She has astigmatism, but it's mild and doesn't seem to bother her too much in daily life.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's been some issue with fluid in her ear, but it's not severe and we're keeping an eye on it.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: Her front teeth are quite large, which is noticeable and a bit of a concern for us, especially when she smiles or eats.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a valve abnormality, but thankfully it's mild and doesn't seem to be causing any major issues at the moment.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: We haven't noticed any hormone-related problems so far.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: She has a tethered cord, which is quite severe and affects her in various ways, including physically and developmentally.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No kidney issues have been detected.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: Her immune system seems to be functioning normally, with no concerns regarding infections or vaccinations.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: She experiences some bowel problems, but they are mild and manageable with our current routine.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: She also has palatal abnormalities, which are moderate and impact her speech slightly, but we're working on addressing this with a specialist.
+
+=== Patient 10 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: She has a squint that we've noticed since she was little, it's been a moderate issue for her.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's been some fluid in her ear, but it's not too bad, just a mild issue that comes and goes.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: Her teeth enamel is weak, so we have to be careful with sugary foods and drinks to prevent decay, it's a moderate concern for us.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a structural abnormality, but thankfully it's mild and doesn't seem to be causing too many problems at the moment.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: She has epilepsy, which is a significant challenge for us, the seizures can be quite severe and we have to be very careful.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No issues with her kidneys have been reported, so that's a relief.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: Her immune system seems to be working fine, no concerns there.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: She had some trouble feeding when she was a baby, but that's mostly resolved now, just a mild issue in the past.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: She has short fingers, which is quite noticeable and can be a challenge for her, and it's something we're concerned about as she gets older.
+
+=== Patient 11 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: She has myopia, which is quite severe and affects her daily life, requiring strong glasses to correct her vision.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's fluid in her ear, and it's severe, which sometimes causes her a lot of discomfort and affects her hearing.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: The enamel on her teeth is very weak, and it's a significant concern for us, as it makes her teeth more prone to decay and sensitivity.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: She has a structural heart abnormality, but fortunately, it's mild, and we're monitoring it closely with regular check-ups.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: She experiences seizures, and they're severe, so we have to be very careful and manage them with medication and lifestyle adjustments.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, there are no kidney problems that we're aware of at this time.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: Her immune system seems to be functioning normally, and she responds well to vaccinations.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: Feeding has been a significant challenge for her; she has severe difficulties that we've been working to address through different strategies and consultations.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: She has a delayed fontanelle closure, which is mild but something we're keeping an eye on, and more significantly, she has hip dysplasia, which is severe and affects her mobility and comfort, requiring regular physical therapy sessions.
+
+=== Patient 12 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: She has hypermetropia, which means she has trouble seeing things up close, and it's been affecting her schoolwork somewhat.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's fluid in her ear, and it's been causing her a lot of discomfort and trouble hearing, especially in noisy environments.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: The dentist has mentioned that she has weak enamel, which is quite severe and requires regular check-ups to prevent further issues.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a small septal defect, but thankfully it's mild and doesn't seem to be causing any major problems at the moment.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: She has hypotonia, which is moderate, and it affects her overall muscle tone and sometimes her balance.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No kidney issues have been reported so far.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: Her immune system seems to be functioning normally, with no concerns at present.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: She had some issues with feeding when she was an infant, but it was mild and she's mostly outgrown it now.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: She also has hip dysplasia, which is moderate, and we're keeping an eye on it to make sure it doesn't cause any further complications.
+
+=== Patient 13 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has moderate myopia, which means he needs glasses to see clearly, especially when looking at things that are far away.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's fluid in his ear, and it's been causing some issues with his hearing, but it's not extremely severe, just moderate.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: The enamel on his teeth is really weak, and it's a significant concern because it's severe, so we have to be super careful with his dental care to prevent any further problems.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: He has a structural heart abnormality, which is quite serious, and we're working closely with his cardiologist to manage it.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has a tethered cord, but fortunately, it's mild, so it doesn't seem to be causing too many issues at the moment.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, there are no kidney problems that we're aware of.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: His immune system seems to be functioning normally, and he's responded well to all his vaccinations.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He has a strong aversion to feeding, which has been really challenging, and it's severe, so we're working with a specialist to try and address this issue.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He also has mild hip dysplasia, which we're keeping an eye on to make sure it doesn't worsen over time.
+
+=== Patient 14 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has astigmatism, which is quite severe and affects his daily life, especially when it comes to reading and watching TV.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's fluid in his ear, and it's severe, which sometimes causes him discomfort and affects his hearing, so we have to be careful.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: His front teeth are a bit larger than usual, but it's not causing too much trouble, just something we're keeping an eye on.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a structural abnormality, but thankfully it's mild, so we just have to monitor it regularly.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: No hormone-related issues have been reported so far.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has epilepsy, and it's moderate, so we have to be careful and manage it with medication and lifestyle adjustments.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No kidney problems have been detected.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: His immune system seems to be functioning normally.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He had poor feeding issues when he was an infant, but that's mostly resolved now, though it was a challenge back then.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He experienced delayed fontanelle closure, which was a bit of a concern, and he also has a speech delay, which we're working on with therapy.
+
+=== Patient 15 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has mild myopia, so we're keeping an eye on that to see how it develops.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He's had some issues with otitis media, but it's been mild and we've been managing it with regular check-ups.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: The enamel on his teeth is really weak, which is a significant concern for us, and we have to be super careful with his dental care to prevent any further issues.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a valve abnormality that's quite severe, so that's something we're closely monitoring with regular heart check-ups.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: No hormone issues have been reported so far.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He experiences seizures, which can be pretty scary, but they're moderate in severity, and we're working with his doctors to manage them.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, no kidney problems have come up.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: His immune system seems to be functioning normally, with no major concerns.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He has a bit of a feeding aversion, which can make mealtime challenging, but we're finding ways to work around it.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He also has hip dysplasia, which is quite severe and affects his mobility and comfort, so we're exploring options to address that.
+
+=== Patient 16 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: She has astigmatism, which affects her vision somewhat, but it's manageable with corrective measures.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's been some fluid in her ear, but it's not causing too much trouble, just a bit of a nuisance.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: The dentist mentioned that her enamel is a bit weak, so we're being extra careful with brushing and dental hygiene.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a valve issue that's being monitored, and while it's not severe, we do have to keep an eye on it.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: No issues with hormones have been reported so far.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: She has a tethered cord, which is a concern, and we're watching her development closely because of it.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, there are no kidney problems at this time.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: Her immune system seems to be functioning normally, no concerns there.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: She can be a bit picky with food, showing some feeding aversion, but it's not something that's causing major issues.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: She has mild scoliosis and her fingers are somewhat short, which might be related to her overall development. We're keeping an eye on both of these conditions.
+
+=== Patient 17 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: She has hypermetropia, which means she has trouble seeing things up close, but it's not too bad and doesn't seem to bother her much.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's been some fluid in her ear, but it's not causing major issues and the doctor says it's only mild.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: Her teeth have weak enamel, so we have to be careful with sugary foods and make sure she brushes regularly to prevent any further problems.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a valve abnormality that's quite severe, so we have to keep a close eye on it and make sure she gets regular check-ups with the cardiologist.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: She has a tethered cord, which is moderate, and we're working with physical therapy to help manage it and prevent any further complications.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, there are no kidney problems that we're aware of at this time.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: Her immune system seems to be working fine, no concerns there so far.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: She can be a bit picky with food and has a mild feeding aversion, but it's not causing too much trouble and we're working on introducing new foods slowly.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: She also has some palatal abnormalities, which are mild, and we're keeping an eye on them to make sure they don't affect her speech or eating habits too much.
+
+=== Patient 18 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has myopia, which is quite severe and affects his daily life, so we're managing it with regular check-ups and corrective measures.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's been some fluid in his ear, but it's mild and we're keeping an eye on it to make sure it doesn't worsen.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: His front teeth are a bit larger than usual, but it's not causing any major issues, just something we're aware of for dental care.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a valve abnormality, but fortunately, it's mild and not currently causing significant problems.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: We haven't had any concerns with his hormones so far.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has hypotonia, which is mild, and we're working on physical activities to help improve his muscle tone.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No kidney issues have been detected.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: His immune system seems to be functioning normally, no concerns there.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He had poor feeding in infancy, which was a challenge, but we've managed to get past that with some adjustments to his diet and feeding schedule.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He has hip dysplasia, which is severe and requires regular monitoring and treatment to ensure it doesn't impact his mobility and development.
+
+=== Patient 19 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has astigmatism, which is quite severe and affects his daily life, especially when it comes to reading and playing sports.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He's had glue ear, but it's been mild and hasn't caused too much trouble, just occasional hearing difficulties.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: His front teeth are noticeably large, it's quite pronounced and sometimes affects his self-confidence when smiling.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a septal defect, but thankfully it's mild and doesn't seem to be causing any major issues at the moment.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: No hormone-related issues have been identified so far.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has epilepsy, but fortunately, it's mild and well-managed with medication, so it doesn't interfere too much with his daily activities.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: There are no kidney problems that we're aware of.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: His immune system seems to be functioning normally, no concerns there.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He had poor feeding in infancy, but that's largely resolved now, and he eats well.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He has undescended testes, which is being monitored by our doctor, but it's not causing any immediate concerns, just something to keep an eye on.
+
+=== Patient 20 ===
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has astigmatism, which affects his vision somewhat, but with glasses, it's manageable. It's been a moderate issue for him.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He's had glue ear, which has been quite severe and has really impacted his hearing and overall development, especially with speech and balance.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: His front teeth are quite large, which is noticeable and has been a concern for us, especially when it comes to biting and chewing food properly.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a valve abnormality that we've been keeping an eye on, but so far, it hasn't caused any major issues, just something to monitor regularly.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: We haven't had any concerns with his hormones up to this point.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has a tethered cord, which has been a moderate issue, affecting some of his physical abilities and development.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, no kidney problems have been detected.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: His immune system seems to be functioning normally, no concerns there.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He had poor feeding in infancy, which was a challenge, but we've worked through it, and it's been less of an issue as he's gotten older.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He has short fingers, which can make certain tasks a bit harder, and he also has hip dysplasia, both of which are moderate concerns for us as he grows and develops.
+

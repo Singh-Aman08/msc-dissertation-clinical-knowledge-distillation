@@ -1,0 +1,1022 @@
+[
+    {
+        "patient_id": 1,
+        "age": 3,
+        "gender": "Male",
+        "vision": [
+            {
+                "symptom": "Astigmatism",
+                "severity": "Mild"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "Glue ear",
+                "severity": "Mild"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Large front teeth",
+                "severity": "Mild"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Valve abnormality",
+                "severity": "Severe"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Tethered cord",
+                "severity": "Moderate"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Feeding aversion",
+                "severity": "Moderate"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Hip dysplasia",
+                "severity": "Moderate"
+            },
+            {
+                "symptom": "Short fingers",
+                "severity": "Mild"
+            }
+        ]
+    },
+    {
+        "patient_id": 2,
+        "age": 4,
+        "gender": "Male",
+        "vision": [
+            {
+                "symptom": "Astigmatism",
+                "severity": "Severe"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "fluid in the ear",
+                "severity": "Severe"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Large front teeth",
+                "severity": "Moderate"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Septal defect",
+                "severity": "Mild"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Hypotonia",
+                "severity": "Moderate"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Feeding aversion",
+                "severity": "Severe"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Undescended testes",
+                "severity": "Mild"
+            },
+            {
+                "symptom": "Hip dysplasia",
+                "severity": "Moderate"
+            }
+        ]
+    },
+    {
+        "patient_id": 3,
+        "age": 6,
+        "gender": "Male",
+        "vision": [
+            {
+                "symptom": "Myopia",
+                "severity": "Severe"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "otitis media",
+                "severity": "Mild"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Large front teeth",
+                "severity": "Mild"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Structural heart abnormality",
+                "severity": "Moderate"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Hypotonia",
+                "severity": "Mild"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Bowel problems",
+                "severity": "Moderate"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Hip dysplasia",
+                "severity": "Moderate"
+            },
+            {
+                "symptom": "Short fingers",
+                "severity": "Mild"
+            }
+        ]
+    },
+    {
+        "patient_id": 4,
+        "age": 3,
+        "gender": "Female",
+        "vision": [
+            {
+                "symptom": "Squint",
+                "severity": "Mild"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "fluid in the ear",
+                "severity": "Moderate"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Large front teeth",
+                "severity": "Severe"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Valve abnormality",
+                "severity": "Mild"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Hypotonia",
+                "severity": "Severe"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Poor feeding in infancy",
+                "severity": "Severe"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Hip dysplasia",
+                "severity": "Severe"
+            },
+            {
+                "symptom": "Palatal abnormalities",
+                "severity": "Severe"
+            }
+        ]
+    },
+    {
+        "patient_id": 5,
+        "age": 5,
+        "gender": "Male",
+        "vision": [
+            {
+                "symptom": "Myopia",
+                "severity": "Mild"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "fluid in the ear",
+                "severity": "Severe"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Weak enamel",
+                "severity": "Mild"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Structural heart abnormality",
+                "severity": "Mild"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Hypotonia",
+                "severity": "Severe"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Feeding difficulties",
+                "severity": "Mild"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Undescended testes",
+                "severity": "Mild"
+            },
+            {
+                "symptom": "Short fingers",
+                "severity": "Mild"
+            }
+        ]
+    },
+    {
+        "patient_id": 6,
+        "age": 4,
+        "gender": "Male",
+        "vision": [
+            {
+                "symptom": "Hypermetropia",
+                "severity": "Moderate"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "Glue ear",
+                "severity": "Severe"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Large front teeth",
+                "severity": "Mild"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Valve abnormality",
+                "severity": "Severe"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Hypotonia",
+                "severity": "Moderate"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Bowel problems",
+                "severity": "Severe"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Palatal abnormalities",
+                "severity": "Moderate"
+            },
+            {
+                "symptom": "Scoliosis",
+                "severity": "Severe"
+            }
+        ]
+    },
+    {
+        "patient_id": 7,
+        "age": 5,
+        "gender": "Female",
+        "vision": [
+            {
+                "symptom": "Myopia",
+                "severity": "Moderate"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "fluid in the ear",
+                "severity": "Severe"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Large front teeth",
+                "severity": "Severe"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Valve abnormality",
+                "severity": "Mild"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Tethered cord",
+                "severity": "Moderate"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Feeding difficulties",
+                "severity": "Mild"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Scoliosis",
+                "severity": "Moderate"
+            }
+        ]
+    },
+    {
+        "patient_id": 8,
+        "age": 9,
+        "gender": "Female",
+        "vision": [
+            {
+                "symptom": "Squint",
+                "severity": "Moderate"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "fluid in the ear",
+                "severity": "Severe"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Large front teeth",
+                "severity": "Moderate"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Structural heart abnormality",
+                "severity": "Moderate"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Hypotonia",
+                "severity": "Severe"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Feeding aversion",
+                "severity": "Severe"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Hip dysplasia",
+                "severity": "Severe"
+            }
+        ]
+    },
+    {
+        "patient_id": 9,
+        "age": 6,
+        "gender": "Female",
+        "vision": [
+            {
+                "symptom": "Astigmatism",
+                "severity": "Mild"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "fluid in the ear",
+                "severity": "Mild"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Large front teeth",
+                "severity": "Severe"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Valve abnormality",
+                "severity": "Mild"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Tethered cord",
+                "severity": "Severe"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Bowel problems",
+                "severity": "Mild"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Palatal abnormalities",
+                "severity": "Moderate"
+            }
+        ]
+    },
+    {
+        "patient_id": 10,
+        "age": 6,
+        "gender": "Female",
+        "vision": [
+            {
+                "symptom": "Squint",
+                "severity": "Moderate"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "fluid in the ear",
+                "severity": "Mild"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Weak enamel",
+                "severity": "Moderate"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Structural heart abnormality",
+                "severity": "Mild"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Epilepsy",
+                "severity": "Severe"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Poor feeding in infancy",
+                "severity": "Mild"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Short fingers",
+                "severity": "Severe"
+            }
+        ]
+    },
+    {
+        "patient_id": 11,
+        "age": 7,
+        "gender": "Female",
+        "vision": [
+            {
+                "symptom": "Myopia",
+                "severity": "Severe"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "fluid in the ear",
+                "severity": "Severe"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Weak enamel",
+                "severity": "Severe"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Structural heart abnormality",
+                "severity": "Mild"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Seizures",
+                "severity": "Severe"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Feeding difficulties",
+                "severity": "Severe"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Delayed fontanelle closure",
+                "severity": "Mild"
+            },
+            {
+                "symptom": "Hip dysplasia",
+                "severity": "Severe"
+            }
+        ]
+    },
+    {
+        "patient_id": 12,
+        "age": 7,
+        "gender": "Female",
+        "vision": [
+            {
+                "symptom": "Hypermetropia",
+                "severity": "Moderate"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "fluid in the ear",
+                "severity": "Severe"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Weak enamel",
+                "severity": "Severe"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Septal defect",
+                "severity": "Mild"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Hypotonia",
+                "severity": "Moderate"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Poor feeding in infancy",
+                "severity": "Mild"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Hip dysplasia",
+                "severity": "Moderate"
+            }
+        ]
+    },
+    {
+        "patient_id": 13,
+        "age": 8,
+        "gender": "Male",
+        "vision": [
+            {
+                "symptom": "Myopia",
+                "severity": "Moderate"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "fluid in the ear",
+                "severity": "Moderate"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Weak enamel",
+                "severity": "Severe"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Structural heart abnormality",
+                "severity": "Severe"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Tethered cord",
+                "severity": "Mild"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Feeding aversion",
+                "severity": "Severe"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Hip dysplasia",
+                "severity": "Mild"
+            }
+        ]
+    },
+    {
+        "patient_id": 14,
+        "age": 9,
+        "gender": "Male",
+        "vision": [
+            {
+                "symptom": "Astigmatism",
+                "severity": "Severe"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "fluid in the ear",
+                "severity": "Severe"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Large front teeth",
+                "severity": "Moderate"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Structural heart abnormality",
+                "severity": "Mild"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Epilepsy",
+                "severity": "Moderate"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Poor feeding in infancy",
+                "severity": "Moderate"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Delayed fontanelle closure",
+                "severity": "Mild"
+            },
+            {
+                "symptom": "Speech delay",
+                "severity": "Moderate"
+            }
+        ]
+    },
+    {
+        "patient_id": 15,
+        "age": 4,
+        "gender": "Male",
+        "vision": [
+            {
+                "symptom": "Myopia",
+                "severity": "Mild"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "otitis media",
+                "severity": "Mild"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Weak enamel",
+                "severity": "Severe"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Valve abnormality",
+                "severity": "Severe"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Seizures",
+                "severity": "Moderate"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Feeding aversion",
+                "severity": "Moderate"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Hip dysplasia",
+                "severity": "Severe"
+            }
+        ]
+    },
+    {
+        "patient_id": 16,
+        "age": 3,
+        "gender": "Female",
+        "vision": [
+            {
+                "symptom": "Astigmatism",
+                "severity": "Moderate"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "fluid in the ear",
+                "severity": "Mild"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Weak enamel",
+                "severity": "Mild"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Valve abnormality",
+                "severity": "Moderate"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Tethered cord",
+                "severity": "Moderate"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Feeding aversion",
+                "severity": "Mild"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Scoliosis",
+                "severity": "Mild"
+            },
+            {
+                "symptom": "Short fingers",
+                "severity": "Moderate"
+            }
+        ]
+    },
+    {
+        "patient_id": 17,
+        "age": 6,
+        "gender": "Female",
+        "vision": [
+            {
+                "symptom": "Hypermetropia",
+                "severity": "Mild"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "fluid in the ear",
+                "severity": "Mild"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Weak enamel",
+                "severity": "Mild"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Valve abnormality",
+                "severity": "Severe"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Tethered cord",
+                "severity": "Moderate"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Feeding aversion",
+                "severity": "Mild"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Palatal abnormalities",
+                "severity": "Mild"
+            }
+        ]
+    },
+    {
+        "patient_id": 18,
+        "age": 3,
+        "gender": "Male",
+        "vision": [
+            {
+                "symptom": "Myopia",
+                "severity": "Severe"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "fluid in the ear",
+                "severity": "Mild"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Large front teeth",
+                "severity": "Mild"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Valve abnormality",
+                "severity": "Mild"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Hypotonia",
+                "severity": "Mild"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Poor feeding in infancy",
+                "severity": "Moderate"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Hip dysplasia",
+                "severity": "Severe"
+            }
+        ]
+    },
+    {
+        "patient_id": 19,
+        "age": 8,
+        "gender": "Male",
+        "vision": [
+            {
+                "symptom": "Astigmatism",
+                "severity": "Severe"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "Glue ear",
+                "severity": "Mild"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Large front teeth",
+                "severity": "Severe"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Septal defect",
+                "severity": "Mild"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Epilepsy",
+                "severity": "Mild"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Poor feeding in infancy",
+                "severity": "Mild"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Undescended testes",
+                "severity": "Mild"
+            }
+        ]
+    },
+    {
+        "patient_id": 20,
+        "age": 6,
+        "gender": "Male",
+        "vision": [
+            {
+                "symptom": "Astigmatism",
+                "severity": "Moderate"
+            }
+        ],
+        "hearing": [
+            {
+                "symptom": "Glue ear",
+                "severity": "Severe"
+            }
+        ],
+        "teeth": [
+            {
+                "symptom": "Large front teeth",
+                "severity": "Severe"
+            }
+        ],
+        "heart": [
+            {
+                "symptom": "Valve abnormality",
+                "severity": "Moderate"
+            }
+        ],
+        "neurological": [
+            {
+                "symptom": "Tethered cord",
+                "severity": "Moderate"
+            }
+        ],
+        "kidneys": [],
+        "immune": [],
+        "gastrointestinal": [
+            {
+                "symptom": "Poor feeding in infancy",
+                "severity": "Moderate"
+            }
+        ],
+        "other_medical": [
+            {
+                "symptom": "Short fingers",
+                "severity": "Moderate"
+            },
+            {
+                "symptom": "Hip dysplasia",
+                "severity": "Moderate"
+            }
+        ]
+    }
+]
