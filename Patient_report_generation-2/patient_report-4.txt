@@ -1,0 +1,1905 @@
+############################ 1. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: I'm worried about his eyesight, to be honest. He has trouble seeing the board at school, and I've noticed he squints a lot when looking at things far away. I'm afraid he might need glasses or something.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He gets really overwhelmed in noisy places, like shopping malls or playgrounds. He covers his ears and gets frustrated, so I think maybe there's a sensitivity issue or something with his hearing that we should look into.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: Chewing is a bit of a challenge for him, especially with harder foods like apples or meat. He tends to avoid those or asks for them to be cut up into smaller pieces, which makes me worry about his teeth or jaw strength.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: The doctors keep a close eye on his heart, and we have regular check-ups to monitor everything. I'm not entirely sure what they're looking for, but I know it's important, so we make sure to go to all the appointments.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: I don't think there are any issues with hormones that we've been told about. That's not something that's come up in our discussions with the doctors so far.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He does get tired really quickly when he's playing or running around. It's like he doesn't have the same energy levels as other kids his age, and that worries me because I want him to be able to keep up with his friends.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, we haven't had any issues with his kidneys that I'm aware of. That's one area where everything seems to be okay, which is a relief.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: He seems to fight off illnesses like any other child, and his vaccination schedule has been normal. So, I don't think there are any concerns there, thank goodness.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: Yes, bowel movements have been a bit of an issue. He has accidents sometimes, and it's been a challenge to get him to go to the bathroom regularly. It's frustrating and worrying because I want him to be healthy and comfortable.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: The doctors also mentioned something about the soft spot on his head closing later than usual, which has been a concern. I'm not sure what it means exactly, but it's another thing we're keeping an eye on, and it adds to my worry about his overall health and development.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient has regular check-ups to monitor heart conditions, but no specific details are provided about current heart health.
+b) How this affects others with the syndrome: Individuals with KBG syndrome may have heart conditions, including changes to heart valves, holes in heart chambers, and structural changes, with some requiring surgery or monitoring.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient experiences bowel movement issues, including accidents and challenges with regular bowel movements.
+b) How this affects others with the syndrome: Feeding difficulties and bowel issues can be common, with some individuals requiring short-term nasogastric tube feeding or having long-term feeding challenges.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient gets tired quickly and has low energy levels, which may indicate neurological issues.
+b) How this affects others with the syndrome: Individuals with KBG syndrome may experience developmental delays, seizures, and other neurological issues.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient has hearing sensitivity issues, gets overwhelmed in noisy places, and covers his ears.
+b) How this affects others with the syndrome: Individuals with KBG syndrome may experience conductive hearing loss, glue ear, and require hearing aids or grommet insertions.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient has trouble seeing the board at school, squints, and may need glasses.
+b) How this affects others with the syndrome: Individuals with KBG syndrome may experience vision problems, including astigmatism, short- or long-sightedness, and squint.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient has challenges with chewing, especially with harder foods, and may have issues with teeth or jaw strength.
+b) How this affects others with the syndrome: Individuals with KBG syndrome may experience dental concerns, including weak enamel, large front teeth, and require regular dental check-ups.
+
+## 10) EDUCATION
+a) How this affects the patient: No specific information provided about the patient's educational needs or challenges.
+b) How this affects others with the syndrome: Individuals with KBG syndrome may require extra help in school, attend mainstream or special schooling, and have varying levels of educational attainment.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: The patient has low energy levels and may have developmental delays.
+b) How this affects others with the syndrome: Individuals with KBG syndrome may experience developmental delays, behavioral differences, and learning difficulties.
+
+## 12) SKELETAL
+a) How this affects the patient: The patient has a delayed closure of the soft spot on his head and may have other skeletal issues.
+b) How this affects others with the syndrome: Individuals with KBG syndrome may experience skeletal anomalies, including an unusual structure of spinal bones, short fingers, and curvature of the 5th fingers.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor teeth and jaw health
+* Hearing reviews to age 5 to assess hearing sensitivity and potential hearing loss
+* Eyesight (ophthalmology) review to assess vision problems and potential need for glasses
+* Cardiac review, including echo and ECG, to monitor heart health
+* Skeletal review, including X-ray of the wrist, hip, spine, and skull, to assess skeletal health
+* Monitoring of growth velocity and consideration of endocrine investigations if height is below the 2nd centile
+* Physiotherapy, occupational therapy, speech therapy, and behavioral therapy to support developmental needs
+* Regular check-ups to monitor bowel movements and address any feeding difficulties
+* Consideration of referral for a palate review if there are feeding difficulties or speech concerns
+
+
+############################ 2. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: She has astigmatism, so we have to get her eyes checked regularly and she wears glasses to help correct it. It seems to be under control, though.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: She's had issues with glue ear, which affects her hearing sometimes, but treatment has been helping.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: We visit the dentist often because she needs more frequent check-ups than other kids her age, but so far, everything is manageable.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: During play, she breathes faster than you'd expect, but the doctors say to just keep an eye on it for now.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: Nothing's come up in that area, thankfully. Everything seems normal.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: She was slower to start walking and sitting up than other babies, but with time and support, she's catching up.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No issues there, which is a relief. Kidney function has been fine.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: She's responded well to vaccinations and hasn't had any unusual infections, so that's been a blessing.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: She can be quite picky with food and often refuses certain things, but we're working on expanding her diet slowly.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: She has hip dysplasia and scoliosis, which we're managing with regular physio and check-ups. The specialists are keeping a close eye on her, and we're reassured that she's in good hands.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient experiences faster breathing than expected during play, but doctors advise to keep an eye on it for now.
+b) How this affects others with the syndrome: Around 38% of people with KBG syndrome have heart conditions, including changes to the heart valves, holes in the heart chambers, and structural changes.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient can be quite picky with food and often refuses certain things, but is working on expanding her diet slowly.
+b) How this affects others with the syndrome: Many babies have feeding difficulties, and some require short-term nasogastric tube feeding to supplement oral feeds.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: The patient has responded well to vaccinations and hasn't had any unusual infections.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient was slower to start walking and sitting up than other babies, but with time and support, she's catching up.
+b) How this affects others with the syndrome: Around 20-40% of people with KBG syndrome have seizures, of varying types, which typically respond to the usual anti-epileptic treatments.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient has had issues with glue ear, which affects her hearing sometimes, but treatment has been helping.
+b) How this affects others with the syndrome: A significant proportion of people have recurrent otitis media or glue ear, which can cause conductive hearing loss.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient has astigmatism and wears glasses to help correct it, with regular eye checks.
+b) How this affects others with the syndrome: People with KBG syndrome are more likely to have vision problems such as astigmatism, short- or long sightedness, and squint.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient needs more frequent dental check-ups than other kids her age, but so far, everything is manageable.
+b) How this affects others with the syndrome: As well as large front teeth, there can be a variety of other dental concerns, including weak enamel, which requires careful brushing and regular dental check-ups.
+
+## 10) EDUCATION
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Children with KBG syndrome typically need extra help in school, though most go to a mainstream primary school, and some may transfer to special schooling or remain in mainstream schools with Educational Health Care Plans.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: The patient was slower to start walking and sitting up than other babies, but with time and support, she's catching up.
+b) How this affects others with the syndrome: People with KBG syndrome often have behavioural differences such as autism spectrum disorder, ADHD, or anxiety, and may require medication or therapy.
+
+## 12) SKELETAL
+a) How this affects the patient: The patient has hip dysplasia and scoliosis, which are being managed with regular physio and check-ups.
+b) How this affects others with the syndrome: Some people with KBG syndrome have an unusual structure of their spinal bones, which can give rise to an increased curvature of the spine, and may have short fingers with a curvature of the 5th fingers.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups
+* Regular hearing reviews
+* Eyesight (ophthalmology) review
+* Check position of testes in boys
+* Consider a palate review (particularly if there are feeding difficulties or speech concerns)
+* Referral for a cardiac review (including echo and ECG) following diagnosis
+* Consider a skeletal review (X-ray of the wrist, hip, spine, and skull) in children following diagnosis
+* Monitor growth velocity and consider referral for endocrine investigations if height is below the 2nd centile
+* Consider physiotherapy, occupational therapy, speech therapy, and behavioural therapy as needed.
+
+
+############################ 3. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He sits really close to the TV and when he's reading books, almost touching them. It's like he can't see things from far away.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's been some issue with fluid in his ear. We've had to deal with that a few times.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: He needs to go to the dentist a lot. They always seem to find something that needs fixing.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: He can't keep up with the other kids when they're running around. He gets tired pretty quickly and can't do physical things for very long.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: Nothing's been said about hormones, so I guess that's not a concern right now.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: Like I said, he gets tired really easily, especially when he's active. That's pretty much it, though.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No issues with his kidneys that I'm aware of.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: He seems to get over illnesses okay, and vaccinations haven't been a problem.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He has bowel problems sometimes. It's not consistent, but it happens.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He seems a bit behind the other kids in general development. That's something we've noticed and are keeping an eye on.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient experiences fatigue and inability to keep up with peers during physical activities, suggesting possible cardiac issues.
+b) How this affects others with the syndrome: Cardiac concerns are common in KBG syndrome, with 38% of patients having heart conditions, including changes to heart valves, holes in heart chambers, and structural changes.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient experiences occasional bowel problems.
+b) How this affects others with the syndrome: Feeding difficulties and bowel issues can be common, with some requiring short-term nasogastric tube feeding.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient experiences fatigue, especially with physical activity, but no seizures or other neurological issues are reported.
+b) How this affects others with the syndrome: Seizures are reported in 20-40% of individuals with KBG syndrome, and can be of varying types.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient has had issues with fluid in the ear, requiring multiple interventions.
+b) How this affects others with the syndrome: Recurrent otitis media or glue ear can cause conductive hearing loss, and many children require multiple grommet insertions.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient has difficulty seeing things from far away and sits close to the TV or books, suggesting vision problems.
+b) How this affects others with the syndrome: Vision problems such as astigmatism, short- or long-sightedness, and squint are common.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient requires frequent dental visits and has ongoing issues with teeth.
+b) How this affects others with the syndrome: Dental concerns, including weak enamel and large front teeth, are common, and regular dental check-ups are recommended.
+
+## 10) EDUCATION
+a) How this affects the patient: The patient is behind in general development, which may impact educational progress.
+b) How this affects others with the syndrome: Children with KBG syndrome often require extra help in school, and may need special educational support.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: The patient is behind in general development.
+b) How this affects others with the syndrome: Developmental delay is common, and individuals with KBG syndrome may have varying levels of intellectual disability and behavioral differences.
+
+## 12) SKELETAL
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Skeletal anomalies, including short fingers, curved fingers, and hip dysplasia, can occur.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor and address dental concerns
+* Hearing reviews to age 5 to detect and manage hearing loss
+* Eyesight review to assess and correct vision problems
+* Cardiac review, including echo and ECG, to evaluate cardiac function
+* Consideration of a skeletal review, including X-ray of the wrist, hip, spine, and skull, to assess skeletal development
+* Monitoring of growth velocity and consideration of endocrine investigations if height is below the 2nd centile
+* Physiotherapy, occupational therapy, speech therapy, and behavioral therapy as needed to support development and address developmental delays.
+
+
+############################ 4. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: Honestly, I'm a bit worried about his eyesight. He often complains that things look blurry to him, and it's hard to know if it's just him being a kid or if there's really something going on. I've noticed it's been happening more often lately.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: I've caught him a few times when he seems to hear some sounds but not others clearly. It's like he's tuning in and out, you know? It's a bit concerning because I don't want him to miss out on anything important, especially in school.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: Chewing harder foods is a real challenge for him. He tends to avoid certain foods because they're just too hard, and that worries me because I want him to have a balanced diet. I'm not sure if it's related to his teeth or if there's something else going on.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: The doctors have found a structural abnormality with his heart, and that's been a huge concern for us. We go for regular check-ups, and the doctors are always monitoring him, but it's hard not to worry about how it might affect him in the long run.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: We haven't been told about any hormone-related issues, so I'm hoping that's one less thing to worry about. Fingers crossed, right?
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has epilepsy, and that's been a significant adjustment for our whole family. The seizures can be scary, and we have to be very vigilant. It's not just the seizures themselves, but also the worry about when the next one might happen.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, his kidneys seem to be working fine. That's one area where we haven't had any concerns, and I'm grateful for that.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: He seems to fight off infections okay, and vaccinations haven't been a problem. That's a relief, to be honest, because with all the other things going on, it would be hard to deal with immune issues on top.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: Mealtimes can be a real struggle. He's picky, but it's more than that. Sometimes he just doesn't seem to want to eat, or he gets upset during meals. It's hard to know what to do to make it better.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He moves a bit differently compared to his peers, and I've noticed it more as he's gotten older. It's not something that's been diagnosed as a specific condition, but it's definitely something that makes him stand out, and sometimes that can be tough for him socially.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient has a structural abnormality with his heart, which is a concern and requires regular monitoring.
+b) How this affects others with the syndrome: Individuals with KBG syndrome may have heart conditions, including changes to the heart valves, holes in the heart chambers, and structural changes, affecting approximately 38% of patients.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient experiences feeding difficulties, including being picky and sometimes not wanting to eat, which can be a struggle during mealtimes.
+b) How this affects others with the syndrome: Many babies with KBG syndrome have feeding difficulties, and some require short-term nasogastric tube feeding to supplement oral feeds.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: The patient seems to fight off infections okay, and vaccinations haven't been a problem.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient has epilepsy, which is a significant adjustment for the family, and requires vigilance.
+b) How this affects others with the syndrome: Around 20-40% of people with KBG syndrome are reported to have seizures, which typically respond to anti-epileptic treatments.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient seems to have hearing difficulties, with sounds being tuned in and out, which is a concern, especially in school.
+b) How this affects others with the syndrome: A significant proportion of people with KBG syndrome have recurrent otitis media or glue ear, leading to conductive hearing loss.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient complains of blurry vision, which is a concern and may require further investigation.
+b) How this affects others with the syndrome: People with KBG syndrome are more likely to have vision problems, such as astigmatism, short- or long-sightedness, and squint.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient has difficulties with chewing harder foods and tends to avoid certain foods, which may be related to his teeth.
+b) How this affects others with the syndrome: Individuals with KBG syndrome may have large front teeth, weak enamel, and other dental concerns, requiring regular dental check-ups.
+
+## 10) EDUCATION
+a) How this affects the patient: The patient's hearing and vision difficulties may impact his educational experience, especially in school.
+b) How this affects others with the syndrome: Children with KBG syndrome typically need extra help in school, and some may require special schooling or Educational Health Care Plans.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: The patient has epilepsy and experiences feeding difficulties, which can impact his behavior and development.
+b) How this affects others with the syndrome: People with KBG syndrome often have behavioral differences, such as autism spectrum disorder, ADHD, or anxiety, and may require medication or therapy.
+
+## 12) SKELETAL
+a) How this affects the patient: The patient moves differently compared to his peers, which can be a social challenge.
+b) How this affects others with the syndrome: Some individuals with KBG syndrome have skeletal anomalies, such as short fingers, curved fingers, or hip dysplasia.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor teeth and enamel
+* Regular hearing reviews to age 5 to address conductive hearing loss
+* Eyesight review to assess vision problems
+* Cardiac review, including echo and ECG, to monitor heart condition
+* Consider a skeletal review, including X-ray of the wrist, hip, spine, and skull, to assess skeletal anomalies
+* Monitor growth velocity and consider referral for endocrine investigations if height is below the 2nd centile
+* Consider physiotherapy, occupational therapy, speech therapy, and behavioral therapy to address developmental delays and difficulties
+* Regular monitoring of epilepsy and adjustment of medication as needed
+* Consider a palate review if there are feeding difficulties or speech concerns
+* Referral for a cardiac review following diagnosis to assess heart condition
+
+
+############################ 5. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: Oh, yes, I've noticed she rubs her eyes a lot, especially when she's trying to focus on something. It worries me because I'm not sure if it's a sign of something more serious. I've tried to get her to stop, but it's just become a habit for her.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: Sometimes I think she doesn't hear me, but then she'll respond to another sound right away. It's like she hears some things but not others, and it's really confusing for both of us. I've been worried that maybe she has a hearing problem, but I don't know.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: She has a lot of trouble with harder foods like apples or carrots. She'll often leave them on her plate because she says they're too hard to chew. I've been trying to cut them up into smaller pieces, but even then, she sometimes struggles.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: She gets exhausted so easily. We'll be playing, and then suddenly she'll just stop and say she's tired. It's not like she's just being lazy; she genuinely looks worn out. I worry that maybe her heart is working too hard or something.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: I haven't noticed anything out of the ordinary with her hormones. She seems to be developing normally in that regard, thank goodness.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: She has epilepsy, and that's been a challenge. We have to be very careful and make sure she takes her medication. It's scary when she has a seizure, but we're managing with the help of her doctors.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, we haven't had any issues with her kidneys. That's one area where she seems to be perfectly healthy, and I'm grateful for that.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: She seems to fight off infections like any normal child. We haven't had any unusual issues with her getting sick more often than others or having bad reactions to vaccinations.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: Constipation is a big issue for her. We have to be very mindful of what she eats and make sure she drinks plenty of water. It's been a challenge, but we're working through it with the help of her diet and some medication when needed.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: The roof of her mouth is shaped a bit differently, which affects her speech and eating sometimes. And developmentally, she's just taken a bit longer to reach some milestones than I expected. It's hard as a parent to wait and see her struggle, but we're doing everything we can to support her.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient experiences exhaustion easily and gets tired quickly, which may indicate a potential heart condition. 
+b) How this affects others with the syndrome: Approximately 38% of people with KBG syndrome have heart conditions, including changes to the heart valves, holes in the heart chambers, and structural changes.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient experiences constipation and has to be mindful of her diet and fluid intake.
+b) How this affects others with the syndrome: Feeding difficulties and constipation are common in individuals with KBG syndrome.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient has epilepsy and experiences seizures, which are managed with medication.
+b) How this affects others with the syndrome: Approximately 20-40% of people with KBG syndrome experience seizures, which typically respond to anti-epileptic treatments.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient may have hearing difficulties, as she sometimes responds to certain sounds but not others.
+b) How this affects others with the syndrome: A significant proportion of people with KBG syndrome experience conductive hearing loss, often due to recurrent otitis media or glue ear.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient rubs her eyes frequently, especially when trying to focus, which may indicate a vision problem.
+b) How this affects others with the syndrome: People with KBG syndrome are more likely to experience vision problems, such as astigmatism, short- or long-sightedness, and squint.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient has trouble with harder foods due to potential dental concerns and has a differently shaped roof of her mouth, affecting her speech and eating.
+b) How this affects others with the syndrome: Individuals with KBG syndrome often experience dental concerns, including weak enamel, and may have a variety of other dental issues.
+
+## 10) EDUCATION
+a) How this affects the patient: The patient has developmental delays and may require extra support in school.
+b) How this affects others with the syndrome: Children with KBG syndrome typically require extra help in school and may need to transfer to special schooling or have Educational Health Care Plans.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: The patient has developmental delays and may have behavioral differences.
+b) How this affects others with the syndrome: People with KBG syndrome often experience developmental delays, behavioral differences, and may have autism spectrum disorder, ADHD, or anxiety.
+
+## 12) SKELETAL
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Some individuals with KBG syndrome experience skeletal anomalies, including an unusual structure of the spinal bones, short fingers, and curvature of the 5th fingers.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor dental health and address any concerns.
+* Regular hearing reviews to age 5 to assess hearing and address any potential issues.
+* Eyesight review to assess vision and address any potential issues.
+* Cardiac review, including echo and ECG, to assess heart health.
+* Consider a palate review, particularly if there are feeding difficulties or speech concerns.
+* Monitor growth velocity and consider referral for endocrine investigations if height is below the 2nd centile.
+* Consider physiotherapy, occupational therapy, speech therapy, and behavioral therapy to support development and address any delays or difficulties.
+* Regular monitoring and management of epilepsy and seizures.
+* Consider review and investigation for tethered cord if clinical concerns arise.
+
+
+############################ 6. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has hypermetropia, which means he has trouble seeing things up close. We've noticed it when he's trying to read or look at pictures.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He gets really frustrated in noisy places, like restaurants or playgrounds. It seems like the noise overwhelms him and he has trouble focusing.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: His teeth are sensitive, especially when he eats cold food. He complains that it hurts when he has ice cream or cold drinks.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: We have to take him for regular heart check-ups. The doctors just want to keep an eye on it to make sure everything is okay.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: We haven't been told about any hormone issues, so that doesn't seem to be a concern right now.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He falls down a lot more than other kids. It's like he's a bit more clumsy and has trouble with his balance.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No issues with his kidneys that we're aware of. Everything seems fine in that area.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: He's had all his vaccinations and hasn't had any unusual reactions. He gets the usual colds and flu, but nothing out of the ordinary.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He had some trouble feeding when he was a baby, but that's all sorted out now. He eats normally and doesn't have any issues with his stomach or bowel movements.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He had a delayed fontanelle closure, which the doctors kept an eye on. Also, there are some abnormalities with the roof of his mouth, which might be contributing to some of his other issues.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient requires regular heart check-ups to monitor potential heart conditions.
+b) How this affects others with the syndrome: Around 38% of people with KBG syndrome have heart conditions, including changes to the heart valves, holes in the heart chambers, and structural changes.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient had some trouble feeding when he was a baby, but that's all sorted out now. He eats normally and doesn't have any issues with his stomach or bowel movements.
+b) How this affects others with the syndrome: Many babies have feeding difficulties and some require short-term nasogastric tube feeding to supplement oral feeds.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: The patient has had all his vaccinations and hasn't had any unusual reactions. He gets the usual colds and flu, but nothing out of the ordinary.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient falls down a lot more than other kids, indicating potential issues with balance and clumsiness.
+b) How this affects others with the syndrome: Around 20-40% of people with KBG syndrome have seizures, and some may experience developmental delay and behavioral differences.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient gets really frustrated in noisy places and has trouble focusing, indicating potential hearing or sensory issues.
+b) How this affects others with the syndrome: A significant proportion of people have recurrent otitis media or glue ear, which can cause conductive hearing loss.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient has hypermetropia, which means he has trouble seeing things up close.
+b) How this affects others with the syndrome: People with KBG syndrome are more likely to have vision problems such as astigmatism, short- or long sightedness, and squint.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient's teeth are sensitive, especially when he eats cold food.
+b) How this affects others with the syndrome: Many people with KBG syndrome have weak enamel and require regular dental check-ups.
+
+## 10) EDUCATION
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Children with KBG syndrome typically need extra help in school, and some may require special schooling or Educational Health Care Plans.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: The patient falls down a lot more than other kids and has trouble with his balance, indicating potential developmental delays.
+b) How this affects others with the syndrome: People with KBG syndrome often have behavioral differences such as autism spectrum disorder, ADHD, or anxiety.
+
+## 12) SKELETAL
+a) How this affects the patient: The patient had a delayed fontanelle closure, and there are some abnormalities with the roof of his mouth.
+b) How this affects others with the syndrome: Some people with KBG syndrome have an unusual structure of their spinal bones, short fingers, and curvature of the 5th fingers.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor tooth sensitivity and enamel weakness
+* Regular hearing reviews to age 5 to monitor for conductive hearing loss
+* Eyesight review to monitor for vision problems such as hypermetropia
+* Cardiac review to monitor for potential heart conditions
+* Consider a palate review to address feeding difficulties or speech concerns
+* Referral for physiotherapy, occupational therapy, speech therapy, and behavioral therapy to address developmental delays and behavioral differences
+* Monitor growth velocity and consider referral for endocrine investigations if height is below the 2nd centile
+* Consider review and investigation for tethered cord if clinical concerns arise
+
+
+############################ 7. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He squints sometimes. It's like he's having trouble seeing things clearly, so he tilts his head or closes one eye to look at stuff.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He often asks us to repeat what we said because he didn't catch it the first time. It happens a lot, and we're not sure if it's his hearing or if he's just not paying attention.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: His front teeth are bigger than what you'd expect for a child his age. We've noticed it since they started coming in, and it's just something we're keeping an eye on.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: He gets tired really easily. If we're out playing or walking, he needs to stop and rest more often than other kids. It's like he runs out of energy faster.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: We haven't been told about any hormone issues. That doesn't seem to be a concern right now.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has epilepsy. We have to be careful and manage his condition with medication and monitoring.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No issues with his kidneys that we're aware of. Everything seems fine in that area.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: He doesn't seem to get sick more often than other kids, and vaccinations have been normal. No concerns there.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He's very particular about the texture of his food. Some things he just won't eat because of how they feel in his mouth, which can be challenging at meal times.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: Sometimes it's hard for him to express what he wants or needs. He struggles to make himself understood, and it can be frustrating for both him and us.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient gets tired easily and needs to rest more often than other kids, suggesting possible cardiac issues.
+b) How this affects others with the syndrome: Cardiac issues are common in KBG syndrome, with 38% of patients having heart conditions, including changes to heart valves, holes in heart chambers, and structural changes.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient is particular about food textures and has feeding difficulties.
+b) How this affects others with the syndrome: Feeding difficulties are common in KBG syndrome, with some children requiring short-term nasogastric tube feeding.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient has epilepsy and requires medication and monitoring.
+b) How this affects others with the syndrome: Neurological issues, including seizures, are common in KBG syndrome, affecting around 20-40% of patients.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient often asks for repetition due to possible hearing difficulties.
+b) How this affects others with the syndrome: Hearing loss and recurrent otitis media are common in KBG syndrome, leading to conductive hearing loss.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient squints and has trouble seeing things clearly.
+b) How this affects others with the syndrome: Vision problems, including astigmatism, short- or long-sightedness, and squint, are common in KBG syndrome.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient has larger-than-expected front teeth.
+b) How this affects others with the syndrome: Dental concerns, including large front teeth and weak enamel, are common in KBG syndrome.
+
+## 10) EDUCATION
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Children with KBG syndrome often require extra help in school and may need special education plans.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: The patient struggles to express himself and has difficulties with communication.
+b) How this affects others with the syndrome: Behavioural differences, including autism spectrum disorder, ADHD, and anxiety, are common in KBG syndrome.
+
+## 12) SKELETAL
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Skeletal issues, including short fingers, curved fingers, and spinal anomalies, are common in KBG syndrome.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor tooth development and enamel health
+* Hearing reviews to age 5 to detect any potential hearing loss
+* Eyesight review to assess vision and detect any potential issues
+* Cardiac review, including echo and ECG, to assess heart health
+* Consideration of a skeletal review, including X-ray of the wrist, hip, spine, and skull, to assess bone health
+* Monitoring of growth velocity and consideration of endocrine investigations if height is below the 2nd centile
+* Physiotherapy, occupational therapy, speech therapy, and behavioural therapy to support development and communication
+* Regular monitoring and management of epilepsy
+* Consideration of a palate review if there are feeding difficulties or speech concerns
+
+
+############################ 8. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: Honestly, we've had some concerns about his eyesight. He's been diagnosed with myopia, and we're keeping a close eye on it. He seems to have trouble seeing things far away, and we're worried it might get worse.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: It's a bit weird, but sometimes he responds to loud noises, and other times he doesn't seem to hear us at all. We've had him tested, and they say he can hear some sounds but not others clearly. It's like he's tuning in and out.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: His teeth are really prone to cavities, and the dentist says it's because of weak enamel. We're trying to get him to brush more regularly, but it's a struggle. We don't want him to have to deal with a mouthful of fillings at such a young age.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: The cardiologist says he needs regular check-ups to monitor his heart health. We're not entirely sure what's going on, but we're told it's just a precautionary measure. We go in every few months, and they run some tests.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: Thankfully, that's one area where we haven't had any issues. His hormone levels seem to be normal, and we're just keeping an eye on it as part of his overall health check-ups.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has epilepsy, and we have to be really careful about managing his seizures. We've got a plan in place for what to do if he has an episode, and we're working with his neurologist to adjust his medication as needed.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No issues with his kidneys that we're aware of. His urine tests have all come back normal, and we haven't had any concerns in that area.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: He seems to respond normally to vaccinations, and he doesn't get sick more often than other kids. We're just keeping an eye on it, but so far, so good.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: Oh, his bowel movements are a bit of a challenge. He gets constipated easily, and we have to make sure he's drinking enough water and eating enough fiber. It's a bit of a balancing act, but we're managing.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: Well, there's the issue with the roof of his mouth - the palate, I think it's called. It's not formed quite right, and that, combined with his hearing issues, makes it hard for him to make himself understood when he talks. We're looking into speech therapy to help with that. And just generally, we're trying to stay on top of all these different appointments and medications - it's a lot to keep track of!
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient requires regular check-ups to monitor heart health, with some tests run every few months as a precautionary measure.
+b) How this affects others with the syndrome: Around 38% of people with KBG syndrome have heart conditions, including changes to the heart valves, holes in the heart chambers, and structural changes.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient experiences constipation and needs to ensure adequate hydration and fiber intake to manage bowel movements.
+b) How this affects others with the syndrome: Feeding difficulties and lack of interest in feeding can be significant and long-lasting in some individuals with KBG syndrome.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: The patient responds normally to vaccinations and does not get sick more often than other kids.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient has epilepsy and requires careful management of seizures with a plan in place for episodes and adjustment of medication as needed.
+b) How this affects others with the syndrome: Around 20-40% of people with KBG syndrome have seizures, which typically respond to anti-epileptic treatments.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient has hearing issues, with difficulty hearing some sounds clearly, and has been diagnosed with conductive hearing loss.
+b) How this affects others with the syndrome: A significant proportion of people have recurrent otitis media or glue ear, leading to conductive hearing loss, and many require multiple grommet insertions or hearing aids.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient has myopia and requires regular monitoring, with trouble seeing things far away.
+b) How this affects others with the syndrome: People with KBG syndrome are more likely to have vision problems such as astigmatism, short- or long-sightedness, and squint.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient has weak enamel, prone to cavities, and requires regular dental check-ups and careful brushing.
+b) How this affects others with the syndrome: Large front teeth and various dental concerns, including weak enamel, are common in KBG syndrome.
+
+## 10) EDUCATION
+a) How this affects the patient: The patient may require speech therapy to address issues related to the palate and hearing.
+b) How this affects others with the syndrome: Children with KBG syndrome typically need extra help in school, with some requiring special schooling or Educational Health Care Plans.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: No specific behavioral difficulties mentioned, but the patient has epilepsy and requires management.
+b) How this affects others with the syndrome: People with KBG syndrome often have behavioral differences, such as autism spectrum disorder, ADHD, or anxiety.
+
+## 12) SKELETAL
+a) How this affects the patient: The patient has issues with the roof of his mouth (palate) and may require review and investigation.
+b) How this affects others with the syndrome: Some people with KBG syndrome have an unusual structure of their spinal bones, short fingers, and curvature of the 5th fingers, and may experience delayed closure of the soft spot on their head.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor teeth and enamel health
+* Regular hearing reviews to age 5, even if earlier reviews give a clear response
+* Eyesight (ophthalmology) review to monitor vision problems
+* Check position of testes in boys to address undescended testes
+* Consider a palate review, particularly if there are feeding difficulties or speech concerns
+* Referral for a cardiac review, including echo and ECG, following diagnosis
+* Consider a skeletal review (X-ray of the wrist, hip, spine, and skull) in children following diagnosis
+* Monitor growth velocity, and consider referral for endocrine investigations if height is below the 2nd centile
+* Physiotherapy, occupational therapy, speech therapy, and behavioral therapy as needed
+* Regular monitoring and management of epilepsy and seizures
+* Regular check-ups to monitor heart health and address any cardiac concerns
+
+
+############################ 9. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: Honestly, she's been saying that things look a bit blurry to her, especially when she's trying to read or watch TV. I've noticed she squints a lot, so I'm a bit worried about her eyesight.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: She's had a bit of a problem with glue ear, which has made her hearing a bit muffled at times. We've been to the doctor about it before, and they've said it's pretty common, but it still worries me.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: Chewing harder foods like meat or crunchy vegetables can be a struggle for her. I've noticed she tends to avoid those foods or takes a long time to eat them, which can be frustrating at meal times.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: The doctors found a structural issue with her heart, which we're keeping an eye on. It's been a bit of a worry for us, but the doctors seem to think it's manageable with regular check-ups.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: We haven't had any issues with hormones that I'm aware of. That's not something that's been mentioned to us by the doctors.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: She has hypotonia, which means her muscles are a bit weaker than they should be. It's noticeable when she's playing with her friends or trying to run around - she gets tired more easily.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, no issues with her kidneys that we know of. Everything seems to be working as it should in that department.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: She seems to fight off infections okay, and her vaccination responses have all been normal, so no concerns there.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: Constipation has been a bit of an issue for her. We have to make sure she drinks plenty of water and eats foods that will help her go to the bathroom regularly.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: She stands and walks with a slightly different posture than her friends, which can be a bit noticeable. Also, sometimes when she tries to talk, her words can be a bit hard to understand - it's like she's searching for the right words to say.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient has a structural issue with her heart, which is being monitored.
+b) How this affects others with the syndrome: Cardiac issues, including changes to heart valves, holes in heart chambers, and structural changes, have been reported in approximately 38% of individuals with KBG syndrome.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient experiences constipation and needs to ensure adequate hydration and a balanced diet to manage this issue.
+b) How this affects others with the syndrome: Feeding difficulties, including lack of interest in feeding, have been reported in some individuals with KBG syndrome.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient has hypotonia, which results in weaker muscles, and occasional difficulties with finding the right words when speaking.
+b) How this affects others with the syndrome: Neurological issues, including seizures, have been reported in approximately 20-40% of individuals with KBG syndrome.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient has experienced glue ear, leading to muffled hearing, and has had issues with speech development.
+b) How this affects others with the syndrome: Hearing loss, glue ear, and speech delay are common features of KBG syndrome.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient experiences blurry vision, especially when reading or watching TV, and has a squint.
+b) How this affects others with the syndrome: Vision problems, including astigmatism, short- or long-sightedness, and squint, are more common in individuals with KBG syndrome.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient has difficulty chewing harder foods due to dental issues.
+b) How this affects others with the syndrome: Dental concerns, including large front teeth, weak enamel, and feeding difficulties, are common in individuals with KBG syndrome.
+
+## 10) EDUCATION
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Individuals with KBG syndrome often require extra support in school and may benefit from specialized educational settings.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: The patient has developmental delays and occasional difficulties with speech and communication.
+b) How this affects others with the syndrome: Behavioural differences, including autism spectrum disorder, ADHD, and anxiety, are common in individuals with KBG syndrome.
+
+## 12) SKELETAL
+a) How this affects the patient: The patient has a slightly different posture and gait.
+b) How this affects others with the syndrome: Skeletal anomalies, including short fingers, curved fingers, and spinal issues, are more common in individuals with KBG syndrome.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor dental health and address any concerns.
+* Regular hearing reviews to age 5 to monitor hearing and address any concerns.
+* Eyesight review to monitor vision and address any concerns.
+* Cardiac review to monitor heart health and address any concerns.
+* Consider a skeletal review (X-ray of the wrist, hip, spine, and skull) to monitor skeletal health.
+* Monitor growth velocity and consider referral for endocrine investigations if height is below the 2nd centile.
+* Consider physiotherapy, occupational therapy, speech therapy, and behavioural therapy to support development and address any concerns.
+* Regular monitoring of neurological development and adjustment of therapies as needed.
+
+
+############################ 10. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: Actually, she's been saying that things look a bit blurry to her, especially when she's trying to read or watch TV from a distance. It's been going on for a while now, and we're getting a bit concerned.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: She often asks us to repeat what we've said because she didn't quite catch it the first time. It happens pretty frequently, and we've noticed it's worse in noisy environments.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: Chewing harder foods like nuts or raw carrots seems to be a challenge for her. She tends to avoid them or takes a long time to eat them, which can be frustrating at meal times.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's an issue with one of her heart valves, which we've been monitoring with regular check-ups. So far, it hasn't held her back from doing the things she loves, but we're always mindful of it.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: We haven't been made aware of any hormone-related issues, so that's been a blessing.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: She has low muscle tone, which affects her overall energy levels and coordination. It's something we work on with physical therapy, but it's an ongoing process.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, her kidneys seem to be functioning normally, and we haven't had any concerns in that area.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: She seems to fight off infections like any other child her age, and her vaccination responses have all been typical.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: She does experience some bowel problems, which can be uncomfortable for her. We've been working on managing her diet to help alleviate these issues.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: One thing that's been a bit of a challenge is her difficulty in making herself understood when she speaks. Sometimes it takes a few attempts for us to grasp what she's trying to communicate, which can be frustrating for both of us.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient has an issue with one of her heart valves, which is being monitored with regular check-ups.
+b) How this affects others with the syndrome: Around 38% of people with KBG syndrome have heart conditions, including changes to the heart valves, holes in the heart chambers, and structural changes.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient experiences bowel problems, which can be uncomfortable, and managing her diet helps alleviate these issues.
+b) How this affects others with the syndrome: Many babies with KBG syndrome have feeding difficulties, and some require short-term nasogastric tube feeding to supplement oral feeds.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: The patient seems to fight off infections like any other child her age, and her vaccination responses have all been typical.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient has low muscle tone, which affects her overall energy levels and coordination, and is being addressed with physical therapy.
+b) How this affects others with the syndrome: Around 20-40% of people with KBG syndrome have seizures, which typically respond to anti-epileptic treatments.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient often asks to have things repeated because she didn't quite catch them the first time, especially in noisy environments, indicating potential hearing issues.
+b) How this affects others with the syndrome: A significant proportion of people with KBG syndrome have recurrent otitis media or glue ear, leading to conductive hearing loss.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient reports blurry vision, especially when trying to read or watch TV from a distance.
+b) How this affects others with the syndrome: People with KBG syndrome are more likely to have vision problems such as astigmatism, short- or long-sightedness, and squint.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient has difficulty chewing harder foods like nuts or raw carrots.
+b) How this affects others with the syndrome: Many people with KBG syndrome have large front teeth, weak enamel, and other dental concerns, making regular dental check-ups important.
+
+## 10) EDUCATION
+a) How this affects the patient: No specific information provided about educational challenges or support.
+b) How this affects others with the syndrome: Children with KBG syndrome typically need extra help in school, and many attend mainstream primary school, with some requiring special schooling or Educational Health Care Plans.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: The patient has difficulty making herself understood when she speaks, which can be frustrating for both her and her listeners.
+b) How this affects others with the syndrome: People with KBG syndrome often have behavioural differences, such as autism spectrum disorder, ADHD, or anxiety, and may require medication or therapy.
+
+## 12) SKELETAL
+a) How this affects the patient: No specific skeletal issues reported.
+b) How this affects others with the syndrome: Some people with KBG syndrome have an unusual structure of their spinal bones, short fingers, and curvature of the 5th fingers, and may experience hip dysplasia or scoliosis.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor teeth and enamel health.
+* Hearing reviews to age 5, even if earlier reviews give a clear response, to address potential conductive hearing loss.
+* Eyesight (ophthalmology) review to assess vision problems such as astigmatism or squint.
+* Cardiac review, including echo and ECG, following diagnosis to monitor heart valve issue.
+* Consider a skeletal review (X-ray of the wrist, hip, spine, and skull) in children following diagnosis to assess for any skeletal anomalies.
+* Monitor growth velocity, and consider referral for endocrine investigations if height is below the 2nd centile.
+* Physiotherapy, occupational therapy, speech therapy, and behavioural therapy as needed to support development and address specific challenges.
+* Regular monitoring of bowel problems and adjustment of diet as necessary to alleviate discomfort.
+* Consider review and investigation for tethered cord (MRI) if clinical concerns arise, especially if sacral dimple is present.
+
+
+############################ 11. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: Honestly, we've noticed he has trouble seeing things clearly, especially at night or when it's not very bright. The doctor said something about astigmatism, but I'm not entirely sure what that means or how it affects him.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He often asks us to repeat what we've said, which can get a bit frustrating. We're not sure if it's because he didn't hear us the first time or if there's something else going on, but it happens pretty frequently.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: We have to take him to the dentist a lot because his teeth seem to be more prone to problems than other kids his age. The dentist says we need to keep a close eye on them to prevent any bigger issues from developing.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's something structurally wrong with his heart, according to the doctors. We go for regular check-ups to make sure everything is okay, but it's always a bit of a worry in the back of our minds.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: We haven't been told about any hormone issues, so I think that's all okay for now.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: The doctors mentioned something about a tethered cord, which affects his spine. We're still learning about what it means and how it might impact him as he grows.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, his kidneys seem to be working just fine. No issues there that we're aware of.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: He seems to fight off illnesses like any normal child, so we haven't noticed anything out of the ordinary there.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He doesn't gain weight as quickly as his friends, which can be a bit concerning. The doctors are keeping an eye on it, but so far, no major alarms have been raised.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He has undescended testes, which the doctors are monitoring. Also, the soft spot on his head took longer than usual to close, but the doctors say that's just something to keep an eye on for now. And, of course, the issue with his testes is something we're watching closely.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient has a structurally abnormal heart, with regular check-ups to monitor the condition.
+b) How this affects others with the syndrome: Approximately 38% of people with KBG syndrome have heart conditions, including changes to the heart valves, holes in the heart chambers, and structural changes.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient has issues with weight gain, which is being monitored by doctors.
+b) How this affects others with the syndrome: Some individuals with KBG syndrome may experience feeding difficulties, including lack of interest in feeding, and may require short-term nasogastric tube feeding.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient has a tethered cord, which may affect his spine and require monitoring.
+b) How this affects others with the syndrome: Around 20-40% of people with KBG syndrome experience seizures, and some may have neurological issues such as autism spectrum disorder (ASD) or ADHD.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient experiences hearing difficulties, often asking for repetition, and has had issues with ear problems.
+b) How this affects others with the syndrome: A significant proportion of people with KBG syndrome experience recurrent otitis media or glue ear, leading to conductive hearing loss.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient has astigmatism, which affects his vision, particularly in low light conditions.
+b) How this affects others with the syndrome: People with KBG syndrome are more likely to have vision problems, including astigmatism, short- or long-sightedness, and squint.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient has frequent dental problems, requiring regular check-ups to prevent bigger issues.
+b) How this affects others with the syndrome: Individuals with KBG syndrome often experience dental concerns, including weak enamel and large front teeth.
+
+## 10) EDUCATION
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Children with KBG syndrome typically require extra help in school, and some may need to transfer to special schooling or have Educational Health Care Plans (EHCP).
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: People with KBG syndrome often have behavioural differences, such as autism spectrum disorder (ASD), ADHD, or anxiety.
+
+## 12) SKELETAL
+a) How this affects the patient: The patient has undescended testes, and the soft spot on his head took longer than usual to close.
+b) How this affects others with the syndrome: Some individuals with KBG syndrome may experience skeletal anomalies, including an unusual structure of the spinal bones, short fingers, and curvature of the 5th fingers.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor and prevent dental problems
+* Regular hearing reviews to age 5 to monitor hearing loss
+* Eyesight (ophthalmology) review to monitor vision problems
+* Check position of testes in boys to monitor undescended testes
+* Consider a cardiac review (including echo and ECG) to monitor heart condition
+* Consider a skeletal review (X-ray of the wrist, hip, spine, and skull) to monitor skeletal anomalies
+* Monitor growth velocity and consider referral for endocrine investigations if height is below the 2nd centile
+* Consider physiotherapy, occupational therapy, speech therapy, and behavioural therapy to support development and behaviour.
+
+
+############################ 12. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: Honestly, I've noticed he sits really close to the TV or when he's reading, and I worry that might be a sign of something. He doesn't complain about not seeing things, but it seems like he needs to be right up close to take it all in.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: Oh, yes... he often asks us to repeat what we've said because he didn't quite catch it the first time. It's like he's not hearing us clearly, but he doesn't complain about his ears hurting or anything like that.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: The dentist mentioned that his teeth have weak enamel, so we're trying to be super careful about brushing and flossing, and limiting sugary snacks. It's just one more thing to worry about, you know?
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: When he's playing, running around, he seems to get out of breath quicker than the other kids. I don't know if that's normal or not, but it worries me a bit. He doesn't complain about chest pains or anything, but it's just something I've noticed.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: I don't think there's anything going on with hormones, thankfully. That's one area where we haven't had any red flags raised, so fingers crossed it stays that way.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He gets tired really easily when he's playing or running around. It's like he can't keep up with the other kids, and that's hard for him. He doesn't have fits or anything like that, but the tiredness is something we've definitely noticed.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No issues there, thankfully. Everything seems to be working as it should in that department.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: He seems to fight off illnesses okay, I think. We haven't had any major issues with him getting sick more often than other kids or having bad reactions to vaccinations.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: His weight gain has been slower than his peers, and that's been a concern for us. He eats, but not as much as other kids, and it's a worry that he's not getting enough nutrients.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: Speech has been a big challenge for him. He doesn't speak as much as you'd expect for a child his age, and when he does try to communicate, it's often hard to understand what he's trying to say. It's frustrating for both of us, and we're hoping to get some help with that.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient gets out of breath quicker than other kids when playing or running around, which may indicate a potential cardiac issue.
+b) How this affects others with the syndrome: Cardiac issues are common in KBG syndrome, with 38% of patients having heart conditions, including changes to the heart valves, holes in the heart chambers, and structural changes.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient has slower weight gain than his peers and eats less than other kids, which may indicate a gastrointestinal issue.
+b) How this affects others with the syndrome: Feeding difficulties and slow weight gain are common in KBG syndrome, with some children requiring short-term nasogastric tube feeding.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient gets tired easily when playing or running around, and has speech difficulties.
+b) How this affects others with the syndrome: Neurological issues, including seizures, are common in KBG syndrome, with around 20-40% of patients experiencing seizures.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient often asks to have things repeated because he didn't quite catch them the first time, indicating potential hearing difficulties.
+b) How this affects others with the syndrome: Hearing loss and recurrent otitis media are common in KBG syndrome, with many children requiring multiple grommet insertions.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient sits close to the TV or when reading, indicating potential vision difficulties.
+b) How this affects others with the syndrome: Vision problems, including astigmatism, short- or long-sightedness, and squint, are common in KBG syndrome.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient has weak enamel on his teeth, requiring careful brushing and flossing.
+b) How this affects others with the syndrome: Dental concerns, including weak enamel and large front teeth, are common in KBG syndrome.
+
+## 10) EDUCATION
+a) How this affects the patient: The patient has speech difficulties and may require extra support in school.
+b) How this affects others with the syndrome: Children with KBG syndrome often require extra help in school, with some needing special schooling or Educational Health Care Plans.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: The patient has speech difficulties and gets tired easily when playing or running around.
+b) How this affects others with the syndrome: Behavioural differences, including autism spectrum disorder, ADHD, and anxiety, are common in KBG syndrome.
+
+## 12) SKELETAL
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Skeletal issues, including short fingers, curved 5th fingers, and hip dysplasia, are common in KBG syndrome.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor weak enamel
+* Regular hearing reviews to age 5
+* Eyesight (ophthalmology) review
+* Cardiac review, including echo and ECG
+* Consider a skeletal review (X-ray of the wrist, hip, spine, and skull)
+* Monitor growth velocity and consider referral for endocrine investigations if height is below the 2nd centile
+* Consider physiotherapy, occupational therapy, speech therapy, and behavioural therapy to support the patient's development and speech difficulties.
+
+
+############################ 13. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: Actually, his teacher mentioned that he struggles to see the board at school, even when he's sitting fairly close. We've noticed it at home too, when we're watching TV or playing games together - he tends to lean in or get closer than his siblings do.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He's had a bit of a problem with glue ear, which has affected his hearing from time to time. The doctor has checked him, and we're keeping an eye on it to make sure it doesn't become a bigger issue.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: Chewing harder foods can be a bit of a challenge for him. He tends to avoid things like raw carrots or tough meat because they're just too hard for him to manage. We're trying to encourage him to keep trying, though.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: When he's playing, running around or being very active, he seems to breathe faster than we'd expect. It's not stopping him from playing or anything, but it has caught our attention a few times.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He seems a bit less coordinated than other children his age. Simple things like running, jumping, or even just walking up the stairs can be a bit of a challenge for him. He's getting better with practice, though.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, we haven't had any issues with his kidneys that we're aware of. Everything in that department seems to be functioning normally.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: He's been pretty average when it comes to getting sick. No more or less than his siblings, and vaccinations have all been straightforward so far.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He does have some bowel problems. It's not consistent, but often enough that we've noticed a pattern. Some days are better than others, but it's something we're keeping an eye on.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: One thing that did come up was the delayed closure of the soft spot on his head. The doctor has been monitoring it, and we're just waiting for it to close on its own. It's not causing any problems, but it's just something we're aware of and checking regularly.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient experiences faster breathing when active, which has caught the parents' attention.
+b) How this affects others with the syndrome: Cardiac issues are reported in approximately 38% of individuals with KBG syndrome, including changes to heart valves, holes in heart chambers, and structural changes.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient experiences bowel problems, which are not consistent but follow a noticeable pattern.
+b) How this affects others with the syndrome: Feeding difficulties and bowel issues are common, with some individuals requiring short-term nasogastric tube feeding.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient seems less coordinated than other children his age and has difficulty with simple physical activities like running, jumping, or walking up stairs.
+b) How this affects others with the syndrome: Developmental delay, seizures, and neurological differences are common, with approximately 20-40% of individuals experiencing seizures.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient has had issues with glue ear, which has affected his hearing from time to time.
+b) How this affects others with the syndrome: Recurrent otitis media or glue ear is common, leading to conductive hearing loss, and many individuals require multiple grommet insertions or hearing aids.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient struggles to see the board at school and tends to lean in or get closer to see things clearly.
+b) How this affects others with the syndrome: Vision problems, such as astigmatism, short- or long-sightedness, and squint, are common.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient has difficulty chewing harder foods and tends to avoid them.
+b) How this affects others with the syndrome: Dental concerns, including weak enamel and large front teeth, are common, and regular dental check-ups are recommended.
+
+## 10) EDUCATION
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Individuals with KBG syndrome often require extra help in school, and some may need to transfer to special schooling or have Educational Health Care Plans.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Behavioural differences, such as autism spectrum disorder, ADHD, or anxiety, are common, and medication may be appropriate in some circumstances.
+
+## 12) SKELETAL
+a) How this affects the patient: The patient has a delayed closure of the soft spot on his head, which is being monitored.
+b) How this affects others with the syndrome: Skeletal anomalies, such as short fingers, curved 5th fingers, and hip dysplasia, are common, and some individuals may experience scoliosis or tethered cord.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor dental health and address any concerns.
+* Regular hearing reviews to age 5 to monitor hearing and address any concerns.
+* Eyesight review to monitor vision and address any concerns.
+* Cardiac review, including echo and ECG, to monitor heart health.
+* Consider a skeletal review, including X-ray of the wrist, hip, spine, and skull, to monitor skeletal health.
+* Monitor growth velocity and consider referral for endocrine investigations if height is below the 2nd centile.
+* Consider physiotherapy, occupational therapy, speech therapy, and behavioural therapy to support development and address any concerns.
+
+
+############################ 14. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: Honestly, I'm a bit worried because he says things look blurry to him sometimes. He'll be looking at the TV or a book and then say he can't see it clearly. I'm not sure if it's just him being a kid or if there's really something going on.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: Yeah, he often asks us to repeat what we've just said. It's like he didn't quite catch it the first time. It happens pretty regularly, and I've started to notice it more and more.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: His front teeth seem really big compared to the rest. We've commented on it a few times, wondering if they're just going to be that way or if there's something we should do about it.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's something with one of his heart valves, I think. We went to see a specialist, and they said it was an abnormality, but I don't fully understand it. They're keeping an eye on it, so I guess we'll just have to wait and see.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: I don't think there's anything there. We haven't been told about any issues, and he seems to be developing normally in that regard.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He's been diagnosed with hypotonia, which means his muscles are a bit weaker than they should be. It's something we're working on with physical therapy to try and strengthen them.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No, nothing's come up with his kidneys. The doctors haven't mentioned anything, so I assume everything is okay there.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: He seems to fight off illnesses like any other kid. We haven't had any major issues with infections or vaccinations, so that's a relief.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He's actually really picky when it comes to food, and sometimes he just doesn't want to eat. It's like he has an aversion to certain foods or textures. It can be challenging meal times.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: One thing that's really noticeable is his posture. When he stands or walks, his back is always a bit hunched, and it looks like he's leaning to one side. I've tried to get him to stand up straight, but it seems like it's just how his body wants to be. It's a bit worrying, to be honest.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient has an abnormality with one of his heart valves, which is being monitored.
+b) How this affects others with the syndrome: Cardiac issues are common in KBG syndrome, with 38% of patients having heart conditions, including changes to heart valves, holes in heart chambers, and structural changes.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient is picky with food and has an aversion to certain foods or textures, making meal times challenging.
+b) How this affects others with the syndrome: Feeding difficulties are common in KBG syndrome, with some children requiring short-term nasogastric tube feeding to supplement oral feeds.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient has been diagnosed with hypotonia, which means his muscles are weaker than they should be, and is undergoing physical therapy to strengthen them.
+b) How this affects others with the syndrome: Neurological issues, including seizures, are common in KBG syndrome, with around 20-40% of patients experiencing seizures.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient often asks for repetition of what has been said, suggesting potential hearing difficulties.
+b) How this affects others with the syndrome: Hearing loss and recurrent otitis media are common in KBG syndrome, with many children requiring multiple grommet insertions to relieve pressure inside the ear.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient reports blurry vision, with things looking unclear to him sometimes.
+b) How this affects others with the syndrome: Vision problems, including astigmatism, short- or long-sightedness, and squint, are common in KBG syndrome.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient has large front teeth compared to the rest.
+b) How this affects others with the syndrome: Dental concerns, including weak enamel and large front teeth, are common in KBG syndrome.
+
+## 10) EDUCATION
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Children with KBG syndrome often require extra help in school, with some attending mainstream primary school and others requiring special schooling.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Behavioural differences, including autism spectrum disorder, ADHD, and anxiety, are common in KBG syndrome.
+
+## 12) SKELETAL
+a) How this affects the patient: The patient has a noticeable posture issue, with his back always being a bit hunched and leaning to one side.
+b) How this affects others with the syndrome: Skeletal issues, including an unusual structure of spinal bones, short fingers, and curvature of the 5th fingers, are common in KBG syndrome.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor teeth and enamel
+* Regular hearing reviews to age 5 to monitor for hearing loss
+* Eyesight review to monitor for vision problems
+* Cardiac review to monitor heart valve abnormality
+* Physical therapy to strengthen muscles and improve posture
+* Monitoring of growth velocity and referral for endocrine investigations if necessary
+* Consideration of referral for a skeletal review, including X-ray of the wrist, hip, spine, and skull
+* Monitoring for signs of tethered cord and referral for MRI if clinical concerns arise
+* Consideration of physiotherapy, occupational therapy, speech therapy, and behavioural therapy as needed.
+
+
+############################ 15. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: Sometimes he squints, especially when looking at things that are far away. But overall, his eyes seem fine, and he doesn't complain about not seeing things.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He seems to pick up on some sounds easily, but with others, it's like he doesn't hear them at all. It's a bit strange, but he manages okay.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: We have to take him to the dentist a lot because his teeth are prone to issues. But the dentist is great, and we're on top of it.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: He gets tired really quickly, more so than other kids his age. But he's otherwise okay, and we make sure he takes breaks when he needs to.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: We haven't had any issues with that, thankfully. Everything seems normal there.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: Like I said, he tires easily, especially when running around or playing. But he's happy and active, just needs more rest than the others.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No problems there, which is a relief. His check-ups have all been fine.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: He's had all his shots and hasn't had any bad reactions. He gets the usual colds, but nothing out of the ordinary.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: Mealtime can be a challenge. He's a bit picky, and some foods don't agree with him. But we're working on it, and it's not a major concern.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He has a bit of a funny posture when he stands or walks, and we've been told he has hip dysplasia. The doctor is keeping an eye on it, and we're doing exercises to help.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient gets tired really quickly, more so than other kids his age, which may indicate a potential cardiac issue.
+b) How this affects others with the syndrome: Around 38% of people with KBG syndrome have heart conditions, including changes to the heart valves, holes in the heart chambers, and structural changes.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: Mealtime can be a challenge, the patient is a bit picky, and some foods don't agree with him.
+b) How this affects others with the syndrome: Many babies have feeding difficulties, and some require short-term nasogastric tube feeding to supplement oral feeds.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: The patient has had all his shots and hasn't had any bad reactions, he gets the usual colds, but nothing out of the ordinary.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient tires easily, especially when running around or playing, and has a bit of a funny posture when he stands or walks.
+b) How this affects others with the syndrome: Around 20-40% of people with KBG syndrome have seizures, and some may have neurological differences such as autism spectrum disorder (ASD) or ADHD.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient seems to pick up on some sounds easily, but with others, it's like he doesn't hear them at all, and he squints, especially when looking at things that are far away.
+b) How this affects others with the syndrome: A significant proportion of people have recurrent otitis media or glue ear, which can cause conductive hearing loss, and some have vision problems such as astigmatism or short-/long-sightedness.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient squints, especially when looking at things that are far away.
+b) How this affects others with the syndrome: People with KBG syndrome are more likely to have vision problems such as astigmatism, short-/long-sightedness, and squint.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient has to go to the dentist a lot because his teeth are prone to issues.
+b) How this affects others with the syndrome: Many people with KBG syndrome have large front teeth, weak enamel, and other dental concerns, and require regular dental check-ups.
+
+## 10) EDUCATION
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Children with KBG syndrome typically need extra help in school, and some may require special schooling or Educational Health Care Plans (EHCP).
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: People with KBG syndrome often have behavioural differences such as autism spectrum disorder (ASD), ADHD, or anxiety.
+
+## 12) SKELETAL
+a) How this affects the patient: The patient has hip dysplasia and a bit of a funny posture when he stands or walks.
+b) How this affects others with the syndrome: Some people with KBG syndrome have an unusual structure of their spinal bones, short fingers, and curvature of the 5th fingers, and some have hip dysplasia.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor tooth issues
+* Regular hearing reviews to age 5 to check for conductive hearing loss
+* Eyesight (ophthalmology) review to check for vision problems
+* Check position of testes in boys to monitor for undescended testes
+* Consider a cardiac review (including echo and ECG) to check for heart conditions
+* Consider a skeletal review (X-ray of the wrist, hip, spine, and skull) to check for skeletal anomalies
+* Monitor growth velocity and consider referral for endocrine investigations if height is below the 2nd centile
+* Consider physiotherapy, occupational therapy, speech therapy, and behavioural therapy to support development and behaviour.
+
+
+############################ 16. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has trouble seeing things that are far away, like the board at school. His teacher says he often leans forward to get a better look, which suggests his eyesight might not be perfect.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: Sometimes he seems to hear us fine, but other times it's like he doesn't pick up on certain sounds or voices. It's a bit inconsistent, and we're not sure what's going on.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: Chewing harder foods is a challenge for him. He tends to avoid foods that are too tough or hard because it's uncomfortable for him to chew them properly.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's an issue with one of his heart valves, which we've been monitoring with regular check-ups. So far, it hasn't held him back from playing or running around like other kids.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: We haven't been told about any hormone issues, so that seems to be okay for now.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has epilepsy, which means he has seizures. We have to be careful and manage his condition with medication and lifestyle adjustments.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, there are no kidney problems that we're aware of at this point.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: His immune system seems to be working fine. He gets the usual colds and flus, but nothing out of the ordinary, and vaccinations have been effective.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He can be quite picky with food and often refuses to eat certain things, but other than that, his stomach and bowel habits are pretty normal.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He has a noticeable difference in his posture when he's standing or walking. It's something we've become used to, but it's definitely there, and we're not sure what causes it or how it might affect him long-term.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient has an issue with one of his heart valves, which is being monitored with regular check-ups.
+b) How this affects others with the syndrome: Around 38% of people with KBG syndrome have heart conditions, including changes to the heart valves, holes in the heart chambers, and structural changes.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient can be quite picky with food and often refuses to eat certain things, but other than that, his stomach and bowel habits are pretty normal.
+b) How this affects others with the syndrome: Many babies have feeding difficulties, and some require short-term nasogastric tube feeding to supplement oral feeds.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: The patient's immune system seems to be working fine, getting the usual colds and flus, and vaccinations have been effective.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient has epilepsy, which means he has seizures, and this is managed with medication and lifestyle adjustments.
+b) How this affects others with the syndrome: Around 20-40% of people with KBG syndrome have seizures, which typically respond to the usual anti-epileptic treatments.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient sometimes seems to hear fine, but other times it's like he doesn't pick up on certain sounds or voices, and this is inconsistent.
+b) How this affects others with the syndrome: A significant proportion of people have recurrent otitis media or glue ear, which can cause conductive hearing loss.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient has trouble seeing things that are far away, like the board at school, suggesting his eyesight might not be perfect.
+b) How this affects others with the syndrome: People with KBG syndrome are more likely to have vision problems such as astigmatism, short- or long sightedness, and squint.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient has trouble chewing harder foods and tends to avoid foods that are too tough or hard because it's uncomfortable for him to chew them properly.
+b) How this affects others with the syndrome: As well as large front teeth, there can be a variety of other dental concerns, including weak enamel, which is frequently seen.
+
+## 10) EDUCATION
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Children with KBG syndrome typically need extra help in school, and most go to a mainstream primary school, but may transfer to special schooling or remain in mainstream schools with Educational Health Care Plans.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: People with KBG syndrome often have behavioural differences such as autism spectrum disorder, ADHD, or anxiety, and developmental delay has been reported in almost all children with KBG syndrome.
+
+## 12) SKELETAL
+a) How this affects the patient: The patient has a noticeable difference in his posture when he's standing or walking.
+b) How this affects others with the syndrome: Some people with KBG syndrome have an unusual structure of their spinal bones, which can give rise to an increased curvature of the spine, and many have short fingers with a curvature of the 5th fingers.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor dental concerns and weak enamel.
+* Regular hearing reviews to age 5 to check for conductive hearing loss.
+* Eyesight review to assess vision problems such as astigmatism or short-/long-sightedness.
+* Cardiac review, including echo and ECG, to monitor heart conditions.
+* Skeletal review, including X-ray of the wrist, hip, spine, and skull, to assess spinal structure and curvature.
+* Monitoring of growth velocity, with referral for endocrine investigations if height is below the 2nd centile.
+* Consideration of physiotherapy, occupational therapy, speech therapy, and behavioural therapy to support developmental needs.
+* Management of epilepsy with medication and lifestyle adjustments.
+* Regular monitoring of the patient's heart valve issue and adjustment of treatment as necessary.
+
+
+############################ 17. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: Oh, yes, she rubs her eyes all the time, especially when she's trying to focus on something. I worry it might be a sign of something serious, and I've been meaning to get her eyes checked more thoroughly.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: She often asks us to repeat what we've said, which makes me think she might not be hearing properly. It's like she's straining to catch every word, and it's really concerning me as a parent.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: Eating can be a bit of a challenge for her, especially with harder foods like meat or raw vegetables. She tends to chew slowly and carefully, and sometimes avoids certain foods altogether, which worries me about her nutrition.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: I've noticed she gets tired really easily, even after short periods of play. She can't seem to keep up with the other kids when they're running around, and that's not like her - she loves being active. It's like her energy levels just drop suddenly.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: We haven't had any issues with that so far, thankfully. Her development seems on track in that regard, and we're just keeping a close eye on everything.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: Yes, unfortunately, she has seizures. They're terrifying to watch, and we have to be so vigilant all the time. It's a constant worry for us as parents.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, no issues there. Everything seems to be functioning normally, and we're grateful for that.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: She seems to fight off infections okay, and her vaccination schedule has been normal. We're careful about exposing her to too many germs, though, just in case.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: Constipation is a big issue for her. We have to be really careful with her diet and make sure she's drinking enough water to help with that. It's been a challenge, but we're managing.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: Well, the doctors have mentioned that the soft spot on her head took longer than usual to close, and she's also been diagnosed with scoliosis. It's a lot to take in, and I just want to make sure we're doing everything we can for her. I feel like I'm constantly worrying about something or other, but I just want what's best for my baby.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient experiences tiredness easily, even after short periods of play, suggesting potential cardiac issues. A cardiac review, including echo and ECG, is recommended.
+b) How this affects others with the syndrome: Approximately 38% of individuals with KBG syndrome have heart conditions, including changes to the heart valves, holes in the heart chambers, and structural changes.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient experiences constipation, requiring careful management of diet and hydration.
+b) How this affects others with the syndrome: Feeding difficulties and lack of interest in feeding can be significant and long-lasting in individuals with KBG syndrome.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient has seizures, which are a significant concern and require ongoing management.
+b) How this affects others with the syndrome: Approximately 20-40% of individuals with KBG syndrome experience seizures, which typically respond to anti-epileptic treatments.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient often asks for repetitions of what has been said, suggesting potential hearing difficulties.
+b) How this affects others with the syndrome: A significant proportion of individuals with KBG syndrome experience conductive hearing loss, often due to recurrent otitis media or glue ear.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient rubs her eyes frequently, especially when trying to focus, suggesting potential vision problems.
+b) How this affects others with the syndrome: Individuals with KBG syndrome are more likely to experience vision problems, including astigmatism, short- or long-sightedness, and squint.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient experiences difficulties with eating, particularly with harder foods, and has large front teeth.
+b) How this affects others with the syndrome: Individuals with KBG syndrome often have large permanent teeth, weak enamel, and may require regular dental check-ups.
+
+## 10) EDUCATION
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Individuals with KBG syndrome typically require extra help in school and may benefit from special educational support.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Individuals with KBG syndrome often experience developmental delay, learning difficulties, and behavioral differences, including autism spectrum disorder and ADHD.
+
+## 12) SKELETAL
+a) How this affects the patient: The patient has been diagnosed with scoliosis and experienced delayed closure of the soft spot on her head.
+b) How this affects others with the syndrome: Individuals with KBG syndrome may experience skeletal anomalies, including scoliosis, short fingers, and hip dysplasia.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor tooth development and enamel health
+* Hearing reviews to age 5 to assess for conductive hearing loss
+* Eyesight (ophthalmology) review to assess for vision problems
+* Cardiac review, including echo and ECG, to assess for heart conditions
+* Monitoring of growth velocity and consideration of endocrine investigations if height is below the 2nd centile
+* Physiotherapy, occupational therapy, speech therapy, and behavioral therapy as needed
+* Regular monitoring for seizures and adjustment of anti-epileptic treatments as necessary
+* Consideration of referral for a skeletal review, including X-ray of the wrist, hip, spine, and skull, to assess for skeletal anomalies
+* Monitoring for signs of tethered cord and consideration of MRI if clinical concerns arise
+
+
+############################ 18. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: She has trouble seeing things that are far away, like the board at school. Her teacher says she often leans forward to get a better look.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: Loud noises really overwhelm her. She gets frustrated in crowded or noisy places, like malls or playgrounds, and often asks to leave.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: Her teeth are very prone to chipping or breaking. We've had to take her to the dentist a few times already because of this, and we're worried about how fragile they seem.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's an issue with one of her heart valves. We go for regular check-ups to monitor it, but so far, it hasn't held her back from playing or running around.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: We haven't been told about any hormone issues. That doesn't seem to be a concern at this point.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: She's a bit clumsy and less coordinated than other kids her age. She trips over her own feet sometimes or has trouble with balance.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No problems with her kidneys that we're aware of. Everything seems normal there.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: She doesn't seem to get sick more often than other kids, and vaccinations have been straightforward. No issues there.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: Mealtime can be a challenge. She's a picky eater and sometimes has trouble digesting certain foods, which leads to stomach upset.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: She's not talking as much as we expected for a child her age. Her vocabulary and sentences are somewhat limited compared to her peers, and we're concerned about her language development.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient has an issue with one of her heart valves, requiring regular check-ups for monitoring.
+b) How this affects others with the syndrome: Cardiac issues are common in KBG syndrome, with 38% of patients having heart conditions, including changes to heart valves, holes in heart chambers, and structural changes.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient experiences feeding difficulties, is a picky eater, and has trouble digesting certain foods, leading to stomach upset.
+b) How this affects others with the syndrome: Feeding difficulties and lack of interest in feeding can be significant and long-lasting in individuals with KBG syndrome.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient is clumsy, less coordinated than other kids her age, trips over her own feet, and has trouble with balance.
+b) How this affects others with the syndrome: Developmental delay, including neurological aspects, is common in KBG syndrome, with varying degrees of severity.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient is overwhelmed by loud noises and gets frustrated in crowded or noisy places.
+b) How this affects others with the syndrome: Hearing loss and recurrent otitis media (glue ear) are common, potentially leading to conductive hearing loss.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient has trouble seeing things far away and often leans forward to get a better look.
+b) How this affects others with the syndrome: Vision problems, such as astigmatism, short- or long-sightedness, and squint, are more likely in individuals with KBG syndrome.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient's teeth are prone to chipping or breaking, requiring frequent dentist visits.
+b) How this affects others with the syndrome: Large front teeth and weak enamel are common, making regular dental check-ups important.
+
+## 10) EDUCATION
+a) How this affects the patient: The patient's language development is a concern, with limited vocabulary and sentence structure compared to peers.
+b) How this affects others with the syndrome: Individuals with KBG syndrome often require extra help in school, with some attending mainstream schools and others requiring special education.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: The patient's developmental milestones are delayed, and she is less coordinated than her peers.
+b) How this affects others with the syndrome: Developmental delay and behavioural differences, including autism spectrum disorder, ADHD, and anxiety, are common in KBG syndrome.
+
+## 12) SKELETAL
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Skeletal anomalies, including short fingers, curvature of the 5th fingers, and an increased curvature of the spine, can occur in individuals with KBG syndrome.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor teeth condition and prevent further damage.
+* Hearing reviews to age 5 to address any potential hearing loss.
+* Eyesight (ophthalmology) review to correct any vision problems.
+* Cardiac review to monitor the heart valve issue.
+* Consideration of a palate review if feeding or speech concerns arise.
+* Referral for speech therapy to address language development concerns.
+* Occupational therapy and physiotherapy to improve coordination and balance.
+* Behavioural therapy to address any behavioural differences.
+* Regular monitoring of growth velocity and consideration of endocrine investigations if height is below the 2nd centile.
+
+
+############################ 19. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He squints a lot, especially when looking at things that are far away. It's just something we've noticed over time.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He always turns the TV volume up really high, which makes us think maybe he's having trouble hearing it at normal levels.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: The dentist mentioned that his teeth have weak enamel, so we're trying to be extra careful with brushing and dental care to prevent any issues.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: He gets tired easily when playing with other kids, and can't keep up with physical activities for as long as they can. That's been a bit of a concern for us.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: We haven't been told about any hormone issues, so that doesn't seem to be a concern at this point.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He's a bit clumsy and seems less coordinated than other kids his age when he's running or trying to do physical things.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No issues with his kidneys that we're aware of, thankfully.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: He's responded normally to vaccinations and hasn't had any unusual infections, so that seems fine.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He had trouble feeding when he was a baby, but that's mostly resolved now. Occasionally, he still doesn't eat as well as we'd like, but it's not a major issue anymore.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He struggles to speak clearly and doesn't talk as much as other children his age. It's like he knows what he wants to say, but getting the words out is hard for him.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient gets tired easily when playing with other kids and can't keep up with physical activities for as long as they can, which may indicate a potential cardiac issue.
+b) How this affects others with the syndrome: Around 38% of people with KBG syndrome have heart conditions, including changes to the heart valves, holes in the heart chambers, and structural changes.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient had trouble feeding when he was a baby, but that's mostly resolved now. Occasionally, he still doesn't eat as well as his parents would like, but it's not a major issue anymore.
+b) How this affects others with the syndrome: Many babies with KBG syndrome have feeding difficulties, and some require short-term nasogastric tube feeding to supplement oral feeds.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: The patient has responded normally to vaccinations and hasn't had any unusual infections.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient is a bit clumsy and seems less coordinated than other kids his age when he's running or trying to do physical things.
+b) How this affects others with the syndrome: Around 20-40% of people with KBG syndrome have seizures, and some may have neurological differences such as autism spectrum disorder (ASD) or ADHD.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient always turns the TV volume up really high, which makes his parents think maybe he's having trouble hearing it at normal levels. He also squints a lot, especially when looking at things that are far away.
+b) How this affects others with the syndrome: A significant proportion of people with KBG syndrome have recurrent otitis media or glue ear, which can cause conductive hearing loss.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient squints a lot, especially when looking at things that are far away.
+b) How this affects others with the syndrome: People with KBG syndrome are more likely to have vision problems such as astigmatism, short- or long sightedness, and squint.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient's teeth have weak enamel, so his parents are trying to be extra careful with brushing and dental care to prevent any issues.
+b) How this affects others with the syndrome: Many people with KBG syndrome have dental concerns, including weak enamel and large front teeth.
+
+## 10) EDUCATION
+a) How this affects the patient: The patient struggles to speak clearly and doesn't talk as much as other children his age.
+b) How this affects others with the syndrome: Children with KBG syndrome typically need extra help in school, and some may require special schooling or Educational Health Care Plans (EHCP).
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: The patient is a bit clumsy and seems less coordinated than other kids his age when he's running or trying to do physical things. He also struggles to speak clearly and doesn't talk as much as other children his age.
+b) How this affects others with the syndrome: People with KBG syndrome often have behavioural differences such as autism spectrum disorder (ASD), ADHD, or anxiety.
+
+## 12) SKELETAL
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: Some people with KBG syndrome have an unusual structure of their spinal bones, which can give rise to an increased curvature of the spine (scoliosis), and some have short fingers (brachydactyly) with a curvature of the 5th fingers (clinodactyly).
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor the patient's weak enamel and prevent any dental issues.
+* Regular hearing reviews to age 5 to monitor the patient's hearing and address any potential issues.
+* Eyesight (ophthalmology) review to assess the patient's vision and address any potential issues.
+* Cardiac review (including echo and ECG) to investigate the patient's heart condition and determine the best course of action.
+* Consider a skeletal review (X-ray of the wrist, hip, spine, and skull) to assess the patient's bone health and address any potential issues.
+* Monitor the patient's growth velocity and consider referral for endocrine investigations if his height is below the 2nd centile.
+* Consider physiotherapy, occupational therapy, speech therapy, and behavioural therapy to support the patient's development and address any potential issues.
+
+
+############################ 20. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: Actually, we've noticed he often squints when looking at things, which makes us wonder if his eyes are straining or if there's something going on with his vision that we should be concerned about. It's been going on for a while now.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He gets really frustrated in noisy places, like shopping malls or restaurants. It's almost as if the noise is overwhelming for him, and he can't filter it out. We've had to develop strategies to help him cope in those situations.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: He complains of tooth sensitivity, especially with cold food and drinks. It's gotten to the point where he avoids certain foods because of the discomfort it causes him, which is a bit concerning for us as parents.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: He has a septal defect, which we've been monitoring closely with the cardiologist. So far, it hasn't limited his activities, but we're always mindful of it and make sure to follow up regularly.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: Unfortunately, he has epilepsy. We've learned to manage it with medication and are very vigilant about seizure signs. It's been a learning curve, but we're getting better at recognizing the warning signs and responding appropriately.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, we haven't had any issues with his kidneys. All the tests have come back normal, and there haven't been any concerns raised by the doctors.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: We haven't noticed any unusual patterns with infections or how he responds to vaccinations. Everything in that department seems to be functioning as expected.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: Feeding has been a challenge. He has difficulties with certain textures and temperatures, which has made mealtime sometimes stressful. We've had to work with him to introduce new foods gradually and find things he's comfortable eating.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: In addition to the other issues, he also has palatal abnormalities, which affect his speech and eating. We've been working with a speech therapist to help improve his communication skills, and it's been really beneficial.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient has a septal defect, which is being monitored closely with a cardiologist.
+b) How this affects others with the syndrome: Individuals with KBG syndrome may have heart conditions, including changes to the heart valves, holes in the heart chambers, and structural changes, with some requiring surgery or monitoring.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient has difficulties with feeding, including issues with certain textures and temperatures, making mealtime sometimes stressful.
+b) How this affects others with the syndrome: Feeding difficulties are common, with some children requiring short-term nasogastric tube feeding, and a few needing longer-term tube feeding due to lack of interest in feeding.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No unusual patterns with infections or vaccination responses have been noticed.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient has epilepsy, which is managed with medication, and the parents are vigilant about seizure signs.
+b) How this affects others with the syndrome: Around 20-40% of people with KBG syndrome have seizures, which typically respond to anti-epileptic treatments, though some cases can be difficult to treat.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient gets frustrated in noisy places, suggesting potential hearing or sensory issues, and has had issues with ear infections.
+b) How this affects others with the syndrome: A significant proportion of people have recurrent otitis media or glue ear, leading to conductive hearing loss, and many require multiple grommet insertions or hearing aids.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient often squints, suggesting potential vision problems.
+b) How this affects others with the syndrome: People with KBG syndrome are more likely to have vision problems such as astigmatism, short- or long-sightedness, and squint, with treatment options including patching, exercises, glasses, and surgery.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No such symptoms or difficulties reported.
+b) How this affects others with the syndrome: No relevant background information provided.
+
+## 9) DENTAL
+a) How this affects the patient: The patient complains of tooth sensitivity, especially with cold food and drinks, and has large front teeth.
+b) How this affects others with the syndrome: Individuals with KBG syndrome often have large permanent teeth, weak enamel, and other dental concerns, necessitating regular dental check-ups.
+
+## 10) EDUCATION
+a) How this affects the patient: No specific information provided about the patient's educational needs or challenges.
+b) How this affects others with the syndrome: Children with KBG syndrome typically need extra help in school, with many attending mainstream primary school but potentially requiring special schooling or Educational Health Care Plans for secondary education.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: The patient has developmental delays and difficulties with certain textures and temperatures, suggesting sensory issues.
+b) How this affects others with the syndrome: People with KBG syndrome often have developmental delays, learning difficulties, and behavioral differences, including autism spectrum disorder, ADHD, or anxiety, with some requiring medication or therapeutic interventions.
+
+## 12) SKELETAL
+a) How this affects the patient: No specific skeletal issues were mentioned.
+b) How this affects others with the syndrome: Some individuals with KBG syndrome have skeletal anomalies, including an unusual structure of spinal bones, short fingers, and curvature of the 5th fingers, with a small number having hip dysplasia.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor tooth sensitivity and enamel health.
+* Hearing reviews to age 5, even if earlier reviews give a clear response, to address potential hearing loss.
+* Eyesight (ophthalmology) review to assess for vision problems such as astigmatism or squint.
+* Cardiac review, including echo and ECG, following diagnosis, to monitor the septal defect.
+* Consider a skeletal review (X-ray of the wrist, hip, spine, and skull) to assess for any skeletal anomalies.
+* Monitor growth velocity, and consider referral for endocrine investigations if height is below the 2nd centile.
+* Physiotherapy, occupational therapy, speech therapy, and behavioral therapy as needed to support developmental and sensory challenges.
+* Regular monitoring for seizures and adjustment of epilepsy medication as necessary.
+* Consider review and investigation for tethered cord if clinical concerns arise, especially if sacral dimple is present.
+
+

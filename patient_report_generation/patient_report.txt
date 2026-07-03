@@ -1,0 +1,573 @@
+############################ 1. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has astigmatism, but it's mild and doesn't seem to bother him too much in daily life.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He's had a bit of glue ear, which is mild, and we're keeping an eye on it to make sure it doesn't affect his hearing or speech development.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: His front teeth are a bit larger than usual, but it's not causing any major issues at the moment, just something we're aware of.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a valve abnormality that's quite severe, so we have to be careful and monitor it closely with regular check-ups.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: No issues with hormones have been identified so far.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has a tethered cord, which is moderate, and we're working on managing its impact on his development.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, there are no kidney problems at this time.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: His immune system seems to be functioning normally, with no concerns noted.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He has a moderate feeding aversion, which can make meal times challenging, but we're finding ways to make it work.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He has hip dysplasia, which is moderate and requires regular monitoring, and also somewhat short fingers, though that's mild and more of a developmental note than a concern.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: Valve abnormality that's quite severe, requiring close monitoring with regular check-ups.
+b) Information from the guidelines: Changes to the heart valves, holes in the heart chambers, and structural changes are common in KBG syndrome.
+c) Recommendations for screening or intervention: Regular cardiac reviews, including echo and ECG, are recommended.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: Moderate feeding aversion, making meal times challenging.
+b) Information from the guidelines: Feeding difficulties and lack of interest in feeding can be significant and long-lasting in KBG syndrome.
+c) Recommendations for screening or intervention: Regular monitoring and support for feeding difficulties, consideration for referral to a specialist for feeding concerns.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 5) NEUROLOGY
+a) How this affects the patient: Tethered cord, which is moderate and requires management to impact development.
+b) Information from the guidelines: Tethered cord can cause pain, weakness in the legs, urinary and bowel issues, and sacral dimple in KBG syndrome.
+c) Recommendations for screening or intervention: Consider review and investigation for tethered cord (MRI) where clinical concerns arise, especially if sacral dimple is present.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: Mild glue ear, which is being monitored to ensure it doesn't affect hearing or speech development.
+b) Information from the guidelines: Recurrent otitis media or glue ear can cause conductive hearing loss in KBG syndrome.
+c) Recommendations for screening or intervention: Regular hearing reviews to age 5, even if earlier reviews give a clear response.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: Mild astigmatism that doesn't seem to bother him too much in daily life.
+b) Information from the guidelines: Vision problems such as astigmatism, short- or long-sightedness, and squint can be features of KBG syndrome.
+c) Recommendations for screening or intervention: Eyesight (ophthalmology) review is recommended.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 9) DENTAL
+a) How this affects the patient: Larger than usual front teeth, which is being monitored.
+b) Information from the guidelines: Large front teeth, weak enamel, and other dental concerns are common in KBG syndrome.
+c) Recommendations for screening or intervention: Regular dental check-ups are recommended.
+
+## 10) EDUCATION
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 12) SKELETAL
+a) How this affects the patient: Hip dysplasia, which is moderate and requires regular monitoring, and short fingers, which is mild.
+b) Information from the guidelines: Skeletal anomalies, including hip dysplasia, short fingers, and curvature of the spine, can be features of KBG syndrome.
+c) Recommendations for screening or intervention: Consider a skeletal review (X-ray of the wrist, hip, spine, and skull) in children following diagnosis, and monitor growth velocity.
+
+
+############################ 2. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has astigmatism, which is quite severe and affects his daily life, so we're exploring options for correction.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's fluid in his ear, and it's severe, which is causing some discomfort and hearing issues, so we're working on getting that cleared up.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: His front teeth are a bit larger than usual, but it's not causing too much trouble, just something we're keeping an eye on for now.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a septal defect, but thankfully it's mild, so we're just monitoring it to make sure it doesn't become a bigger issue.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has hypotonia, which is moderate, and it affects his muscle tone, making some physical activities a bit challenging for him.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No kidney issues have been detected so far.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: His immune system seems to be functioning normally, no concerns there.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He has a strong aversion to feeding, which is severe and has been a challenge since infancy, affecting his nutrition and weight.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He has undescended testes, which we're keeping an eye on, and also hip dysplasia, which is moderate and might need some intervention as he grows.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient has a septal defect, but it's mild.
+b) Information from the guidelines: Most children with KBG syndrome do not have a very serious heart condition, but a study of 40 European patients showed that 15/40 (38%) had heart conditions.
+c) Recommendations for screening or intervention: Referral for a cardiac review (including echo and ECG) following diagnosis has already been done, and monitoring is recommended to ensure the condition does not worsen.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient has a strong aversion to feeding, which is severe and has been a challenge since infancy, affecting his nutrition and weight.
+b) Information from the guidelines: Many babies have feeding difficulties and some require short-term nasogastric tube feeding to supplement oral feeds.
+c) Recommendations for screening or intervention: Consider referral for specialist review, especially if there are feeding difficulties or speech concerns.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient has hypotonia, which is moderate, and it affects his muscle tone, making some physical activities a bit challenging for him.
+b) Information from the guidelines: Around 20-40% of people are reported as having seizures, of varying types, but there is no mention of hypotonia specifically in the guidelines provided.
+c) Recommendations for screening or intervention: Monitor for any signs of neurological issues, and consider referral for specialist review if concerns arise.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: There's fluid in his ear, and it's severe, which is causing some discomfort and hearing issues.
+b) Information from the guidelines: A significant proportion of people have recurrent otitis media or glue ear, which can cause conductive hearing loss.
+c) Recommendations for screening or intervention: Regular hearing reviews are recommended, and treatment for the ear condition should be continued.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient has astigmatism, which is quite severe and affects his daily life.
+b) Information from the guidelines: People with KBG syndrome are more likely to have vision problems such as astigmatism.
+c) Recommendations for screening or intervention: Eyesight (ophthalmology) review is recommended, and consideration of correction options for astigmatism should be explored.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 9) DENTAL
+a) How this affects the patient: His front teeth are a bit larger than usual, but it's not causing too much trouble.
+b) Information from the guidelines: As well as large front teeth, there can be a variety of other dental concerns, including weak enamel.
+c) Recommendations for screening or intervention: Regular dental check-ups are recommended to monitor dental health.
+
+## 10) EDUCATION
+a) How this affects the patient: The patient's educational needs are not explicitly mentioned in the conversation.
+b) Information from the guidelines: Children with KBG syndrome typically need extra help in school, and may require Educational Health Care Plans (EHCP).
+c) Recommendations for screening or intervention: Consideration of educational support and potential need for EHCP should be discussed with educational professionals.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: No active symptoms or difficulties reported regarding behavioral differences.
+b) Information from the guidelines: People with KBG syndrome often have behavioural differences such as autism spectrum disorder (ASD), ADHD or anxiety.
+c) Recommendations for screening or intervention: Monitoring for behavioral differences and consideration of referral for specialist review if concerns arise.
+
+## 12) SKELETAL
+a) How this affects the patient: The patient has undescended testes and hip dysplasia, which is moderate and might need some intervention as he grows.
+b) Information from the guidelines: Some people with KBG syndrome have an unusual structure of their spinal bones, and many have short fingers with a curvature of the 5th fingers.
+c) Recommendations for screening or intervention: Consider a skeletal review (X-ray of the wrist, hip, spine, and skull) in children following diagnosis, and monitor growth velocity.
+
+
+############################ 3. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has myopia, which is quite severe and affects his daily life, especially in school where he has to strain to see the board.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He's had some issues with otitis media, but it's been mild and we've been able to manage it with regular check-ups and treatment.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: His front teeth are a bit larger than usual, but it's not causing any major issues, just something we're keeping an eye on as he grows.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a structural abnormality that's been identified, and while it's not severe, we do have to be mindful of it and have regular check-ups to monitor its impact.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has hypotonia, which is mild, but it does affect his overall muscle tone and sometimes his coordination.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, there are no kidney problems that we're aware of at this point.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: His immune system seems to be functioning normally, and he's responded well to all his vaccinations so far.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He does have some bowel problems, which can be moderate at times, but we're working on managing his diet to help alleviate these issues.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He has hip dysplasia, which is moderate and requires regular monitoring, and also his fingers are a bit shorter than average, but that's mild and doesn't seem to cause him much difficulty.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient has a structural abnormality in the heart that requires regular monitoring.
+b) Information from the guidelines: Individuals with KBG syndrome may have heart conditions, including changes to the heart valves, holes in the heart chambers, and structural changes.
+c) Recommendations for screening or intervention: Regular cardiac check-ups are recommended to monitor the impact of the structural abnormality.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient experiences moderate bowel problems that are managed through dietary adjustments.
+b) Information from the guidelines: Feeding difficulties and bowel issues can be common in individuals with KBG syndrome.
+c) Recommendations for screening or intervention: Continued management of bowel issues through dietary adjustments and monitoring for any worsening of symptoms.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient has mild hypotonia affecting muscle tone and coordination.
+b) Information from the guidelines: Neurological issues, including seizures, can be present in individuals with KBG syndrome.
+c) Recommendations for screening or intervention: Monitoring of the hypotonia and consideration of physiotherapy to support muscle tone and coordination.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient has experienced mild otitis media, managed with regular check-ups and treatment.
+b) Information from the guidelines: Recurrent otitis media and conductive hearing loss can be features of KBG syndrome.
+c) Recommendations for screening or intervention: Continued regular hearing reviews and monitoring for any signs of hearing loss or otitis media recurrence.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient has severe myopia affecting daily life.
+b) Information from the guidelines: Vision problems, including myopia and astigmatism, are common in KBG syndrome.
+c) Recommendations for screening or intervention: Regular eyesight reviews and appropriate corrective measures (e.g., glasses) to manage myopia.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 9) DENTAL
+a) How this affects the patient: The patient has larger than usual front teeth, which are being monitored.
+b) Information from the guidelines: Dental concerns, including large front teeth and weak enamel, can be features of KBG syndrome.
+c) Recommendations for screening or intervention: Regular dental check-ups to monitor the condition of the teeth and prevent any potential issues.
+
+## 10) EDUCATION
+a) How this affects the patient: The patient's vision issues may impact educational activities, particularly in school settings.
+b) Information from the guidelines: Individuals with KBG syndrome may require extra support in school due to developmental delays and learning difficulties.
+c) Recommendations for screening or intervention: Consideration of an Educational Health Care Plan (EHCP) to support the patient's educational needs.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: No specific behavioral difficulties were mentioned, but developmental delays and learning difficulties are common in KBG syndrome.
+b) Information from the guidelines: Behavioural differences, including autism spectrum disorder and ADHD, can be present in individuals with KBG syndrome.
+c) Recommendations for screening or intervention: Monitoring for any signs of behavioral difficulties and consideration of behavioral therapy if needed.
+
+## 12) SKELETAL
+a) How this affects the patient: The patient has hip dysplasia and shorter than average fingers, which are being monitored.
+b) Information from the guidelines: Skeletal anomalies, including hip dysplasia, short fingers, and spinal issues, can be features of KBG syndrome.
+c) Recommendations for screening or intervention: Regular monitoring of the hip dysplasia and consideration of physiotherapy or other interventions as necessary to support skeletal development and function.
+
+
+############################ 4. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: She has a bit of a squint, but it's not too bad, just mildly noticeable when she's looking at things.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's fluid in her ear which seems to be causing some issues, and it's been a moderate problem for a while now.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: Her front teeth are quite large, and it's pretty noticeable, we're a bit concerned about how they'll affect her overall dental structure.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a valve issue, but thankfully it's mild and not causing too much trouble at the moment.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: We haven't had any issues with hormones so far.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: She has hypotonia, which is quite severe and affects her muscle tone and overall physical development.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: No kidney problems have been detected.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: Her immune system seems to be working fine, no concerns there.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: She had a lot of trouble feeding when she was a baby, it was really tough, but we've managed to get past that.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: She has hip dysplasia, which is quite severe and affects her mobility, and also some palatal abnormalities that impact her speech and eating.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient has a mild valve issue with the heart.
+b) Information from the guidelines: Most children with KBG syndrome do not have a very serious heart condition, but a study showed that 38% had heart conditions, including changes to the heart valves.
+c) Recommendations for screening or intervention: Cardiac review, including echo and ECG, has been done, and no further action is required unless new symptoms arise.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient had feeding difficulties as a baby.
+b) Information from the guidelines: Many babies with KBG syndrome have feeding difficulties, and some require short-term nasogastric tube feeding.
+c) Recommendations for screening or intervention: No current feeding difficulties, but monitoring for any new issues is recommended.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No immune system problems reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient has hypotonia, which affects her muscle tone and physical development.
+b) Information from the guidelines: Around 20-40% of people with KBG syndrome have seizures, but this patient has hypotonia.
+c) Recommendations for screening or intervention: Monitoring for any new neurological symptoms, such as seizures, is recommended.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient has fluid in her ear, causing moderate hearing issues, and a squint.
+b) Information from the guidelines: A significant proportion of people with KBG syndrome have recurrent otitis media or glue ear, and some have squint.
+c) Recommendations for screening or intervention: Regular hearing reviews and eyesight (ophthalmology) review are recommended.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient has a squint.
+b) Information from the guidelines: People with KBG syndrome are more likely to have vision problems, such as astigmatism, and squint.
+c) Recommendations for screening or intervention: Eyesight (ophthalmology) review is recommended.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 9) DENTAL
+a) How this affects the patient: The patient has large front teeth, which may affect her dental structure.
+b) Information from the guidelines: People with KBG syndrome often have large front teeth and weak enamel.
+c) Recommendations for screening or intervention: Regular dental check-ups are recommended.
+
+## 10) EDUCATION
+a) How this affects the patient: No information provided.
+b) Information from the guidelines: Children with KBG syndrome typically need extra help in school.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: No information provided on behavioral differences, but the patient has developmental delays.
+b) Information from the guidelines: People with KBG syndrome often have developmental delay and behavioral differences.
+c) Recommendations for screening or intervention: Monitoring for any new behavioral symptoms, such as autism spectrum disorder or ADHD, is recommended.
+
+## 12) SKELETAL
+a) How this affects the patient: The patient has hip dysplasia, which affects her mobility.
+b) Information from the guidelines: Some people with KBG syndrome have skeletal anomalies, including hip dysplasia and scoliosis.
+c) Recommendations for screening or intervention: Skeletal review, including X-ray of the wrist, hip, spine, and skull, is recommended to monitor for any new skeletal issues.
+
+
+############################ 5. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has mild myopia, so we're keeping an eye on it to make sure it doesn't worsen. Glasses might be needed soon.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: There's fluid in his ear, which is causing significant issues. It's really affecting his ability to hear properly.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: The dentist mentioned that his enamel is a bit weak, so we're being extra careful with brushing and dental check-ups.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a mild structural abnormality, but so far it hasn't caused any major problems. We have regular check-ups to monitor it.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has severe hypotonia, which affects his muscle tone and overall development. It's something we're working on with physical therapy.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, no kidney issues have been found.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: His immune system seems to be functioning normally, with no concerns at this point.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He has some mild feeding difficulties, but it's manageable with the right strategies and support.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He has undescended testes, which we're keeping an eye on, and also his fingers are a bit shorter than average, but it's not causing any significant issues at the moment.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient has a mild structural abnormality in the heart, but it hasn't caused any major problems so far.
+b) Information from the guidelines: Most children with KBG syndrome do not have a very serious heart condition, but a study of 40 European patients showed that 15/40 (38%) had heart conditions.
+c) Recommendations for screening or intervention: Regular check-ups to monitor the heart condition are recommended.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: The patient has mild feeding difficulties, but it's manageable with the right strategies and support.
+b) Information from the guidelines: Many babies have feeding difficulties and some require short-term nasogastric tube feeding to supplement oral feeds.
+c) Recommendations for screening or intervention: Consider referral for specialist review if there are feeding difficulties or speech concerns.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 5) NEUROLOGY
+a) How this affects the patient: The patient has severe hypotonia, which affects his muscle tone and overall development.
+b) Information from the guidelines: Around 20-40% of people are reported as having seizures, of varying types.
+c) Recommendations for screening or intervention: Consider physiotherapy, occupational therapy, speech therapy, and behavioural therapy.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: The patient has fluid in his ear, which is causing significant issues with his ability to hear properly.
+b) Information from the guidelines: A significant proportion of people have recurrent otitis media or glue ear, which can cause conductive hearing loss.
+c) Recommendations for screening or intervention: Regular hearing reviews to age 5 (even if earlier reviews give a clear response) are recommended.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: The patient has mild myopia, and glasses might be needed soon.
+b) Information from the guidelines: People with KBG syndrome are more likely to have vision problems such as astigmatism, and short- or long sightedness.
+c) Recommendations for screening or intervention: Eyesight (ophthalmology) review is recommended.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 9) DENTAL
+a) How this affects the patient: The patient has weak enamel, and regular dental check-ups are necessary.
+b) Information from the guidelines: Weak enamel is frequently seen, and careful brushing is very important.
+c) Recommendations for screening or intervention: Regular dental check-ups are recommended.
+
+## 10) EDUCATION
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: The patient has developmental delays, including severe hypotonia.
+b) Information from the guidelines: Developmental delay has been reported in almost all children with KBG syndrome.
+c) Recommendations for screening or intervention: Consider physiotherapy, occupational therapy, speech therapy, and behavioural therapy.
+
+## 12) SKELETAL
+a) How this affects the patient: The patient has undescended testes and shorter-than-average fingers, but it's not causing any significant issues at the moment.
+b) Information from the guidelines: Some people with KBG syndrome have an unusual structure of their spinal bones, and many have short fingers with a curvature of the 5th fingers.
+c) Recommendations for screening or intervention: Consider a skeletal review (X-ray of the wrist, hip, spine, and skull) in children following diagnosis.
+
+
+############################ 6. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: He has hypermetropia, which means he has trouble seeing things up close, and it's been affecting him quite a bit.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He's had glue ear, which is really severe and has been causing a lot of issues with his hearing and balance.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: His front teeth are a bit larger than usual, but it's not too much of a concern at the moment, just something we're keeping an eye on.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's a valve abnormality that's quite severe and we have to be careful with his physical activities and monitor it closely.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: No issues with hormones have been reported so far.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He has hypotonia, which is a bit of a challenge, as it affects his muscle tone and overall physical development, but we're managing it.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: Thankfully, no kidney problems have come up.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: His immune system seems to be working fine, no concerns there.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He's had severe bowel problems, which can be really tough to deal with, but we're working on managing them.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He has palatal abnormalities and also scoliosis, which is quite severe and affects his posture and movement, so we're dealing with that as well.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 2) CARDIOLOGY
+a) How this affects the patient: Valve abnormality that requires careful monitoring and limitations on physical activities.
+b) Information from the guidelines: Heart conditions, including changes to the heart valves, holes in the heart chambers, and structural changes, are common in KBG syndrome.
+c) Recommendations for screening or intervention: Regular cardiac review, including echo and ECG, is recommended following diagnosis.
+
+## 3) GASTROENTEROLOGY
+a) How this affects the patient: Severe bowel problems.
+b) Information from the guidelines: Feeding difficulties and bowel problems can be significant in KBG syndrome.
+c) Recommendations for screening or intervention: Management of bowel problems and feeding difficulties, potentially including referral for specialist review.
+
+## 4) IMMUNOLOGY
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 5) NEUROLOGY
+a) How this affects the patient: Hypotonia affecting muscle tone and physical development.
+b) Information from the guidelines: Neurological issues, including seizures and hypotonia, can be present in KBG syndrome.
+c) Recommendations for screening or intervention: Monitoring and management of hypotonia, potentially including physiotherapy.
+
+## 6) EAR NOSE THROAT
+a) How this affects the patient: Glue ear causing hearing and balance issues.
+b) Information from the guidelines: Recurrent otitis media or glue ear can cause conductive hearing loss in KBG syndrome.
+c) Recommendations for screening or intervention: Regular hearing reviews, potentially including grommet insertions, and management of hearing loss.
+
+## 7) OPHTHALMOLOGY AND VISION
+a) How this affects the patient: Hypermetropia (trouble seeing things up close).
+b) Information from the guidelines: Vision problems, including astigmatism, myopia, and hypermetropia, are common in KBG syndrome.
+c) Recommendations for screening or intervention: Eyesight review and management of vision problems, potentially including glasses or other corrective measures.
+
+## 8) DERMATOLOGY
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 9) DENTAL
+a) How this affects the patient: Larger than usual front teeth.
+b) Information from the guidelines: Dental concerns, including large front teeth and weak enamel, are common in KBG syndrome.
+c) Recommendations for screening or intervention: Regular dental check-ups and careful brushing to manage dental health.
+
+## 10) EDUCATION
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+a) How this affects the patient: No active symptoms or difficulties reported.
+b) Information from the guidelines: No active symptoms or difficulties reported.
+c) Recommendations for screening or intervention: No Recommendations.
+
+## 12) SKELETAL
+a) How this affects the patient: Scoliosis affecting posture and movement.
+b) Information from the guidelines: Skeletal anomalies, including scoliosis and short fingers, can be present in KBG syndrome.
+c) Recommendations for screening or intervention: Skeletal review, including X-ray of the wrist, hip, spine, and skull, and management of skeletal anomalies.
+
+
