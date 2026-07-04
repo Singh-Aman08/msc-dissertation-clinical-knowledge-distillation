@@ -4,9 +4,11 @@ import re
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
-MODEL_ID = "Qwen/Qwen2.5-72B-Instruct"
-REPORT_FILE = "kbg_final_patient_reports-4.jsonl"  # Your input file
-OUTPUT_FILE = "kbg_factuality_evaluated_dataset.jsonl"
+#MODEL_ID = "Qwen/Qwen2.5-72B-Instruct"
+MODEL_ID = "deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
+#MODEL_ID = "prometheus-eval/prometheus-8x7b-v2.0"
+REPORT_FILE = "kbg_final_patient_reports-aman.jsonl"  # Your input file
+OUTPUT_FILE = "kbg_factuality_evaluated_dataset-DS-1.jsonl"
 
 quantization_config = BitsAndBytesConfig(
     load_in_4bit=True, 
@@ -81,46 +83,32 @@ Regular dental check-ups. Regular hearing reviews to age 5 (even if earlier revi
 """
 
 SYSTEM_PROMPT = """You are a strict, highly specialized clinical report evaluator. Your sole assignment is to audit ONLY the FACTUALITY of a generated clinical patient report against the provided source contexts. 
-
-Use ONLY the provided Clinical Background Information and Doctor-Patient Consultation Transcript. Absolutely do not extrapolate, assume, or utilize external medical knowledge.
-
----
+Use ONLY the provided Clinical Background Information, Doctor-Patient Consultation Transcript and the generated patient report. Absolutely do not extrapolate, assume, or utilize external medical knowledge.
 
 # EVALUATION ASPECTS (ORDINAL SCALE 1 TO 5)
 Evaluate the report across these 3 comprehensive aspects. For each aspect, award a score from 1 to 5 (where 5 is perfectly accurate/valid, and 1 is completely inaccurate/invalid):
 
-1. Patient Information Accuracy: Did the report accurately state the patient's symptoms and clinical information based on the doctor–patient consultation?
+1. Patient Information Accuracy: Did the report accurately captures the patient's symptoms based on the doctor–patient consultation?
 2. Clinical Background Consistency: Did the report provide factually correct information about the condition based on the clinical reference guide?
-3. Recommendation Validity: Were all screening, referral, investigation, and treatment recommendations appropriate for the patient's symptoms and supported by the clinical reference guide?
-
----
+3. Recommendation Validity: Were the screening and investigation recommendations supported by the clinical reference guide?
 
 # STRICT SCHEMA RULES
-You must output ONLY a valid JSON object. Do not include markdown code block syntax (like ```json), no conversational padding, and no introduction. 
-
-Keep all text explanations highly concise (1-2 sentences per field). The JSON structure must match this nested template exactly:
+You must output ONLY a valid JSON object. Do not include markdown code block syntax (like ```json), no conversational padding, and no introduction.
+Provide the reasoning of why you assigned that score.
 
 {
   "question1": {
     "score": int,
-    "reasoning_of_the_score": "Concise summary explaining the specific reason behind the assigned score.",
-    "why_not_higher": "Specify why it missed a higher score tier, or write 'N/A if already a 5'.",
-    "why_not_lower": "Specify what saved it from a lower score tier, or write 'N/A if already a 1'.",
-    "evidence_quote": "Provide specific snippets or quotes directly from the generated patient report."
+    "reasoning_of_the_score": Explain the reasoning behind the score,
+    
   },
   "question2": {
     "score": int,
-    "reasoning_of_the_score": "Concise summary explaining the specific reason behind the assigned score.",
-    "why_not_higher": "Specify why it missed a higher score tier, or write 'N/A if already a 5'.",
-    "why_not_lower": "Specify what saved it from a lower score tier, or write 'N/A if already a 1'.",
-    "evidence_quote": "Provide specific snippets or quotes directly from the generated patient report."
+    "reasoning_of_the_score": Explain the reasoning behind the score,
   },
   "question3": {
     "score": int,
-    "reasoning_of_the_score": "Concise summary explaining the specific reason behind the assigned score.",
-    "why_not_higher": "Specify why it missed a higher score tier, or write 'N/A if already a 5'.",
-    "why_not_lower": "Specify what saved it from a lower score tier, or write 'N/A if already a 1'.",
-    "evidence_quote": "Provide specific snippets or quotes directly from the generated patient report."
+    "reasoning_of_the_score": Explain the reasoning behind the score,
   },
   "average_factuality_score": float
 }"""
@@ -189,3 +177,235 @@ Analyze the factuality matching profiles across the 3 aspects. Output the nested
             break
         
 print("\nEvaluated all the reports on the basis of their factuality.")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
