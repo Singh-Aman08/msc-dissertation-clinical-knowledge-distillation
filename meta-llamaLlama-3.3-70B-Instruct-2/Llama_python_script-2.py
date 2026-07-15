@@ -1,33 +1,24 @@
 import json
 import torch
+import accelerate
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
-
-# ==========================================================
-# CONFIGURATION
-# ==========================================================
 MODEL_ID = "meta-llama/Llama-3.3-70B-Instruct"
-PROFILE_FILE = "kbg_patient_profile_current.json"
-OUTPUT_FILE = "kbg_synthetic_conversations-9_llama.jsonl" # Changed to JSONL for progressive saving
+PROFILE_FILE = "kbg_patient_profile_scale_2.json"
+OUTPUT_FILE = "kbg_synthetic_conversations_scale_2.jsonl" # Changed to JSONL for progressive saving
 HF_TOKEN = "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"
 
-# ==========================================================
-# GPU CHECK
-# ==========================================================
+
 if not torch.cuda.is_available():
     raise RuntimeError("CUDA GPU not detected.")
 
-# ==========================================================
-# LOAD PROFILES
-# ==========================================================
+
 with open(PROFILE_FILE, "r", encoding="utf-8") as f:
     profiles = json.load(f)
 
 print(f"Loaded {len(profiles)} patient profiles")
 
-# ==========================================================
-# LOAD MODEL
-# ==========================================================
+
 print(f"Loading tokenizer: {MODEL_ID}")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, token = HF_TOKEN )
 
@@ -35,19 +26,17 @@ tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, token = HF_TOKEN )
 if tokenizer.pad_token_id is None:
     tokenizer.pad_token_id = tokenizer.eos_token_id
     
-quantization_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_compute_dtype=torch.bfloat16,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_use_double_quant=True
-)
+# quantization_config = BitsAndBytesConfig(
+#     load_in_4bit=True,
+#     bnb_4bit_compute_dtype=torch.bfloat16,
+#     bnb_4bit_quant_type="nf4",
+#     bnb_4bit_use_double_quant=True)
 
 print("Loading model onto GPU")
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_ID,
     torch_dtype=torch.bfloat16,
-    quantization_config=quantization_config,
-    device_map="cuda",
+    device_map="auto",     #cuda
     token = HF_TOKEN,
     low_cpu_mem_usage=True
     
@@ -60,9 +49,7 @@ with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
 
 print(f"Starting pipeline. Streaming outputs straight to: {OUTPUT_FILE}")
 
-# ==========================================================
-# GENERATION LOOP
-# ==========================================================
+
 for idx, profile in enumerate(profiles):
     print(f"\nGenerating consultation {idx + 1}/{len(profiles)} (Patient ID: {profile.get('patient_id')})")
 
@@ -76,10 +63,8 @@ for idx, profile in enumerate(profiles):
                 - The Doctor MUST ask the exact 10 questions provided below, in order, verbatim.
                 - Generate the complete consultation from start to finish. The output is incomplete unless all 10 doctor questions and all 10 corresponding parent answers are present and answered in order.
                 - Write as a real parent speaking during a clinic appointment.
-                - The parent persona MUST be strictly followed throughout the entire consultation.
                 - Use the "patient_persona" field from the profile to determine the parent's communication style.
                 - Every parent response must reflect the tone, communication style, and behaviour of the assigned persona.
-                - Parents may use a mixture of everyday language but should primarily describe what they notice in daily life.
                 - Do not assume that every parents know clinical terminology. Translate symptoms from the profile into realistic parent language whenever possible and avoid unnecessary medical jargon.
                 - Focus on practical effects, observations, and concerns rather than simply repeating symptom names.
                 - Treat every consultation as a different family.
@@ -87,7 +72,7 @@ for idx, profile in enumerate(profiles):
                 - Vary vocabulary, sentence length, level of detail, and speaking style.
                 - Use natural, conversational language while strictly following all structural constraints.
                 - All 10 doctor questions MUST be answered in order without omission or reordering.
-                - If a category contains no symptoms or an empty list [], provide a brief natural response indicating no concerns at present.
+                - If a category contains no symptoms or an empty list [], output strictly N/A and provide no additional text.
                 - Each parent response must contain exactly 2–3 short sentences.
 
                 The 10 Verbatim Doctor Questions:
@@ -182,19 +167,19 @@ Parent: The roof of his mouth developed differently, which has made speaking a b
         add_generation_prompt=True
     )
 
-    inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
+    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
 
     with torch.no_grad():
         outputs = model.generate(
             input_ids=inputs.input_ids,
             attention_mask=inputs.attention_mask,
-            max_new_tokens=1200,
+            max_new_tokens=2048,
             
             # Critical adjustments for strict data extraction tasks
             temperature=0.75,  
             do_sample=True,   
             top_p=0.9,
-            
+            repetition_penalty=1.12,
             pad_token_id=tokenizer.pad_token_id
         )
 
@@ -214,5 +199,8 @@ Parent: The roof of his mouth developed differently, which has made speaking a b
     # Instantly append line record to disk
     with open(OUTPUT_FILE, "a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
+        
+    if idx == 50:
+        break
 
 print("\nAll generations finished successfully.")

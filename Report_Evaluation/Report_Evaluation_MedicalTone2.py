@@ -2,27 +2,19 @@ import json
 import os 
 import re
 import torch
+import accelerate
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
-#MODEL_ID = "Qwen/Qwen2.5-72B-Instruct"
-#MODEL_ID = "deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
-#MODEL_ID = "prometheus-eval/prometheus-8x7b-v2.0"
-MODEL_ID = "Qwen3-30B-A3B-Thinking-2507"
-REPORT_FILE = "kbg_final_patient_reports-aman.jsonl"  # Your input file
-OUTPUT_FILE = "kbg_factuality_evaluated_dataset-DS-1.jsonl"
+MODEL_ID = "Qwen/Qwen3-30B-A3B-Instruct-2507"
+REPORT_FILE = "kbg_final_patient_reports-aman.jsonl"  
+OUTPUT_FILE = "kbg_medicaltone_evaluated_dataset.jsonl"
 
-# quantization_config = BitsAndBytesConfig(
-#     load_in_4bit=True, 
-#     bnb_4bit_compute_dtype=torch.float16, 
-#     bnb_4bit_quant_type="nf4", 
-#     bnb_4bit_use_double_quant=True)
 if not torch.cuda.is_available():
-    raise RuntimeError("CUDA GPU not detected. This pipeline requires hardware acceleration.")
-
+    raise RuntimeError("CUDA GPU not detected.")
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
 
-model = AutoModelForCausalLM.from_pretrained(MODEL_ID, device_map="cuda", low_cpu_mem_usage=True) #quantization_config = quantization_config
+model = AutoModelForCausalLM.from_pretrained(MODEL_ID, torch_dtype = torch.bfloat16, low_cpu_mem_usage=True, device_map ="auto")
 model.eval()
 
 if tokenizer.pad_token_id is None:
@@ -82,36 +74,30 @@ Management recommendations:
 Regular dental check-ups. Regular hearing reviews to age 5 (even if earlier reviews give a clear response). Eyesight (ophthalmology) review. Check position of testes in boys. Consider a palate review (particularly if there are feeding difficulties or speech concerns). Referral for a cardiac review (including echo and ECG) following diagnosis. If nothing is found (or already done) this does not need to be repeated. Consider a skeletal review (X-ray of the wrist (to determine bone age), hip, spine and skull) in children following diagnosis. Any concerns around asymmetric hip creases in infancy and/or asymmetric or painful gait should prompt medical review. Consider review and investigation for tethered cord (MRI) where clinical concerns arise on an individual basis (especially if sacral dimple is present). Monitor growth velocity: if height is below the 2nd centile consider referral for endocrine investigations on an individual basis and within context of familial heights Consider physiotherapy, occupational therapy, speech therapy and behavioural therapy.
 """
 
-SYSTEM_PROMPT = """You are a strict, highly specialized clinical report evaluator. Your sole assignment is to audit ONLY the FACTUALITY of a generated clinical patient report against the provided source contexts. 
+SYSTEM_PROMPT = """You are a strict, highly specialized clinical report evaluator. Your sole assignment is to audit ONLY the MEDICAL TONE of a generated clinical patient report against the provided source contexts. 
 Use ONLY the provided Clinical Background Information, Doctor-Patient Consultation Transcript and the generated patient report. Absolutely do not extrapolate, assume, or utilize external medical knowledge.
 
 # EVALUATION ASPECTS (ORDINAL SCALE 1 TO 5)
-Evaluate the report across these 3 comprehensive aspects. For each aspect, award a score from 1 to 5 (where 5 is perfectly accurate/valid, and 1 is completely inaccurate/invalid):
+Evaluate the report across this 1 comprehensive aspect. For the aspect, award a score from 1 to 5 (where 5 is perfectly accurate/valid, and 1 is completely inaccurate/invalid):
 
-1. Patient Information Accuracy: Did the report accurately captures the patient's symptoms based on the doctor–patient consultation?
-2. Clinical Background Consistency: Did the report provide factually correct information about the condition based on the clinical reference guide?
-3. Recommendation Validity: Were the screening and investigation recommendations supported by the clinical reference guide?
+1. Medical Tone: Did the report maintain an appropriate clinical tone by presenting medical information in a professional, clear, and respectful manner while remaining understandable and suitable for the patient and their family?
 
 # STRICT SCHEMA RULES
-You must output ONLY a valid JSON object. Do not include markdown code block syntax (like ```json), no conversational padding, and no introduction.
-Provide the reasoning of why you assigned that score.
+You must process your audit reasoning internally during your thinking phase. 
+Once your thinking phase concludes, you must output the final evaluation strictly inside a valid markdown ```json ``` code block at the very end of your response. 
+Do not include any conversational padding, conversational introductions, or text after the code block.
 
+Ensure all JSON string keys and values use valid double quotes.
+
+```json
 {
   "question1": {
-    "score": int,
-    "reasoning_of_the_score": Explain the reasoning behind the score,
-    
+    "reasoning_of_the_score": "Detailed explanation of why this score was assigned based on the text.",
+    "score": 0
   },
-  "question2": {
-    "score": int,
-    "reasoning_of_the_score": Explain the reasoning behind the score,
-  },
-  "question3": {
-    "score": int,
-    "reasoning_of_the_score": Explain the reasoning behind the score,
-  },
-  "average_factuality_score": float
-}"""
+  "average_coverage_score": 0.0
+}
+```"""
 
 print("\nBeginning Pipeline Check Loop...")
 
@@ -128,7 +114,7 @@ with open(REPORT_FILE, "r", encoding="utf-8") as infile, open(OUTPUT_FILE, "w", 
         patient_report = data.get("output", "")
         
         
-        user_content = f""" === Clinical Background Information ===
+        user_content = f"""=== Clinical Background Information ===
 {kbg_context}
 
 === Doctor Patient Consultation Transcript ===
@@ -137,7 +123,9 @@ with open(REPORT_FILE, "r", encoding="utf-8") as infile, open(OUTPUT_FILE, "w", 
 === Generated Patient Report ===
 {patient_report}
 
-Analyze the factuality matching profiles across the 3 aspects. Output the nested JSON object:"""
+Analyze the medical tone of the report based on the given aspect. 
+Output the final evaluation strictly inside the markdown ```json ``` block format as specified."""
+
                              
         MESSAGE = [
             {"role": "system", "content": SYSTEM_PROMPT}, 
@@ -151,261 +139,53 @@ Analyze the factuality matching profiles across the 3 aspects. Output the nested
             outputs = model.generate(
                 inputs.input_ids,
                 attention_mask=inputs.attention_mask,
-                max_new_tokens=1024,
+                max_new_tokens=3072,
                 temperature=0.3,  
                 do_sample=True,  
                 pad_token_id=tokenizer.pad_token_id
             )
-            
-        generated_raw = tokenizer.decode(outputs[0][inputs.input_ids.shape[-1]:], skip_special_tokens=True).strip()
-        
+
+        # Correctly isolate generation by stripping out prompt tokens
+        input_len = inputs.input_ids.shape[-1]
+        generated_tokens = outputs[0][input_len:]
+        generated_raw = tokenizer.decode(generated_tokens, skip_special_tokens=True).strip()
+
         try:
-            parsed_json = json.loads(generated_raw)
+            # 1. First look for markdown ```json wrappers (common for Instruct models)
+            json_match = re.search(r"```(?:json|JSON)?\s*(\{.*?\})\s*```", generated_raw, re.DOTALL)
+            
+            if json_match:
+                json_string = json_match.group(1).strip()
+                parsed_json = json.loads(json_string)
+            else:
+                # 2. Fallback: Find the direct bounds of the raw JSON object {} (no <think> tags exist here)
+                first_brace = generated_raw.find('{')
+                last_brace = generated_raw.rfind('}')
+                
+                if first_brace != -1 and last_brace != -1:
+                    json_string = generated_raw[first_brace:last_brace + 1].strip()
+                    parsed_json = json.loads(json_string)
+                else:
+                    raise ValueError("No JSON object bounds found in the string response.")
+                    
         except Exception as e:
             print(f" -> Row {idx}: JSON parsing error ({e}). Saving raw output string instead.")
-            parsed_json = {"error": "parsing_failed", "raw_output": generated_raw}
+            parsed_json = {
+                "error": "parsing_failed", 
+                "error_details": str(e),
+                "raw_output": generated_raw
+            }
             
         test_payload = {
             "index": idx,
-            "factuality_evaluation": parsed_json
+            "medical_tone_evaluation": parsed_json
         }
-        
+
+        # Write the clean object to your JSON Lines output file
         outfile.write(json.dumps(test_payload, ensure_ascii=False) + "\n")
         print(f"Successfully processed item {idx + 1}")
-        
-        if idx == 6:
+
+        if idx == 2:
             break
-        
-print("\nEvaluated all the reports on the basis of their factuality.")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print("\nEvaluated all the reports on the basis of their medical tone.")

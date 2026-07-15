@@ -2,10 +2,11 @@ import os
 import json
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 import torch
+import accelerate
 
 MODEL_ID = "meta-llama/Llama-3.3-70B-Instruct"
-INPUT_FILE = "kbg_synthetic_conversations-9_llama.jsonl"
-OUTPUT_FILE = "kbg_final_patient_reports-4.jsonl"
+INPUT_FILE = "kbg_synthetic_conversations_scale_2.jsonl"
+OUTPUT_FILE = "kbg_final_patient_reports_scale_2.jsonl"
 HF_TOKEN = "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"
 
 if not torch.cuda.is_available():
@@ -69,13 +70,13 @@ tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, token = HF_TOKEN)
 if tokenizer.pad_token_id is None:
     tokenizer.pad_token_id = tokenizer.eos_token_id
     
-quantization_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_compute_dtype=torch.bfloat16,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_use_double_quant=True)
+# quantization_config = BitsAndBytesConfig(
+#     load_in_4bit=True,
+#     bnb_4bit_compute_dtype=torch.bfloat16,
+#     bnb_4bit_quant_type="nf4",
+#     bnb_4bit_use_double_quant=True)
 
-model = AutoModelForCausalLM.from_pretrained(MODEL_ID, token = HF_TOKEN, quantization_config = quantization_config, device_map="cuda", low_cpu_mem_usage=True)
+model = AutoModelForCausalLM.from_pretrained(MODEL_ID, token = HF_TOKEN, device_map="auto", low_cpu_mem_usage=True)
 model.eval()
 
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
@@ -103,14 +104,13 @@ with open(INPUT_FILE, "r", encoding="utf-8") as infile:
                 "content": (
                     "You are an expert clinical patient report synthesis engine. "
                     "Use the clinical reference guidlines as the background knowledge to prepare the report."
-                    "Analyze the provided doctor-parent dialogue transcript. You must transform "
-                    "the conversation into a structured Clinical Patient Report that fits on a single A4 page.\n\n"
+                    "Analyze the provided doctor-parent dialogue transcript. You must transform the conversation into a structured Clinical Patient Report that fits on a single A4 page.\n\n"
                     "Provide information, based solely on the clinical reference guidelines, on how this condition may affect others with the syndrome."
                     "Review the background information and provide screening and treatment recommendations for the patient, listed as bullet points in the Recommendations section of the report."
                     "Do not reproduce the conversation word for word. Interpret the discussion and present the key information as it would appear in a clinical report. Ensure the report is concise and focused."
                     "Tailor recommendations to the patient's condition; avoid generic recommendations."
-                    "If a symptom or condition is not mentioned in the consultation, write "" No such symptoms or difficulties reported"". If no relevant information is available in the background or clinical reference for that symptom, write ""No relevant background information provided."" "
-                    "Do not pull general screening guidelines from the reference text for any category that the parent confirms is unaffected"
+                    "If a symptom or condition is not mentioned in the consultation, write ""N/A"". If no relevant information is available in the background or clinical reference for that symptom, write ""N/A"" "
+                    "Do not pull general screening guidelines from the reference text for any category that the parent confirms is unaffected or N/A"
                     "Your output MUST strictly follow this exact 13-category markdown scheme. Do not include any introductory or concluding text outside of this schema:\n\n"
                     "# CLINICAL PATIENT REPORT\n\n"
                     "## 1) RESPIRATORY\n"
@@ -180,13 +180,13 @@ with open(INPUT_FILE, "r", encoding="utf-8") as infile:
         
 
         prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-        inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
+        inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
         
         with torch.no_grad():
             outputs = model.generate(
                 inputs.input_ids,
                 attention_mask=inputs.attention_mask,
-                max_new_tokens=1500,
+                max_new_tokens=2048,
                 temperature=0.3, # Lower temperature forces higher adherence to facts and logic rules
                 do_sample=True,
                 pad_token_id=tokenizer.eos_token_id
