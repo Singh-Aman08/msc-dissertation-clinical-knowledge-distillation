@@ -1,26 +1,20 @@
 import json
-import os 
 import re
 import torch
-import accelerate
-from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 MODEL_ID = "Qwen/Qwen3-30B-A3B-Instruct-2507"
-REPORT_FILE = "kbg_final_patient_reports-aman.jsonl"  
-OUTPUT_FILE = "kbg_report_structure_evaluated_dataset.jsonl"
+INPUT_FILE = "claim_decomposition_15.jsonl"
+OUTPUT_FILE = "factuality_scores_15.jsonl"
+HF_TOKEN = "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"
 
-if not torch.cuda.is_available():
-    raise RuntimeError("CUDA GPU not detected.")
+quantization_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_compute_dtype=torch.bfloat16,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_use_double_quant=True)
 
-tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
-
-model = AutoModelForCausalLM.from_pretrained(MODEL_ID, torch_dtype = torch.bfloat16, low_cpu_mem_usage=True, device_map ="auto")
-model.eval()
-
-if tokenizer.pad_token_id is None:
-    tokenizer.pad_token_id = tokenizer.eos_token_id
-    
-kbg_context = """ What is KBG syndrome?
+KBG_CONTEXT = """ What is KBG syndrome?
 KBG syndrome was first described in 1975, and its name is derived from the initials of the first three patients reported with the condition.  People with KBG syndrome have a characteristic (and sometimes subtle) facial appearance, very large permanent teeth, and variable degrees of developmental  delay, learning difficulties and behavioural differences. Because the facial features can be subtle and are not always present, the diagnosis may not be  made until the permanent teeth have come through. Other features seen in  some affected individuals include conductive hearing loss, undescended testes in boys, seizures, skeletal anomalies and short stature. KBG syndrome is caused by changes (variants) in,  or a deletion of, the ANKRD11 gene in chromosome  16 (band q24.3). Most affected people are the first person in their family to carry the gene change, but a small proportion have inherited it from a parent, who is likely to have features of KBG syndrome. The condition affects boys and girls, and there are both mildly and more significantly affected individuals of both sexes. However, there appear to be some reports of more affected males than females but the reason for this is unclear.
 Most people with KBG syndrome have:
 A degree of developmental delay and some element of behavioural differences. Large permanent upper middle teeth (macrodontia of upper central incisors). Characteristic facial appearance: a triangular-shaped face; wide-spaced eyes and thick eyebrows, which sometimes join in the centre (synophrys). Short fingers (brachydactyly) with curved 5th finger (clinodactyly)
@@ -74,118 +68,457 @@ Management recommendations:
 Regular dental check-ups. Regular hearing reviews to age 5 (even if earlier reviews give a clear response). Eyesight (ophthalmology) review. Check position of testes in boys. Consider a palate review (particularly if there are feeding difficulties or speech concerns). Referral for a cardiac review (including echo and ECG) following diagnosis. If nothing is found (or already done) this does not need to be repeated. Consider a skeletal review (X-ray of the wrist (to determine bone age), hip, spine and skull) in children following diagnosis. Any concerns around asymmetric hip creases in infancy and/or asymmetric or painful gait should prompt medical review. Consider review and investigation for tethered cord (MRI) where clinical concerns arise on an individual basis (especially if sacral dimple is present). Monitor growth velocity: if height is below the 2nd centile consider referral for endocrine investigations on an individual basis and within context of familial heights Consider physiotherapy, occupational therapy, speech therapy and behavioural therapy.
 """
 
-SYSTEM_PROMPT = """You are a strict, highly specialized clinical report evaluator. Your sole assignment is to audit ONLY the REPORT STRUCTURE AND PRESENTATION of a generated clinical patient report against the provided source contexts. 
-Use ONLY the provided Clinical Background Information, Doctor-Patient Consultation Transcript and the generated patient report. Absolutely do not extrapolate, assume, or utilize external medical knowledge.
 
-# EVALUATION ASPECTS (ORDINAL SCALE 1 TO 5)
-Evaluate the report across this 1 comprehensive aspect. For the aspect, award a score from 1 to 5 (where 5 is perfectly accurate/valid, and 1 is completely inaccurate/invalid):
+if not torch.cuda.is_available():
+    raise RuntimeError("CUDA GPU not detected.")
 
-1. Report Structure and Presentation: Did the report follow a clear and logical structure, with information organised appropriately across sections, while maintaining conciseness and readability?
+print("Loading tokenizer and model parameters...")
 
-# STRICT SCHEMA RULES
-You must process your audit reasoning internally during your thinking phase. 
-Once your thinking phase concludes, you must output the final evaluation strictly inside a valid markdown ```json ``` code block at the very end of your response. 
-Do not include any conversational padding, conversational introductions, or text after the code block.
+tokenizer = AutoTokenizer.from_pretrained(
+    MODEL_ID, token = HF_TOKEN
+)
 
-Ensure all JSON string keys and values use valid double quotes.
 
-```json
-{
-  "question1": {
-    "reasoning_of_the_score": "Detailed explanation of why this score was assigned based on the text.",
-    "score": 0
-  },
-  "average_score": 0.0
-}
-```"""
+model = AutoModelForCausalLM.from_pretrained(
+    MODEL_ID,
+    device_map="auto",
+    low_cpu_mem_usage=True,
+    quantization_config = quantization_config,
+    token = HF_TOKEN
+)
 
-print("\nBeginning Pipeline Check Loop...")
 
-with open(REPORT_FILE, "r", encoding="utf-8") as infile, open(OUTPUT_FILE, "w", encoding="utf-8") as outfile:
+model.eval()
 
-    for idx, line in enumerate(infile):
-        if not line.strip():
-            continue
-            
-        data = json.loads(line)
-        
-        
-        doctor_consultation = data.get("input", "")
-        patient_report = data.get("output", "")
-        
-        
-        user_content = f"""=== Clinical Background Information ===
-{kbg_context}
 
-=== Doctor Patient Consultation Transcript ===
-{doctor_consultation}
+if tokenizer.pad_token_id is None:
+    tokenizer.pad_token_id = tokenizer.eos_token_id
 
-=== Generated Patient Report ===
-{patient_report}
 
-Analyze the structural quality of the report based on the given aspect
-Output the final evaluation strictly inside the markdown ```json ``` block format as specified."""
+def evaluate_claims_bucket(reference_doc, claims_list):
 
-                             
-        MESSAGE = [
-            {"role": "system", "content": SYSTEM_PROMPT}, 
-            {"role": "user", "content": user_content}
-        ]
-        
-        text = tokenizer.apply_chat_template(MESSAGE, tokenize=False, add_generation_prompt=True)
-        inputs = tokenizer(text, return_tensors="pt").to(model.device) 
-        
+    if not claims_list:
+        return []
+
+
+    system_prompt =(
+"You are an expert clinical factuality evaluator. "
+"Your task is to determine whether each atomic claim is directly supported "
+"by the provided Reference Document.\n\n"
+
+"For each claim, output:\n"
+"1. 'claim': The exact claim being evaluated.\n"
+"2. 'supported': 'YES' or 'NO'.\n\n"
+
+"Strict evaluation criteria:\n"
+"- Use ONLY the provided Reference Document.\n"
+"- Do not use external medical knowledge.\n"
+"- Do not make clinical assumptions or logical extensions.\n"
+"- A claim is YES only if the information is explicitly stated "
+"or is a direct paraphrase of information in the Reference Document.\n"
+"- If a claim requires reasoning, interpretation, prediction, "
+"or medical knowledge beyond the document, mark it as NO.\n"
+"- If any part of a multi-part claim is unsupported, mark the whole claim NO.\n\n"
+"- Evaluate patient-specific claims only against patient information in the Reference Document."
+"- Evaluate syndrome-specific claims only against syndrome information in the Reference Document."
+"Examples:\n"
+"Reference: 'The patient has hearing difficulties.'\n"
+"Claim: 'The patient has hearing difficulties.' → YES\n"
+"Claim: 'The patient may need hearing aids.' → NO\n"
+"Claim: 'The patient may have permanent hearing loss.' → NO\n\n"
+
+"You MUST respond ONLY with valid JSON:\n"
+"{\n"
+'  "results": [\n'
+'    {"claim": "string", "supported": "YES/NO"}\n'
+"  ]\n"
+"}"
+)
+
+
+
+    user_prompt = (
+    f"Reference Document:\n"
+    f'"""{reference_doc}"""\n\n'
+
+    f"Claims to Verify:\n"
+    f"{json.dumps(claims_list, ensure_ascii=False)}\n\n"
+
+    "Evaluate each claim strictly against the Reference Document only. "
+    "Do not use external medical knowledge or infer missing information."
+)
+
+
+    messages = [
+        {
+            "role": "system",
+            "content": system_prompt
+        },
+        {
+            "role": "user",
+            "content": user_prompt
+        }
+    ]
+
+
+    prompt = tokenizer.apply_chat_template(
+        messages,
+        tokenize=False,
+        add_generation_prompt=True
+    )
+
+
+    try:
+
+        inputs = tokenizer(
+            prompt,
+            return_tensors="pt",
+            truncation=True,
+            max_length=8192
+        ).to(model.device)
+
+
+
         with torch.no_grad():
+
             outputs = model.generate(
-                inputs.input_ids,
+                input_ids=inputs.input_ids,
                 attention_mask=inputs.attention_mask,
-                max_new_tokens=3072,
-                temperature=0.3,  
-                do_sample=True,  
+                max_new_tokens=2048,
+                do_sample=False,
+                use_cache=True,
                 pad_token_id=tokenizer.pad_token_id
             )
 
-        # Correctly isolate generation by stripping out prompt tokens
-        input_len = inputs.input_ids.shape[-1]
-        generated_tokens = outputs[0][input_len:]
-        generated_raw = tokenizer.decode(generated_tokens, skip_special_tokens=True).strip()
+
+        generated_tokens = outputs[
+            0
+        ][
+            inputs.input_ids.shape[-1]:
+        ]
+
+
+        generated_text = tokenizer.decode(
+            generated_tokens,
+            skip_special_tokens=True
+        ).strip()
+
+
+        json_match = re.search(
+            r"```(?:json)?\s*(\{.*?\})\s*```",
+            generated_text,
+            re.DOTALL
+        )
+
+
+        if json_match:
+
+            json_string = json_match.group(1).strip()
+
+        else:
+
+            start = generated_text.find("{")
+            end = generated_text.rfind("}")
+
+
+            if start == -1 or end == -1:
+
+                raise ValueError(
+                    "No JSON object found"
+                )
+
+
+            json_string = generated_text[
+                start:end+1
+            ]
+
 
         try:
-            # 1. First look for markdown ```json wrappers (common for Instruct models)
-            json_match = re.search(r"```(?:json|JSON)?\s*(\{.*?\})\s*```", generated_raw, re.DOTALL)
-            
-            if json_match:
-                json_string = json_match.group(1).strip()
-                parsed_json = json.loads(json_string)
-            else:
-                # 2. Fallback: Find the direct bounds of the raw JSON object {} (no <think> tags exist here)
-                first_brace = generated_raw.find('{')
-                last_brace = generated_raw.rfind('}')
-                
-                if first_brace != -1 and last_brace != -1:
-                    json_string = generated_raw[first_brace:last_brace + 1].strip()
-                    parsed_json = json.loads(json_string)
-                else:
-                    raise ValueError("No JSON object bounds found in the string response.")
-                    
-        except Exception as e:
-            print(f" -> Row {idx}: JSON parsing error ({e}). Saving raw output string instead.")
-            parsed_json = {
-                "error": "parsing_failed", 
-                "error_details": str(e),
-                "raw_output": generated_raw
+
+            parsed_output = json.loads(
+                json_string
+            )
+
+
+        except json.JSONDecodeError:
+
+
+            print(
+                "Attempting JSON repair..."
+            )
+
+
+            repaired_json = json_string.strip()
+
+
+            # Remove trailing commas
+            repaired_json = re.sub(
+                r",\s*([}\]])",
+                r"\1",
+                repaired_json
+            )
+
+
+            # Add missing square brackets
+            missing_square = (
+                repaired_json.count("[")
+                -
+                repaired_json.count("]")
+            )
+
+
+            if missing_square > 0:
+
+                repaired_json += "]" * missing_square
+
+
+
+            # Add missing curly brackets
+            missing_curly = (
+                repaired_json.count("{")
+                -
+                repaired_json.count("}")
+            )
+
+
+            if missing_curly > 0:
+
+                repaired_json += "}" * missing_curly
+
+
+
+            parsed_output = json.loads(
+                repaired_json
+            )
+
+
+
+        results = parsed_output.get(
+            "results",
+            []
+        )
+
+        for item in results:
+
+            if "supported" in item:
+
+                item["supported"] = str(
+                    item["supported"]
+                ).upper()
+
+
+
+        return results
+
+
+
+    except Exception as e:
+
+
+        print(
+            f"Claim evaluation failed: {e}"
+        )
+
+
+        return [
+
+            {
+                "claim": claim,
+                "supported": "NO",
+                "reason": f"Audit Error: {e}"
             }
-            
-        test_payload = {
-            "index": idx,
-            "report_structure_evaluation": parsed_json
-        }
 
-        # Write the clean object to your JSON Lines output file
-        outfile.write(json.dumps(test_payload, ensure_ascii=False) + "\n")
-        print(f"Successfully processed item {idx + 1}")
+            for claim in claims_list
 
-        if idx == 2:
-            break
+        ]
 
-print("\nEvaluated all the reports on the basis of their structural quality.")
+print("\nBeginning Local Factuality Scoring Pipeline...\n")
+
+
+with open(INPUT_FILE, "r", encoding="utf-8") as infile, \
+open(OUTPUT_FILE, "w", encoding="utf-8") as outfile:
+
+    for idx, line in enumerate(infile):
+
+        if not line.strip():
+            continue
+
+        data = json.loads(line)
+
+        consultation = data.get("consultation", "")
+        report = data.get("report", "")
+
+        claim_payload = data.get("claim_decomposition")
+
+        if not consultation:
+            print(f"Skipping index {idx}: missing consultation")
+            continue
+
+        if not report:
+            print(f"Skipping index {idx}: missing report")
+            continue
+
+        # Skip samples where claim decomposition failed
+        if not isinstance(claim_payload, dict):
+            print(f"Skipping index {idx}: invalid claim decomposition")
+            continue
+
+        patient_claims = claim_payload.get("patient_specific_claims")
+        syndrome_claims = claim_payload.get("syndrome_specific_claims")
+
+        # Skip samples where claim lists are not properly parsed
+        if (
+            not isinstance(patient_claims, list)
+            or not isinstance(syndrome_claims, list)
+        ):
+            print(f"Skipping index {idx}: claim decomposition parsing failed")
+            continue
+
+
+        # Patient-specific factuality evaluation
+        print(f"Starting evaluation index {idx}", flush=True)
+        patient_audited = evaluate_claims_bucket(
+    consultation,
+    patient_claims
+)
+
+        if not isinstance(patient_audited, list):
+            print(f"Skipping index {idx}: patient evaluation failed")
+            continue
+        print(f"Patient evaluation completed index {idx}", flush=True)
+
+
+# Syndrome-specific factuality evaluation
+        syndrome_audited = evaluate_claims_bucket(
+    KBG_CONTEXT,
+    syndrome_claims
+)
+
+        if not isinstance(syndrome_audited, list):
+            print(f"Skipping index {idx}: syndrome evaluation failed")
+            continue
+        print(f"Syndrome evaluation completed index {idx}", flush=True)
+
+# Patient factuality score
+        patient_total = len(patient_claims)
+
+        patient_supported = sum(
+    1
+    for claim in patient_audited
+    if isinstance(claim, dict) and claim.get("supported") == "YES"
+)
+
+
+        patient_factuality_score = (
+    patient_supported / patient_total
+    if patient_total > 0
+    else 1.0
+)
+
+
+# Syndrome factuality score
+        syndrome_total = len(syndrome_claims)
+
+        syndrome_supported = sum(
+    1
+    for claim in syndrome_audited
+    if isinstance(claim, dict) and claim.get("supported") == "YES"
+)
+
+
+        syndrome_factuality_score = (
+    syndrome_supported / syndrome_total
+    if syndrome_total > 0
+    else 1.0
+)
+
+
+# Final score
+        average_factuality_score = (
+    patient_factuality_score +
+    syndrome_factuality_score
+) / 2
+
+
+        output_record = {
+
+    "index": idx,
+
+    "consultation": consultation,
+
+    "report": report,
+    "claim_decomposition": {
+    "patient_specific_claims": patient_claims,
+    "syndrome_specific_claims": syndrome_claims
+},
+
+    "factuality_scores": {
+
+        "patient_factuality_score": round(
+            patient_factuality_score,
+            4
+        ),
+
+        "syndrome_factuality_score": round(
+            syndrome_factuality_score,
+            4
+        ),
+
+        "average_factuality_score": round(
+            average_factuality_score,
+            4
+        )
+
+    },
+
+    "summary_counts": {
+
+        "patient_claims": patient_total,
+
+        "patient_supported": patient_supported,
+
+        "syndrome_claims": syndrome_total,
+
+        "syndrome_supported": syndrome_supported
+
+    },
+
+    "audit_breakdown": {
+
+        "patient_claims_check": patient_audited,
+
+        "syndrome_claims_check": syndrome_audited
+
+    }
+
+}
+
+
+        outfile.write(
+    json.dumps(
+        output_record,
+        ensure_ascii=False
+    )
+    + "\n"
+)
+
+        outfile.flush()
+
+
+        
+        print(
+    f"Processed index {idx} | "
+    f"Patient: {round(patient_factuality_score,4)} | "
+    f"Syndrome: {round(syndrome_factuality_score,4)} | "
+    f"Average: {round(average_factuality_score,4)}",
+    flush=True
+)
+    
+    
+    
+        #if idx ==5:
+            #break
+        
+print(
+    "\nFinished factuality scoring successfully."
+)

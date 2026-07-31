@@ -7,7 +7,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
 
 MODEL_ID = "Qwen/Qwen3-30B-A3B-Instruct-2507"
-REPORT_FILE = "kbg_final_patient_reports-aman.jsonl"  
+REPORT_FILE = "kbg_final_patient_reports_scale_2.jsonl"  
 OUTPUT_FILE = "kbg_coverage_evaluated_dataset.jsonl"
 
 if not torch.cuda.is_available():
@@ -81,9 +81,9 @@ Use ONLY the provided Clinical Background Information, Doctor-Patient Consultati
 # EVALUATION ASPECTS (ORDINAL SCALE 1 TO 5)
 Evaluate the report across these 3 comprehensive aspects. For each aspect, award a score from 1 to 5 (where 5 is perfectly accurate/valid, and 1 is completely inaccurate/invalid):
 
-1. Patient Information Coverage:Did the report include all important patient-specific symptoms and clinical findings from the doctor–patient consultation in the appropriate clinical sections?
+1. Patient Information Coverage: Did the report include all patient-specific symptoms from the doctor–patient consultation in the appropriate sections?"
 2. Syndrome Information Coverage: Did the report provide coverage of the relevant syndrome-related information ("How this affects others with the syndrome") for the applicable clinical sections?
-3. Recommendation Coverage: Did the report include all necessary screening, investigation, monitoring, and treatment recommendations supported by the patient information and clinical background?
+3. Recommendation Coverage: Did the report include all necessary screening, investigation, monitoring, and treatment recommendations supported by clinical background Information?
 
 # STRICT SCHEMA RULES
 You must process your audit reasoning internally during your thinking phase. 
@@ -196,7 +196,6 @@ Output the final evaluation strictly inside the markdown ```json ``` block forma
         outfile.write(json.dumps(test_payload, ensure_ascii=False) + "\n")
         print(f"Successfully processed item {idx + 1}")
 
-        if idx == 2:
-            break
+
 
 print("\nEvaluated all the reports on the basis of their coverage.")

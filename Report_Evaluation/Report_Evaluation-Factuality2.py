@@ -6,13 +6,13 @@ import accelerate
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
 
-#MODEL_ID = "Qwen/Qwen3-30B-A3B-Thinking-2507"
 MODEL_ID = "Qwen/Qwen3-30B-A3B-Instruct-2507"
-REPORT_FILE = "kbg_final_patient_reports-aman.jsonl"  
-OUTPUT_FILE = "kbg_factuality_evaluated_dataset-(Qwen3-30B).jsonl"
+REPORT_FILE = "kbg_final_patient_reports_scale_2.jsonl"  
+OUTPUT_FILE = "kbg_factuality_evaluated_dataset_scale2.jsonl"
 
 if not torch.cuda.is_available():
     raise RuntimeError("CUDA GPU not detected.")
+
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
 
@@ -196,9 +196,11 @@ Output the final evaluation strictly inside the markdown ```json ``` block forma
         # Write the clean object to your JSON Lines output file
         outfile.write(json.dumps(test_payload, ensure_ascii=False) + "\n")
         print(f"Successfully processed item {idx + 1}")
-
-        if idx == 2:
+        
+        if idx == 1:
             break
+
+
 
 print("\nEvaluated all the reports on the basis of their factuality.")
 

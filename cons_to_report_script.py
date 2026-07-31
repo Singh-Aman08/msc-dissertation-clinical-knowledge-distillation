@@ -1,6 +1,6 @@
 import json 
-INPUT_FILE = r"C:\Users\Aman Kumar Singh\Desktop\nlp_dissertation\kbg_final_patient_reports-4.jsonl"
-OUTPUT_FILE = "./patient_report-4.txt"
+INPUT_FILE = r"C:\Users\Aman Kumar Singh\Desktop\testing_Report_3B.jsonl"
+OUTPUT_FILE = "./patient_report_check_3B.txt"
 
 with open (INPUT_FILE, "r", encoding="utf-8") as infile:
     with open(OUTPUT_FILE, "w", encoding="utf-8") as outfile:
@@ -15,7 +15,8 @@ with open (INPUT_FILE, "r", encoding="utf-8") as infile:
             outfile.write(f"@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n")
             outfile.write(output)
             outfile.write("\n\n\n")
-
+            if i ==10:
+                break
 print(f"All the outputs are successfully uploaded in the file-{OUTPUT_FILE}")
 
 

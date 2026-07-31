@@ -1,7 +1,7 @@
 import json
 
-INPUT_FILE = "kbg_synthetic_conversations-9_llama.jsonl"
-OUTPUT_FILE = "doctor_parent_conversations_llama-2.txt"
+INPUT_FILE = r"C:\Users\Aman Kumar Singh\Desktop\kbg_synthetic_conversations_scale_test4.jsonl"
+OUTPUT_FILE = "doctor_parent_conversations_llama4.txt"
 
 with open(INPUT_FILE, "r", encoding="utf-8") as infile, \
      open(OUTPUT_FILE, "w", encoding="utf-8") as outfile:

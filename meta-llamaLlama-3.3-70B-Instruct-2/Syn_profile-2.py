@@ -1,8 +1,8 @@
 import json
 import random
 
-NUM_PROFILES = 100
-OUTPUT_FILE = "kbg_patient_profile_scale_2.json"
+NUM_PROFILES = 50
+OUTPUT_FILE = "kbg_profile_20.json"
 VISION = [
     "Astigmatism",
     "Myopia",

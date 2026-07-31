@@ -4,8 +4,8 @@ import accelerate
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
 MODEL_ID = "meta-llama/Llama-3.3-70B-Instruct"
-PROFILE_FILE = "kbg_patient_profile_scale_2.json"
-OUTPUT_FILE = "kbg_synthetic_conversations_scale_2.jsonl" # Changed to JSONL for progressive saving
+PROFILE_FILE = "kbg_profile_04.json"
+OUTPUT_FILE = "syn_con_04.jsonl" 
 HF_TOKEN = "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"
 
 
@@ -26,16 +26,14 @@ tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, token = HF_TOKEN )
 if tokenizer.pad_token_id is None:
     tokenizer.pad_token_id = tokenizer.eos_token_id
     
-# quantization_config = BitsAndBytesConfig(
-#     load_in_4bit=True,
-#     bnb_4bit_compute_dtype=torch.bfloat16,
-#     bnb_4bit_quant_type="nf4",
-#     bnb_4bit_use_double_quant=True)
+quantization_config = BitsAndBytesConfig(
+    load_in_8bit=True
+)
 
 print("Loading model onto GPU")
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_ID,
-    torch_dtype=torch.bfloat16,
+    quantization_config=quantization_config,
     device_map="auto",     #cuda
     token = HF_TOKEN,
     low_cpu_mem_usage=True
@@ -57,23 +55,18 @@ for idx, profile in enumerate(profiles):
         {
             "role": "system",
             "content": (
-                "You generate realistic doctor-parent consultations for children with KBG syndrome.\n\n"
-                """Rules:
+                "You generate realistic doctor–parent consultations for children with KBG syndrome."
 
-                - The Doctor MUST ask the exact 10 questions provided below, in order, verbatim.
-                - Generate the complete consultation from start to finish. The output is incomplete unless all 10 doctor questions and all 10 corresponding parent answers are present and answered in order.
-                - Write as a real parent speaking during a clinic appointment.
-                - Use the "patient_persona" field from the profile to determine the parent's communication style.
-                - Every parent response must reflect the tone, communication style, and behaviour of the assigned persona.
-                - Do not assume that every parents know clinical terminology. Translate symptoms from the profile into realistic parent language whenever possible and avoid unnecessary medical jargon.
-                - Focus on practical effects, observations, and concerns rather than simply repeating symptom names.
-                - Treat every consultation as a different family.
-                - Avoid repetitive sentence structures and repeated opening phrases.
-                - Vary vocabulary, sentence length, level of detail, and speaking style.
-                - Use natural, conversational language while strictly following all structural constraints.
-                - All 10 doctor questions MUST be answered in order without omission or reordering.
-                - If a category contains no symptoms or an empty list [], output strictly N/A and provide no additional text.
-                - Each parent response must contain exactly 2–3 short sentences.
+                """ Rules:
+
+                - The doctor MUST ask the exact 10 questions provided below, in the given order, without modification.
+                - Generate the complete consultation from start to finish. Every doctor question must have exactly one corresponding parent response.
+                - Base every parent response only on the provided patient profile. Do not add, remove, or alter patient information.
+                - Use the "parent_persona" field to determine the parent's communication style, tone, and vocabulary.
+                - Each parent response must contain exactly 2-5 short sentences depending on the parent_persona.
+                - If the corresponding category in the patient profile is empty or contains no symptoms, the parent's entire response must be exactly N/A. Do not add any explanation, punctuation, extra words, or follow-up sentences. The response must consist only of N/A.
+                - Treat every consultation as a different family by varying sentence structure, wording, and expression while preserving the underlying patient information.
+                - Do not introduce symptoms, diagnoses, or concerns that are not present in the patient profile.
 
                 The 10 Verbatim Doctor Questions:
                 1. Doctor: Please tell us about any problems with your child’s vision or eyes.
@@ -98,7 +91,7 @@ PROFILE
     "patient_id": 1,
     "age": 4,
     "gender": "Male",
-    "patient_persona": "detailed_observant",
+    "parent_persona": "detailed_observant",
     "vision": [],
     "hearing": [{"symptom": "Speech delay"}],
     "teeth": [
@@ -200,7 +193,6 @@ Parent: The roof of his mouth developed differently, which has made speaking a b
     with open(OUTPUT_FILE, "a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
         
-    if idx == 50:
-        break
-
+    # if idx == 10:
+    #     break
 print("\nAll generations finished successfully.")

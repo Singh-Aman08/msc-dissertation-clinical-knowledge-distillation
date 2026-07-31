@@ -5,8 +5,8 @@ import torch
 import accelerate
 
 MODEL_ID = "meta-llama/Llama-3.3-70B-Instruct"
-INPUT_FILE = "kbg_synthetic_conversations_scale_2.jsonl"
-OUTPUT_FILE = "kbg_final_patient_reports_scale_2.jsonl"
+INPUT_FILE = "syn_con_15.jsonl"
+OUTPUT_FILE = "patient_report_15.jsonl"
 HF_TOKEN = "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"
 
 if not torch.cuda.is_available():
@@ -70,13 +70,19 @@ tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, token = HF_TOKEN)
 if tokenizer.pad_token_id is None:
     tokenizer.pad_token_id = tokenizer.eos_token_id
     
-# quantization_config = BitsAndBytesConfig(
-#     load_in_4bit=True,
-#     bnb_4bit_compute_dtype=torch.bfloat16,
-#     bnb_4bit_quant_type="nf4",
-#     bnb_4bit_use_double_quant=True)
+quantization_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_compute_dtype=torch.bfloat16,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_use_double_quant=True)
 
-model = AutoModelForCausalLM.from_pretrained(MODEL_ID, token = HF_TOKEN, device_map="auto", low_cpu_mem_usage=True)
+model = AutoModelForCausalLM.from_pretrained(
+    MODEL_ID,
+    quantization_config=quantization_config,
+    device_map="auto",     #cuda
+    token = HF_TOKEN,
+    low_cpu_mem_usage=True)
+
 model.eval()
 
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
@@ -101,79 +107,107 @@ with open(INPUT_FILE, "r", encoding="utf-8") as infile:
         messages = [
             {
                 "role": "system",
-                "content": (
-                    "You are an expert clinical patient report synthesis engine. "
-                    "Use the clinical reference guidlines as the background knowledge to prepare the report."
-                    "Analyze the provided doctor-parent dialogue transcript. You must transform the conversation into a structured Clinical Patient Report that fits on a single A4 page.\n\n"
-                    "Provide information, based solely on the clinical reference guidelines, on how this condition may affect others with the syndrome."
-                    "Review the background information and provide screening and treatment recommendations for the patient, listed as bullet points in the Recommendations section of the report."
-                    "Do not reproduce the conversation word for word. Interpret the discussion and present the key information as it would appear in a clinical report. Ensure the report is concise and focused."
-                    "Tailor recommendations to the patient's condition; avoid generic recommendations."
-                    "If a symptom or condition is not mentioned in the consultation, write ""N/A"". If no relevant information is available in the background or clinical reference for that symptom, write ""N/A"" "
-                    "Do not pull general screening guidelines from the reference text for any category that the parent confirms is unaffected or N/A"
-                    "Your output MUST strictly follow this exact 13-category markdown scheme. Do not include any introductory or concluding text outside of this schema:\n\n"
-                    "# CLINICAL PATIENT REPORT\n\n"
-                    "## 1) RESPIRATORY\n"
-                    "a) How this affects the patient:\n"
-                    "b) How this affects others with the syndrome:\n\n"
-    
-                    "## 2) CARDIOLOGY\n"
-                    "a) How this affects the patient:\n"
-                    "b) How this affects others with the syndrome:\n\n"
-            
-                    "## 3) GASTROENTEROLOGY\n"
-                    "a) How this affects the patient:\n"
-                    "b) How this affects others with the syndrome:\n\n"
-            
-                    "## 4) IMMUNOLOGY\n"
-                    "a) How this affects the patient:\n"
-                    "b) How this affects others with the syndrome:\n\n"
-        
-                    "## 5) NEUROLOGY\n"
-                    "a) How this affects the patient:\n"
-                    "b) How this affects others with the syndrome:\n\n"
-                
-                    "## 6) EAR NOSE THROAT\n"
-                    "a) How this affects the patient:\n"
-                    "b) How this affects others with the syndrome:\n\n"
-                
-                    "## 7) OPHTHALMOLOGY AND VISION\n"
-                    "a) How this affects the patient:\n"
-                    "b) How this affects others with the syndrome:\n\n"
-                
-                    "## 8) DERMATOLOGY\n"
-                    "a) How this affects the patient:\n"
-                    "b) How this affects others with the syndrome:\n\n"
-            
-                    "## 9) DENTAL\n"
-                    "a) How this affects the patient:\n"
-                    "b) How this affects others with the syndrome:\n\n"
-        
-                    "## 10) EDUCATION\n"
-                    "a) How this affects the patient:\n"
-                    "b) How this affects others with the syndrome:\n\n"
-            
-                    "## 11) BEHAVIOUR AND DEVELOPMENT\n"
-                    "a) How this affects the patient:\n"
-                    "b) How this affects others with the syndrome:\n\n"
-                
-                    "## 12) SKELETAL\n"
-                    "a) How this affects the patient:\n"
-                    "b) How this affects others with the syndrome:\n\n"
-                    
-                    "## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS\n"
-                    
-            
-            
+                "content": ("""
+You are an expert clinical patient report synthesis engine specialising in rare genetic syndromes.
 
-                )
+Transform the doctor–parent consultation into a structured Clinical Patient Report using only:
+1. The consultation transcript.
+2. The provided clinical reference guidelines.
+
+Before writing the report, internally:
+1. Extract all patient findings.
+2. Assign each finding to its most appropriate clinical section.
+3. Generate the final report.
+Do not output this internal analysis.
+
+Rules:
+- Generate a concise, accurate clinical report.
+- Do not add unsupported information or assumptions.
+- "How this affects the patient" must contain only patient-specific information from the consultation.
+- "How this affects others with the syndrome" must contain only relevant syndrome-level information from the clinical reference guidelines.
+- Assign each symptom exclusively to its most appropriate clinical category.
+- Provide recommendations only for reported symptoms. List them as bullet points, with each recommendation directly addressing the patient’s identified symptoms.
+- If any information is unavailable for a particular section, write exactly "N/A" and nothing else.
+- Ensure the final report follows all instructions before responding.
+
+Use clear professional clinical language.
+
+Output MUST strictly follow this exact markdown structure:
+
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 2) CARDIOLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 3) GASTROENTEROLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 4) IMMUNOLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 5) NEUROLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 6) EAR NOSE THROAT
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 7) OPHTHALMOLOGY AND VISION
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 8) DERMATOLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 9) DENTAL
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 10) EDUCATION
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 12) SKELETAL
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+"""
+
+
+              )
             },
             {
                 "role": "user",
                 "content": (
                     f"=== CLINICAL REFERENCE GUIDELINES ===\n{KBG_CONTEXT}\n\n"
                     f"=== VERBATIM DOCTOR-PARENT CONVERSATION ===\n{transcript}\n\n"
-                    "Generate the complete clinical report following the strict 12-category schema layout."
+                    "Generate the complete clinical report following the strict 13-category schema layout."
                 )
             }
         ]
@@ -204,55 +238,11 @@ with open(INPUT_FILE, "r", encoding="utf-8") as infile:
         # Stream result straight to file
         with open(OUTPUT_FILE, "a", encoding="utf-8") as outfile:
             outfile.write(json.dumps(distillation_record, ensure_ascii=False) + "\n")
-        if count == 20:
-            break
+            
+        #if count ==4:
+            #break
+        
 
 print(f"\nPipeline successfully complete! {conversation_count} reports compiled inside: {OUTPUT_FILE}")
 
     
-    
-        
-
-     
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

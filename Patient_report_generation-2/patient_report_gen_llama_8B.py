@@ -1,26 +1,18 @@
+import os
 import json
-import os 
-import re
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 import torch
 import accelerate
-from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
-MODEL_ID = "Qwen/Qwen3-30B-A3B-Instruct-2507"
-REPORT_FILE = "kbg_final_patient_reports-aman.jsonl"  
-OUTPUT_FILE = "kbg_report_structure_evaluated_dataset.jsonl"
+MODEL_ID = "meta-llama/Llama-3.1-8B-Instruct"
+INPUT_FILE = "syn_con_15.jsonl"
+OUTPUT_FILE = "testing_report_15.jsonl"
+HF_TOKEN = "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"
 
 if not torch.cuda.is_available():
-    raise RuntimeError("CUDA GPU not detected.")
+    raise RuntimeError("CUDA GPU not detected. This pipeline requires hardware acceleration.")
 
-tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
-
-model = AutoModelForCausalLM.from_pretrained(MODEL_ID, torch_dtype = torch.bfloat16, low_cpu_mem_usage=True, device_map ="auto")
-model.eval()
-
-if tokenizer.pad_token_id is None:
-    tokenizer.pad_token_id = tokenizer.eos_token_id
-    
-kbg_context = """ What is KBG syndrome?
+KBG_CONTEXT = """ What is KBG syndrome?
 KBG syndrome was first described in 1975, and its name is derived from the initials of the first three patients reported with the condition.  People with KBG syndrome have a characteristic (and sometimes subtle) facial appearance, very large permanent teeth, and variable degrees of developmental  delay, learning difficulties and behavioural differences. Because the facial features can be subtle and are not always present, the diagnosis may not be  made until the permanent teeth have come through. Other features seen in  some affected individuals include conductive hearing loss, undescended testes in boys, seizures, skeletal anomalies and short stature. KBG syndrome is caused by changes (variants) in,  or a deletion of, the ANKRD11 gene in chromosome  16 (band q24.3). Most affected people are the first person in their family to carry the gene change, but a small proportion have inherited it from a parent, who is likely to have features of KBG syndrome. The condition affects boys and girls, and there are both mildly and more significantly affected individuals of both sexes. However, there appear to be some reports of more affected males than females but the reason for this is unclear.
 Most people with KBG syndrome have:
 A degree of developmental delay and some element of behavioural differences. Large permanent upper middle teeth (macrodontia of upper central incisors). Characteristic facial appearance: a triangular-shaped face; wide-spaced eyes and thick eyebrows, which sometimes join in the centre (synophrys). Short fingers (brachydactyly) with curved 5th finger (clinodactyly)
@@ -74,118 +66,181 @@ Management recommendations:
 Regular dental check-ups. Regular hearing reviews to age 5 (even if earlier reviews give a clear response). Eyesight (ophthalmology) review. Check position of testes in boys. Consider a palate review (particularly if there are feeding difficulties or speech concerns). Referral for a cardiac review (including echo and ECG) following diagnosis. If nothing is found (or already done) this does not need to be repeated. Consider a skeletal review (X-ray of the wrist (to determine bone age), hip, spine and skull) in children following diagnosis. Any concerns around asymmetric hip creases in infancy and/or asymmetric or painful gait should prompt medical review. Consider review and investigation for tethered cord (MRI) where clinical concerns arise on an individual basis (especially if sacral dimple is present). Monitor growth velocity: if height is below the 2nd centile consider referral for endocrine investigations on an individual basis and within context of familial heights Consider physiotherapy, occupational therapy, speech therapy and behavioural therapy.
 """
 
-SYSTEM_PROMPT = """You are a strict, highly specialized clinical report evaluator. Your sole assignment is to audit ONLY the REPORT STRUCTURE AND PRESENTATION of a generated clinical patient report against the provided source contexts. 
-Use ONLY the provided Clinical Background Information, Doctor-Patient Consultation Transcript and the generated patient report. Absolutely do not extrapolate, assume, or utilize external medical knowledge.
+tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, token = HF_TOKEN)
+if tokenizer.pad_token_id is None:
+    tokenizer.pad_token_id = tokenizer.eos_token_id
+    
+quantization_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_compute_dtype=torch.bfloat16,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_use_double_quant=True)
 
-# EVALUATION ASPECTS (ORDINAL SCALE 1 TO 5)
-Evaluate the report across this 1 comprehensive aspect. For the aspect, award a score from 1 to 5 (where 5 is perfectly accurate/valid, and 1 is completely inaccurate/invalid):
+model = AutoModelForCausalLM.from_pretrained(
+    MODEL_ID,
+    quantization_config=quantization_config,
+    device_map="auto",     #cuda
+    token = HF_TOKEN,
+    low_cpu_mem_usage=True)
 
-1. Report Structure and Presentation: Did the report follow a clear and logical structure, with information organised appropriately across sections, while maintaining conciseness and readability?
+model.eval()
 
-# STRICT SCHEMA RULES
-You must process your audit reasoning internally during your thinking phase. 
-Once your thinking phase concludes, you must output the final evaluation strictly inside a valid markdown ```json ``` code block at the very end of your response. 
-Do not include any conversational padding, conversational introductions, or text after the code block.
+with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    pass
 
-Ensure all JSON string keys and values use valid double quotes.
+print(f"Reading interactions from {INPUT_FILE}...")
+print(f"Streaming report outputs straight to: {OUTPUT_FILE}")
 
-```json
-{
-  "question1": {
-    "reasoning_of_the_score": "Detailed explanation of why this score was assigned based on the text.",
-    "score": 0
-  },
-  "average_score": 0.0
-}
-```"""
+conversation_count = 0
 
-print("\nBeginning Pipeline Check Loop...")
-
-with open(REPORT_FILE, "r", encoding="utf-8") as infile, open(OUTPUT_FILE, "w", encoding="utf-8") as outfile:
-
-    for idx, line in enumerate(infile):
+with open(INPUT_FILE, "r", encoding="utf-8") as infile:
+    count = 0
+    for line in infile:
         if not line.strip():
             continue
-            
-        data = json.loads(line)
+        count += 1   
+        record = json.loads(line)
+        conversation_count += 1
+        patient_id = record.get("patient_id", conversation_count)
+        transcript = record.get("synthetic_transcript", "")
         
-        
-        doctor_consultation = data.get("input", "")
-        patient_report = data.get("output", "")
-        
-        
-        user_content = f"""=== Clinical Background Information ===
-{kbg_context}
+        messages = [
+            {
+                "role": "system",
+                "content": ("""
+You are an expert clinical patient report synthesis engine specialising in rare genetic syndromes.
 
-=== Doctor Patient Consultation Transcript ===
-{doctor_consultation}
+Transform the doctor–parent consultation into a structured Clinical Patient Report using only:
+1. The consultation transcript.
+2. The provided clinical reference guidelines.
 
-=== Generated Patient Report ===
-{patient_report}
+Before writing the report, internally:
+1. Extract all patient findings.
+2. Assign each finding to its most appropriate clinical section.
+3. Generate the final report.
+Do not output this internal analysis.
 
-Analyze the structural quality of the report based on the given aspect
-Output the final evaluation strictly inside the markdown ```json ``` block format as specified."""
+Rules:
+- Generate a concise, accurate clinical report.
+- Do not add unsupported information or assumptions.
+- "How this affects the patient" must contain only patient-specific information from the consultation.
+- "How this affects others with the syndrome" must contain only relevant syndrome-level information from the clinical reference guidelines.
+- Assign each symptom exclusively to its most appropriate clinical category.
+- Provide recommendations only for reported symptoms. List them as bullet points, with each recommendation directly addressing the patient’s identified symptoms.
+- If any information is unavailable for a particular section, write exactly "N/A" and nothing else.
+- Ensure the final report follows all instructions before responding.
 
-                             
-        MESSAGE = [
-            {"role": "system", "content": SYSTEM_PROMPT}, 
-            {"role": "user", "content": user_content}
+Use clear professional clinical language.
+
+Output MUST strictly follow this exact markdown structure:
+
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 2) CARDIOLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 3) GASTROENTEROLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 4) IMMUNOLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 5) NEUROLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 6) EAR NOSE THROAT
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 7) OPHTHALMOLOGY AND VISION
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 8) DERMATOLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 9) DENTAL
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 10) EDUCATION
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 12) SKELETAL
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+"""
+
+
+              )
+            },
+            {
+                "role": "user",
+                "content": (
+                    f"=== CLINICAL REFERENCE GUIDELINES ===\n{KBG_CONTEXT}\n\n"
+                    f"=== VERBATIM DOCTOR-PARENT CONVERSATION ===\n{transcript}\n\n"
+                    "Generate the complete clinical report following the strict 13-category schema layout."
+                )
+            }
         ]
         
-        text = tokenizer.apply_chat_template(MESSAGE, tokenize=False, add_generation_prompt=True)
-        inputs = tokenizer(text, return_tensors="pt").to(model.device) 
+
+        prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+        inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
         
         with torch.no_grad():
             outputs = model.generate(
                 inputs.input_ids,
                 attention_mask=inputs.attention_mask,
-                max_new_tokens=3072,
-                temperature=0.3,  
-                do_sample=True,  
-                pad_token_id=tokenizer.pad_token_id
+                max_new_tokens=2048,
+                temperature=0.3, # Lower temperature forces higher adherence to facts and logic rules
+                do_sample=True,
+                pad_token_id=tokenizer.eos_token_id
             )
-
-        # Correctly isolate generation by stripping out prompt tokens
-        input_len = inputs.input_ids.shape[-1]
-        generated_tokens = outputs[0][input_len:]
-        generated_raw = tokenizer.decode(generated_tokens, skip_special_tokens=True).strip()
-
-        try:
-            # 1. First look for markdown ```json wrappers (common for Instruct models)
-            json_match = re.search(r"```(?:json|JSON)?\s*(\{.*?\})\s*```", generated_raw, re.DOTALL)
             
-            if json_match:
-                json_string = json_match.group(1).strip()
-                parsed_json = json.loads(json_string)
-            else:
-                # 2. Fallback: Find the direct bounds of the raw JSON object {} (no <think> tags exist here)
-                first_brace = generated_raw.find('{')
-                last_brace = generated_raw.rfind('}')
-                
-                if first_brace != -1 and last_brace != -1:
-                    json_string = generated_raw[first_brace:last_brace + 1].strip()
-                    parsed_json = json.loads(json_string)
-                else:
-                    raise ValueError("No JSON object bounds found in the string response.")
-                    
-        except Exception as e:
-            print(f" -> Row {idx}: JSON parsing error ({e}). Saving raw output string instead.")
-            parsed_json = {
-                "error": "parsing_failed", 
-                "error_details": str(e),
-                "raw_output": generated_raw
-            }
-            
-        test_payload = {
-            "index": idx,
-            "report_structure_evaluation": parsed_json
+        generated_report = tokenizer.decode(outputs[0][inputs.input_ids.shape[-1]:],skip_special_tokens=True)
+        
+        # Structure distillation instruction template mapping row
+        distillation_record = {
+            "instruction": "Analyze this clinical interview dialogue, deduce the primary genetic condition using reference guidelines, and compile a structured patient report with targeted management recommendations.",
+            "input": transcript,
+            "output": generated_report.strip()
         }
-
-        # Write the clean object to your JSON Lines output file
-        outfile.write(json.dumps(test_payload, ensure_ascii=False) + "\n")
-        print(f"Successfully processed item {idx + 1}")
-
-        if idx == 2:
+        
+        # Stream result straight to file
+        with open(OUTPUT_FILE, "a", encoding="utf-8") as outfile:
+            outfile.write(json.dumps(distillation_record, ensure_ascii=False) + "\n")
+            
+        if count ==5:
             break
+        
 
-print("\nEvaluated all the reports on the basis of their structural quality.")
+print(f"\nPipeline successfully complete! {conversation_count} reports compiled inside: {OUTPUT_FILE}")
