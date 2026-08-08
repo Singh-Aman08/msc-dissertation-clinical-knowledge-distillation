@@ -4,8 +4,8 @@ import accelerate
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
 MODEL_ID = "meta-llama/Llama-3.3-70B-Instruct"
-PROFILE_FILE = " "
-OUTPUT_FILE = " " 
+PROFILE_FILE = "kbg_profile_2_15.json"
+OUTPUT_FILE = "syn_con_2_15.jsonl" 
 HF_TOKEN = "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"
 
 

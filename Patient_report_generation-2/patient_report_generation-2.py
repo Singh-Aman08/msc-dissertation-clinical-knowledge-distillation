@@ -5,8 +5,8 @@ import torch
 import accelerate
 
 MODEL_ID = "meta-llama/Llama-3.3-70B-Instruct"
-INPUT_FILE = "syn_con_15.jsonl"
-OUTPUT_FILE = "patient_report_15.jsonl"
+INPUT_FILE = "syn_con_2_15.jsonl"
+OUTPUT_FILE = "patient_report_2_15.jsonl"
 HF_TOKEN = "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"
 
 if not torch.cuda.is_available():
@@ -245,4 +245,3 @@ b) How this affects others with the syndrome:
 
 print(f"\nPipeline successfully complete! {conversation_count} reports compiled inside: {OUTPUT_FILE}")
 
-    

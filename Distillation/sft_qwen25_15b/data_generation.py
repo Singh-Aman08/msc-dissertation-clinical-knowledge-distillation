@@ -1,18 +1,7 @@
+import pandas as pd
 import json
-import re
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+from sklearn.model_selection import train_test_split
 
-MODEL_ID = "Qwen/Qwen3-30B-A3B-Instruct-2507"
-INPUT_FILE = "claim_decomposition_2_10.jsonl"
-OUTPUT_FILE = "factuality_scores_2_10.jsonl"
-HF_TOKEN = "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"
-
-quantization_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_compute_dtype=torch.bfloat16,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_use_double_quant=True)
 
 KBG_CONTEXT = """ What is KBG syndrome?
 KBG syndrome was first described in 1975, and its name is derived from the initials of the first three patients reported with the condition.  People with KBG syndrome have a characteristic (and sometimes subtle) facial appearance, very large permanent teeth, and variable degrees of developmental  delay, learning difficulties and behavioural differences. Because the facial features can be subtle and are not always present, the diagnosis may not be  made until the permanent teeth have come through. Other features seen in  some affected individuals include conductive hearing loss, undescended testes in boys, seizures, skeletal anomalies and short stature. KBG syndrome is caused by changes (variants) in,  or a deletion of, the ANKRD11 gene in chromosome  16 (band q24.3). Most affected people are the first person in their family to carry the gene change, but a small proportion have inherited it from a parent, who is likely to have features of KBG syndrome. The condition affects boys and girls, and there are both mildly and more significantly affected individuals of both sexes. However, there appear to be some reports of more affected males than females but the reason for this is unclear.
@@ -68,457 +57,206 @@ Management recommendations:
 Regular dental check-ups. Regular hearing reviews to age 5 (even if earlier reviews give a clear response). Eyesight (ophthalmology) review. Check position of testes in boys. Consider a palate review (particularly if there are feeding difficulties or speech concerns). Referral for a cardiac review (including echo and ECG) following diagnosis. If nothing is found (or already done) this does not need to be repeated. Consider a skeletal review (X-ray of the wrist (to determine bone age), hip, spine and skull) in children following diagnosis. Any concerns around asymmetric hip creases in infancy and/or asymmetric or painful gait should prompt medical review. Consider review and investigation for tethered cord (MRI) where clinical concerns arise on an individual basis (especially if sacral dimple is present). Monitor growth velocity: if height is below the 2nd centile consider referral for endocrine investigations on an individual basis and within context of familial heights Consider physiotherapy, occupational therapy, speech therapy and behavioural therapy.
 """
 
+SYSTEM_PROMPT = """
+You are an expert clinical patient report synthesis engine specialising in rare genetic syndromes.
 
-if not torch.cuda.is_available():
-    raise RuntimeError("CUDA GPU not detected.")
+Your task is to transform a doctor–parent consultation into a structured Clinical Patient Report using only:
 
-print("Loading tokenizer and model parameters...")
+1. The provided clinical reference guidelines.
+2. The provided patient consultation transcript.
 
-tokenizer = AutoTokenizer.from_pretrained(
-    MODEL_ID, token = HF_TOKEN
+The information sources must be used as follows:
+
+- The clinical reference guidelines are the only source for syndrome-level information:
+  "How this affects others with the syndrome" and "RECOMMENDATIONS FOR SCREENING AND TREATMENTS".
+
+- The consultation transcript is the only source for patient-specific information:
+  "How this affects the patient".
+
+Before generating the report, perform the following steps internally:
+
+1. Extract all patient-specific findings from the consultation.
+2. Identify relevant syndrome-level information from the provided clinical reference guidelines.
+3. Assign each finding to the most appropriate clinical section.
+4. Generate the final structured report.
+
+Do not output this internal analysis.
+
+Rules:
+
+- Generate a concise, accurate, and clinically appropriate patient report.
+- Do not add unsupported information, assumptions, or diagnoses.
+- "How this affects the patient" must contain only information explicitly supported by the consultation transcript.
+- "How this affects others with the syndrome" must contain only relevant information supported by the clinical reference guidelines.
+- Assign each patient symptom or finding exclusively to its most appropriate clinical category.
+- If information is unavailable for a particular section, write exactly "N/A" and nothing else.
+- Provide recommendations only for symptoms, findings, or conditions reported in the consultation.
+- Each recommendation must directly address an identified patient-specific finding.
+- Do not provide recommendations for unreported symptoms or unrelated syndrome features.
+- Maintain a clear, concise, and professional clinical writing style.
+- Follow the required report structure exactly.
+
+Output MUST strictly follow this exact structure:
+
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 2) CARDIOLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 3) GASTROENTEROLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 4) IMMUNOLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 5) NEUROLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 6) EAR NOSE THROAT
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 7) OPHTHALMOLOGY AND VISION
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 8) DERMATOLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 9) DENTAL
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 10) EDUCATION
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 12) SKELETAL
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+
+Generate only the final clinical patient report.
+Do not include explanations, reasoning, or additional commentary.
+"""
+
+
+df = pd.read_csv(r"C:\Users\Aman Kumar Singh\Desktop\nlp_dissertation\Distillation\sft_qwen25_15b\kbg_sft_dataset_1.csv")
+
+df_sft = df.head(500).copy()
+
+assert "consultation" in df_sft.columns
+assert "Report" in df_sft.columns
+
+
+print("Total SFT samples:", len(df_sft))
+
+
+train_df, val_df = train_test_split(
+    df_sft,
+    test_size=0.2,
+    random_state=42
 )
 
+print("Training samples:", len(train_df))
+print("Validation samples:", len(val_df))
 
-model = AutoModelForCausalLM.from_pretrained(
-    MODEL_ID,
-    device_map="auto",
-    low_cpu_mem_usage=True,
-    quantization_config = quantization_config,
-    token = HF_TOKEN
-)
+def create_chat_dataset(dataframe):
 
+    dataset = []
 
-model.eval()
+    for _, row in dataframe.iterrows():
 
+        user_prompt = f"""
+### CLINICAL REFERENCE GUIDELINES
+{KBG_CONTEXT}
 
-if tokenizer.pad_token_id is None:
-    tokenizer.pad_token_id = tokenizer.eos_token_id
+### DOCTOR-PARENT CONSULTATION TRANSCRIPT
+{row['consultation']}
 
+Generate the complete clinical patient report.
+"""
 
-def evaluate_claims_bucket(reference_doc, claims_list):
-
-    if not claims_list:
-        return []
-
-
-    system_prompt =(
-"You are an expert clinical factuality evaluator. "
-"Your task is to determine whether each atomic claim is directly supported "
-"by the provided Reference Document.\n\n"
-
-"For each claim, output:\n"
-"1. 'claim': The exact claim being evaluated.\n"
-"2. 'supported': 'YES' or 'NO'.\n\n"
-
-"Strict evaluation criteria:\n"
-"- Use ONLY the provided Reference Document.\n"
-"- Do not use external medical knowledge.\n"
-"- Do not make clinical assumptions or logical extensions.\n"
-"- A claim is YES only if the information is explicitly stated "
-"or is a direct paraphrase of information in the Reference Document.\n"
-"- If a claim requires reasoning, interpretation, prediction, "
-"or medical knowledge beyond the document, mark it as NO.\n"
-"- If any part of a multi-part claim is unsupported, mark the whole claim NO.\n\n"
-"- Evaluate patient-specific claims only against patient information in the Reference Document."
-"- Evaluate syndrome-specific claims only against syndrome information in the Reference Document."
-"Examples:\n"
-"Reference: 'The patient has hearing difficulties.'\n"
-"Claim: 'The patient has hearing difficulties.' → YES\n"
-"Claim: 'The patient may need hearing aids.' → NO\n"
-"Claim: 'The patient may have permanent hearing loss.' → NO\n\n"
-
-"You MUST respond ONLY with valid JSON:\n"
-"{\n"
-'  "results": [\n'
-'    {"claim": "string", "supported": "YES/NO"}\n'
-"  ]\n"
-"}"
-)
-
-
-
-    user_prompt = (
-    f"Reference Document:\n"
-    f'"""{reference_doc}"""\n\n'
-
-    f"Claims to Verify:\n"
-    f"{json.dumps(claims_list, ensure_ascii=False)}\n\n"
-
-    "Evaluate each claim strictly against the Reference Document only. "
-    "Do not use external medical knowledge or infer missing information."
-)
-
-
-    messages = [
-        {
-            "role": "system",
-            "content": system_prompt
-        },
-        {
-            "role": "user",
-            "content": user_prompt
-        }
-    ]
-
-
-    prompt = tokenizer.apply_chat_template(
-        messages,
-        tokenize=False,
-        add_generation_prompt=True
-    )
-
-
-    try:
-
-        inputs = tokenizer(
-            prompt,
-            return_tensors="pt",
-            truncation=True,
-            max_length=8192
-        ).to(model.device)
-
-
-
-        with torch.no_grad():
-
-            outputs = model.generate(
-                input_ids=inputs.input_ids,
-                attention_mask=inputs.attention_mask,
-                max_new_tokens=2048,
-                do_sample=False,
-                use_cache=True,
-                pad_token_id=tokenizer.pad_token_id
-            )
-
-
-        generated_tokens = outputs[
-            0
-        ][
-            inputs.input_ids.shape[-1]:
-        ]
-
-
-        generated_text = tokenizer.decode(
-            generated_tokens,
-            skip_special_tokens=True
-        ).strip()
-
-
-        json_match = re.search(
-            r"```(?:json)?\s*(\{.*?\})\s*```",
-            generated_text,
-            re.DOTALL
-        )
-
-
-        if json_match:
-
-            json_string = json_match.group(1).strip()
-
-        else:
-
-            start = generated_text.find("{")
-            end = generated_text.rfind("}")
-
-
-            if start == -1 or end == -1:
-
-                raise ValueError(
-                    "No JSON object found"
-                )
-
-
-            json_string = generated_text[
-                start:end+1
+        sample = {
+            "messages": [
+                {
+                    "role": "system",
+                    "content": SYSTEM_PROMPT
+                },
+                {
+                    "role": "user",
+                    "content": user_prompt
+                },
+                {
+                    "role": "assistant",
+                    "content": row["Report"]
+                }
             ]
+        }
 
+        dataset.append(sample)
 
-        try:
+    return dataset
 
-            parsed_output = json.loads(
-                json_string
-            )
+train_data = create_chat_dataset(train_df)
 
+val_data = create_chat_dataset(val_df)
 
-        except json.JSONDecodeError:
 
+with open(
+    "kbg_sft_train.json",
+    "w",
+    encoding="utf-8"
+) as f:
 
-            print(
-                "Attempting JSON repair..."
-            )
-
-
-            repaired_json = json_string.strip()
-
-
-            # Remove trailing commas
-            repaired_json = re.sub(
-                r",\s*([}\]])",
-                r"\1",
-                repaired_json
-            )
-
-
-            # Add missing square brackets
-            missing_square = (
-                repaired_json.count("[")
-                -
-                repaired_json.count("]")
-            )
-
-
-            if missing_square > 0:
-
-                repaired_json += "]" * missing_square
-
-
-
-            # Add missing curly brackets
-            missing_curly = (
-                repaired_json.count("{")
-                -
-                repaired_json.count("}")
-            )
-
-
-            if missing_curly > 0:
-
-                repaired_json += "}" * missing_curly
-
-
-
-            parsed_output = json.loads(
-                repaired_json
-            )
-
-
-
-        results = parsed_output.get(
-            "results",
-            []
-        )
-
-        for item in results:
-
-            if "supported" in item:
-
-                item["supported"] = str(
-                    item["supported"]
-                ).upper()
-
-
-
-        return results
-
-
-
-    except Exception as e:
-
-
-        print(
-            f"Claim evaluation failed: {e}"
-        )
-
-
-        return [
-
-            {
-                "claim": claim,
-                "supported": "NO",
-                "reason": f"Audit Error: {e}"
-            }
-
-            for claim in claims_list
-
-        ]
-
-print("\nBeginning Local Factuality Scoring Pipeline...\n")
-
-
-with open(INPUT_FILE, "r", encoding="utf-8") as infile, \
-open(OUTPUT_FILE, "w", encoding="utf-8") as outfile:
-
-    for idx, line in enumerate(infile):
-
-        if not line.strip():
-            continue
-
-        data = json.loads(line)
-
-        consultation = data.get("consultation", "")
-        report = data.get("report", "")
-
-        claim_payload = data.get("claim_decomposition")
-
-        if not consultation:
-            print(f"Skipping index {idx}: missing consultation")
-            continue
-
-        if not report:
-            print(f"Skipping index {idx}: missing report")
-            continue
-
-        # Skip samples where claim decomposition failed
-        if not isinstance(claim_payload, dict):
-            print(f"Skipping index {idx}: invalid claim decomposition")
-            continue
-
-        patient_claims = claim_payload.get("patient_specific_claims")
-        syndrome_claims = claim_payload.get("syndrome_specific_claims")
-
-        # Skip samples where claim lists are not properly parsed
-        if (
-            not isinstance(patient_claims, list)
-            or not isinstance(syndrome_claims, list)
-        ):
-            print(f"Skipping index {idx}: claim decomposition parsing failed")
-            continue
-
-
-        # Patient-specific factuality evaluation
-        print(f"Starting evaluation index {idx}", flush=True)
-        patient_audited = evaluate_claims_bucket(
-    consultation,
-    patient_claims
-)
-
-        if not isinstance(patient_audited, list):
-            print(f"Skipping index {idx}: patient evaluation failed")
-            continue
-        print(f"Patient evaluation completed index {idx}", flush=True)
-
-
-# Syndrome-specific factuality evaluation
-        syndrome_audited = evaluate_claims_bucket(
-    KBG_CONTEXT,
-    syndrome_claims
-)
-
-        if not isinstance(syndrome_audited, list):
-            print(f"Skipping index {idx}: syndrome evaluation failed")
-            continue
-        print(f"Syndrome evaluation completed index {idx}", flush=True)
-
-# Patient factuality score
-        patient_total = len(patient_claims)
-
-        patient_supported = sum(
-    1
-    for claim in patient_audited
-    if isinstance(claim, dict) and claim.get("supported") == "YES"
-)
-
-
-        patient_factuality_score = (
-    patient_supported / patient_total
-    if patient_total > 0
-    else 1.0
-)
-
-
-# Syndrome factuality score
-        syndrome_total = len(syndrome_claims)
-
-        syndrome_supported = sum(
-    1
-    for claim in syndrome_audited
-    if isinstance(claim, dict) and claim.get("supported") == "YES"
-)
-
-
-        syndrome_factuality_score = (
-    syndrome_supported / syndrome_total
-    if syndrome_total > 0
-    else 1.0
-)
-
-
-# Final score
-        average_factuality_score = (
-    patient_factuality_score +
-    syndrome_factuality_score
-) / 2
-
-
-        output_record = {
-
-    "index": idx,
-
-    "consultation": consultation,
-
-    "report": report,
-    "claim_decomposition": {
-    "patient_specific_claims": patient_claims,
-    "syndrome_specific_claims": syndrome_claims
-},
-
-    "factuality_scores": {
-
-        "patient_factuality_score": round(
-            patient_factuality_score,
-            4
-        ),
-
-        "syndrome_factuality_score": round(
-            syndrome_factuality_score,
-            4
-        ),
-
-        "average_factuality_score": round(
-            average_factuality_score,
-            4
-        )
-
-    },
-
-    "summary_counts": {
-
-        "patient_claims": patient_total,
-
-        "patient_supported": patient_supported,
-
-        "syndrome_claims": syndrome_total,
-
-        "syndrome_supported": syndrome_supported
-
-    },
-
-    "audit_breakdown": {
-
-        "patient_claims_check": patient_audited,
-
-        "syndrome_claims_check": syndrome_audited
-
-    }
-
-}
-
-
-        outfile.write(
-    json.dumps(
-        output_record,
+    json.dump(
+        train_data,
+        f,
+        indent=2,
         ensure_ascii=False
     )
-    + "\n"
-)
-
-        outfile.flush()
 
 
-        
-        print(
-    f"Processed index {idx} | "
-    f"Patient: {round(patient_factuality_score,4)} | "
-    f"Syndrome: {round(syndrome_factuality_score,4)} | "
-    f"Average: {round(average_factuality_score,4)}",
-    flush=True
-)
-    
-    
-    
-        #if idx ==5:
-            #break
-        
-print(
-    "\nFinished factuality scoring successfully."
-)
+with open(
+    "kbg_sft_val.json",
+    "w",
+    encoding="utf-8"
+) as f:
+
+    json.dump(
+        val_data,
+        f,
+        indent=2,
+        ensure_ascii=False
+    )
+
+
+print("Training samples:", len(train_data))
+print("Validation samples:", len(val_data))
+print("Dataset generation completed.")

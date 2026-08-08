@@ -4,8 +4,8 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 MODEL_ID = "Qwen/Qwen3-30B-A3B-Instruct-2507"
-REPORT_FILE = "patient_report_07.jsonl"
-OUTPUT_FILE = "claim_decomposition_07.jsonl"
+REPORT_FILE = "patient_report_2_15.jsonl"
+OUTPUT_FILE = "claim_decomposition_2_15.jsonl"
 HF_TOKEN = "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"
 
 if not torch.cuda.is_available():

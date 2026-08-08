@@ -1,6 +1,6 @@
 import json 
-INPUT_FILE = r"C:\Users\Aman Kumar Singh\Desktop\testing_Report_3B.jsonl"
-OUTPUT_FILE = "./patient_report_check_3B.txt"
+INPUT_FILE = r"C:\Users\Aman Kumar Singh\Desktop\baseline_qwen25_15b_test_patient_report_01.jsonl"
+OUTPUT_FILE = "./baseline_qwen25_15b_test_patient_report_01.jsonl.txt"
 
 with open (INPUT_FILE, "r", encoding="utf-8") as infile:
     with open(OUTPUT_FILE, "w", encoding="utf-8") as outfile:

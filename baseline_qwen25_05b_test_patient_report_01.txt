@@ -1,0 +1,475 @@
+############################ 1. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: Honestly, I'm getting a bit overwhelmed with all these questions... Um, yes, his vision. He complains that things look blurry sometimes. I don't know if it's because he needs glasses or what.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: Oh, right. His ears. There's been some fluid in his ear for a while now. I've been meaning to take him to get it checked out.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: Teeth... yes. He says his teeth hurt when he eats cold things like ice cream. I think it might be sensitive or something.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: His heart... well, when he plays, he breathes really fast. Faster than I expect, anyway. Is that normal?
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: N/A.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He gets tired really easily when running around outside. Not like other kids his age who can just keep going.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: N/A.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: N/A.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: Food... yes. He's always been a bit slow to gain weight compared to his friends. And he's just so picky about what he eats.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: Speech... it's taking him longer to talk than others. And overall, he just seems behind where the other kids his age are. Developmentally, I mean. Sorry, I'm just feeling a bit... overwhelmed with all of this.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+
+### How this affects the patient:
+The patient has KBG syndrome, a rare genetic disorder characterized by distinctive facial features, particularly large permanent teeth and a triangular-shaped face. The patient experiences developmental delays, behavioral differences, and speech and hearing impairments.
+
+### How this affects others with the syndrome:
+KBG syndrome is a rare genetic disorder affecting approximately 100,000 people worldwide. It is caused by mutations in the ANKRD11 gene, which is located on chromosome 16. The syndrome is associated with various physical and cognitive abnormalities, including facial features, intellectual disabilities, and developmental delays.
+
+### How this affects the patient:
+The patient has a unique facial appearance, including a triangular-shaped face, wide-spaced eyes, thick eyebrows, and a characteristic facial expression known as synophrys. The patient also exhibits developmental delays, ranging from mild to severe, and may exhibit behavioral differences such as autism spectrum disorder (ASD), attention deficit hyperactivity disorder (ADHD), and anxiety.
+
+### How this affects others with the syndrome:
+KBG syndrome is one of the most prevalent causes of syndromic developmental delay. The syndrome is caused by variations in the ANKRD11 gene, which results in the production of abnormal proteins that interfere with normal brain development. The syndrome is associated with a wide range of physical and cognitive abnormalities, including intellectual disabilities, speech and hearing impairments, and developmental delays.
+
+### How this affects the patient:
+The patient has a unique facial appearance, including a triangular-shaped face, wide-spaced eyes, thick eyebrows, and a characteristic facial expression known as synophrys. The patient also exhibits developmental delays, ranging from mild to severe, and may exhibit behavioral differences such as autism spectrum disorder (ASD), attention deficit hyperactivity disorder (ADHD), and anxiety.
+
+### How this affects others with the syndrome:
+KBG syndrome is one of the most prevalent causes of syndromic developmental delay. The syndrome is caused by variations in the ANKRD11 gene, which results in the production of abnormal proteins that interfere with normal brain development. The syndrome is associated with a wide range of physical and cognitive abnormalities, including intellectual disabilities, speech and hearing impairments, and developmental delays.
+
+### How this affects the patient:
+The patient has a unique facial appearance, including a triangular-shaped face, wide-spaced eyes, thick eyebrows, and a characteristic facial expression known as synophrys. The patient also exhibits developmental delays, ranging from mild to severe, and may exhibit behavioral differences such as autism spectrum disorder (ASD), attention deficit hyperactivity disorder (ADHD), and anxiety.
+
+### How this affects others with the syndrome:
+KBG syndrome is one of the most prevalent causes of syndromic developmental delay. The syndrome is caused by variations in the ANKRD11 gene, which results in the production of abnormal proteins that interfere with normal brain development. The syndrome is associated with a wide range of physical and cognitive abnormalities, including intellectual disabilities, speech and hearing impairments, and developmental delays.
+
+### How this affects the patient:
+The patient has a unique facial appearance, including a triangular-shaped face, wide-spaced eyes, thick eyebrows, and a characteristic facial expression known as synophrys. The patient also exhibits developmental delays, ranging from mild to severe, and may exhibit behavioral differences such as autism spectrum disorder (ASD), attention deficit hyperactivity disorder (ADHD), and anxiety.
+
+### How this affects others with the syndrome:
+KBG syndrome is one of the most prevalent causes of syndromic developmental delay. The syndrome is caused by variations in the ANKRD11 gene, which results in the production of abnormal proteins that interfere with normal brain development. The syndrome is associated with a wide range of physical and cognitive abnormalities, including intellectual disabilities, speech and hearing impairments, and developmental delays.
+
+### How this affects the patient:
+The patient has a unique facial appearance, including a triangular-shaped face, wide-spaced eyes, thick eyebrows, and a characteristic facial expression known as synophrys. The patient also exhibits developmental delays, ranging from mild to severe, and may exhibit behavioral differences such as autism spectrum disorder (ASD), attention deficit hyperactivity disorder (ADHD), and anxiety.
+
+### How this affects others with the syndrome:
+KBG syndrome is one of the most prevalent causes of syndromic developmental delay. The syndrome is caused by variations in the ANKRD11 gene, which results in the production of abnormal proteins that interfere with normal brain development. The syndrome is associated with a wide range of physical and cognitive abnormalities, including intellectual disabilities, speech and hearing impairments, and developmental delays.
+
+### How this affects the patient:
+The patient has a unique facial appearance, including a triangular-shaped face, wide-spaced eyes, thick eyebrows, and a characteristic facial expression known as synophrys. The patient also exhibits developmental delays, ranging from mild to severe, and may exhibit behavioral differences such as autism spectrum disorder (ASD), attention deficit hyperactivity disorder (ADHD), and anxiety.
+
+### How this affects others with the syndrome:
+KBG syndrome is one of the most prevalent causes of syndromic developmental delay. The syndrome is caused by variations in the ANKRD11 gene, which results in the production of abnormal proteins that interfere with normal brain development. The syndrome is associated with a wide range of physical and cognitive abnormalities, including intellectual disabilities, speech and hearing impairments, and developmental delays.
+
+### How this affects the patient:
+The patient has a unique facial appearance, including a triangular-shaped face, wide-spaced eyes, thick eyebrows, and a characteristic facial expression known as synophrys. The patient also exhibits developmental delays, ranging from mild to severe, and may exhibit behavioral differences such as autism spectrum disorder (ASD), attention deficit hyperactivity disorder (ADHD), and anxiety.
+
+### How this affects others with the syndrome:
+KBG syndrome is one of the most prevalent causes of syndromic developmental delay. The syndrome is caused by variations in the ANKRD11 gene, which results in the production of abnormal proteins that interfere with normal brain development. The syndrome is associated with a wide range of physical and cognitive abnormalities, including intellectual disabilities, speech and hearing impairments, and developmental delays.
+
+### How this affects the patient:
+The patient has a unique facial appearance, including a triangular-shaped face, wide-spaced eyes, thick eyebrows, and a characteristic facial expression known as synophrys. The patient also exhibits developmental delays, ranging from mild to severe, and may exhibit behavioral differences such as autism spectrum disorder (ASD), attention deficit hyperactivity disorder (ADHD), and anxiety.
+
+### How this affects others with the syndrome:
+KBG syndrome is one of the most prevalent causes of syndromic developmental delay. The syndrome is caused by variations in the ANKRD11 gene, which results in the production of abnormal proteins that interfere with normal brain development. The syndrome is associated with a wide range of physical and cognitive abnormalities, including intellectual disabilities, speech and hearing impairments, and developmental delays.
+
+### How this affects the patient:
+The patient has a unique facial appearance, including a triangular-shaped face, wide-spaced eyes, thick eyebrows, and a characteristic facial expression known as synophrys. The patient also exhibits developmental delays, ranging from mild to severe, and may exhibit behavioral differences such as autism spectrum disorder (ASD), attention deficit hyperactivity disorder (ADHD), and anxiety.
+
+### How this affects others with the syndrome:
+KBG syndrome is one of the most prevalent causes of syndromic developmental delay. The syndrome is caused by variations in the ANKRD11 gene, which results in the production of abnormal proteins that interfere with normal brain development. The syndrome is associated with a wide range of physical and cognitive abnormalities, including intellectual disabilities, speech and hearing impairments, and developmental delays.
+
+### How this affects the patient:
+The patient has a unique facial appearance, including a triangular-shaped face, wide-spaced eyes, thick eyebrows, and a characteristic facial expression known as synophrys. The patient also exhibits developmental delays, ranging from mild to severe, and may exhibit behavioral differences such as autism spectrum disorder (ASD), attention deficit hyperactivity disorder (ADHD), and anxiety.
+
+### How this affects others with the syndrome:
+KBG syndrome is one of the most prevalent causes of syndromic developmental delay. The syndrome is caused by variations in the ANKRD11 gene, which results in the production of abnormal proteins that interfere with normal brain development. The syndrome is associated with a wide range of physical and cognitive abnormalities, including intellectual disabilities, speech and hearing impairments, and developmental delays.
+
+### How this affects the patient:
+The patient has a unique facial appearance, including a triangular-shaped face, wide-spaced eyes, thick eyebrows, and a characteristic facial expression known as synophrys. The patient also exhibits developmental delays, ranging from mild to severe, and may exhibit behavioral differences such as autism spectrum disorder (ASD), attention deficit hyperactivity disorder (ADHD), and anxiety.
+
+### How this affects others with the syndrome:
+KBG syndrome is one of the most prevalent causes of syndromic developmental delay. The syndrome is caused by variations in the ANKRD11 gene, which results in the production of abnormal proteins that interfere with normal brain development. The syndrome is associated with a wide range of physical and cognitive abnormalities, including intellectual disabilities, speech and hearing impairments, and developmental delays.
+
+### How this affects the patient:
+The patient has a unique facial appearance, including a triangular-shaped face, wide-spaced eyes, thick eyebrows, and a characteristic facial expression known as synophrys. The patient also exhibits developmental delays, ranging from mild to severe, and may exhibit behavioral differences such as autism spectrum disorder (ASD), attention deficit hyperactivity disorder (ADHD), and anxiety.
+
+### How this affects others with the syndrome:
+KBG syndrome is one of the most prevalent causes of syndromic developmental delay. The syndrome is caused by variations in the
+
+
+############################ 2. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: I've noticed she complains about things looking blurry sometimes. It's like she can't see clearly, and it gets her really upset because she wants to play and learn like the other kids.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: Loud noises really overwhelm her. She gets frustrated easily in places like malls or playgrounds where there's a lot of background noise. I worry it might be affecting her ability to focus.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: Her teeth seem to be more prone to cavities due to weak enamel. We're trying to be super careful with her diet and oral hygiene to prevent more issues.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: Yes, there's a structural abnormality with her heart that we're monitoring closely. The doctors say it's essential to keep an eye on it to ensure it doesn't cause bigger problems later on.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: N/A.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: She appears less coordinated than her peers when it comes to physical activities. Simple tasks like running or climbing seem to be a bit more challenging for her.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: N/A.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: N/A.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: Mealtimes can be quite a struggle for her. There are days when eating is just not appealing to her‚ and that worries me because I want to make sure she's getting all the nutrients she needs.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: She has this issue with her fontanelle not closing properly‚ which is concerning. Additionally‚ her way of moving is slightly different from other children her age‚ almost as if she's still learning how to coordinate her body properly.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+
+### How this affects the patient:
+The patient has a characteristic facial appearance, large permanent teeth, and variable degrees of developmental delay, learning difficulties, and behavioral differences. The facial features can be subtle and may not be fully apparent until the permanent teeth have come through. The patient has conductive hearing loss, undescended testes in boys, seizures, skeletal anomalies, and short stature.
+
+### How this affects others with the syndrome:
+KBG syndrome is a rare genetic disorder characterized by facial features, developmental delays, learning difficulties, and behavioral differences. The syndrome is caused by a mutation in the ANKRD11 gene located on chromosome 16. The syndrome affects boys and girls, and the severity of the condition can vary widely among affected individuals. While the exact prevalence of the syndrome is unknown, it is estimated to affect approximately 1 out of every 10,000 to 100,000 people globally. The syndrome is particularly prevalent in certain populations, such as African Americans, Hispanic/Latino Americans, and Native American communities.
+
+## 2) CARDIOLOGY
+
+### How this affects the patient:
+The patient has a history of developmental delay and learning difficulties, along with frequent seizures and auditory processing abnormalities. The patient has been referred for evaluation due to these symptoms.
+
+### How this affects others with the syndrome:
+The syndrome is associated with various cardiovascular complications, including congenital heart defects, pulmonary hypertension, and atrial septal defect. The patient has undergone echocardiography and electrocardiogram (ECG) testing to assess the extent of these complications.
+
+## 3) GASTROENTEROLOGY
+
+### How this affects the patient:
+The patient has a history of developmental delay and learning difficulties, along with frequent seizures and auditory processing abnormalities. The patient has been referred for evaluation due to these symptoms.
+
+### How this affects others with the syndrome:
+The syndrome is associated with gastrointestinal complications, including gastroesophageal reflux disease (GERD), constipation, and malabsorption. The patient has undergone endoscopy and stool analysis to evaluate the severity of these complications.
+
+## 4) IMMUNOLOGY
+
+### How this affects the patient:
+The patient has a history of developmental delay and learning difficulties, along with frequent seizures and auditory processing abnormalities. The patient has been referred for evaluation due to these symptoms.
+
+### How this affects others with the syndrome:
+The syndrome is associated with autoimmune diseases, including rheumatoid arthritis, lupus, and systemic sclerosis. The patient has undergone laboratory tests and imaging studies to evaluate the presence of autoantibodies and inflammation markers.
+
+## 5) NEUROLOGY
+
+### How this affects the patient:
+The patient has a history of developmental delay and learning difficulties, along with frequent seizures and auditory processing abnormalities. The patient has been referred for evaluation due to these symptoms.
+
+### How this affects others with the syndrome:
+The syndrome is associated with cognitive impairments, including attention deficit hyperactivity disorder (ADHD), intellectual disabilities, and learning difficulties. The patient has undergone neuropsychological assessments to evaluate the severity of these cognitive impairments.
+
+## 6) EAR NOSE THROAT
+
+### How this affects the patient:
+The patient has a history of developmental delay and learning difficulties, along with frequent seizures and auditory processing abnormalities. The patient has been referred for evaluation due to these symptoms.
+
+### How this affects others with the syndrome:
+The syndrome is associated with respiratory infections, including pneumonia, bronchiolitis, and asthma. The patient has undergone chest X-rays and sputum cultures to evaluate the severity of these infections.
+
+## 7) OPHTHALMOLOGY AND VISION
+
+### How this affects the patient:
+The patient has a history of developmental delay and learning difficulties, along with frequent seizures and auditory processing abnormalities. The patient has been referred for evaluation due to these symptoms.
+
+### How this affects others with the syndrome:
+The syndrome is associated with visual impairment, including blindness, strabismus, and amblyopia. The patient has undergone ophthalmologic evaluations to assess the severity of these visual impairments.
+
+## 8) DERMATOLOGY
+
+### How this affects the patient:
+The patient has a history of developmental delay and learning difficulties, along with frequent seizures and auditory processing abnormalities. The patient has been referred for evaluation due to these symptoms.
+
+### How this affects others with the syndrome:
+The syndrome is associated with skin conditions, including eczema, psoriasis, and dermatomyositis. The patient has undergone skin biopsies and skin tests to evaluate the severity of these skin conditions.
+
+## 9) DENTAL
+
+### How this affects the patient:
+The patient has a history of developmental delay and learning difficulties, along with frequent seizures and auditory processing abnormalities. The patient has been referred for evaluation due to these symptoms.
+
+### How this affects others with the syndrome:
+The syndrome is associated with dental issues, including tooth decay, periodontal disease, and jaw deformities. The patient has undergone dental examinations and x-rays to evaluate the severity of these dental issues.
+
+## 10) EDUCATION
+
+### How this affects the patient:
+The patient has a history of developmental delay and learning difficulties, along with frequent seizures and auditory processing abnormalities. The patient has been referred for evaluation due to these symptoms.
+
+### How this affects others with the syndrome:
+The syndrome is associated with educational challenges, including reading difficulties, math difficulties, and social communication difficulties. The patient has undergone educational assessments to evaluate the severity of these educational challenges.
+
+## 11) BEHAVIOR AND DEVELOPMENT
+
+### How this affects the patient:
+The patient has a history of developmental delay and learning difficulties, along with frequent seizures and auditory processing abnormalities. The patient has been referred for evaluation due to these symptoms.
+
+### How this affects others with the syndrome:
+The syndrome is associated with behavioral issues, including attention deficit hyperactivity disorder (ADHD), depression, and anxiety. The patient has undergone behavioral assessments to evaluate the severity of these behavioral issues.
+
+## 12) SKELETAL
+
+### How this affects the patient:
+The patient has a history of developmental delay and learning difficulties, along with frequent seizures and auditory processing abnormalities. The patient has been referred for evaluation due to these symptoms.
+
+### How this affects others with the syndrome:
+The syndrome is associated with skeletal abnormalities, including short stature, limb length discrepancies, and skeletal deformities. The patient has undergone radiographs and X-rays to evaluate the severity of these skeletal abnormalities.
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+
+### Recommendations for screening and treatments:
+The patient has been referred for evaluation due to these symptoms. The recommended screening includes annual physical exams, hearing screenings, and vision assessments. The treatment options include medication, surgery, and lifestyle modifications to address the specific symptoms and potential complications of the syndrome. The patient should be monitored for any changes in symptoms and any new developments in the syndrome.
+
+
+############################ 3. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: My son struggles to see the board at school. He often complains that things are blurry or hard to make out when he's trying to read or watch videos.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: He tends to turn the volume of the TV very high. We've noticed this since he was little, and it's been a consistent thing.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: His teeth break or chip easily. We've had to take him to the dentist a few times already because of this.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: He has a septal defect. The doctors have been monitoring it, and we go for regular check-ups to make sure everything is okay.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: N/A.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He gets tired quickly during physical activity. This has been noticeable since he started going to school and having to run around during recess.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: N/A.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: N/A.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: He has constipation issues. We've tried a few things to help with this, like changing his diet and making sure he drinks enough water.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: He has hip dysplasia, which means his hip joint didn't form correctly. Also, the doctors mentioned palatal abnormalities, which we're still learning more about.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+
+### How this affects the patient:
+The patient has KBG syndrome, a rare genetic disorder characterized by distinctive facial features, particularly large permanent teeth and a triangular-shaped face. The patient experiences developmental delays, behavioral differences, and speech challenges, necessitating specialized care and interventions.
+
+### How this affects others with the syndrome:
+KBG syndrome is a relatively uncommon condition affecting approximately 100 people worldwide. Its prevalence is estimated to be between 1 and 2 per million births, with a slight increase in recent years. The syndrome is associated with various physical and cognitive impairments, including intellectual disabilities, learning difficulties, and behavioral issues. The facial features, particularly the triangular-shaped face and large permanent teeth, are often noted as distinct and distinctive.
+
+### How this affects the patient:
+The patient's unique facial appearance, combined with the presence of large permanent teeth, presents a challenge for social interaction and communication. The patient's inability to express themselves clearly and effectively can lead to misunderstandings and frustration among peers. Additionally, the patient's tendency to chew food excessively and seek comfort through excessive crying or sucking can impact his overall health and well-being.
+
+### How this affects others with the syndrome:
+KBG syndrome is a complex genetic condition that requires multidisciplinary care. While the patient's facial features and intellectual abilities are notable, the syndrome itself can have broader implications for the patient's overall health and development. The patient's unique combination of physical characteristics and cognitive challenges may require specialized attention and support throughout their life.
+
+## 2) CARDIOLOGY
+
+### How this affects the patient:
+The patient has KBG syndrome, which is a rare genetic disorder characterized by distinctive facial features, particularly large permanent teeth and a triangular-shaped face. The patient experiences developmental delays, behavioral differences, and speech challenges, necessitating specialized care and interventions.
+
+### How this affects others with the syndrome:
+KBG syndrome is a relatively uncommon condition affecting approximately 100 people worldwide. Its prevalence is estimated to be between 1 and 2 per million births, with a slight increase in recent years. The syndrome is associated with various physical and cognitive impairments, including intellectual disabilities, learning difficulties, and behavioral issues. The facial features, particularly the triangular-shaped face and large permanent teeth, are often noted as distinct and distinctive.
+
+### How this affects the patient:
+The patient's unique facial appearance, combined with the presence of large permanent teeth, presents a challenge for social interaction and communication. The patient's inability to express themselves clearly and effectively can lead to misunderstandings and frustration among peers. Additionally, the patient's tendency to chew food excessively and seek comfort through excessive crying or sucking can impact his overall health and well-being.
+
+### How this affects others with the syndrome:
+KBG syndrome is a complex genetic condition that requires multidisciplinary care. While the patient's facial features and intellectual abilities are notable, the syndrome itself can have broader implications for the patient's overall health and development. The patient's unique combination of physical characteristics and cognitive challenges may require specialized attention and support throughout their life.
+
+## 3) GASTROENTEROLOGY
+
+### How this affects the patient:
+The patient has KBG syndrome, which is a rare genetic disorder characterized by distinctive facial features, particularly large permanent teeth and a triangular-shaped face. The patient experiences developmental delays, behavioral differences, and speech challenges, necessitating specialized care and interventions.
+
+### How this affects others with the syndrome:
+KBG syndrome is a relatively uncommon condition affecting approximately 100 people worldwide. Its prevalence is estimated to be between 1 and 2 per million births, with a slight increase in recent years. The syndrome is associated with various physical and cognitive impairments, including intellectual disabilities, learning difficulties, and behavioral issues. The facial features, particularly the triangular-shaped face and large permanent teeth, are often noted as distinct and distinctive.
+
+### How this affects the patient:
+The patient's unique facial appearance, combined with the presence of large permanent teeth, presents a challenge for social interaction and communication. The patient's inability to express themselves clearly and effectively can lead to misunderstandings and frustration among peers. Additionally, the patient's tendency to chew food excessively and seek comfort through excessive crying or sucking can impact his overall health and well-being.
+
+### How this affects others with the syndrome:
+KBG syndrome is a complex genetic condition that requires multidisciplinary care. While the patient's facial features and intellectual abilities are notable, the syndrome itself can have broader implications for the patient's overall health and development. The patient's unique combination of physical characteristics and cognitive challenges may require specialized attention and support throughout their life.
+
+## 4) IMMUNOLOGY
+
+### How this affects the patient:
+The patient has KBG syndrome, which is a rare genetic disorder characterized by distinctive facial features, particularly large permanent teeth and a triangular-shaped face. The patient experiences developmental delays, behavioral differences, and speech challenges, necessitating specialized care and interventions.
+
+### How this affects others with the syndrome:
+KBG syndrome is a relatively uncommon condition affecting approximately 100 people worldwide. Its prevalence is estimated to be between 1 and 2 per million births, with a slight increase in recent years. The syndrome is associated with various physical and cognitive impairments, including intellectual disabilities, learning difficulties, and behavioral issues. The facial features, particularly the triangular-shaped face and large permanent teeth, are often noted as distinct and distinctive.
+
+### How this affects the patient:
+The patient's unique facial appearance, combined with the presence of large permanent teeth, presents a challenge for social interaction and communication. The patient's inability to express themselves clearly and effectively can lead to misunderstandings and frustration among peers. Additionally, the patient's tendency to chew food excessively and seek comfort through excessive crying or sucking can impact his overall health and well-being.
+
+### How this affects others with the syndrome:
+KBG syndrome is a complex genetic condition that requires multidisciplinary care. While the patient's facial features and intellectual abilities are notable, the syndrome itself can have broader implications for the patient's overall health and development. The patient's unique combination of physical characteristics and cognitive challenges may require specialized attention and support throughout their life.
+
+## 5) NEUROLOGY
+
+### How this affects the patient:
+The patient has KBG syndrome, which is a rare genetic disorder characterized by distinctive facial features, particularly large permanent teeth and a triangular-shaped face. The patient experiences developmental delays, behavioral differences, and speech challenges, necessitating specialized care and interventions.
+
+### How this affects others with the syndrome:
+KBG syndrome is a relatively uncommon condition affecting approximately 100 people worldwide. Its prevalence is estimated to be between 1 and 2 per million births, with a slight increase in recent years. The syndrome is associated with various physical and cognitive impairments, including intellectual disabilities, learning difficulties, and behavioral issues. The facial features, particularly the triangular-shaped face and large permanent teeth, are often noted as distinct and distinctive.
+
+### How this affects the patient:
+The patient's unique facial appearance, combined with the presence of large permanent teeth, presents a challenge for social interaction and communication. The patient's inability to express themselves clearly and effectively can lead to misunderstandings and frustration among peers. Additionally, the patient's tendency to chew food excessively and seek comfort through excessive crying or sucking can impact his overall health and well-being.
+
+### How this affects others with the syndrome:
+KBG syndrome is a complex genetic condition that requires multidisciplinary care. While the patient's facial features and intellectual abilities are notable, the syndrome itself can have broader implications for the patient's overall health and development. The patient's unique combination of physical characteristics and cognitive challenges may require specialized attention and support throughout their life.
+
+## 6) EAR NOSE THROAT
+
+### How this affects the patient:
+The patient has KBG syndrome, which is a rare genetic disorder characterized by distinctive facial features, particularly large permanent teeth and a triangular-shaped face. The patient experiences developmental delays, behavioral differences, and speech challenges, necessitating specialized care and interventions.
+
+### How this affects others with the syndrome:
+KBG syndrome is a relatively uncommon condition affecting approximately 100 people worldwide. Its prevalence is estimated to be between 1 and 2 per million births, with a slight increase in recent years. The syndrome is associated with various physical and cognitive impairments, including intellectual disabilities, learning difficulties, and behavioral issues. The facial features, particularly the triangular-shaped face and large permanent teeth, are often noted as distinct and distinctive.
+
+### How this affects the patient:
+The patient's unique facial appearance, combined with the presence of large permanent teeth, presents a challenge for social interaction and communication. The patient's inability to express themselves clearly and effectively can lead to misunderstandings and frustration among peers. Additionally, the patient's tendency to chew food excessively and seek comfort through excessive crying or sucking can impact his overall health and well-being.
+
+### How this affects others with the syndrome:
+KBG syndrome is a complex genetic condition that requires multidisciplinary care. While the patient's facial features and intellectual abilities are notable, the syndrome itself can have broader implications for the patient's overall health and development. The patient's unique combination of physical characteristics and cognitive challenges may require specialized attention and support throughout their life.
+
+## 7) OPHTHALMOLOGY AND VISION
+
+### How this affects the patient:
+The patient has KBG syndrome, which is a rare genetic disorder characterized by distinctive facial features, particularly large permanent teeth and a triangular-shaped face. The patient experiences developmental delays, behavioral differences, and speech challenges, necessitating specialized care and interventions.
+
+### How this affects others with the syndrome:
+KBG syndrome is a relatively uncommon condition affecting approximately 100 people worldwide. Its prevalence is estimated to be between 1 and 2 per million births, with a slight increase in recent years. The syndrome is associated with various physical and cognitive impairments, including intellectual disabilities, learning difficulties, and behavioral issues. The facial features, particularly the triangular-shaped face and large permanent teeth, are often noted as distinct and distinctive.
+
+### How this
+
+
+############################ 4. PATIENT ###########################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DOCTOR CONSULTATION $$$$$$$$$$$$$$$$$$$$$$$$
+Doctor: Please tell us about any problems with your child’s vision or eyes.
+Parent: Honestly, I'm a first-time parent and not sure what's normal or not. But my son complains that things look kinda blurry sometimes.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: Yeah. He often asks me to repeat what I just said because he didn't catch it the first time around.
+
+Doctor: Please tell us about the problems with your child’s teeth.
+Parent: They seem really weak. Like, even when he's eating something not too hard, a tooth might break or chip off.
+
+Doctor: Please tell us about any problems with your child’s heart.
+Parent: There's this structural thing with his heart that the doctors mentioned. To be honest, I don't fully understand it yet.
+
+Doctor: Please tell us about any problems with your child's hormones.
+Parent: N/A.
+
+Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+Parent: He was slower at reaching those early milestones like sitting or walking compared to other kids we know.
+
+Doctor: Please tell us about any problems with your child's kidneys.
+Parent: N/A.
+
+Doctor: Please tell us about any problems with your child’s immune system (ability to fight infection and vaccination responses).
+Parent: N/A.
+
+Doctor: Please tell us about problems with your child’s gastrointestinal system (feeding, stomach, bowel).
+Parent: When he was little, feeding was tough. He would spit up a lot and wasn't gaining weight like he should.
+
+Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+Parent: Oh, there are two more things. The doctor said something about his skull not closing right, and there's an issue with his hip that they called dysplasia.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@ PATIENT REPORT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+
+### How this affects the patient:
+The patient has KBG syndrome, a rare genetic disorder characterized by distinctive facial features, particularly large permanent upper middle teeth (macrodontia of upper central incisors).
+
+### How this affects others with the syndrome:
+KBG syndrome is a rare genetic disorder affecting approximately 1 out of every 10,000 births. It is caused by a mutation in the ANKRD11 gene, which is located on chromosome 16. The syndrome presents with various physical characteristics, including a triangular-shaped face, wide-spaced eyes, thick eyebrows, and conductive hearing loss. The condition is associated with intellectual disabilities, learning difficulties, behavioral differences, and developmental delays.
+
+### How this affects the patient:
+The patient's unique facial features, particularly the triangular-shaped face, wide-spaced eyes, thick eyebrows, and conductive hearing loss, make it challenging for him to participate in social activities and communicate effectively. His intellectual disabilities, learning difficulties, and behavioral differences may impact his academic performance and social interactions.
+
+### How this affects others with the syndrome:
+KBG syndrome is a complex genetic condition that can affect multiple aspects of a person's life. While the facial features are distinctive, the syndrome can lead to a range of health complications and developmental challenges. The syndrome is heritable, and while it is possible for affected individuals to inherit the condition from a parent, the risk of inheriting the syndrome is relatively low. However, the syndrome can manifest differently in different individuals, leading to variations in the severity and presentation of the condition.
+
+### Recommendations for screening and treatments:
+For individuals with KBG syndrome, regular dental check-ups are crucial to detect potential dental issues such as weak enamel and dental caries. Regular hearing reviews are essential to address any hearing impairments and ensure proper communication. Eye care is vital for maintaining optimal vision and preventing ocular infections. Teeth should be examined regularly to prevent dental problems and maintain overall oral health. Ongoing attention to the child's cardiovascular system, including regular check-ups and possibly monitoring for any abnormalities, is recommended to address any potential cardiovascular issues.
+
+In terms of nutrition, ensuring adequate intake of vitamins and minerals is important for the child's overall health and development. The child should receive a balanced diet rich in fruits, vegetables, and whole grains to support their growth and development. Additionally, dietary supplements may be prescribed to address any nutritional deficiencies that may be present.
+
+Education is critical for the child, especially regarding the importance of regular dental check-ups and the need for ongoing medical attention. Early intervention and support from healthcare providers can help mitigate the effects of the syndrome and improve the child's quality of life.
+
+Educational needs may vary depending on the individual's specific needs and preferences. Parents should be informed about the child's condition and the steps taken to manage it, including any necessary medical interventions or therapies. Regular follow-up appointments with specialists, such as pediatricians and neurologists, are essential to provide comprehensive care and address any emerging health concerns.
+
+It is important to note that the prognosis for individuals with KBG syndrome is generally favorable, with many experiencing improvements in cognitive abilities and functional outcomes over time. However, the syndrome can sometimes lead to additional health challenges, such as hearing loss or developmental delays, which may require ongoing support and intervention.
+
+### Education:
+Parents should be educated about the syndrome, its symptoms, and how to recognize and manage any potential health issues. They should be advised on the importance of regular dental check-ups, the benefits of regular hearing reviews, and the need for continued medical attention. Parents should be encouraged to seek support from local resources, such as community centers or support groups, to connect with others facing similar challenges.
+
+### Behaviors:
+Behavioral differences may include difficulty with social interactions, repetitive behaviors, and difficulties with self-care. Parents should be aware of these behaviors and seek guidance from therapists or counselors to develop strategies for managing them. Encouraging positive reinforcement and consistent praise can help reinforce desired behaviors and reduce negative ones.
+
+### Sensory Processing:
+The child may experience difficulties with sensory processing, such as difficulty with touch, taste, smell, and visual acuity. Parents should be prepared to adapt their routines and environments to accommodate these challenges. Providing sensory-friendly materials and engaging in sensory-rich activities can help alleviate these difficulties.
+
+### Growth and Development:
+The child's growth and development may be impacted by the syndrome, leading to delayed milestones and potentially lower-than-average heights. Regular check-ups with a pediatrician and a specialist in growth and development are essential to monitor progress and address any concerns promptly.
+
+### Medical Concerns:
+The child may require additional medical evaluations, such as echocardiography or MRI scans, to assess for any structural abnormalities or to rule out underlying conditions. Regular follow-up appointments with specialists, such as neurologists and orthopedists, are crucial to address any potential issues and ensure the best possible care.
+
+### Nutritional Needs:
+Nutrition is critical for the child's overall health and development. Parents should be informed about the importance of a balanced diet rich in fruits, vegetables, and whole grains, and should be encouraged to consult with a registered dietitian to create a personalized meal plan that meets the child's specific needs.
+
+### Endocrinological Considerations:
+The child may experience hormonal imbalances, such as hypothyroidism or hyperthyroidism, which can affect growth and development. Regular monitoring of thyroid function and treatment options, if indicated, is essential to ensure the child's health and well-being.
+
+### Psychological Support:
+Parents may find it helpful to seek support from mental health professionals, such as psychologists or counselors, to address any emotional or psychological challenges that may arise from living with a child with the syndrome. Parenting classes, support groups, and counseling services can provide valuable resources and support.
+
+### General Advice:
+Parents should be proactive in seeking support and resources, whether through local organizations, online forums, or community centers. They should be open to adjusting their expectations based on the child's current needs and progress. Regular communication with healthcare providers, educators, and support networks is key to providing the best possible care for the child with KBG syndrome.
+
+
