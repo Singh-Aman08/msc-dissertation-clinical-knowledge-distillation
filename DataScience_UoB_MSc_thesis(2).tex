@@ -20,15 +20,15 @@
 %   (so 2014 rather than the academic year, say 2013/14 say).
 
 \documentclass[ % the name of the author
-                    author={Daniel Page},
+                    author={Aman Kumar Singh},
                 % the name of the supervisor
-                supervisor={Dr. Andrew Calway},
+                supervisor={Dr. Edwin Simpson},
                 % the degree programme
                     degree={MSc},
                 % the dissertation    title (which cannot be blank)
-                     title={Some Structural Guidelines for Data Science MSc Theses, Including Those With Long Titles that Run Across Multiple Lines on the Front Page},
+                     title={Rubric-Guided Knowledge Distillation of Large Language Models for Clinically Grounded Personalised Medical Report Generation},
                 % the dissertation subtitle (which can    be blank)
-                  subtitle={And those including an optional subtitle too, for good measure},
+                  subtitle={A Quality-Aware Framework for Clinical Knowledge Transfer and Evaluation},
                 % the dissertation     type
                       type={},
                 % the year of submission
@@ -320,52 +320,125 @@ summarises the aims, objectives, {\bf and achievements}\/ of your work.
 
 \chapter{Background}
 \label{chap:background}
+\section{Personalised Medical Reports in Neurogenetic Disorders}
+\subsection{Neurogenetic and Neurodevelopmental Disorders}
+Neurodevelopmental disorders (NDDs) are a heterogeneous group of conditions that emerge during childhood and affect brain development and functioning, often resulting in difficulties with cognition, communication, behaviour, learning, and social functioning. Genetic factors contribute substantially to many NDDs, leading to considerable variation in symptoms, severity, and combinations of intellectual, behavioural, motor, and neurological features \cite{gao_genetic_2025, assadourian_precision_2025}.
 
-{\bf A compulsory chapter, roughly 20\% of the total page-count}
-\vspace{1cm} 
+KBG syndrome (KBGS) is a rare genetic neurodevelopmental disorder primarily associated with pathogenic variants or deletions involving the ANKRD11 gene. It presents with a broad spectrum of features, including developmental delay, intellectual and learning difficulties, behavioural and neurological abnormalities, distinctive craniofacial features, macrodontia, short stature, and skeletal abnormalities \cite{martinez-cayuelas_clinical_2023}. The combination and severity of these features can vary substantially between children, highlighting the need to represent each child's individual clinical profile rather than relying solely on generic descriptions.
 
-\noindent
-This chapter is intended to describe the technical basis on which execution
-of the project depends.  The goal is to provide a detailed explanation of
-the specific problem at hand, and existing work that is relevant such as an
-existing algorithm that you use, alternative solutions proposed, supporting
-technologies, and relevant literature. The literature you include should cover 
-appropriate peer-reviewed academic publications and books, and maybe also 
-news and current-affairs articles published in reputable sources such as 
-{\em The Economist} magazine or {\em The Financial Times} newspaper. 
+For families, understanding rare genetic disorders can be challenging due to limited condition-specific information and complex medical terminology. Personalised and accessible patient reports can help consolidate information about a child's symptoms, medical history, and care needs into a clear, patient-specific summary, supporting parents in understanding their child's condition and communicating with healthcare professionals \cite{low_identifying_2025, burbury_exploring_2025}. This motivates the use of automated patient report generation to produce personalised, understandable summaries from complex clinical and background information.
 
-Your thesis should include complete set of references/bibliography: everything that you cite should be in there, in full. This means including the publisher's name for anything that is a book; the editors and title of books that a paper appears in as one item in a larger collection (e.g. proceedings volumes and/or thematic edited collections) and the relevant page-numbers; and so on. Put most simply, we require and expect your references to look like the references in a published peer-reviewed academic paper, so you can work out whether you still have work to do by comparing your references to the reference-list on the publications that you're working from. 
+\subsection{LLM-Based Personalised Medical Report Generation}
+Large Language Models (LLMs), such as GPT-4o and BioGPT, have demonstrated strong capabilities in medical report generation, clinical summarisation, and healthcare documentation, highlighting their potential to synthesise complex clinical information \cite{yuan_continued_2024, rehman_advancement_2025, alabed_large_2026, che_llm-driven_2026, makram_ai_2024}. These capabilities make LLMs promising for personalised patient report generation, as they can integrate patient-specific information and generate summaries tailored to individual clinical contexts. For example, Ganzinger et al. \cite{ganzinger_automated_2025} used open-source LLMs to generate German discharge summaries from structured EHR data, while Tariq et al. \cite{tariq_patient_2024} developed a patient-sensitive model for generating radiology summaries adapted to different levels of medical knowledge. These studies demonstrate the potential of LLMs for generating both clinically useful and patient-oriented medical reports.
+\subsection{Challenges of LLM-Based Patient Report Generation}
+Despite their potential, deploying large, cloud-hosted LLMs in clinical settings presents significant privacy, regulatory, and resource challenges. Patient–doctor consultations contain highly sensitive medical information, while regulations such as HIPAA and GDPR restrict the transfer of clinical data to external commercial APIs, raising important privacy and compliance concerns \cite{annas_hipaa_2003, noauthor_eu_nodate, zhong_considerations_2025, al-dhabyani_data_2026}. Furthermore, many community clinics and regional hospitals have limited computational resources and may lack the specialised GPU infrastructure required to locally deploy and efficiently run large open-weight models \cite{li_collm_2024}.
 
-Note there is a subtle difference from
-this and a full-blown literature {\em survey}.  The latter might try
-to capture and organise (e.g., categorise somehow) {\em all}\/ related work,
-potentially offering meta-analysis, whereas here the goal is simply to
-ensure that your thesis is self-contained.  Put another way, after reading 
-this chapter an intelligent non-expert reader with no prior knowledge of your project should have obtained enough background to 
-understand what {\em you}\/ have done (by reading subsequent sections), and then 
-accurately assess your work.  You might view an additional goal as giving 
-the reader confidence that you are able to absorb, understand and clearly 
-communicate highly technical material.
+\subsection{SLM-Based Personalised Medical Report Generation}
+Small Language Models (SLMs) have emerged as efficient alternatives to large language models (LLMs), offering lower computational, memory, and storage requirements while maintaining competitive performance on domain-specific tasks \cite{wang_comprehensive_2025, garg_rise_2026}. These advantages make SLMs attractive for healthcare, where local deployment can improve privacy and reduce reliance on cloud infrastructure when processing sensitive patient information \cite{wang_comprehensive_2025}.
 
-Just as there is no single ideal structure for an MSc thesis, there is no one correct name for this chapter. You could just call it {\em Background}\/ if you wish, or {\em Technical Background}. Or if you feel you have a lot to say you could split this chapter into two: you might have your first three chapters being:
-\begin{enumerate}
-\item Introduction
-\item Context
-\item Related Work
-\end{enumerate}
-\noindent
-But if you prefer to use a more concise structure, you could instead use:
-\begin{enumerate}
-\item Introduction: Contextual Background
-\item Technical Background
-\end{enumerate}
-\noindent
-The choice is yours. 
+SLMs have demonstrated potential in medical applications. For example, Meerkat showed improved reasoning performance across medical benchmarks while maintaining a lightweight architecture \cite{kim_small_2025}, while Rohanian et al. \cite{rohanian_effectiveness_2022} developed lightweight biomedical models that achieved performance comparable to larger models on downstream tasks. This suggests that SLMs can support clinical text processing and generation with more practical deployment requirements.
 
+For personalised patient report generation, SLMs could enable patient-specific clinical information to be processed locally, reducing the need to transmit sensitive data to external APIs. However, their smaller size can limit complex reasoning and specialised medical knowledge \cite{turki_evaluating_2025, wang_comprehensive_2025}. Knowledge distillation can address this limitation by transferring useful capabilities from larger teacher models to smaller student models \cite{gou_knowledge_2021}.
+\section{Knowledge Distillation}
+\subsection{Fundamentals of Knowledge Distillation}
+Knowledge distillation (KD) is a model compression and knowledge-transfer technique in which a smaller student model learns useful knowledge from a larger and more capable teacher model \cite{hinton_distilling_2015, wang_knowledge_2022}. Unlike conventional compression approaches such as pruning, quantisation, and low-rank factorisation, which reduce or modify the model's parameters or architecture, KD transfers knowledge from the teacher to the student without necessarily altering the underlying model architecture \cite{wang_knowledge_2022, mansourian_comprehensive_2025}. The teacher provides additional learning signals, such as its output distributions, allowing the student to learn aspects of the teacher's behaviour beyond conventional hard target labels \cite{hinton_distilling_2015}.
 
-The key thing is that by the end of these first two or three chapters you have told the reader everything they need to know so that they can understand the rest of your thesis. This is particularly important because at least one of the people who actually examines your thesis will be a UoB academic, one of our lecturers or professors, who you can assume knows almost nothing about the specifics of what work you have done, and who is given a copy of your thesis to mark. So what you write has to adequately explain things to that examiner. You can safely assume that whoever examines your thesis is numerate, intelligent, understands programming and data analytics etc, but you cannot safely assume that their specific individual expertise is a perfect match to the topic of your thesis (it's in that sense that the examiner is a {\em non-expert}). So, the person you write for, your {\em audience}, should be that undefined group of academics who might possibly examine your thesis: if you write for that audience and do a good job, your thesis should be understandable by a wide range of people, including potential employers and colleagues in the world of work.
+The central principle of KD is therefore knowledge transfer, whereby information learned by a large model is transferred to a smaller model during training. This enables the student to acquire useful capabilities of the teacher while retaining the computational and memory advantages of a smaller architecture. Consequently, KD can reduce the resources required for model inference and deployment while aiming to preserve much of the teacher's predictive or generative performance \cite{hinton_distilling_2015, wang_knowledge_2022}. Beyond model compression, KD can also facilitate knowledge transfer when labelled data are limited or when knowledge must be transferred across different tasks or models. In privacy-sensitive settings, data-free distillation provides another alternative by enabling knowledge transfer without directly requiring access to the original training data \cite{wang_knowledge_2022}.
 
-% -----------------------------------------------------------------------------
+The effectiveness of KD depends on several design choices, including what knowledge is transferred, how this knowledge is transferred, and how the teacher and student models are configured \cite{mansourian_comprehensive_2025}. These considerations have led to a range of distillation approaches based on different teacher–student configurations and forms of transferred knowledge, which are discussed in the following subsection.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Screenshot 2026-08-11 162229.png}
+    \caption{Generic teacher--student framework for knowledge distillation \cite{gou_knowledge_2021}.}
+    \label{fig:kd}
+\end{figure}
+\subsection{Types of Knowledge Distillation}
+Knowledge distillation can be categorised according to the training strategy, accessibility of the teacher model, and type of knowledge transferred. These classifications describe different aspects of the teacher–student framework and are not mutually exclusive.
+\subsubsection{Offline, Online, and Self-Distillation}
+Offline distillation is the most common form of knowledge distillation and typically involves a pretrained teacher model whose parameters remain frozen while a smaller student learns from its outputs \cite{hinton_distilling_2015, wang_knowledge_2022}. Although straightforward and effective, it requires the teacher to remain available during student training and may transfer biases or limitations present in the teacher \cite{guo_reducing_2021, huang_knowledge_2022-1}.
+
+In online distillation, the teacher and student are trained simultaneously, allowing knowledge to be transferred dynamically during the training process \cite{chen_online_2020}. The teacher may be constructed from multiple student models or branches, removing the need for a separately pretrained teacher, although this can increase training complexity. Self-distillation is a related approach in which knowledge is transferred within the same model, such as from an earlier training stage, deeper layer, or previous version of the model \cite{furlanello_born_2018, zhang_be_2019}. It can improve model performance without requiring a separate, larger teacher network.
+
+\subsubsection{Black-Box and White-Box Distillation}
+White-box distillation assumes access to the teacher model's internal information, such as logits, hidden representations, attention patterns, or model parameters. This allows the student to learn from richer signals than the teacher's final outputs, but requires access to the teacher's internal architecture and computations \cite{donisch_inference_2024}.
+
+In contrast, black-box distillation relies only on the teacher's externally observable outputs, without access to its internal parameters or representations. For language models, the teacher can therefore be prompted to generate responses, explanations, or rationales that are subsequently used as supervision for the student \cite{shi_knowledge_2025}. This makes black-box distillation particularly suitable for proprietary or API-based LLMs, where internal model information is inaccessible.
+
+The key distinction is therefore the level of access to the teacher: white-box distillation exploits internal model information, whereas black-box distillation transfers knowledge primarily through the teacher's observable outputs.
+\subsubsection{Response-, Logit-, and Feature-Based Distillation}
+Knowledge distillation can also be classified according to the form of knowledge transferred from the teacher to the student. In response-based distillation, the student learns from the teacher's final outputs, such as predicted labels or generated text. For language models, this can involve using teacher-generated responses as training targets, making the approach particularly suitable for generative tasks \cite{yang_categories_2023}.
+
+In logit-based distillation, the student learns from the teacher's logits or probability distributions rather than only the final predicted token. These soft targets provide information about the teacher's confidence across alternative predictions and can therefore provide richer supervision than hard labels \cite{habib_knowledge_2024}.
+
+Feature-based distillation transfers knowledge from the teacher's intermediate representations, encouraging the student to learn similar internal features or representations. This can provide richer information about how the teacher processes the input, although it generally requires access to the teacher's internal architecture \cite{park_relational_2019}.
+\subsection{Knowledge Distillation for LLMs}
+Knowledge distillation for language models extends the teacher–student framework to generative tasks, where a smaller student model learns to reproduce useful capabilities of a larger teacher model. Rather than transferring knowledge for a single prediction task, the process aims to transfer aspects of the teacher's language generation, instruction following, domain knowledge, and response structure \cite{chen_distilling_2021}.
+
+A common approach is to use a teacher LLM to generate instruction–response pairs or synthetic training examples, which are then used to fine-tune the student model\cite{wang_self-instruct_2023}. This provides a practical way of transferring capabilities from large, computationally expensive models to smaller models that are more suitable for efficient deployment. It is particularly useful when the teacher is proprietary or accessed through an API, as the student can be trained using the teacher's generated outputs without requiring access to its internal architecture.
+
+However, distillation of generative language models introduces important challenges. Errors, hallucinations, and undesirable behaviours in teacher-generated responses may be transferred to the student, while the smaller model may not have sufficient capacity to reproduce the full range of the teacher's capabilities\cite{zhang_lifting_2023}. Therefore, the quality and relevance of the teacher-generated training data become important determinants of student performance . This is particularly critical in clinical report generation, where generated content must be accurate, coherent, relevant, and grounded in the individual patient's information. These considerations motivate the need for quality-aware approaches to knowledge distillation, discussed in the following section.
+\subsection{Research Gap and Proposed Rubric-Weighted Knowledge Distillation}
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+.\\
+\section{Evaluation}
+The evaluation of generated clinical reports requires multiple complementary measures, as no single metric captures all aspects of quality. This study evaluates clinical and linguistic quality, similarity to reference or teacher-generated reports, and model efficiency.
+\subsection{Clinical Report Quality Dimensions}
+Clinical report quality encompasses multiple dimensions that assess both the accuracy of the generated information and the effectiveness of its presentation. In this study, five key dimensions are considered: factuality, coverage, conciseness, readability, and medical tone, each capturing a distinct aspect of report quality. The following provides a brief description of each dimension.\\
+\textbf{Factuality:} Whether the generated report accurately reflects the provided clinical information without false, contradictory, or unsupported claims \cite{munnangi_factehr_2025}.\\
+\textbf{Coverage:} Whether the generated report is supported by and adequately represents the relevant information provided in the source \cite{moramarco_towards_2021}.\\
+\textbf{Conciseness:} Whether the report communicates relevant information clearly and efficiently without unnecessary repetition, irrelevant content, or excessive detail \cite{schoonbeek_quality_2025}.\\
+\textbf{Readability:} Whether the report is clear, coherent, and easy for the intended audience to understand.
+\textbf{Medical Tone:} Whether the report uses professional, clinically appropriate, and audience-suitable language \cite{seo_evaluation_2024}.
+
+\subsection{Rubric-Based and LLM-as-a-Judge Evaluation}
+Rubric-based evaluation uses a predefined set of criteria and scoring guidelines, known as a rubric, to systematically assess generated reports. Each report is evaluated across specific quality dimensions using the same criteria, enabling consistent and structured assessment of different aspects of report quality. This allows complex qualitative properties, such as factuality and readability, to be represented through standardised scores \cite{hashemi_llm-rubric_2024}. Rubrics are particularly useful for generated clinical reports, where quality is inherently multidimensional and cannot be adequately captured by a single metric. A multidimensional rubric allows these aspects to be assessed independently while providing a common framework across different outputs. Furthermore, rubrics can guide automated evaluation by providing an LLM with explicit criteria for assessing generated reports, reducing the need for manual assessment and enabling evaluation of large collections of outputs \cite{fan_sedareval_2024}.
+
+LLM-as-a-Judge extends this approach by using a language model to evaluate generated reports according to the predefined rubric. The judge assesses each report across the specified dimensions and assigns corresponding scores, enabling scalable evaluation while capturing qualitative properties that may be difficult to measure using conventional automatic metrics \cite{zheng_judging_2023}. In clinical report generation, this approach provides a unified framework for assessing dimensions such as factuality, coverage, conciseness, readability, and medical tone.
+
+Despite its scalability and flexibility, LLM-as-a-Judge evaluation presents several challenges. Its reliability depends on the clarity and design of the rubric, as ambiguous criteria may lead to inconsistent scoring. The judging model may also exhibit evaluator bias or produce variable scores across evaluation runs \cite{pombal_self-preference_2026}. In clinical settings, an additional challenge is the ability to identify subtle medical errors and distinguish clinically supported information from statements that are merely plausible. Therefore, clearly defined rubrics and consistent evaluation procedures are important for obtaining reliable and meaningful assessment scores.
+\subsection{Automatic Evaluation and Model Efficiency}
+Automatic evaluation metrics provide quantitative measures that complement rubric-based assessment. Text similarity metrics, such as ROUGE \cite{lin_rouge_2004}, BLEU \cite{ward_bleu_2001}, BERTScore \cite{zhang_bertscore_2020}, and embedding-based semantic similarity, assess the lexical or semantic correspondence between generated reports and reference or teacher-generated reports. While lexical metrics focus on word or phrase overlap, semantic metrics capture similarities in meaning despite differences in wording. Model efficiency is also important when evaluating an SLM, particularly in resource-constrained settings. Measures such as parameter count, inference time, memory usage, and token generation speed indicate the model's computational cost and practical deployability \cite{wani_benchmarking_2026}. Together, these measures provide a broader assessment of both report quality and model performance.
+
 
 \chapter{Execution}
 \label{chap:execution}
@@ -544,8 +617,8 @@ And this, the final paragraph of this thesis template, is just a bunch of citati
 % in the main matter to cite it, e.g., \cite{X}, \cite[Chapter 2}{Y}.
 
 \backmatter
-
-\bibliography{sample_bibtex.bib}
+\bibliographystyle{unsrt}
+\bibliography{references.bib}
 
 % -----------------------------------------------------------------------------
 
