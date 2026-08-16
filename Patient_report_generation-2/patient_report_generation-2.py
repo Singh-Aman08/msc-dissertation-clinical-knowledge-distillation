@@ -5,8 +5,8 @@ import torch
 import accelerate
 
 MODEL_ID = "meta-llama/Llama-3.3-70B-Instruct"
-INPUT_FILE = "syn_con_2_15.jsonl"
-OUTPUT_FILE = "patient_report_2_15.jsonl"
+INPUT_FILE = "testing_consultations_01.jsonl"
+OUTPUT_FILE = "patient_report_[baseline_qwen25_15b]_01.jsonl"
 HF_TOKEN = "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"
 
 if not torch.cuda.is_available():
