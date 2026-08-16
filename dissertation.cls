@@ -69,6 +69,7 @@
 % \RequirePackage{dtklogos}
 % Dave Cliff added this, June2021
 \RequirePackage{xcolor}
+
 % =============================================================================
 
 \makeatletter

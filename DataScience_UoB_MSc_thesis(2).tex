@@ -33,7 +33,8 @@
                       type={},
                 % the year of submission
                       year={2021}]{dissertation}
-
+\usepackage{multicol}
+\usepackage[most]{tcolorbox}
 \begin{document}
 
 % =============================================================================
@@ -443,86 +444,441 @@ Automatic evaluation metrics provide quantitative measures that complement rubri
 \chapter{Execution}
 \label{chap:execution}
 
-{\bf A topic-specific chapter, roughly 30\% of the total page-count}
-\vspace{1cm} 
+\section{Overview of the Proposed Framework}
+\section{Synthetic Patient Profile Generation}
+\subsection{Patient Profile Design}
 
-\noindent
-This chapter is intended to describe what you did: the goal is to explain
-the main activity or activities, of any type, which constituted your work 
-during the project.  The content is highly topic-specific. For some 
-projects it will make sense to split the content into two main sections, or maybe even into two separate chapters: one 
-will discuss the design of something, including any rationale or decisions made, 
-and the other will discuss how this design was realised via some form of 
-implementation.  You could instead give this chapter the title ``Design and Implementation"; or you might split this content into two chapters, one titled ``Design" and the other ``Implementation" .
+Synthetic patient profiles were designed as structured representations of the
+patient characteristics required to generate diverse and personalised
+doctor--patient consultations. Each profile combined clinical features drawn
+from predefined KBG syndrome-related domains with a parent communication
+persona, enabling variation in both clinical content and communication style.
+Basic demographic attributes, including age and gender, were also included to
+provide contextual information. The resulting profiles provided a consistent
+input structure for the subsequent consultation generation process.
 
-Note that it is common to include evidence of ``best practice'' project 
-management (e.g., use of version control, choice of programming language 
-and so on).  Rather than simply a rote list, make sure any such content 
-is useful and/or informative in some way: for example, if there was a 
-decision to be made then explain the trade-offs and implications 
-involved.
+\subsection{Controlled Random Sampling Strategy}
 
-\section{Example Section}
+To introduce controlled variability across synthetic patients, profile
+attributes were randomly sampled from predefined clinical feature and persona
+pools. Clinical features were organised into domains including vision,
+hearing, dental, cardiac, neurological, gastrointestinal, and other medical
+characteristics. Features were sampled from the corresponding domain-specific
+pools, with additional characteristics drawn from the other medical feature
+pool. A parent communication persona was independently sampled from a
+predefined set representing different communication styles. This strategy
+allowed the profiles to vary systematically while maintaining a consistent
+overall structure.
 
-This is an example section; 
-the following content is auto-generated dummy text.
-\lipsum
+The sampling of a clinical feature from a domain can be represented as:
 
-\subsection{Example Sub-section}
+\[
+x_d \sim P_d
+\]
 
-\begin{figure}[t]
-\centering
-foo
-\caption{This is an example figure.}
-\label{fig}
+where $x_d$ denotes the sampled feature from domain $d$, and $P_d$ represents
+the corresponding predefined feature pool. The complete clinical feature
+pools and parent communication personas used for sampling are provided in
+Appendix~\ref{appx:profile_pools}.
+
+\subsection{Profile Generation Procedure}
+
+For each synthetic patient, demographic attributes and a parent communication
+persona were first selected from their respective predefined pools. Clinical
+features were then sampled from the relevant domain-specific pools, followed
+by additional features from the other medical feature pool. The selected
+attributes were combined into a structured profile and assigned a unique
+patient identifier. This process was repeated until the required number of
+profiles had been generated. The resulting profiles were stored in JSON
+format, providing a consistent and machine-readable representation for the
+subsequent consultation generation stage.
+
+\section{Doctor–Patient Consultation Ibrahim}
+
+\subsection{Consultation Generation Framework}
+Synthetic doctor--patient consultations were generated to create realistic and diverse clinical interactions for subsequent personalised report generation. Each synthetic patient profile was provided to \textit{Llama-3.3-70B-Instruct} using a structured prompt. The prompt incorporated the patient-specific clinical features, parent communication persona, fixed consultation structure, and explicit generation constraints. A representative consultation was also included as an in-context example to guide the expected response format and style, constituting a few-shot prompting approach.
+
+The model was instructed to reproduce a fixed sequence of ten predefined doctor questions covering the major clinical domains relevant to KBG syndrome, while generating corresponding parent responses grounded in the supplied profile. The parent persona controlled variation in linguistic style, vocabulary, and level of detail. Generation constraints were used to minimise unsupported clinical information and maintain consistency between the source profile and generated consultation.
+
+Each consultation was generated independently and stored with its patient identifier and source profile in JSON Lines format. The resulting synthetic consultations were subsequently used for clinical report generation. The overall generation pipeline is shown in Figure~\ref{fig:consultation_framework}, while the complete prompt is provided in Appendix~\ref{appx:consultation_prompt}.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Screenshot 2026-08-15 172352.png}
+    \caption{Framework for generating synthetic doctor--patient consultations
+    from synthetic patient profiles using a teacher language model.}
+    \label{fig:consultation_framework}
 \end{figure}
+\subsection{Diversity Assessment}
+The diversity of the generated consultations was evaluated to determine whether the generation process produced sufficiently varied parent responses rather than repeatedly reproducing similar linguistic patterns. Diversity was assessed across lexical, structural, grammatical, and semantic dimensions.
 
-\begin{table}[t]
+Distinct-2 \cite{guo_curious_2024} was used to measure lexical variation by calculating the proportion of unique bigrams within parent responses. Standard deviation of Mean Length of Utterance (MLU) \cite{potratz_measurement_2022} captured variation in the length of parent responses, providing an indication of differences in response structure and level of detail. POS Shannon entropy \cite{arora_estimating_2022} measured the distribution and variability of grammatical categories used across the consultations. Finally, pairwise cosine similarity between consultation embeddings was used to assess semantic similarity between generated consultations \cite{noauthor_evaluating_2026}.
+
+Together, these complementary measures assessed whether the consultations varied not only in their surface-level wording, but also in response length, grammatical composition, and overall semantic content. This provided a broader assessment of the diversity of the synthetic consultation dataset.
+\section{Teacher-Guided Clinical Report Generation}
+
+Following the generation of synthetic doctor--patient consultations, the
+consultations were transformed into personalised clinical reports using a
+large language model. This stage was designed to generate high-quality
+reference reports that could subsequently be evaluated and used in the
+student-model training and knowledge distillation stages. Each report was
+grounded in the corresponding consultation, while a clinical reference
+context provided additional syndrome-level information required for
+interpretation and management recommendations.
+
+The report generation process was formulated as a conditional text generation
+task:
+
+\[
+y = f_{\theta}(x,c,p)
+\]
+
+where $x$ represents the doctor--patient consultation, $c$ represents the
+KBG syndrome clinical reference context, $p$ represents the structured
+generation prompt, $f_{\theta}$ denotes the language model with parameters
+$\theta$, and $y$ represents the generated clinical report. The consultation
+provided the patient-specific evidence, while the clinical reference
+provided supporting syndrome-level information.
+
+The \textit{Llama-3.3-70B-Instruct} model
+(\texttt{meta-llama/Llama-3.3-70B-Instruct}) was used for report generation.
+The model was instruction prompted to transform each consultation into a
+structured clinical report while maintaining factual grounding and
+patient-specificity. To reduce GPU memory requirements during inference, the
+model was loaded using 4-bit NF4 quantisation with double quantisation and
+bfloat16 computation.
+
+A structured prompting strategy was used to constrain the generation process.
+The prompt provided the model with the KBG clinical reference guidelines and
+the corresponding doctor--parent consultation. The model was instructed to
+first identify the clinical findings present in the consultation, associate
+each finding with its appropriate clinical category, and then generate the
+final report. This intermediate processing was performed internally and was
+not included in the generated output.
+
+To reduce unsupported clinical information, patient-specific statements were
+required to originate from the consultation, while syndrome-level information
+was restricted to the supplied clinical reference. Recommendations were
+generated only when supported by reported patient findings. Where information
+was unavailable for a category, the model was instructed to return
+``N/A''. This grounding strategy reduced the likelihood of introducing
+symptoms or clinical assumptions that were not supported by the source
+material.
+
+The generated reports followed a fixed 13-category schema covering major
+clinical domains, including cardiology, gastroenterology, immunology,
+neurology, ENT, ophthalmology, dental, education, behaviour and development,
+and skeletal features, followed by screening and treatment recommendations.
+For each clinical domain, the report distinguished between
+\textit{patient-specific effects} and \textit{syndrome-level information}.
+This consistent schema enabled systematic comparison of reports across
+patients and provided a standardised target format for subsequent
+distillation.
+
+Generation was performed independently for each consultation. A relatively
+low sampling temperature ($T=0.3$) was used to favour factual consistency
+and adherence to the prescribed report structure. The resulting outputs
+were stored in JSONL format together with the source consultation and
+associated generation fields, preserving the correspondence between each
+input consultation and its generated report. These consultation--report
+pairs formed the teacher-generated reference dataset.
+
+The teacher-generated reports were subsequently subjected to rubric-based
+quality assessment. Reports were evaluated against predefined criteria
+before being considered for subsequent student-model training and
+knowledge-distillation experiments. The complete report-generation prompt,
+including the clinical reference context and output schema, is provided in
+Appendix~\ref{appx:report_prompt}.
+
+The overall process is illustrated in
+Figure~\ref{fig:teacher_report_generation}, showing the transformation from
+the synthetic consultation and clinical reference context through structured
+prompting and language-model generation to the final structured clinical
+report.
+
+//////////////////////////
+Figuree
+\\
+\section{Evaluation of Generated Personalised Medical Reports}
+This section evaluates whether teacher-generated reports are of sufficient quality to serve as training data for the student model. Reports are assessed based on factuality, coverage, medical tone, readability, and conciseness to determine their suitability for knowledge distillation.
+\subsection{Factuality}
+
+
+Factuality was assessed using a fine-grained, claim-level verification procedure to determine whether generated reports were supported by their designated source information. The approach was motivated by methods that decompose generated text into atomic factual units and subsequently verify each unit against an evidence source \cite{min_etal_2023_factscore}. Similar claim-level approaches have also been applied to medical text, where fine-grained factuality assessment is particularly important for identifying unsupported clinical information \cite{munnangi2025factehr,huang2026medscore}.
+
+For each generated report, the factual content was first decomposed into atomic clinical claims. An atomic claim was defined as a single clinically meaningful statement that could be independently verified. A structured extraction prompt was used to identify patient-specific information explicitly supported by the doctor--parent consultation, while excluding questions, non-informative responses, inference, and external medical knowledge. Closely related details representing the same clinical fact were retained as a single claim. The complete extraction prompt is provided in Appendix~\ref{appx:factuality_claim_prompt}.
+
+Each extracted claim was subsequently verified against its corresponding evidence source. Patient-specific claims, including reported symptoms and clinical history, were checked against the original doctor--parent consultation, whereas syndrome-level claims were checked against the KBG syndrome background information used during report generation. Verification therefore assessed whether each claim was grounded in the information available to the report-generation process rather than relying on external medical knowledge.
+
+Each claim $c_i$ was assigned a binary verification label:
+
+\begin{equation}
+v_i =
+\begin{cases}
+1, & \text{if } c_i \text{ is supported by its corresponding source},\\
+0, & \text{otherwise}.
+\end{cases}
+\end{equation}
+
+A claim was considered supported when the source explicitly conveyed the same clinical meaning, allowing for differences in wording, grammar, or clinically equivalent terminology. Unsupported, contradictory, or source-unverifiable claims were assigned a value of zero. The complete verification prompt and evaluation criteria are provided in Appendix~\ref{appx:factuality_verification_prompt}.
+
+The report-level factuality score was calculated as the proportion of supported atomic claims:
+
+\begin{equation}
+\mathrm{Factuality}(R)
+=
+\frac{\sum_{i=1}^{N} v_i}{N},
+\end{equation}
+
+where $N$ denotes the total number of extracted claims in report $R$. The resulting score ranges from 0 to 1, with higher values indicating greater source-grounded factuality.
+
+The complete evaluation process can therefore be represented as:
+
+\begin{tcolorbox}[
+    enhanced,
+    colback=blue!3,
+    colframe=blue!45!black,
+    boxrule=0.7pt,
+    arc=1.5mm,
+    left=4mm,
+    right=4mm,
+    top=3mm,
+    bottom=3mm
+]
 \centering
-\begin{tabular}{|cc|c|}
-\hline
-foo      & bar      & baz      \\
-\hline
-$0     $ & $0     $ & $0     $ \\
-$1     $ & $1     $ & $1     $ \\
-$\vdots$ & $\vdots$ & $\vdots$ \\
-$9     $ & $9     $ & $9     $ \\
-\hline
-\end{tabular}
-\caption{This is an example table.}
-\label{tab}
-\end{table}
+\textbf{Factuality Evaluation Pipeline}
 
-\begin{algorithm}[t]
-\For{$i=0$ {\bf upto} $n$}{
-  $t_i \leftarrow 0$\;
-}
-\caption{This is an example algorithm.}
-\label{alg}
-\end{algorithm}
+\vspace{2mm}
 
-\begin{lstlisting}[float={t},caption={This is an example listing.},label={lst},language=C]
-for( i = 0; i < n; i++ ) {
-  t[ i ] = 0;
-}
-\end{lstlisting}
+\text{Patient Report}
+$\rightarrow$
+\text{Atomic Claims}
+$\rightarrow$
+\text{Source Verification}
+$\rightarrow$
+\text{Binary Labels}
+$\rightarrow$
+\text{Factuality Score}
 
-This is an example sub-section;
-the following content is auto-generated dummy text.
-Notice the examples in Figure~\ref{fig}, Table~\ref{tab}, Algorithm~\ref{alg}
-and Listing~\ref{lst}.
-\lipsum
+\end{tcolorbox}
 
-\subsubsection{Example Sub-sub-section}
+For example, a generated statement such as ``The patient experiences speech delay'' would be treated as an atomic claim and verified against the corresponding consultation. If the consultation explicitly supports the statement, the claim receives $v_i=1$; otherwise, it receives $v_i=0$. Further examples of claim decomposition, evidence sources, and verification decisions are provided in Appendix~\ref{appx:factuality_verification_prompt}.
 
-This is an example sub-sub-section;
-the following content is auto-generated dummy text.
-\lipsum
+This procedure provides a fine-grained measure of source-grounded factuality and allows unsupported information to be identified at the individual claim level rather than being masked within an overall document-level judgement.
 
-\paragraph{Example paragraph.}
+\subsection{Coverage}
 
-This is an example paragraph; note the trailing full-stop in the title,
-which is intended to ensure it does not run into the text.
+Coverage was evaluated to measure the extent to which clinically relevant
+information from the source material was retained in the generated reports.
+Unlike factuality, which assesses whether generated claims are supported by
+source evidence, coverage assesses whether relevant source information is
+represented in the report \cite{min_etal_2023_factscore,munnangi2025factehr}.
+Because the report integrates information from different sources, coverage
+was evaluated separately for patient-specific information, syndrome-level
+background information, and recommendations.
+
+\subsubsection{Patient-Specific Coverage}
+
+Patient-specific coverage was assessed using a two-stage claim-based
+procedure. First, clinically meaningful patient-specific claims were
+extracted from the doctor--parent consultation. Only information explicitly
+stated by the parent about the child was retained; doctor's questions,
+\textit{N/A} responses, emotions, uncertainty, opinions, intentions, and
+unsupported inferences were excluded. Complex statements were decomposed
+into distinct clinical facts while avoiding duplicate claims
+\cite{min_etal_2023_factscore,munnangi2025factehr}. The extraction prompt is
+provided in Appendix~\ref{appx:patient_coverage_prompt}.
+
+Each claim was then evaluated against the generated report. A claim was
+considered covered if the report conveyed the same clinical meaning,
+irrespective of differences in wording or sentence structure. Claims that
+were absent, unclear, or unsupported were assigned $0$. Thus,
+
+\begin{equation}
+v_i^{P} =
+\begin{cases}
+1, & \text{if claim } c_i \text{ is covered by the report},\\
+0, & \text{otherwise}.
+\end{cases}
+\end{equation}
+
+The patient-specific coverage score was:
+
+\begin{equation}
+\mathrm{Coverage}_{P}(R)
+=
+\frac{1}{N_P}\sum_{i=1}^{N_P}v_i^{P},
+\end{equation}
+
+where $N_P$ is the number of extracted patient-specific claims.
+
+\subsubsection{Syndrome Background and Recommendation Coverage}
+
+Syndrome-level coverage was evaluated using feature-specific questions.
+For each clinical feature explicitly reported by the parent, two questions
+were generated: one assessing coverage of relevant KBG syndrome background
+information (\textit{syndrome\_background}) and one assessing coverage of
+relevant recommendations, screening, treatment, monitoring, referral, or
+therapy (\textit{recommendation}). Question generation was restricted to
+features present in the consultation. The corresponding prompts are provided
+in Appendix~\ref{appx:syndrome_coverage_prompt}.
+
+Each question was evaluated against the generated report and assigned:
+
+\begin{equation}
+v_j =
+\begin{cases}
+1, & \text{if the requested information is explicitly addressed},\\
+0, & \text{otherwise}.
+\end{cases}
+\end{equation}
+
+Separate scores were calculated for syndrome background and recommendations:
+
+\begin{equation}
+\mathrm{Coverage}_{B}(R)
+=
+\frac{1}{N_B}\sum_{j=1}^{N_B}v_j^{B},
+\qquad
+\mathrm{Coverage}_{Rec}(R)
+=
+\frac{1}{N_{Rec}}\sum_{j=1}^{N_{Rec}}v_j^{Rec}.
+\end{equation}
+
+Here, $N_B$ and $N_{Rec}$ denote the numbers of background and
+recommendation questions, respectively. Background coverage required the
+report to address how the relevant feature affects people with KBG syndrome,
+while recommendation coverage required explicit, feature-relevant clinical
+advice. Missing, ambiguous, or inferred information was assigned $0$.
+
+The three component scores were retained separately and subsequently
+averaged to obtain the overall coverage score:
+
+\begin{equation}
+\mathrm{Coverage}_{Overall}(R)
+=
+\frac{
+\mathrm{Coverage}_{P}(R)
++
+\mathrm{Coverage}_{B}(R)
++
+\mathrm{Coverage}_{Rec}(R)
+}{3}.
+\end{equation}
+
+This provides separate and overall measures of retention of patient-specific
+findings, syndrome-level information, and recommendations.
+\subsection{Conciseness Assessment}
+\label{sec:conciseness}
+
+Conciseness was evaluated as a composite measure of information retention,
+factual reliability, and report brevity. This reflects the requirement that
+generated clinical reports should preserve relevant information and factual
+accuracy without unnecessary verbosity.
+
+For each report, token length $L_i$ was calculated using the tokenizer of the
+evaluated model. Token lengths were min--max normalised across the evaluation
+set:
+
+\begin{equation}
+L_i^{\mathrm{norm}}
+=
+\frac{L_i-L_{\min}}
+{L_{\max}-L_{\min}},
+\end{equation}
+
+where $L_{\min}$ and $L_{\max}$ are the minimum and maximum report lengths.
+A brevity factor was then defined as:
+
+\begin{equation}
+B_i = 1-L_i^{\mathrm{norm}},
+\end{equation}
+
+so that shorter reports receive higher brevity scores. The final conciseness
+score was calculated using the geometric mean of coverage, factuality, and
+brevity:
+
+\begin{equation}
+\mathrm{Conciseness}_i
+=
+\left(
+\mathrm{Coverage}_i
+\cdot
+\mathrm{Factuality}_i
+\cdot
+B_i
+\right)^{1/3}.
+\end{equation}
+
+The geometric mean ensures that high performance in one dimension cannot
+fully compensate for poor performance in another. Thus, a high score requires
+the report to be sufficiently informative, factually reliable, and concise.
+\subsection{Readability Assessment}
+\label{sec:readability}
+
+Readability was evaluated to assess the linguistic accessibility of the
+generated clinical reports using four established text-based measures. The
+Flesch Reading Ease (FRE) score provides a general measure of reading ease,
+with higher scores indicating greater readability
+\cite{flesch1948new}. The Flesch--Kincaid Grade Level (FKGL) estimates the
+educational grade level required to comprehend the text
+\cite{kincaid1975derivation}. The Simple Measure of Gobbledygook (SMOG) index
+estimates reading difficulty based primarily on the use of polysyllabic words
+\cite{mclaughlin1969smog}. The Dale--Chall score assesses readability based
+on word familiarity and sentence length \cite{chall1995readability}.
+
+All four measures were computed for each generated report using the cleaned
+report text and the \texttt{textstat} implementation. The measures were
+retained independently to capture complementary aspects of textual
+difficulty and account for their different scoring interpretations. The
+resulting readability scores were summarised across the evaluation set using
+the mean, standard deviation, minimum, maximum, and quartiles.
+\subsection{Medical Tone Assessment}
+\label{sec:medical_tone}
+
+Medical tone was evaluated to assess whether generated reports used
+professional, respectful, and patient-centred clinical language. The
+assessment followed a two-stage LLM-based procedure. First, patient-specific
+content was extracted from each report, including statements describing how
+the condition affects the patient and recommendations for screening or
+treatment. Syndrome-level background information and general medical
+information were excluded. The extraction used few-shot prompting, with the
+complete prompt provided in Appendix~\ref{appx:medical_tone_prompt}.
+
+The extracted statements were then evaluated using a separate few-shot
+evaluation prompt across three binary dimensions: \textit{professionalism},
+\textit{respectfulness}, and \textit{patient-centred communication}. These
+dimensions reflect the importance of clear, appropriate, respectful, and
+patient-focused communication in clinical contexts \cite{epstein2005patient}.
+Each statement received a binary score:
+
+\begin{equation}
+s_{ij} =
+\begin{cases}
+1, & \text{if statement } i \text{ satisfies criterion } j,\\
+0, & \text{otherwise},
+\end{cases}
+\end{equation}
+
+where $j \in \{P,R,C\}$ represents professionalism, respectfulness, and
+patient-centred communication, respectively. For each report, the score for
+criterion $j$ was calculated as the proportion of extracted statements
+receiving a positive evaluation:
+
+\begin{equation}
+S_j =
+\frac{1}{N}\sum_{i=1}^{N}s_{ij},
+\end{equation}
+
+where $N$ is the number of extracted patient-specific statements. The three
+dimensions were retained separately to distinguish different aspects of
+medical tone rather than combining them into a single score. Scores were
+calculated for all generated reports and subsequently summarised across the
+evaluation set.
+\section{Student Model and Supervised Fine-Tuning}
+\section{Quality-Weighted Knowledge Distillation}
+\section{Direct Preference Optimisation}
+\section{Evaluation of Student-Generated Reports}
+\section{Experimental Setup and Model Comparison}
 
 % -----------------------------------------------------------------------------
 
@@ -628,25 +984,1023 @@ And this, the final paragraph of this thesis template, is just a bunch of citati
 
 \appendix
 
-\chapter{An Example Appendix}
-\label{appx:example}
+\chapter{Synthetic Patient Profile Feature and Persona Pools}
+\label{appx:profile_pools}
 
-Content which is not central to, but may enhance the dissertation can be 
-included in one or more appendices; examples include, but are not limited
-to
+This appendix provides the complete clinical feature pools and parent
+communication personas used in the synthetic patient profile generation
+process described in Section~3.2.2.
+
+\section{Clinical Feature Pools}
+
+The predefined clinical feature pools used for random sampling were:
 
 \begin{itemize}
-\item lengthy mathematical proofs, numerical or graphical results which 
-      are summarised in the main body,
-\item sample or example calculations, 
-      and
-\item results of user studies or questionnaires.
+    \item \textbf{Vision:} Astigmatism, Myopia, Hypermetropia, Squint,
+    struggles to see the board at school, often squints when looking at things,
+    sits very close to the TV or books, complains that things look blurry,
+    rubs eyes frequently when focusing.
+
+    \item \textbf{Hearing:} Otitis media, glue ear, fluid in the ear,
+    does not always respond when called, asks people to repeat themselves
+    often, turns the volume of the TV very high, seems to hear some sounds
+    but not others clearly, gets frustrated in noisy places.
+
+    \item \textbf{Teeth:} Large front teeth, weak enamel, teeth break or
+    chip easily, tooth sensitivity with cold food, needs frequent dental
+    visits, difficulty chewing harder foods.
+
+    \item \textbf{Heart:} Valve abnormality, septal defect, structural
+    heart abnormality, gets tired more quickly than other children, needs
+    regular heart check-ups, breathes faster during play, cannot keep up
+    with physical activity for long.
+
+    \item \textbf{Neurological:} Seizures, epilepsy, hypotonia, tethered
+    cord, slower milestone development, frequent falls, reduced coordination,
+    fatigue during physical activity, unusual staring or blank spells.
+
+    \item \textbf{Gastrointestinal:} Feeding difficulties, poor feeding in
+    infancy, feeding aversion, bowel problems, difficult mealtimes, picky
+    eating, refusal of certain foods, constipation, slow weight gain.
+
+    \item \textbf{Other medical features:} Scoliosis, hip dysplasia, short
+    fingers, speech delay, delayed fontanelle closure, undescended testes
+    (male), palatal abnormalities, reduced speech, difficulty being
+    understood, differences in posture or movement, delayed development,
+    and slower achievement of milestones.
 \end{itemize}
 
-\noindent
-Note that in line with most research conferences, the examiners are not
-obliged to read such appendices.
+\section{Parent Communication Personas}
 
-% =============================================================================
+The predefined parent communication personas were:
+
+\begin{multicols}{3}
+\begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+    
+    \item Brief and reassured
+    \item Detailed and observant
+    \item Anxious and concerned
+    \item Matter-of-fact
+    \item Confused and unsure
+    \item Overwhelmed parent
+    \item Overprotective parent
+    \item Highly educated parent
+    \item Low health literacy
+    \item First-time parent
+    \item Experienced parent
+    \item Emotionally flat
+    \item Detail-dumping parent
+\end{itemize}
+\end{multicols}
+
+\chapter{Consultation Generation Prompt}
+\label{appx:consultation_prompt}
+
+The following prompt was used for synthetic consultation generation. The
+prompt follows a few-shot conversational structure consisting of a system
+instruction, an example user profile, an example assistant-generated
+consultation, and the target patient profile.
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM
+
+You generate realistic doctor-parent consultations for children with KBG syndrome.
+
+Rules:
+
+- The doctor MUST ask the exact 10 questions provided below, in the given order, without modification.
+- Generate the complete consultation from start to finish. Every doctor question must have exactly one corresponding parent response.
+- Base every parent response only on the provided patient profile. Do not add, remove, or alter patient information.
+- Use the "parent_persona" field to determine the parent's communication style, tone, and vocabulary.
+- Each parent response must contain exactly 2-5 short sentences depending on the parent_persona.
+- If the corresponding category in the patient profile is empty or contains no symptoms, the parent's entire response must be exactly N/A.
+- Treat every consultation as a different family by varying sentence structure, wording, and expression while preserving the underlying patient information.
+- Do not introduce symptoms, diagnoses, or concerns that are not present in the patient profile.
+
+The 10 Verbatim Doctor Questions:
+
+1. Doctor: Please tell us about any problems with your child's vision or eyes.
+2. Doctor: Please tell us about problems with your child's hearing or ears.
+3. Doctor: Please tell us about the problems with your child's teeth.
+4. Doctor: Please tell us about any problems with your child's heart.
+5. Doctor: Please tell us about any problems with your child's hormones.
+6. Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+7. Doctor: Please tell us about any problems with your child's kidneys.
+8. Doctor: Please tell us about any problems with your child's immune system (ability to fight infection and vaccination responses).
+9. Doctor: Please tell us about problems with your child's gastrointestinal system (feeding, stomach, bowel).
+10. Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+
+
+USER
+
+PROFILE
+
+{
+    "patient_id": 1,
+    "age": 4,
+    "gender": "Male",
+    "parent_persona": "detailed_observant",
+    "vision": [],
+    "hearing": [{"symptom": "Speech delay"}],
+    "teeth": [
+        {"symptom": "Weak enamel"},
+        {"symptom": "Large front teeth"}
+    ],
+    "heart": [{"symptom": "Valve abnormality"}],
+    "neurological": [
+        {"symptom": "Developmental delay"},
+        {"symptom": "Tethered cord"}
+    ],
+    "kidneys": [],
+    "immune": [],
+    "gastrointestinal": [],
+    "other_medical": [
+        {"symptom": "Palatal abnormalities"},
+        {"symptom": "Undescended testes"}
+    ]
+}
+
+Generate the consultation.
+
+
+ASSISTANT
+
+Doctor: Please tell us about any problems with your child's vision or eyes.
+Parent: We haven't noticed any issues with his eyesight. He seems to spot things normally and doesn't struggle with seeing objects or people.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: We don't think hearing is the problem, but he's quite behind when it comes to talking. He understands some of what we say, but getting words out is much harder for him than other children his age.
+
+Doctor: Please tell us about the problems with your child's teeth.
+Parent: His front teeth look much bigger than expected for his age. We've also been told the teeth are quite fragile, so we have to be careful with brushing and dental check-ups.
+
+Doctor: Please tell us about any problems with your child's heart.
+Parent: The doctors found an issue with one of the valves in his heart. We go for regular check-ups, and so far it hasn't stopped him from doing his usual activities.
+
+[Remaining doctor-parent exchanges omitted for brevity.]
+
+Doctor: Please use this box to tell us about any other medical problems that you haven't been able to mention above.
+Parent: The roof of his mouth developed differently, which has made speaking a bit harder for him. He also has one testicle that hasn't moved down properly, and that's being monitored.
+
+
+USER
+
+PATIENT_PROFILE
+
+{target patient profile inserted here}
+
+Generate the consultation.
+\end{lstlisting}
+
+
+\end{quote}
+
+
+The target consultation was generated using
+\textit{Llama-3.3-70B-Instruct} with stochastic decoding. The principal
+generation parameters are shown in Table~\ref{tab:consultation_config}.
+
+\begin{table}[htbp]
+\centering
+\caption{Configuration used for consultation generation.}
+\label{tab:consultation_config}
+\begin{tabular}{ll}
+\hline
+\textbf{Parameter} & \textbf{Value} \\
+\hline
+Model & Llama-3.3-70B-Instruct \\
+Quantisation & 8-bit \\
+Maximum new tokens & 2048 \\
+Temperature & 0.75 \\
+Top-$p$ & 0.90 \\
+Repetition penalty & 1.12 \\
+Sampling & Enabled \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+
+\chapter{Report Generation Prompt}
+\label{appx:report_prompt}
+
+The following prompt was used for personalised clinical report generation.
+A zero-shot instruction prompting strategy was used, with the system message
+defining the report requirements and the user message providing the KBG
+clinical reference guidelines and doctor--parent consultation.
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM
+
+You are an expert clinical patient report synthesis engine specialising in rare genetic syndromes.
+
+Transform the doctor-parent consultation into a structured Clinical Patient Report using only:
+1. The consultation transcript.
+2. The provided clinical reference guidelines.
+
+Before writing the report, internally:
+
+1. Extract all patient findings.
+2. Assign each finding to its most appropriate clinical section.
+3. Generate the final report.
+
+Do not output this internal analysis.
+
+Rules:
+
+- Generate a concise, accurate clinical report.
+- Do not add unsupported information or assumptions.
+- "How this affects the patient" must contain only patient-specific information from the consultation.
+- "How this affects others with the syndrome" must contain only relevant syndrome-level information from the clinical reference guidelines.
+- Assign each symptom exclusively to its most appropriate clinical category.
+- Provide recommendations only for reported symptoms.
+- List recommendations as bullet points, with each recommendation directly addressing the patient's identified symptoms.
+- If any information is unavailable for a particular section, write exactly "N/A" and nothing else.
+- Ensure the final report follows all instructions before responding.
+- Use clear professional clinical language.
+
+Output MUST strictly follow this exact markdown structure:
+
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 2) CARDIOLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 3) GASTROENTEROLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 4) IMMUNOLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 5) NEUROLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 6) EAR NOSE THROAT
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 7) OPHTHALMOLOGY AND VISION
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 8) DERMATOLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 9) DENTAL
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 10) EDUCATION
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 12) SKELETAL
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+
+
+USER
+
+=== CLINICAL REFERENCE GUIDELINES ===
+
+{KBG clinical reference context}
+
+=== VERBATIM DOCTOR-PARENT CONVERSATION ===
+
+{synthetic consultation transcript}
+
+Generate the complete clinical report following the strict 13-category schema layout.
+\end{lstlisting}
+
+The placeholders \texttt{\{KBG clinical reference context\}} and
+\texttt{\{synthetic consultation transcript\}} were dynamically replaced
+for each generation instance.
+
+\begin{table}[htbp]
+\centering
+\caption{Configuration used for clinical report generation.}
+\label{tab:report_generation_config}
+\begin{tabular}{ll}
+\hline
+\textbf{Parameter} & \textbf{Value} \\
+\hline
+Model & Llama-3.3-70B-Instruct \\
+Quantisation & 4-bit NF4 \\
+Temperature & 0.30 \\
+Sampling & Enabled \\
+\hline
+\end{tabular}
+\end{table}
+
+\chapter{Atomic Clinical Claim Extraction Prompt}
+\label{appx:factuality_claim_prompt}
+
+The following few-shot prompt was used to decompose generated clinical
+reports into atomic clinical claims prior to factuality verification.
+The prompt distinguished between patient-specific and syndrome-specific
+claims and instructed the model to decompose complex statements into
+independently verifiable factual units.
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM
+
+You are an expert clinical information extraction assistant.
+
+Your task is to analyse a generated clinical report and extract all factual claims. The report contains two distinct types of information, and each extracted claim must be assigned to the correct category.
+
+Category 1: Patient-Specific Claims
+
+These claims are extracted from sections describing:
+"How this affects the patient"
+
+They represent factual statements about the individual patient.
+
+Category 2: Syndrome-Specific Claims
+
+These claims are extracted from sections describing:
+"How this affects others with the syndrome" and
+"Recommendations for Screening and Treatments"
+
+They represent factual statements about KBG syndrome, its effects on affected individuals in general, and general recommendations for screening, monitoring, or management of the syndrome.
+
+Instructions:
+
+- Extract all factual claims explicitly stated in the report.
+- Claims from "How this affects the patient" sections must be classified as Patient-Specific Claims.
+- Claims from "How this affects others with the syndrome" sections and the "Recommendations for Screening and Treatments" section must be classified as Syndrome-Specific Claims.
+- Decompose complex sentences into atomic claims, where each claim contains only one factual statement.
+- Extract claims faithfully.
+- Do not add, infer, explain, or reinterpret information.
+- Preserve the original meaning and perform only minimal restructuring for claim decomposition.
+- Ignore "N/A" sections as they do not contain factual claims.
+- Return only the extracted claims in the required JSON format.
+- Ensure the final output is a complete and valid JSON object.
+
+USER
+
+[Example clinical patient report]
+
+# CLINICAL PATIENT REPORT
+
+## 1) CARDIOLOGY
+
+a) How this affects the patient:
+The patient has a structural abnormality in her heart.
+
+b) How this affects others with the syndrome:
+Around 38% of people with KBG syndrome have heart conditions,
+including changes to the heart valves, holes in the heart chambers,
+and structural changes.
+
+## 2) GASTROENTEROLOGY
+
+a) How this affects the patient:
+The patient experiences bowel movement problems, causing discomfort
+and irregularity.
+
+b) How this affects others with the syndrome:
+Some people with KBG syndrome have feeding difficulties and may
+require short-term nasogastric tube feeding to supplement oral feeds.
+
+[Additional clinical sections omitted for brevity]
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+
+* Regular dental check-ups to monitor tooth health and address any concerns.
+* Regular hearing reviews to address hearing concerns.
+* Cardiac review to monitor the patient's heart condition.
+* Consider physiotherapy and occupational therapy to support development.
+
+ASSISTANT
+
+{
+  "patient_specific_claims": [
+    "The patient has a structural abnormality in her heart.",
+    "The patient experiences bowel movement problems.",
+    "The patient experiences discomfort.",
+    "The patient experiences irregularity."
+  ],
+  "syndrome_specific_claims": [
+    "Around 38% of people with KBG syndrome have heart conditions.",
+    "People with KBG syndrome have changes to the heart valves.",
+    "People with KBG syndrome have holes in the heart chambers.",
+    "People with KBG syndrome have structural changes.",
+    "Some people with KBG syndrome have feeding difficulties.",
+    "Some people with KBG syndrome may require short-term nasogastric tube feeding to supplement oral feeds.",
+    "Regular dental check-ups are recommended to monitor tooth health and address concerns.",
+    "Regular hearing reviews are recommended to address hearing concerns.",
+    "Cardiac review is recommended to monitor the patient's heart condition.",
+    "Physiotherapy may be considered to support development.",
+    "Occupational therapy may be considered to support development."
+  ]
+}
+
+USER
+
+Generate the atomic clinical claims for the following generated
+patient report:
+
+{generated patient report}
+\end{lstlisting}
+
+The placeholder \texttt{\{generated patient report\}} was dynamically
+replaced with the generated report for each evaluation instance.
+The few-shot example provided the model with the expected distinction
+between patient-specific and syndrome-specific claims, as well as the
+required degree of claim decomposition.
+
+\begin{table}[htbp]
+\centering
+\caption{Configuration used for atomic clinical claim extraction.}
+\label{tab:factuality_claim_config}
+\begin{tabular}{ll}
+\hline
+\textbf{Parameter} & \textbf{Value} \\
+\hline
+Model & Qwen3-30B-A3B-Instruct-2507 \\
+Quantisation & 4-bit NF4 \\
+Maximum new tokens & 2048 \\
+Sampling & Disabled (greedy decoding) \\
+
+\hline
+\end{tabular}
+\end{table}
+
+\chapter{Atomic Claim Factuality Verification Prompt}
+\label{appx:factuality_verification_prompt}
+
+The following zero-shot prompt was used to evaluate the factual
+grounding of the atomic clinical claims extracted from each generated
+patient report. Each claim was verified against its designated
+Reference Document, with patient-specific claims evaluated against
+patient-level source information and syndrome-specific claims evaluated
+against the corresponding KBG syndrome reference information.
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM
+
+You are an expert clinical factuality evaluator.
+
+Your task is to determine whether each atomic claim is directly
+supported by the provided Reference Document.
+
+For each claim, output:
+
+1. "claim": The exact claim being evaluated.
+2. "supported": "YES" or "NO".
+
+Strict evaluation criteria:
+
+- Use ONLY the provided Reference Document.
+- Do not use external medical knowledge.
+- Do not make clinical assumptions or logical extensions.
+- A claim is YES only if the information is explicitly stated or is
+  a direct paraphrase of information in the Reference Document.
+- If a claim requires reasoning, interpretation, prediction, or
+  medical knowledge beyond the document, mark it as NO.
+- If any part of a multi-part claim is unsupported, mark the whole
+  claim as NO.
+- Evaluate patient-specific claims only against patient information
+  in the Reference Document.
+- Evaluate syndrome-specific claims only against syndrome information
+  in the Reference Document.
+
+Examples:
+
+Reference: "The patient has hearing difficulties."
+
+Claim: "The patient has hearing difficulties." -> YES
+Claim: "The patient may need hearing aids." -> NO
+Claim: "The patient may have permanent hearing loss." -> NO
+
+You MUST respond ONLY with valid JSON:
+
+{
+  "results": [
+    {"claim": "string", "supported": "YES/NO"}
+  ]
+}
+
+USER
+
+Reference Document:
+
+"""{reference_doc}"""
+
+Claims to Verify:
+
+{claims_list}
+
+Evaluate each claim strictly against the Reference Document only.
+Do not use external medical knowledge or infer missing information.
+\end{lstlisting}
+
+The placeholders \texttt{\{reference\_doc\}} and
+\texttt{\{claims\_list\}} were dynamically populated for each
+evaluation instance. Patient-specific and syndrome-specific claims
+were evaluated against their respective source information.
+
+\begin{table}[htbp]
+\centering
+\caption{Configuration used for atomic claim factuality verification.}
+\label{tab:factuality_verification_config}
+\begin{tabular}{ll}
+\hline
+\textbf{Parameter} & \textbf{Value} \\
+\hline
+Model & Qwen3-30B-A3B-Instruct-2507 \\
+Quantisation & 4-bit NF4 \\
+Maximum new tokens & 2048 \\
+Sampling & Disabled (greedy decoding) \\
+
+\hline
+\end{tabular}
+\end{table}
+\chapter{Patient-Specific Coverage Evaluation Prompts}
+\label{appx:patient_coverage_prompt}
+
+The following prompts were used to assess coverage of patient-specific
+clinical information. A two-stage, zero-shot instruction-prompting strategy
+was employed. The first stage performed atomic patient-specific clinical
+claim extraction from the doctor--parent consultation, while the second
+stage independently verified whether each extracted claim was represented
+in the generated patient report. No task-specific demonstrations or
+labelled examples were provided during either stage.
+
+\section*{Stage 1: Patient-Specific Claim Extraction}
+
+A zero-shot instruction-based extraction prompt was used to identify
+clinically meaningful patient-specific claims. Only information explicitly
+stated by the parent about the child was retained. The prompt excluded
+doctor's questions, \textit{N/A} responses, emotions, uncertainty, opinions,
+intentions, unsupported inferences, and duplicate claims. Complex statements
+were decomposed into distinct clinical facts while closely related
+information was merged where appropriate.
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM
+
+You are a clinical information extraction assistant.
+Extract patient-specific clinical claims from a doctor-parent
+consultation.
+
+Rules:
+
+- Extract only clinical information explicitly stated by the parent
+  about the child.
+- Do not extract the parent's emotions, uncertainty, opinions,
+  concerns, intentions, or plans.
+- Do not infer information or use external medical knowledge.
+- Ignore doctor's questions and N/A responses.
+- Each claim should represent one clinically meaningful fact.
+- Split a statement only when it contains multiple distinct clinical facts.
+- Do not create multiple claims that describe the same clinical fact
+  using different wording.
+- Do not split out minor details such as duration, examples,
+  comparisons, or context unless they represent an important
+  clinical fact.
+- Merge closely related symptoms or details into a single meaningful
+  clinical claim.
+- Keep the original meaning with minimal rewriting.
+- Return only valid JSON containing the extracted claims.
+\end{lstlisting}
+
+The consultation was provided as the user input:
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+USER
+
+Now extract atomic patient claims from this consultation:
+
+{doctor-parent consultation}
+\end{lstlisting}
+
+
+\section*{Stage 2: Claim-Level Coverage Verification}
+
+Each extracted claim was subsequently evaluated independently against the
+generated Clinical Patient Report using a zero-shot semantic verification
+prompt. The evaluator was instructed to assess whether the report conveyed
+the same clinical meaning as the target claim, allowing differences in
+wording, grammar, terminology, and sentence structure. Exact lexical
+matching was therefore not required.
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM
+
+You are a clinical summary coverage evaluator.
+Your task is to evaluate whether a generated patient summary covers
+a clinical claim extracted from a doctor-parent consultation.
+
+Rules:
+
+- Evaluate ONLY the provided Clinical Patient Report and Target Claim.
+- Do not use external medical knowledge or add assumptions.
+- Mark YES if the patient report conveys the same clinical meaning
+  as the target claim, even if different wording is used.
+- Treat clinically equivalent expressions as the same information.
+- Do not require exact wording.
+- Ignore minor differences in wording, grammar, tense, pronouns,
+  or non-essential details.
+- Mark NO if the clinical information in the claim is not present
+  or not supported by the patient report.
+
+Examples:
+
+"tooth pain when eating cold foods" ↔
+"tooth sensitivity to cold foods" → YES
+
+"valve issue" ↔
+"heart valve abnormality" → YES
+
+"delayed milestones" ↔
+"takes longer to achieve milestones" → YES
+
+You MUST respond ONLY with valid JSON:
+
+{
+  "results": [
+    {
+      "claim": "string",
+      "covered": "YES/NO"
+    }
+  ]
+}
+\end{lstlisting}
+
+The generated report and target claim were provided as the user input:
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+USER
+
+Clinical Patient Report:
+
+{generated patient report}
+
+Target Claim:
+
+{extracted patient-specific claim}
+
+Determine whether the patient report includes this clinical information.
+Return the evaluation only in the required JSON format.
+\end{lstlisting}
+
+
+\begin{table}[htbp]
+\centering
+\caption{Configuration used for patient-specific coverage evaluation.}
+\label{tab:patient_coverage_config}
+\begin{tabular}{ll}
+\hline
+\textbf{Parameter} & \textbf{Value} \\
+\hline
+Model & Qwen3-30B-A3B-Instruct-2507 \\
+Quantisation & 4-bit NF4 \\
+Maximum new tokens & 2048 \\
+Sampling & Disabled \\
+
+\hline
+\end{tabular}
+\end{table}
+
+\chapter{Syndrome Background and Recommendation Coverage Prompt}
+\label{appx:syndrome_coverage_prompt}
+
+The following prompts were used to evaluate coverage of syndrome-level
+background information and clinical recommendations in the generated
+personalised reports. The procedure consisted of two stages. First, a
+few-shot prompting strategy was used to generate feature-specific evaluation
+questions from the doctor--parent consultation. For each clinical feature
+explicitly reported by the parent, one question assessed coverage of
+syndrome-level background information and one assessed coverage of relevant
+recommendations. Second, a zero-shot evaluation prompt was used to determine
+whether the generated report explicitly addressed each question.
+
+\section*{Question Generation Prompt}
+
+The question-generation prompt used the consultation as input and was
+provided with one illustrative doctor--parent consultation and its expected
+question set as few-shot examples.
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM
+
+You are a clinical question generation assistant.
+Your task is to read a doctor-parent consultation and generate evaluation
+questions to assess whether the patient report provides:
+
+1. Background information about how the relevant feature affects other
+   people with KBG syndrome.
+2. Relevant recommendations, screening, treatment, or management advice
+   for that feature.
+
+Rules:
+
+- Use only information explicitly stated by the parent.
+- Ignore doctor's questions and all N/A responses.
+- Do not use external medical knowledge.
+- Do not infer missing information.
+- For each clinical feature mentioned by the parent:
+  - Generate one syndrome_background question.
+  - Generate one recommendation question.
+- Keep questions short, direct, and specific.
+- Return only valid JSON.
+
+USER (FEW-SHOT EXAMPLE)
+
+[Illustrative doctor-parent consultation]
+
+ASSISTANT (FEW-SHOT EXAMPLE)
+
+[
+  {
+    "question": "Does the report mention how vision problems affect
+    others with the syndrome?",
+    "category": "syndrome_background"
+  },
+  {
+    "question": "Does the report include recommendations for vision
+    problems?",
+    "category": "recommendation"
+  }
+  ...
+]
+
+USER
+
+Generate coverage questions for the following consultation.
+
+{doctor-parent consultation}
+\end{lstlisting}
+
+The complete consultation and corresponding few-shot example used during
+question generation are retained in the experimental implementation.
+
+\section*{Question Validation Prompt}
+
+The generated questions were subsequently evaluated against the corresponding
+patient report using a zero-shot prompting strategy. The evaluator was
+instructed to rely exclusively on the generated report and not to introduce
+external medical knowledge or infer information not explicitly stated.
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM
+
+You are a clinical report coverage evaluator.
+Your task is to determine whether a patient report contains information
+that answers the given question.
+
+Rules:
+
+- Use only information explicitly stated in the patient report.
+- Do not use external medical knowledge.
+- Do not infer missing information.
+- Give YES only if the report provides the information requested.
+- Give NO if the information is missing, unclear, or not directly addressed.
+- For recommendation questions, give YES if the report provides any
+  explicit recommendation, screening, monitoring, treatment, referral,
+  therapy, or management advice relevant to the feature.
+- For syndrome_background questions, give YES only if the report explains
+  how the relevant feature affects people with KBG syndrome.
+- Preserve the category field from each input question.
+
+Return ONLY valid JSON:
+
+{
+  "results": [
+    {
+      "question": "string",
+      "category": "syndrome_background or recommendation",
+      "covered": "YES/NO"
+    }
+  ]
+}
+
+USER
+
+Patient Report:
+
+{generated patient report}
+
+Questions:
+
+{generated evaluation questions}
+
+Evaluate every question against the report and return the results only
+in the required JSON format.
+\end{lstlisting}
+
+\section*{Model Configuration}
+
+Both question generation and question validation were performed using
+\texttt{Qwen3-30B-A3B-Instruct-2507}. The model was loaded using 4-bit
+NormalFloat4 (NF4) quantisation with bfloat16 computation. Deterministic
+generation was used by disabling sampling.
+
+\begin{table}[htbp]
+\centering
+\caption{Configuration used for syndrome-background and recommendation
+coverage evaluation.}
+\label{tab:syndrome_coverage_config}
+\begin{tabular}{ll}
+\hline
+\textbf{Parameter} & \textbf{Value} \\
+\hline
+Model & Qwen3-30B-A3B-Instruct-2507 \\
+Quantisation & 4-bit NF4 \\
+Compute dtype & bfloat16 \\
+Question generation & Few-shot prompting \\
+Question validation & Zero-shot prompting \\
+Maximum input length & 8192 tokens \\
+Maximum new tokens & 2048 \\
+Sampling & Disabled (\texttt{do\_sample=False}) \\
+KV caching & Enabled (\texttt{use\_cache=True}) \\
+\hline
+\end{tabular}
+\end{table}
+
+For each report, the validated questions were separated into
+\textit{syndrome\_background} and \textit{recommendation} categories.
+Category-specific coverage was calculated as the proportion of questions
+assigned the \texttt{YES} label, with the overall coverage score calculated
+from all generated questions.
+\let\cleardoublepage\clearpage
+
+\chapter{Medical Tone Evaluation Prompt}
+\label{appx:medical_tone_prompt}
+
+The following prompts were used for the two-stage medical tone evaluation. Few-shot prompting was used for both the extraction and evaluation stages. The first stage isolated patient-specific clinical information and treatment recommendations from the generated report. The second stage evaluated these extracted sections across professionalism, respectfulness, and patient-centred communication.
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM PROMPT -- EXTRACTION
+
+You are an expert clinical report extraction assistant.
+
+Your task is to extract ONLY patient-specific clinical information
+from a clinical report.
+
+Include:
+- Statements under "How this affects the patient".
+- Recommendations under "Recommendations for screening and treatment".
+
+Exclude:
+- "How this affects others with the syndrome".
+- Prevalence statistics and general background information.
+
+Rules:
+1. Copy the text exactly as written.
+2. Preserve wording, punctuation, and sentence boundaries.
+3. Do not merge, split, rewrite, summarize, or deduplicate.
+4. Ignore sections containing "N/A".
+5. Preserve the original order.
+6. Return only valid JSON.
+
+Output:
+{
+  "extracted_sections": ["...", "..."]
+}
+
+
+SYSTEM PROMPT -- TONE EVALUATION
+
+You are an expert evaluator of medical tone.
+
+For each extracted patient-specific section, evaluate:
+
+1. Professionalism:
+   Is the language professional and clinically appropriate?
+
+2. Respectfulness:
+   Is the patient described respectfully and in a
+   non-stigmatising manner?
+
+3. Patient-centred communication:
+   Is the information supportive and focused on the patient?
+
+Return YES or NO for each criterion and output only valid JSON.
+\end{lstlisting}
+
+Few-shot examples were provided for both stages to demonstrate the expected
+input--output structure and evaluation criteria. The extraction stage first
+isolated patient-specific statements and recommendations, after which these
+statements were independently evaluated for professionalism, respectfulness,
+and patient-centred communication.
+
+\begin{table}[htbp]
+\centering
+\caption{Model and inference configuration for medical tone evaluation.}
+\label{tab:medical_tone_config}
+\begin{tabular}{ll}
+\hline
+\textbf{Parameter} & \textbf{Configuration} \\
+\hline
+Model & Qwen3-30B-A3B-Instruct-2507 \\
+Quantisation & 4-bit NF4 \\
+Inference mode & \texttt{torch.inference\_mode()} \\
+Decoding & Deterministic (\texttt{do\_sample=False}) \\
+KV caching & Enabled (\texttt{use\_cache=True}) \\
+Maximum new tokens & 2048 \\
+Padding token & Tokenizer padding token \\
+End-of-sequence token & Tokenizer EOS token \\
+\hline
+\end{tabular}
+\end{table}
 
 \end{document}
