@@ -1,12 +1,18 @@
 import json
 import re
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
 MODEL_ID = "Qwen/Qwen3-30B-A3B-Instruct-2507"
-REPORT_FILE = "patient_report_2_15.jsonl"
-OUTPUT_FILE = "claim_decomposition_2_15.jsonl"
+REPORT_FILE = "patient_report_[normal_sft_qwen25_1.5b]_part2_150_06.jsonl"
+OUTPUT_FILE = "claim_decomposition_[normal_sft_qwen25_1.5b]_part2_150_06.jsonl"
 HF_TOKEN = "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"
+
+quantization_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_compute_dtype=torch.bfloat16,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_use_double_quant=True)
 
 if not torch.cuda.is_available():
     raise RuntimeError("CUDA GPU not detected.")
@@ -17,7 +23,7 @@ model = AutoModelForCausalLM.from_pretrained(
     MODEL_ID,
     device_map="auto",
     low_cpu_mem_usage=True,
-    dtype=torch.bfloat16,
+    quantization_config = quantization_config,
     token = HF_TOKEN
 )
 

@@ -5,8 +5,8 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
 
 MODEL_ID = "Qwen/Qwen3-30B-A3B-Instruct-2507"
-REPORT_FILE = "factuality_scores_2_10.jsonl" #"patient_report_01.jsonl"
-OUTPUT_FILE = "coverage_testing_2_10.jsonl"
+REPORT_FILE = "factuality_scores_[weighted_sft_qwen25_15b]_06.jsonl" #"patient_report_01.jsonl"
+OUTPUT_FILE = "coverage_scores_[weighted_sft_qwen25_15b]_06.jsonl"
 HF_TOKEN = "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"
 
 quantization_config = BitsAndBytesConfig(

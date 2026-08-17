@@ -4,8 +4,8 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 MODEL_ID = "Qwen/Qwen3-30B-A3B-Instruct-2507"
-INPUT_FILE = "claim_decomposition_2_10.jsonl"
-OUTPUT_FILE = "factuality_scores_2_10.jsonl"
+INPUT_FILE = "claim_decomposition_[normal_sft_qwen25_1.5b]_part2_150_06.jsonl"
+OUTPUT_FILE = "factuality_scores_[normal_sft_qwen25_1.5b]_part2_150_06.jsonl"
 HF_TOKEN = "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"
 
 quantization_config = BitsAndBytesConfig(
@@ -67,7 +67,6 @@ While most do not have very significant anomalies of the roof of the mouth (pala
 Management recommendations:
 Regular dental check-ups. Regular hearing reviews to age 5 (even if earlier reviews give a clear response). Eyesight (ophthalmology) review. Check position of testes in boys. Consider a palate review (particularly if there are feeding difficulties or speech concerns). Referral for a cardiac review (including echo and ECG) following diagnosis. If nothing is found (or already done) this does not need to be repeated. Consider a skeletal review (X-ray of the wrist (to determine bone age), hip, spine and skull) in children following diagnosis. Any concerns around asymmetric hip creases in infancy and/or asymmetric or painful gait should prompt medical review. Consider review and investigation for tethered cord (MRI) where clinical concerns arise on an individual basis (especially if sacral dimple is present). Monitor growth velocity: if height is below the 2nd centile consider referral for endocrine investigations on an individual basis and within context of familial heights Consider physiotherapy, occupational therapy, speech therapy and behavioural therapy.
 """
-
 
 if not torch.cuda.is_available():
     raise RuntimeError("CUDA GPU not detected.")
