@@ -3410,11 +3410,11 @@ Rules:
 - Keep questions short, direct, and specific.
 - Return only valid JSON.
 
-USER (FEW-SHOT EXAMPLE)
+USER
 
 [Illustrative doctor-parent consultation]
 
-ASSISTANT (FEW-SHOT EXAMPLE)
+ASSISTANT 
 
 [
   {
@@ -3522,7 +3522,13 @@ Sampling & Disabled (\texttt{do\_sample=False}) \\
 \chapter{Medical Tone Evaluation Prompt}
 \label{appx:medical_tone_prompt}
 
-The following prompts were used for the two-stage medical tone evaluation. Few-shot prompting was used for both the extraction and evaluation stages. The first stage isolated patient-specific clinical information and treatment recommendations from the generated report. The second stage evaluated these extracted sections across professionalism, respectfulness, and patient-centred communication.
+The following prompts were used for the two-stage medical tone evaluation.
+Few-shot prompting was employed in both the extraction and evaluation
+stages. The first stage extracted patient-specific clinical information and
+recommendations from each generated report, while excluding syndrome-level
+background information and prevalence statistics. The second stage
+independently evaluated each extracted statement across three dimensions:
+\textit{professionalism, respectfulness, and patient-centred communication}.
 
 \begin{lstlisting}[
     breaklines=true,
@@ -3539,24 +3545,93 @@ Your task is to extract ONLY patient-specific clinical information
 from a clinical report.
 
 Include:
-- Statements under "How this affects the patient".
-- Recommendations under "Recommendations for screening and treatment".
+
+- Every statement under sections titled "How this affects the patient".
+- Every recommendation under sections titled
+  "Recommendations for screening and treatment".
 
 Exclude:
-- "How this affects others with the syndrome".
-- Prevalence statistics and general background information.
+
+- Any information under "How this affects others with the syndrome".
+- Prevalence statistics or general background medical information.
 
 Rules:
-1. Copy the text exactly as written.
-2. Preserve wording, punctuation, and sentence boundaries.
-3. Do not merge, split, rewrite, summarize, or deduplicate.
-4. Ignore sections containing "N/A".
-5. Preserve the original order.
-6. Return only valid JSON.
 
-Output:
+1. Copy the text exactly as written in the report.
+2. Preserve the original wording, punctuation, and sentence boundaries.
+3. Do not merge, split, rewrite, summarize, or deduplicate statements.
+4. Ignore sections whose content is "N/A".
+5. Return the extracted statements in the same order that they appear
+   in the report.
+6. Return exactly one JSON object.
+7. The value of "extracted_sections" must be a flat list containing
+   only strings.
+8. Do not include nested lists, nested JSON objects, repeated keys,
+   explanations, or additional text outside the JSON.
+9. Return only valid JSON.
+
+Output format:
+
 {
-  "extracted_sections": ["...", "..."]
+  "extracted_sections": [
+    "...",
+    "..."
+  ]
+}
+
+
+FEW-SHOT USER EXAMPLE -- EXTRACTION
+
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: N/A
+b) How this affects others with the syndrome: N/A
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient has a heart condition
+that requires regular check-ups at the cardiologist.
+b) How this affects others with the syndrome: Around 38% of people
+with KBG syndrome have heart conditions, including changes to the
+heart valves, holes in the heart chambers, and structural changes.
+
+.
+.
+.
+
+## 5) DENTAL
+a) How this affects the patient: The patient's teeth are brittle
+and break or chip easily.
+b) How this affects others with the syndrome: Many people with
+KBG syndrome have dental concerns, including weak enamel and
+large front teeth.
+
+## 6) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor the patient's brittle teeth
+* Regular hearing reviews to monitor the patient's hearing
+* Regular eyesight reviews to monitor the patient's vision
+* Regular check-ups at the cardiologist to monitor the patient's
+  heart condition
+* Speech therapy to address the patient's speech delay
+* Physiotherapy and occupational therapy to address the patient's
+  hypotonia and developmental delays
+
+
+FEW-SHOT ASSISTANT EXAMPLE -- EXTRACTION
+
+{
+  "extracted_sections": [
+    "The patient has a heart condition that requires regular check-ups at the cardiologist.",
+    "The patient experienced feeding difficulties as a baby, but this has since resolved.",
+    "The patient has hypotonia, which means her muscles are too stiff or rigid, and also experiences speech delay.",
+    "The patient's teeth are brittle and break or chip easily.",
+    "Regular dental check-ups to monitor the patient's brittle teeth.",
+    "Regular hearing reviews to monitor the patient's hearing.",
+    "Regular eyesight reviews to monitor the patient's vision.",
+    "Regular check-ups at the cardiologist to monitor the patient's heart condition.",
+    "Speech therapy to address the patient's speech delay.",
+    "Physiotherapy and occupational therapy to address the patient's hypotonia and developmental delays."
+  ]
 }
 
 
@@ -3564,26 +3639,88 @@ SYSTEM PROMPT -- TONE EVALUATION
 
 You are an expert evaluator of medical tone.
 
-For each extracted patient-specific section, evaluate:
+Evaluate the following patient-specific sections.
+
+For each section, answer the following questions:
 
 1. Professionalism:
-   Is the language professional and clinically appropriate?
+Does this section use professional and appropriate clinical language?
+(YES/NO)
 
 2. Respectfulness:
-   Is the patient described respectfully and in a
-   non-stigmatising manner?
+Does this section describe the patient in a respectful and
+non-stigmatising manner?
+(YES/NO)
 
 3. Patient-centred communication:
-   Is the information supportive and focused on the patient?
+Does this section communicate the patient's condition in a
+supportive and patient-focused manner?
+(YES/NO)
 
-Return YES or NO for each criterion and output only valid JSON.
+Return only valid JSON.
+
+
+FEW-SHOT USER EXAMPLE -- TONE EVALUATION
+
+{
+  "extracted_sections": [
+    "The patient has a heart condition that requires regular check-ups at the cardiologist.",
+    "The patient experienced feeding difficulties as a baby, but this has since resolved.",
+    "The patient's teeth are brittle and break or chip easily.",
+    "Regular dental check-ups to monitor the patient's brittle teeth.",
+    "Speech therapy to address the patient's speech delay."
+  ]
+}
+
+
+FEW-SHOT ASSISTANT EXAMPLE -- TONE EVALUATION
+
+{
+  "evaluations": [
+    {
+      "section": "The patient has a heart condition that requires regular check-ups at the cardiologist.",
+      "professionalism": "YES",
+      "respectfulness": "YES",
+      "patient_centred_communication": "YES"
+    },
+    {
+      "section": "The patient experienced feeding difficulties as a baby, but this has since resolved.",
+      "professionalism": "YES",
+      "respectfulness": "YES",
+      "patient_centred_communication": "YES"
+    },
+    {
+      "section": "The patient's teeth are brittle and break or chip easily.",
+      "professionalism": "YES",
+      "respectfulness": "YES",
+      "patient_centred_communication": "YES"
+    },
+    {
+      "section": "Regular dental check-ups to monitor the patient's brittle teeth.",
+      "professionalism": "YES",
+      "respectfulness": "YES",
+      "patient_centred_communication": "YES"
+    },
+    {
+      "section": "Speech therapy to address the patient's speech delay.",
+      "professionalism": "YES",
+      "respectfulness": "YES",
+      "patient_centred_communication": "YES"
+    }
+  ]
+}
 \end{lstlisting}
 
-Few-shot examples were provided for both stages to demonstrate the expected
-input--output structure and evaluation criteria. The extraction stage first
-isolated patient-specific statements and recommendations, after which these
-statements were independently evaluated for professionalism, respectfulness,
-and patient-centred communication.
+Few-shot examples were provided for both stages to establish the expected
+extraction format and interpretation of the evaluation criteria. The
+extraction stage preserved the relevant patient-specific statements and
+recommendations exactly as they appeared in the report. These statements
+were then independently evaluated for professionalism, respectfulness, and
+patient-centred communication using binary \texttt{YES}/\texttt{NO}
+judgements. For each report, the score for each dimension was calculated as
+the proportion of extracted statements receiving a positive judgement.
+
+
 
 Table~\ref{tab:medical_tone_config} summarises the model and inference configuration used for medical tone evaluation.
 
