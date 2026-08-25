@@ -323,6 +323,426 @@ summarises the aims, objectives, {\bf and achievements}\/ of your work.
 
 \chapter{Background}
 \label{chap:background}
+\section{Personalised Clinical Report Generation}
+\label{sec:personalised_clinical_report_generation}
+
+\subsection{Neurogenetic and Neurodevelopmental Disorders}
+\label{sec:neurogenetic_disorders}
+
+Neurodevelopmental disorders (NDDs) are a heterogeneous group of
+conditions affecting brain development and functioning, with consequences
+for cognition, communication, learning, behaviour, and motor and social
+development. Genetic factors contribute substantially to many NDDs,
+resulting in considerable variation in clinical presentation and severity
+\cite{gao_genetic_2025,assadourian_precision_2025}. This heterogeneity
+makes individual patient representation important when describing and
+managing these conditions.
+
+KBG syndrome (KBGS) is a rare genetic neurodevelopmental disorder primarily
+associated with pathogenic variants or deletions involving the
+\textit{ANKRD11} gene. It encompasses a broad spectrum of features,
+including developmental delay, intellectual and learning difficulties,
+behavioural and neurological abnormalities, craniofacial characteristics,
+macrodontia, short stature, and skeletal abnormalities
+\cite{martinez-cayuelas_clinical_2023}. The presence and severity of these
+features vary between individuals \cite{martinez-cayuelas_clinical_2023},
+making generic disease descriptions insufficient to fully represent an
+individual patient's clinical profile.
+
+For families affected by rare genetic disorders, patient-oriented reports
+can consolidate complex clinical information into an accessible
+representation of the individual's condition and support communication
+with healthcare professionals \cite{low_identifying_2025,
+burbury_exploring_2025}. This motivates automated systems capable of
+generating personalised clinical reports from patient-specific information.
+
+\subsection{Clinical Personalisation and Grounding}
+\label{sec:clinical_personalisation_grounding}
+
+Personalised clinical reporting requires generated reports to preserve
+patient-specific information while appropriately incorporating general
+knowledge about the underlying condition. Generated claims should therefore
+remain grounded in identifiable evidence rather than relying solely on a
+model's general medical knowledge \cite{yang_knowledge_2022}.This is
+particularly important because information that is medically plausible for
+a disorder in general may still be incorrect when attributed to an
+individual patient \cite{rossi_future_2023}. 
+
+In this study, grounding is operationalised through two complementary
+sources: the doctor--parent consultation provides patient-specific evidence,
+while the KBG syndrome clinical reference provides syndrome-level knowledge.
+This separation supports personalised reporting while providing a basis for
+assessing whether generated reports retain relevant information without
+introducing unsupported patient-specific claims.
+
+\subsection{LLM-Based Clinical Report Generation}
+\label{sec:llm_clinical_report_generation}
+
+Large language models (LLMs) have expanded automated clinical text
+generation across tasks including clinical summarisation, medical
+documentation, and patient information generation
+\cite{yuan_continued_2024,rehman_advancement_2025,alabed_large_2026,
+che_llm-driven_2026,makram_ai_2024}. Their ability to condition outputs on
+clinical context makes them particularly relevant to personalised report
+generation, where patient information can be transformed into structured,
+patient-specific narratives. For example, Ganzinger et al.
+\cite{ganzinger_automated_2025} generated German discharge summaries from
+structured electronic health records, while Tariq et al.
+\cite{tariq_patient_2024} developed patient-sensitive radiology summaries
+adapted to the intended audience. These studies demonstrate the potential
+of LLMs for context-sensitive clinical reporting.
+
+In rare-disease settings, LLMs can further combine patient-specific
+observations with condition-level knowledge to generate clinical findings
+and recommendations \cite{piya_contextual_2025}. However, fluent generation does not guarantee
+clinical reliability, as LLM-generated clinical text may contain
+hallucinations, omissions, or inconsistencies \cite{zeba_mitigating_2026}. Clinical evaluation must therefore consider factual grounding
+and completeness alongside linguistic quality \cite{dahlberg_measuring_2026}.
+
+Large LLMs also present deployment challenges in clinical environments.
+Processing sensitive patient information through external cloud services
+raises privacy, governance, and regulatory concerns
+\cite{annas_hipaa_2003,noauthor_eu_nodate,zhong_considerations_2025,
+al-dhabyani_data_2026}, while local deployment requires substantial memory,
+computational resources, and specialised hardware
+\cite{li_collm_2024}. 
+This creates a trade-off between model capability and practical
+deployability, motivating investigation of smaller models that can support
+local inference with lower resource requirements.
+
+\subsection{Small Language Models}
+\label{sec:small_language_models}
+
+Small Language Models (SLMs) offer an alternative to large language models
+with lower memory, storage, and inference requirements
+\cite{wang_comprehensive_2025,garg_rise_2026}. This makes them attractive for
+healthcare applications requiring resource-efficient and potentially local
+processing of sensitive clinical information \cite{garg_rise_2026}.
+
+Compact models have demonstrated competitive performance on specialised
+medical tasks, including medical reasoning and biomedical language
+processing \cite{kim_small_2025,rohanian_effectiveness_2022}. However, their
+smaller capacity can limit reasoning ability, knowledge coverage, and
+generation quality \cite{turki_evaluating_2025,wang_comprehensive_2025}.
+
+
+Knowledge distillation provides a means of addressing this capability gap by
+transferring useful behaviour from a larger teacher to a smaller student
+\cite{gou_knowledge_2021}. In clinical report generation, teacher-generated
+demonstrations can expose a compact model to task-specific reporting
+behaviour while retaining the deployment advantages of smaller models.
+However, teacher outputs may vary in quality and can contain inaccurate or
+incomplete information \cite{woo_synthetic_2025}. This motivates considering teacher-response
+quality when transferring clinical reporting capabilities to compact models.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Knowledge Distillation}
+\subsection{Fundamentals of Knowledge Distillation}
+\label{sec:kd_fundamentals}
+
+Knowledge distillation (KD) is a knowledge-transfer and model-compression
+technique in which a smaller student model learns from a larger and
+typically more capable teacher model \cite{hinton_distilling_2015,
+wang_knowledge_2022}. Rather than directly modifying the student through
+parameter reduction techniques such as pruning or quantisation, KD transfers
+information learned by the teacher through additional supervision signals,
+allowing the student to acquire aspects of the teacher's behaviour beyond
+conventional hard targets \cite{hinton_distilling_2015,mansourian_comprehensive_2025}.
+
+The general KD framework consists of a teacher that provides informative
+training signals and a student that is optimised to reproduce the desired
+teacher behaviour while retaining the computational advantages of its
+smaller architecture \cite{wang_knowledge_2022}. The transferred knowledge
+may take different forms, including output distributions, generated
+responses, intermediate representations, or other teacher-derived signals.
+The choice of transferred knowledge therefore depends on the teacher--student
+setting and the objective of distillation.
+
+The effectiveness of KD depends on how knowledge is defined, what level of
+access is available to the teacher, and how the transferred information is
+used to train the student \cite{mansourian_comprehensive_2025}. These
+considerations have led to several complementary classifications of KD,
+including distinctions based on the training configuration, teacher access,
+and form of transferred knowledge. The approaches most relevant to
+language-model distillation are discussed below.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Screenshot 2026-08-11 162229.png}
+    \caption{Generic teacher--student framework for knowledge distillation
+    \cite{gou_knowledge_2021}.}
+    \label{fig:kd}
+\end{figure}
+
+\subsection{Distillation Paradigms}
+\label{sec:distillation_paradigms}
+
+Knowledge distillation can be characterised according to the training
+configuration, level of access to the teacher, and form of knowledge
+transferred. These perspectives describe complementary aspects of the
+teacher--student relationship rather than mutually exclusive categories
+\cite{wang_knowledge_2022,mansourian_comprehensive_2025}.
+
+Based on the training configuration, \textit{offline distillation} uses a
+pretrained teacher whose parameters remain fixed while the student learns
+from teacher-derived supervision. This is the most common setting and is
+particularly suitable when a capable teacher has already been trained
+\cite{hinton_distilling_2015,wang_knowledge_2022}. In \textit{online
+distillation}, teacher and student models are trained jointly, allowing
+knowledge to be transferred dynamically during training
+\cite{chen_online_2020}. \textit{Self-distillation} instead transfers
+knowledge within the same model, for example across different training
+stages or model components, without requiring a separate larger teacher
+\cite{furlanello_born_2018,zhang_be_2019}.
+
+Distillation can also be distinguished by the level of access available to
+the teacher. \textit{White-box distillation} uses internal teacher
+information, such as logits, hidden representations, or attention patterns,
+whereas \textit{black-box distillation} relies only on information exposed
+through the teacher's outputs \cite{donisch_inference_2024,shi_knowledge_2025}.
+Black-box approaches are particularly relevant to large language models
+whose parameters and internal representations may be inaccessible, as
+teacher-generated responses can instead serve as the transferable
+supervision.
+
+Finally, the transferred knowledge may be represented as teacher responses,
+output probability distributions, or intermediate representations.
+Accordingly, \textit{response-based}, \textit{logit-based}, and
+\textit{feature-based} distillation provide different levels of supervision
+\cite{yang_categories_2023,habib_knowledge_2024,park_relational_2019}.
+For generative language models, response-based distillation is especially
+relevant because the teacher's generated text can directly provide
+task-specific supervision without requiring access to internal model
+states. This paradigm therefore forms the basis for the LLM-focused
+distillation considered in the following subsection.
+
+\subsection{Response-Based Distillation and Teacher-Generated Supervision}
+\label{sec:response_based_distillation_llms}
+
+Response-based distillation transfers knowledge from a teacher LLM to a
+smaller student through teacher-generated responses rather than internal
+representations or logits. A common approach is to generate
+instruction--response pairs with a teacher and use them as supervision for
+student fine-tuning \cite{chen_distilling_2021,yang_categories_2023,
+wang_self-instruct_2023}. This is particularly suitable for LLMs because
+task-specific behaviours, such as instruction following, response
+structure, and domain knowledge, can be transferred through the teacher's
+observable outputs.
+
+For clinical report generation, a teacher can generate reports conditioned
+on patient-specific information and relevant clinical knowledge, providing
+task-specific supervision for a compact student model \cite{woo_synthetic_2025}. However, the student learns directly from teacher
+outputs rather than independently verified targets. Consequently, errors,
+omissions, unsupported claims, or undesirable patterns in teacher responses
+may be incorporated into the student's training data
+\cite{zhang_lifting_2023, montenegro_what_2025}.
+
+The effectiveness of response-based distillation therefore depends not
+only on teacher capability but also on the quality of individual responses.
+Teacher-generated examples may vary in factual correctness, information
+coverage, and clinical communication quality \cite{davidson_reasoning-driven_2026}.
+A straightforward response to this variability is to filter out
+low-quality examples; however, this can also discard potentially useful
+training information. An alternative is to assign greater training
+importance to higher-quality responses while reducing the contribution of
+lower-quality ones \cite{kuo_not_2025}. This provides the
+motivation for quality-aware knowledge distillation, in which the quality of
+teacher-generated supervision is explicitly incorporated into the learning
+process.
+\subsection{Quality-Aware Knowledge Distillation and Research Gap}
+\label{sec:quality_aware_kd_research_gap}
+
+The effectiveness of response-based knowledge distillation depends not only
+on teacher capability but also on the quality of the supervision it provides.
+Teacher-generated responses may vary in factual correctness, relevance,
+information coverage, and consistency, making it problematic to treat all
+examples as equally reliable. Existing work has therefore explored
+quality-aware strategies including data filtering, example selection, and
+quality- or importance-weighted supervised fine-tuning
+\cite{CITATION_NEEDED_QUALITY_AWARE_SFT,
+CITATION_NEEDED_WEIGHTED_SYNTHETIC_DATA,
+CITATION_NEEDED_IMPORTANCE_WEIGHTED_SFT}. These approaches demonstrate that
+the contribution of individual training examples can be adjusted according
+to their estimated usefulness rather than assuming uniform supervision.
+
+A key distinction is between filtering and weighting. Filtering removes
+examples that fail a predefined quality criterion and can reduce the
+propagation of unreliable teacher outputs. However, it imposes a binary
+decision on examples that may contain both useful and problematic
+information. Weighting provides a more flexible alternative by allowing
+examples to contribute to training to different degrees. Higher-quality
+responses can therefore exert greater influence, while lower-quality
+responses can remain available as weaker supervision rather than being
+discarded entirely. [CITATION NEEDED: Literature comparing or motivating
+quality-based filtering and graded/weighted supervision.]
+
+This distinction is particularly relevant to personalised clinical report
+generation, where quality cannot necessarily be captured by a single
+criterion. A report may be factually accurate but omit important
+patient-specific information, or contain appropriate clinical content while
+being unnecessarily verbose or poorly expressed for the intended audience.
+Clinical language-generation research consequently increasingly evaluates
+outputs across multiple dimensions, including factuality, completeness,
+relevance, and communication quality. [CITATION NEEDED: Multidimensional
+evaluation framework for clinical LLM or medical text generation.]
+
+The literature therefore provides mechanisms for incorporating example
+quality into model training, but leaves an important question concerning
+how quality should be defined and operationalised for teacher-generated
+clinical reports. In particular, limited attention has been given to
+combining clinically meaningful, multi-dimensional quality assessment with
+response-based knowledge distillation for personalised medical report
+generation. [CITATION NEEDED: Existing work on quality-aware LLM
+distillation in clinical or medical generation.] This suggests that the
+quality signal used to weight supervision may be as important as the
+weighting mechanism itself.
+
+Motivated by this gap, this thesis investigates whether a clinically
+motivated quality rubric can be used to determine the relative contribution
+of teacher-generated reports during distillation. Rather than treating all
+teacher responses uniformly or removing lower-quality examples through hard
+filtering, the proposed approach retains the generated supervision while
+varying its influence according to estimated quality. This motivates the
+following research question:
+
+\begin{quote}
+\textit{Can quality-aware knowledge distillation improve the clinical quality
+of reports generated by compact language models compared with conventional
+supervised fine-tuning?}
+\end{quote}
+\section{Evaluation}
+\subsection{Evaluation of Clinical Report Generation}
+\label{sec:evaluation}
+
+The evaluation of generated clinical reports is challenging because clinical
+quality extends beyond linguistic fluency or similarity to a reference text.
+A report may be well written while containing unsupported patient-specific
+claims, omitting relevant clinical information, or using inappropriate
+language for its intended audience. Evaluation therefore requires
+complementary measures that capture distinct dimensions of clinical quality.
+
+\subsection{Clinical Report Quality Dimensions}
+\label{sec:clinical_report_quality_dimensions}
+
+Clinical report quality is inherently multidimensional, as different
+criteria capture different aspects of a report's clinical usefulness. In
+this study, five dimensions are considered: factuality, coverage,
+conciseness, readability, and medical tone.
+
+\textit{Factuality} assesses whether the generated report accurately reflects
+the available clinical evidence without introducing false, contradictory,
+or unsupported claims \cite{munnangi_factehr_2025}. \textit{Coverage}
+assesses whether relevant information from the available evidence is
+adequately represented in the generated report \cite{moramarco_towards_2021}.
+Together, these dimensions address whether a report is both clinically
+correct and sufficiently informative.
+
+\textit{Conciseness} assesses whether relevant information is communicated
+efficiently without unnecessary repetition, irrelevant content, or
+excessive detail \cite{schoonbeek_quality_2025}. \textit{Readability}
+concerns the clarity and coherence of the report for its intended audience,
+while \textit{medical tone} assesses whether the language is professional,
+clinically appropriate, and suitably patient-oriented
+\cite{seo_evaluation_2024}. These dimensions capture the communicative
+quality of a report beyond its factual content.
+
+No single dimension is therefore sufficient to characterise overall
+clinical report quality. A report may be factually accurate but incomplete,
+comprehensive but unnecessarily verbose, or clinically appropriate but
+difficult for its intended audience to understand. This multidimensional
+nature motivates the use of structured evaluation criteria capable of
+assessing different aspects of generated clinical text independently.
+
+\subsection{Challenges in Clinical Text Evaluation and Rubric-Based LLM Judging}
+\label{sec:clinical_text_evaluation_llm_judging}
+
+Evaluating generated clinical text is challenging because conventional
+automatic metrics do not directly capture the multidimensional nature of
+clinical quality. Lexical measures such as ROUGE and BLEU primarily assess
+overlap with a reference text and may therefore penalise clinically valid
+paraphrases while failing to identify unsupported or medically incorrect
+content \cite{noauthor_semantic_2025}.Human evaluation can provide more meaningful
+judgements of clinical quality, but it is costly, time-consuming, and
+difficult to scale across large numbers of generated reports \cite{yan_automatic_2026}. 
+
+Rubric-based evaluation provides a structured approach by defining explicit
+criteria and scoring guidelines for each quality dimension. Rather than
+reducing report quality to similarity with a reference, a rubric can assess
+properties such as factuality, coverage, conciseness, readability, and
+medical tone independently \cite{hashemi_llm-rubric_2024}. This makes
+rubric-based evaluation particularly suitable for clinical report
+generation, where different types of errors may have different clinical
+implications.
+
+LLM-as-a-Judge extends rubric-based evaluation by using a language model to
+assess generated reports against predefined criteria. This provides a
+scalable means of evaluating qualitative properties that are difficult to
+capture through conventional automatic metrics
+\cite{zheng_judging_2023,fan_sedareval_2024}. However, LLM-based evaluation
+is not inherently reliable. Judgements may be affected by the formulation
+of the rubric and prompt, evaluator bias, variability between evaluation
+runs, or preferences for fluent responses over clinically accurate ones
+\cite{pombal_self-preference_2026, norman_reliability_2026}. 
+
+These limitations are particularly important for clinical text, where a
+medically plausible statement may still be unsupported by the available
+patient evidence. Reliable evaluation therefore requires clearly defined
+criteria and consistent judging procedures that distinguish factual
+grounding from general linguistic quality \cite{li_llm-as--judge_2026}. 
+Consequently, rubric-based LLM evaluation should be viewed as a structured
+and scalable complement to, rather than a complete replacement for,
+conventional automatic and human evaluation. In this study, explicit
+quality criteria are used to guide the assessment of generated reports,
+providing a common framework for comparing different models across the
+clinical and communicative dimensions relevant to personalised report
+generation.
+
+\subsection{Automatic Evaluation and Model Efficiency}
+\label{sec:automatic_evaluation_efficiency}
+
+Automatic evaluation metrics provide complementary quantitative evidence
+for assessing generated clinical reports. Lexical measures such as ROUGE
+\cite{lin_rouge_2004} and BLEU \cite{ward_bleu_2001} quantify overlap between
+generated and reference texts, while semantic measures such as BERTScore
+\cite{zhang_bertscore_2020} and embedding-based similarity assess alignment
+at the representation or meaning level. However, these measures primarily
+capture textual or semantic correspondence and do not directly establish
+clinical factuality, patient-specific coverage, or appropriateness of
+communication \cite{dahlberg_measuring_2026}.
+
+Consequently, automatic metrics are most useful when interpreted alongside
+clinical quality assessment rather than as standalone measures of report
+quality. They can provide consistent quantitative comparisons between
+models, while rubric-based evaluation captures dimensions that are less
+amenable to conventional automatic measurement.
+
+For compact language models, evaluation must also consider whether quality
+improvements are achieved with meaningful reductions in computational cost.
+Relevant efficiency measures include parameter count, memory usage,
+inference time, and token generation speed, which provide complementary
+indications of model size, computational requirements, and practical
+deployability \cite{wani_benchmarking_2026, pham_slm-bench_2025}.
+
+Considering quality and efficiency together is particularly important when
+comparing a large teacher model with a compact student model. A student
+model that produces clinically useful reports while substantially reducing
+memory and inference requirements may offer greater practical value than a
+model that achieves higher quality at significantly greater computational
+cost. Thus, combining clinical quality assessment, automatic text metrics,
+and efficiency measures provides a more comprehensive basis for evaluating
+the effectiveness and practical utility of compact clinical language
+models.
 \section{Personalised Medical Reports in Neurogenetic Disorders}
 \subsection{Neurogenetic and Neurodevelopmental Disorders}
 Neurodevelopmental disorders (NDDs) are a heterogeneous group of conditions that emerge during childhood and affect brain development and functioning, often resulting in difficulties with cognition, communication, behaviour, learning, and social functioning. Genetic factors contribute substantially to many NDDs, leading to considerable variation in symptoms, severity, and combinations of intellectual, behavioural, motor, and neurological features \cite{gao_genetic_2025, assadourian_precision_2025}.
@@ -342,7 +762,23 @@ Small Language Models (SLMs) have emerged as efficient alternatives to large lan
 SLMs have demonstrated potential in medical applications. For example, Meerkat showed improved reasoning performance across medical benchmarks while maintaining a lightweight architecture \cite{kim_small_2025}, while Rohanian et al. \cite{rohanian_effectiveness_2022} developed lightweight biomedical models that achieved performance comparable to larger models on downstream tasks. This suggests that SLMs can support clinical text processing and generation with more practical deployment requirements.
 
 For personalised patient report generation, SLMs could enable patient-specific clinical information to be processed locally, reducing the need to transmit sensitive data to external APIs. However, their smaller size can limit complex reasoning and specialised medical knowledge \cite{turki_evaluating_2025, wang_comprehensive_2025}. Knowledge distillation can address this limitation by transferring useful capabilities from larger teacher models to smaller student models \cite{gou_knowledge_2021}.
-\section{Knowledge Distillation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \subsection{Fundamentals of Knowledge Distillation}
 Knowledge distillation (KD) is a model compression and knowledge-transfer technique in which a smaller student model learns useful knowledge from a larger and more capable teacher model \cite{hinton_distilling_2015, wang_knowledge_2022}. Unlike conventional compression approaches such as pruning, quantisation, and low-rank factorisation, which reduce or modify the model's parameters or architecture, KD transfers knowledge from the teacher to the student without necessarily altering the underlying model architecture \cite{wang_knowledge_2022, mansourian_comprehensive_2025}. The teacher provides additional learning signals, such as its output distributions, allowing the student to learn aspects of the teacher's behaviour beyond conventional hard target labels \cite{hinton_distilling_2015}.
 
