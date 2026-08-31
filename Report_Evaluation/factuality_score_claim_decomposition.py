@@ -4,8 +4,8 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 MODEL_ID = "Qwen/Qwen3-30B-A3B-Instruct-2507"
-INPUT_FILE = "claim_decomposition_[normal_sft_qwen25_1.5b]_part2_150_06.jsonl"
-OUTPUT_FILE = "factuality_scores_[normal_sft_qwen25_1.5b]_part2_150_06.jsonl"
+INPUT_FILE = "claim_decomposition_patient_report_sft_dpo_06.jsonl"
+OUTPUT_FILE = "factuality_scores_patient_report_sft_dpo_06.jsonl"
 HF_TOKEN = "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"
 
 quantization_config = BitsAndBytesConfig(

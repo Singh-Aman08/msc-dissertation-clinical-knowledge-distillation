@@ -3,9 +3,10 @@ import re
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
+
 MODEL_ID = "Qwen/Qwen3-30B-A3B-Instruct-2507"
-REPORT_FILE = "patient_report_[normal_sft_qwen25_1.5b]_part2_150_06.jsonl"
-OUTPUT_FILE = "claim_decomposition_[normal_sft_qwen25_1.5b]_part2_150_06.jsonl"
+REPORT_FILE = "patient_report_teacher_model_06.jsonl"
+OUTPUT_FILE = "claim_decomposition_teacher_model_06.jsonl"
 HF_TOKEN = "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"
 
 quantization_config = BitsAndBytesConfig(

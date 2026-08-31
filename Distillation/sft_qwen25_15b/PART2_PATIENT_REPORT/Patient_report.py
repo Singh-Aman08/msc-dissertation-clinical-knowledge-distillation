@@ -7,9 +7,9 @@ from peft import PeftModel
 
 
 BASE_MODEL_ID = "Qwen/Qwen2.5-1.5B-Instruct"
-ADAPTER_PATH = "model_sft_1/checkpoint-150"
-INPUT_FILE = "testing_consultations_06.jsonl"
-OUTPUT_FILE = "patient_report_[normal_sft_qwen25_1.5b]_part2_150_06.jsonl"
+ADAPTER_PATH = "model_sft_1/checkpoint-100"
+INPUT_FILE = "testing_consultations_01.jsonl"
+OUTPUT_FILE = "patient_report_normal_sft_qwen_dpo_01.jsonl"
 HF_TOKEN = "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"
 if not torch.cuda.is_available():
     raise RuntimeError(
@@ -255,8 +255,8 @@ b) How this affects others with the syndrome:
         with open(OUTPUT_FILE, "a", encoding="utf-8") as outfile:
             outfile.write(json.dumps(distillation_record, ensure_ascii=False) + "\n")
             
-        #if count ==2:
-            #break
+        if count ==2:
+            break
         
 
 print(f"\nPipeline successfully complete! {conversation_count} reports compiled inside: {OUTPUT_FILE}")

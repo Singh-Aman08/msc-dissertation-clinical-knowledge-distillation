@@ -5,13 +5,13 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
 
 MODEL_ID = "Qwen/Qwen3-30B-A3B-Instruct-2507"
-REPORT_FILE = "factuality_scores_[weighted_sft_qwen25_15b]_06.jsonl" #"patient_report_01.jsonl"
-OUTPUT_FILE = "coverage_scores_[weighted_sft_qwen25_15b]_06.jsonl"
+REPORT_FILE = "factuality_scores_patient_report_wgt_dpo_06.jsonl"
+OUTPUT_FILE = "coverage_scores_wgt_dpo_06.jsonl"
 HF_TOKEN = "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"
 
 quantization_config = BitsAndBytesConfig(
     load_in_4bit=True,
-    bnb_4bit_compute_dtype=torch.bfloat16,
+    bnb_4bit_compute_dtype = torch.bfloat16,
     bnb_4bit_quant_type="nf4",
     bnb_4bit_use_double_quant=True)
 
@@ -519,7 +519,7 @@ with open(
 
         )
 
-        #if idx == 5:
+        #if idx == 2:
             #break 
 
 print(

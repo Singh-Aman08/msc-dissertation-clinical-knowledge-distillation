@@ -9,8 +9,8 @@ from transformers import (
 
 
 MODEL_ID = "Qwen/Qwen3-30B-A3B-Instruct-2507"
-INPUT_FILE = "coverage_part1_01.jsonl"
-OUTPUT_FILE = "medical_tone_scores_01.jsonl"
+INPUT_FILE = "coverage_scores_weighted_sft_qwen25_1.5b_part2_50_06.jsonl"
+OUTPUT_FILE = "medical_tone_weighted_sft_qwen25_1.5b_part2_50_06.jsonl"
 HF_TOKEN = "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"
 
 
@@ -795,8 +795,8 @@ open(
             f"Patient-centred: {tone_scores['patient_centred_score']}",
             flush=True
         )
-        if idx == 5:
-            break
+        #if idx == 2:
+            #break
 
 
 print(
