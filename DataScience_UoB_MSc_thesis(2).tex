@@ -2987,8 +2987,7 @@ In particular, the variation in coverage and conciseness demonstrates
 that the training examples were not equivalent in quality. This
 heterogeneity provides the motivation for distinguishing the relative
 quality of individual examples in the subsequent quality-weighted
-supervised fine-tuning stage.
-\section{Baseline and Effect of Standard SFT}
+supervised fine-tuning stage.\section{Baseline Performance and Effects of Supervised Fine-Tuning}
 
 \subsection{Baseline Performance}
 \label{sec:baseline_performance}
@@ -2996,7 +2995,7 @@ supervised fine-tuning stage.
 The pretrained Qwen2.5-1.5B-Instruct model was first evaluated without
 task-specific fine-tuning to establish the starting level of performance
 for personalised clinical report generation. Evaluation was conducted
-on 100 held-out test cases across factuality, coverage, conciseness,
+on 108 held-out test cases across factuality, coverage, conciseness,
 medical tone, and readability. The descriptive statistics are presented
 in Table~\ref{tab:baseline_quality}.
 
@@ -3005,7 +3004,7 @@ in Table~\ref{tab:baseline_quality}.
 
 \begin{minipage}[t]{0.58\textwidth}
 \centering
-\caption{Clinical quality.}
+\caption{Baseline clinical quality.}
 \label{tab:baseline_quality}
 \begin{tabular}{lccc}
 \hline
@@ -3014,14 +3013,13 @@ in Table~\ref{tab:baseline_quality}.
 Factuality   & 0.37 $\pm$ 0.15 & 0.35 & 0.00--0.80 \\
 Coverage     & 0.50 $\pm$ 0.21 & 0.50 & 0.08--1.00 \\
 Conciseness  & 0.43 $\pm$ 0.16 & 0.42 & 0.00--0.92 \\
-
 \hline
 \end{tabular}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.34\textwidth}
 \centering
-\caption{Readability statistics.}
+\caption{Baseline readability.}
 \label{tab:baseline_readability}
 \begin{tabular}{lc}
 \hline
@@ -3036,64 +3034,706 @@ Dale--Chall & 13.98 $\pm$ 1.81 \\
 
 \end{table}
 
-The baseline results indicate that the pretrained model possessed
-useful general language-generation capability but was not yet well
+The baseline results indicate that the pretrained model possessed useful
+general language-generation capabilities but was not sufficiently
 adapted to the specific requirements of personalised clinical report
-generation. Factuality, coverage, and conciseness were the main
-lower-performing dimensions, indicating limitations in producing
-grounded, complete, and appropriately concise reports. In contrast,
-medical tone was consistently maintained at approximately the maximum
-score close to 1, representing the strongest aspect of the baseline performance.
+generation. Factuality, coverage, and conciseness all showed
+considerable room for improvement, indicating limitations in producing
+consistently grounded, complete, and appropriately concise reports. In
+contrast, medical tone remained close to the maximum score of 1,
+suggesting that the pretrained model could already adopt an appropriate
+clinical reporting style.
 
 The distributions of the principal clinical quality measures are shown
 in Figure~\ref{fig:baseline_distribution}. The variation across cases,
 particularly for coverage and conciseness, indicates that baseline
-performance was inconsistent across consultations. Readability scores
-also indicated relatively complex text, with substantial variation
-across reports.
+performance was inconsistent across consultations rather than uniformly
+poor. The readability measures similarly indicated linguistically
+complex reports with substantial variation across cases.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.9\textwidth]{Baseline_distribution.png}
 \caption{Distribution of baseline clinical quality scores across the
- test cases.}
+108 held-out test cases.}
 \label{fig:baseline_distribution}
 \end{figure}
 
 Overall, the pretrained model provided a useful but insufficient
-starting point for the task. These results establish the baseline for
-assessing the effect of task-specific supervised fine-tuning in the
-following subsection.
+starting point for the target task. While it could generate clinically
+styled text, its limitations in factual grounding, information coverage,
+and conciseness provide clear motivation for task-specific adaptation.
+These results establish the reference point against which the effect of
+standard supervised fine-tuning is evaluated.
+
 \subsection{Effect of Standard SFT}
+\label{sec:effect_standard_sft}
 
-{\bf A topic-specific chapter, roughly 30\% of the total page-count} 
-\vspace{1cm} 
+To assess the effect of task-specific supervised fine-tuning (SFT), the
+performance of the pretrained student was compared with that of the
+SFT-trained model across the same 108 matched test cases. The evaluation
+considered factuality, coverage, conciseness, medical tone, and
+readability. Factuality, coverage, and conciseness were treated as the
+primary quantitative dimensions, while medical tone and readability
+provided complementary assessments of communication quality. For the
+primary metrics, change was calculated as
+$\Delta = \mathrm{SFT} - \mathrm{Baseline}$, such that positive values
+indicate improvement following fine-tuning.
 
-\noindent
-This chapter is intended to evaluate what you did.  The content is highly 
-topic-specific, but for many projects will have flavours of the following:
+\begin{table}[htbp]
+\centering
+\caption{Effect of standard SFT on clinical quality across 108 matched
+test cases.}
+\label{tab:baseline_sft}
 
-\begin{enumerate}
-\item functional  testing, including analysis and explanation of failure 
-      cases,
-\item behavioural testing, often including analysis of any results that 
-      draw some form of conclusion wrt. the aims and objectives,
-      and
-\item evaluation of options and decisions within the project, and/or a
-      comparison with alternatives.
-\end{enumerate}
+\begin{tabular}{lccc|ccc}
+\hline
+& \multicolumn{3}{c|}{\textbf{Aggregate Performance}}
+& \multicolumn{3}{c}{\textbf{Case-level Change}} \\
+\cline{2-7}
+\textbf{Dimension} &
+\textbf{Baseline} &
+\textbf{SFT} &
+\textbf{$\Delta$} &
+\textbf{Improved} &
+\textbf{Deteriorated} &
+\textbf{Unchanged} \\
+\hline
 
-\noindent
-This chapter often acts to differentiate project quality: even if the work
-completed is of a high technical quality, critical yet objective evaluation 
-and comparison of the outcomes is crucial.  In essence, the reader wants to
-learn something, so the worst examples amount to simple statements of fact 
-(e.g., ``graph X shows the result is Y''); the best examples are analytical 
-and exploratory (e.g., ``graph X shows the result is Y, which means Z; this 
-contradicts [1], which may be because I use a different assumption'').  As 
-such, both positive {\em and}\/ negative outcomes are valid {\em if} presented 
-in a suitable manner.
+Factuality
+& 0.37 $\pm$ 0.15
+& 0.67 $\pm$ 0.23
+& +0.30
+& 90
+& 10
+& 0 \\
 
+Coverage
+& 0.50 $\pm$ 0.21
+& 0.46 $\pm$ 0.27
+& -0.05
+& 46
+& 50
+& 4 \\
+
+Conciseness
+& 0.43 $\pm$ 0.16
+& 0.46 $\pm$ 0.22
+& +0.03
+& 64
+& 36
+& 0 \\
+
+\hline
+\end{tabular}
+
+\end{table}
+
+As shown in Table~\ref{tab:baseline_sft}, standard SFT had markedly
+different effects across the evaluated dimensions. The largest change
+was observed for factuality ($\Delta=+0.30$), indicating substantially
+stronger factual grounding following task-specific adaptation. This
+improvement was also consistent at the case level, with 90 of the 108
+reports obtaining higher factuality scores after SFT.
+
+In contrast, coverage showed a small average decrease
+($\Delta=-0.05$), with improvements and deteriorations occurring at
+similar frequencies across cases. Conciseness showed a modest positive
+change ($\Delta=+0.03$), with improvement observed in 64 reports.
+Together, these results suggest that standard SFT did not produce
+uniform improvements across all aspects of clinical report quality.
+The increased variability observed for coverage and conciseness further
+supports the presence of heterogeneous effects across individual
+consultations.
+
+Medical tone remained close to the maximum score of 1, indicating that
+task-specific adaptation preserved the intended clinical reporting
+style. The readability measures continued to indicate linguistically
+complex outputs: FRE scores fell within the difficult reading range,
+SMOG suggested an advanced university-level reading requirement, and
+Dale--Chall similarly reflected high textual difficulty. This level of
+complexity is consistent with the specialised vocabulary and clinical
+terminology inherent to medical reporting and should not, by itself, be
+interpreted as an indicator of poor report quality.
+
+Figure~\ref{fig:baseline_sft_comparison} provides a direct comparison
+of the aggregate baseline and SFT performance across the principal
+clinical quality dimensions.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{sft_distribution.png}
+\caption{Comparison of baseline and standard SFT performance across the
+principal clinical quality dimensions.}
+\label{fig:baseline_sft_comparison}
+\end{figure}
+
+Although aggregate comparisons indicate the direction of change, they
+do not reveal how consistently these changes occurred across individual
+reports. Therefore, paired differences were calculated for each matched
+test case as $\Delta_i = \mathrm{SFT}_i - \mathrm{Baseline}_i$. The
+distribution of these differences is shown in
+Figure~\ref{fig:paired_difference_sft}, where positive values indicate
+improvement following fine-tuning and negative values indicate
+deterioration.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{box_plot.png}
+\caption{Distribution of paired differences between standard SFT and
+the pretrained baseline across 108 matched test cases. Positive values
+indicate improvement following SFT.}
+\label{fig:paired_difference_sft}
+\end{figure}
+
+The paired statistical analysis provides further evidence regarding the
+reliability of these changes. Factuality showed a median improvement of
+0.31 and a very large positive rank-biserial effect
+($r_{rb}=0.92$). This difference was statistically significant under
+the Wilcoxon signed-rank test after Holm correction ($p<0.001$),
+providing strong evidence that the observed factuality improvement was
+systematic rather than driven by a small number of cases.
+
+In contrast, coverage showed no median change and a small negative
+effect ($r_{rb}=-0.15$), which was not statistically significant
+($p=0.191$). Conciseness showed a small positive effect
+($r_{rb}=0.20$), but this difference was likewise not statistically
+significant ($p=0.142$). Thus, while SFT substantially improved
+factuality, there was insufficient evidence to conclude that it
+systematically improved either coverage or conciseness.
+
+Overall, standard SFT produced a clear and statistically supported
+improvement in factual grounding while preserving the clinical style of
+the generated reports. However, the absence of corresponding
+improvements in coverage and conciseness reveals an important limitation
+of treating all training examples equally during adaptation. Standard
+SFT therefore provides a meaningful task-specific baseline, while also
+motivating the subsequent investigation of whether incorporating
+variation in teacher-example quality through quality-weighted
+supervision can produce more balanced improvements across clinical
+dimensions.
+
+\subsection{Effect of Quality-Weighted Supervision}
+\label{sec:effect_quality_weighted}
+
+The preceding analysis established standard supervised fine-tuning (SFT)
+as a task-specific baseline. This section examines whether incorporating
+teacher-derived quality information into the training objective provides
+additional benefit over treating all training examples equally. The
+quality-weighted SFT model was therefore compared with standard SFT on
+the same 108 matched test cases. The evaluation considered factuality,
+coverage, conciseness, medical tone, and readability, with factuality,
+coverage, and conciseness serving as the primary clinical quality
+dimensions. For these metrics, the paired change was defined as
+$\Delta = \mathrm{Weighted\ SFT} - \mathrm{SFT}$, where positive values
+indicate improvement.
+
+\begin{table}[htbp]
+\centering
+\caption{Effect of quality-weighted supervision compared with standard
+SFT across 108 matched test cases.}
+\label{tab:sft_weighted_comparison}
+
+\begin{tabular}{lccc|ccc}
+\hline
+& \multicolumn{3}{c|}{\textbf{Aggregate Performance}}
+& \multicolumn{3}{c}{\textbf{Case-level Change}} \\
+\cline{2-7}
+\textbf{Dimension}
+& \textbf{SFT}
+& \textbf{Weighted SFT}
+& \textbf{$\Delta$}
+& \textbf{Improved}
+& \textbf{Deteriorated}
+& \textbf{Unchanged} \\
+\hline
+
+Factuality
+& 0.67 $\pm$ 0.23
+& 0.71 $\pm$ 0.15
+& +0.04
+& 54
+& 46
+& 0 \\
+
+Coverage
+& 0.46 $\pm$ 0.27
+& 0.55 $\pm$ 0.22
+& +0.10
+& 54
+& 36
+& 10 \\
+
+Conciseness
+& 0.46 $\pm$ 0.22
+& 0.59 $\pm$ 0.20
+& +0.13
+& 71
+& 29
+& 0 \\
+
+\hline
+\end{tabular}
+\end{table}
+
+As shown in Table~\ref{tab:sft_weighted_comparison}, quality weighting
+increased all three primary quality scores. The largest improvement was
+observed for conciseness ($\Delta=+0.13$), followed by coverage
+($\Delta=+0.10$) and factuality ($\Delta=+0.04$). The case-level results
+show a similar pattern: conciseness improved in 71 of the 108 cases,
+while coverage improved in 54 cases. Factuality was more balanced,
+improving in 54 cases and deteriorating in 46. The weighted model also
+showed lower variability across all three dimensions, with the largest
+reduction observed for factuality, where the standard deviation decreased
+from 0.23 to 0.15.
+
+Medical tone remained close to the maximum score of 1, indicating that
+quality weighting preserved the clinical reporting style established
+under standard SFT. Readability characteristics also changed, with the
+weighted model achieving mean scores of 38.36 for Flesch Reading Ease
+(FRE), 13.42 for Flesch--Kincaid Grade Level (FKGL), 13.92 for SMOG,
+and 12.12 for Dale--Chall. These scores continued to reflect the
+specialised language expected in clinical reports, while their reduced
+variability relative to standard SFT indicates more consistent
+readability characteristics across cases.
+
+Figure~\ref{fig:sft_weighted_comparison} provides a direct visual
+comparison of standard SFT and quality-weighted SFT across the primary
+clinical quality dimensions.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{wght.png}
+\caption{Comparison of standard SFT and quality-weighted SFT across the
+principal clinical quality dimensions.}
+\label{fig:sft_weighted_comparison}
+\end{figure}
+
+Although the aggregate results indicate improvements, mean scores alone
+do not establish whether these changes were consistent across individual
+reports. Therefore, paired differences were calculated for each matched
+case as $\Delta_i = \mathrm{Weighted\ SFT}_i-\mathrm{SFT}_i$. Their
+distributions are shown in Figure~\ref{fig:weighted_paired_difference}.
+The mean paired changes were $+0.04$, $+0.10$, and $+0.13$ for
+factuality, coverage, and conciseness, respectively, while the
+corresponding median changes were $+0.03$, $+0.08$, and $+0.14$.
+The positive medians indicate an overall shift towards the weighted
+model, although the distributions demonstrate that improvements were
+not universal across individual cases. The standard deviations of the
+paired differences were 0.29, 0.38, and 0.31 for factuality, coverage,
+and conciseness, respectively, confirming variation in the magnitude
+of change across consultations.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{wght_box.png}
+\caption{Distribution of paired differences between quality-weighted SFT
+and standard SFT across the 108 matched test cases. Positive values
+indicate improvement following quality-weighted supervision.}
+\label{fig:weighted_paired_difference}
+\end{figure}
+
+Statistical significance was assessed using two-sided Wilcoxon
+signed-rank tests on the paired scores, with Holm correction across the
+three primary comparisons. Factuality showed a small positive
+rank-biserial effect ($r_{rb}=0.15$), but the difference was not
+statistically significant ($p=0.165$). Thus, the descriptive increase
+in factuality does not provide sufficient evidence of a systematic
+improvement over standard SFT.
+
+Coverage showed a statistically significant improvement after Holm
+correction ($p=0.025$), with a small-to-moderate positive effect
+($r_{rb}=0.30$). Conciseness provided the strongest evidence for the
+benefit of quality weighting, with a median improvement of 0.14, a
+moderate positive effect ($r_{rb}=0.50$), and a statistically significant
+difference ($p<0.001$). These results indicate that the additional
+benefit of quality weighting was concentrated primarily in coverage and
+conciseness rather than being uniform across all quality dimensions.
+
+The final analysis examined whether the weighting mechanism itself
+differentiated the contribution of training examples. Each of the 400
+training examples was assigned a weight based on the geometric mean of
+its teacher-derived factuality, coverage, and conciseness scores. The
+resulting weights had a mean of 0.85 ($SD=0.13$), a median of 0.89, and
+ranged from 0.37 to 1.00, with the first and third quartiles at 0.77 and
+0.97, respectively.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.50\textwidth]{distr_wght.png}
+\caption{Distribution of quality weights assigned to the 400 training
+examples used for quality-weighted SFT.}
+\label{fig:quality_weight_distribution}
+\end{figure}
+
+The distribution confirms that the weighting mechanism differentiated
+the contribution of training examples rather than assigning every
+demonstration equal influence. Most examples received relatively high
+weights, while lower-quality examples received smaller weights and
+therefore contributed less strongly to the training objective.
+
+Overall, quality-weighted supervision improved aggregate performance
+across all three primary clinical dimensions, with the strongest gains
+observed for coverage and conciseness. The paired statistical analysis
+confirmed significant improvements in both dimensions, whereas the
+additional factuality improvement was not statistically significant.
+The weighted model also preserved the high medical-tone performance of
+standard SFT and exhibited lower variability in the primary metrics and
+readability measures.
+
+Taken together, these findings indicate that incorporating teacher-derived
+quality information can improve task-specific supervision beyond
+standard SFT, particularly for information coverage and concise report
+generation. However, the effect was dimension-dependent rather than
+universal. The results therefore suggest that quality weighting provides
+a more selective training signal, with its clearest measurable benefits
+arising in coverage and conciseness rather than across every aspect of
+clinical report quality.
+\subsection{Effect of Direct Preference Optimization}
+\label{sec:effect_dpo}
+
+Following quality-weighted supervision, Direct Preference Optimization
+(DPO) was evaluated as a further preference-alignment stage. This
+section examines whether incorporating pairwise preference information
+provides additional benefit beyond quality-weighted SFT. The DPO model
+was compared with quality-weighted SFT on the same 108 matched test
+cases. Factuality, coverage, and conciseness were treated as the primary
+clinical quality dimensions, while medical tone and readability were
+considered as complementary measures. For the primary metrics, the
+paired change was defined as
+$\Delta = \mathrm{DPO} - \mathrm{Weighted\ SFT}$, where positive values
+indicate improvement with DPO.
+
+\begin{table}[htbp]
+\centering
+\caption{Effect of DPO compared with quality-weighted SFT across 108
+matched test cases.}
+\label{tab:weighted_dpo_comparison}
+
+\begin{tabular}{lccc|ccc}
+\hline
+& \multicolumn{3}{c|}{\textbf{Aggregate Performance}}
+& \multicolumn{3}{c}{\textbf{Case-level Change}} \\
+\cline{2-7}
+\textbf{Dimension}
+& \textbf{Weighted SFT}
+& \textbf{DPO}
+& \textbf{$\Delta$}
+& \textbf{Improved}
+& \textbf{Deteriorated}
+& \textbf{Unchanged} \\
+\hline
+
+Factuality
+& 0.71 $\pm$ 0.15
+& 0.68 $\pm$ 0.15
+& -0.03
+& 41
+& 67
+& 0 \\
+
+Coverage
+& 0.55 $\pm$ 0.22
+& 0.57 $\pm$ 0.24
+& +0.01
+& 37
+& 38
+& 33 \\
+
+Conciseness
+& 0.59 $\pm$ 0.20
+& 0.57 $\pm$ 0.15
+& -0.03
+& 39
+& 69
+& 0 \\
+
+\hline
+\end{tabular}
+\end{table}
+
+As shown in Table~\ref{tab:weighted_dpo_comparison}, DPO did not produce
+a consistent improvement over quality-weighted SFT. Factuality decreased
+from 0.71 to 0.68, while conciseness decreased from 0.59 to 0.57.
+Coverage showed a small increase from 0.55 to 0.57. At the case level,
+DPO produced lower factuality in 67 cases and lower conciseness in 69
+cases, whereas coverage showed a more balanced pattern, with 37 cases
+improving, 38 deteriorating, and 33 remaining unchanged.
+
+Figure~\ref{fig:dpo_distribution} provides a direct visual comparison
+of quality-weighted SFT and DPO across the primary clinical quality
+dimensions.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{dpo_distribution.png}
+\caption{Comparison of quality-weighted SFT and DPO across the principal
+clinical quality dimensions.}
+\label{fig:dpo_distribution}
+\end{figure}
+
+To examine whether the observed differences were consistent across
+individual reports, paired differences were calculated for each matched
+case as $\Delta_i = \mathrm{DPO}_i-\mathrm{Weighted\ SFT}_i$. Their
+distributions are shown in Figure~\ref{fig:dpo_paired_difference}.
+The mean paired differences were $-0.03$, $+0.01$, and $-0.03$ for
+factuality, coverage, and conciseness, respectively. The corresponding
+median differences were $-0.05$, $0.00$, and $-0.06$. Thus, the paired
+analysis indicates a small disadvantage for DPO in factuality and
+conciseness, while coverage remained broadly unchanged.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{dpo_boxplot.png}
+\caption{Distribution of paired differences between DPO and
+quality-weighted SFT across the 108 matched test cases. Positive values
+indicate improvement following DPO.}
+\label{fig:dpo_paired_difference}
+\end{figure}
+
+Statistical significance was assessed using two-sided Wilcoxon
+signed-rank tests with Holm correction across the three primary
+comparisons. Factuality showed a negative rank-biserial effect
+($r_{rb}=-0.23$), indicating a tendency towards higher scores under
+quality-weighted SFT, but the difference was not statistically
+significant after correction ($p=0.082$). Coverage showed virtually no
+effect ($r_{rb}=0.06$, $p=0.671$), indicating no meaningful systematic
+difference between the two approaches. Conciseness similarly favoured
+quality-weighted SFT ($r_{rb}=-0.26$), although the difference did not
+reach statistical significance after correction ($p=0.056$).
+
+These results therefore provide no statistically significant evidence
+that DPO improved the primary clinical quality dimensions beyond
+quality-weighted SFT. While the direction of the differences favoured
+quality-weighted SFT for factuality and conciseness, the effect sizes
+were relatively small. The results suggest that the additional
+preference-optimization stage did not provide a clear benefit over the
+quality-weighted supervised objective in this experimental setting.
+
+Medical tone remained within the same high range observed for
+quality-weighted SFT, indicating that DPO preserved the intended
+clinical reporting style. Readability measures similarly remained within
+the same general range, with outputs continuing to exhibit the
+specialised linguistic characteristics expected of clinical reports.
+
+Overall, DPO did not improve upon quality-weighted SFT across the
+primary clinical dimensions. Coverage remained broadly comparable,
+whereas factuality and conciseness showed small decreases favouring the
+weighted SFT model. None of the three differences was statistically
+significant after Holm correction. These findings suggest that, for the
+present task and experimental configuration, quality-weighted
+supervision provided the stronger adaptation strategy, while the
+additional DPO stage did not yield further measurable improvement.
+\subsection{Comparative Analysis of Training Strategies}
+\label{sec:comparative_training}
+
+The performance of the evaluated training strategies is summarised in
+Table~\ref{tab:training_strategy_comparison}. Overall, standard SFT
+produced a substantial improvement in factuality over the pretrained
+baseline, while quality-weighted SFT achieved the strongest overall
+performance across the three primary clinical quality dimensions.
+Quality-weighted SFT increased factuality from 0.67 to 0.71, coverage
+from 0.46 to 0.55, and conciseness from 0.46 to 0.59 relative to
+standard SFT. DPO produced comparable performance for coverage
+(0.57), but did not provide a statistically significant improvement
+over quality-weighted SFT in any of the primary metrics.
+
+\begin{table}[htbp]
+\centering
+\caption{Comparison of the evaluated training strategies across the
+primary clinical quality dimensions.}
+\label{tab:training_strategy_comparison}
+
+\begin{tabular}{lcccc}
+\hline
+\textbf{Dimension} & \textbf{Baseline} & \textbf{SFT}
+& \textbf{Weighted SFT} & \textbf{DPO} \\
+\hline
+Factuality   & 0.37 & 0.67 & \textbf{0.71} & 0.68 \\
+Coverage     & 0.50 & 0.46 & 0.55 & \textbf{0.57} \\
+Conciseness  & 0.43 & 0.46 & \textbf{0.59} & 0.57 \\
+\hline
+\end{tabular}
+\end{table}
+
+The complementary communication measures remained broadly stable
+across the adapted models. Medical tone remained close to the maximum
+score of 1, indicating preservation of the intended clinical reporting
+style. Readability scores remained within similar ranges across the
+models, with the FKGL, SMOG, and Dale--Chall measures consistently
+indicating advanced, approximately university-level reading difficulty.
+This reflects the specialised vocabulary and clinical terminology
+expected in medical reports rather than a deterioration in report
+quality.
+
+Taken together, the comparison indicates that quality-weighted SFT
+provided the most consistent overall improvement among the evaluated
+adaptation strategies. Its gains over standard SFT were statistically
+supported for coverage and conciseness, while DPO did not produce a
+further statistically significant improvement over the weighted
+approach.
+
+\section{Knowledge Transfer and Computational Efficiency}
+\subsection{Teacher--Student Knowledge Transfer}
+\label{sec:teacher_student_transfer}
+
+This section evaluates whether the compact student model retained information
+and reporting behaviour from the teacher, while also examining whether
+similarity to the teacher corresponded to clinically useful output. The
+analysis addresses four research questions: (Q1) how similar are student
+outputs to the teacher, (Q2) whether the training strategy affects teacher
+similarity, (Q3) whether Weighted SFT retains useful teacher-derived
+information, and (Q4) whether teacher similarity corresponds to clinical
+quality. Comparisons were performed on the 108 matched cases.
+
+\subsubsection{Similarity to the Teacher}
+
+Teacher--student similarity was assessed using complementary lexical and
+semantic measures. ROUGE-1, ROUGE-2, ROUGE-L and BLEU capture different forms
+of lexical overlap, while BERTScore and embedding similarity assess semantic
+alignment. Weighted SFT showed moderate lexical overlap but substantially
+higher semantic similarity to the teacher. Mean ROUGE-1, ROUGE-2, ROUGE-L and
+BLEU scores were 0.624, 0.445, 0.487 and 0.350, respectively, whereas
+BERTScore F1 and embedding similarity reached 0.914 and 0.967. The low
+variability of the latter two measures ($SD=0.014$ for both) indicates that
+this semantic alignment was consistent across the evaluation set.
+
+\begin{table}[H]
+\centering
+\caption{Teacher--student similarity for Weighted SFT ($N=108$).}
+\label{tab:teacher_student_similarity}
+\begin{tabular}{lcccccc}
+\hline
+\textbf{Metric} & R-1 & R-2 & R-L & BLEU & BERTScore F1 & Embedding \\
+\hline
+\textbf{Mean} & 0.624 & 0.445 & 0.487 & 0.350 & 0.914 & 0.967 \\
+\textbf{SD} & 0.079 & 0.068 & 0.068 & 0.082 & 0.014 & 0.014 \\
+\hline
+\end{tabular}
+\end{table}
+
+The contrast between lexical and semantic similarity suggests that the
+student generally reproduced the information conveyed by the teacher without
+simply reproducing its wording. This is desirable for knowledge distillation,
+where the objective is to transfer useful behaviour rather than produce
+verbatim copies.
+
+\subsubsection{Retention of Teacher-Derived Clinical Quality}
+
+Teacher similarity alone does not establish whether the transferred
+information remains clinically useful. The clinical-quality distributions
+therefore provide a complementary assessment of how much of the teacher's
+performance was retained. As shown in Table~\ref{tab:quality_retention},
+Weighted SFT retained between 72.6\% and 78.1\% of the teacher's mean scores,
+with the highest relative retention observed for conciseness.
+
+\begin{table}[H]
+\centering
+\caption{Teacher and Weighted SFT clinical-quality distributions ($N=108$).}
+\label{tab:quality_retention}
+\begin{tabular}{lccc}
+\hline
+\textbf{Clinical quality} & \textbf{Teacher} & \textbf{Weighted SFT} &
+\textbf{Relative retention} \\
+\hline
+Factuality & $0.979\pm0.020$ & $0.710\pm0.152$ & 72.6\% \\
+Coverage & $0.739\pm0.206$ & $0.553\pm0.221$ & 74.8\% \\
+Conciseness & $0.759\pm0.130$ & $0.593\pm0.198$ & 78.1\% \\
+\hline
+\end{tabular}
+\end{table}
+
+The larger variability of the student, particularly for factuality, indicates
+that teacher-level quality was not preserved uniformly across cases.
+Nevertheless, the combination of high semantic similarity and substantial
+retention across the clinical-quality dimensions provides evidence of
+meaningful knowledge transfer. The student also preserved the qualitative
+characteristics of the reporting task: readability remained within the
+university-level range across the evaluated reports, while medical tone
+remained consistently close to the desired upper end of the scale, with
+scores close to 1. Thus, the main loss relative to the teacher was observed
+in factuality, coverage and conciseness rather than in the overall readability
+or medical style of the reports.
+
+\subsubsection{Teacher Similarity and Clinical Quality}
+
+To determine whether greater similarity to the teacher corresponded to better
+clinical quality, Spearman rank correlations were calculated between the six
+similarity measures and the three clinical-quality dimensions, with Holm
+correction for multiple comparisons. Lexical similarity showed consistent
+positive associations with coverage and conciseness. For example, ROUGE-L
+correlated with coverage ($\rho=0.355$, adjusted $p=0.002$) and conciseness
+($\rho=0.718$, adjusted $p<0.001$). In contrast, none of the similarity
+measures showed a significant association with factuality after correction.
+Embedding similarity was almost unrelated to factuality
+($\rho=-0.011$, adjusted $p=1.000$).
+
+These findings demonstrate that teacher similarity and clinical quality are
+related but distinct properties. Greater similarity can reflect retention
+of content and reporting structure, but it does not necessarily indicate
+greater factual reliability. This distinction is particularly important in
+clinical report generation, where a semantically similar output may still
+contain unsupported or misplaced patient-specific information.
+
+Overall, Weighted SFT achieved substantial semantic alignment with the
+teacher while retaining useful aspects of its clinical reporting behaviour.
+At the same time, the observed teacher--student quality gap and the weak
+relationship between similarity and factuality demonstrate why
+reference-based similarity cannot be used as a substitute for direct
+clinical-quality evaluation. The results therefore support the use of
+teacher similarity as a measure of knowledge transfer, alongside rubric-based
+evaluation of factuality, coverage, conciseness, readability and medical
+tone.
+\subsection{Computational Efficiency}
+\label{sec:computational_efficiency}
+
+This experiment evaluates the computational efficiency gained through knowledge
+distillation by comparing the Llama-3.3-70B-Instruct (Teacher) and
+Qwen2.5-1.5B-Instruct (Student) models on the same ten consultations following
+a warm-up generation. Efficiency was assessed using architectural parameter
+count, peak GPU memory consumption, end-to-end generation latency, and
+generation throughput. Both models were evaluated with a maximum generation
+length of 2,048 tokens. Parameter counts represent the architectural model
+sizes, while the remaining metrics were measured empirically during inference.
+
+\begin{table}[H]
+\centering
+\caption{Computational efficiency comparison between the teacher and student models.}
+\label{tab:computational_efficiency}
+\begin{tabular}{lccccc}
+\hline
+\textbf{Model} & \textbf{Parameters} & \textbf{Peak GPU} &
+\textbf{Latency/report} & \textbf{Output} & \textbf{Throughput} \\
+& & \textbf{Memory (GB)} & \textbf{(s)} & \textbf{tokens} &
+\textbf{(tokens/s)} \\
+\hline
+Teacher
+& 70B & 39.37 & $86.84 \pm 3.66$ & 738.2 & $8.50 \pm 0.14$ \\
+Student
+& 1.5B & 1.71 & $139.31 \pm 127.45$ & 1186.4 & $11.63 \pm 4.18$ \\
+\hline
+\end{tabular}
+\end{table}
+
+The student reduced the model size from 70B to 1.5B parameters, corresponding
+to a \textit{97.9\% reduction} and a \textit{46.7$\times$ smaller model}.
+Peak GPU memory also decreased from 39.37 GB to 1.71 GB, representing a
+\textit{95.7\% reduction}. These results demonstrate that distillation
+substantially reduces the hardware requirements for inference.
+
+The student achieved higher generation throughput, producing \textit{11.63
+tokens/s} compared with \textit{8.50 tokens/s} for the teacher, representing a
+\textit{36.8\% improvement}. However, its mean end-to-end latency was higher
+(139.31 s versus 86.84 s). This is primarily explained by the longer outputs
+generated by the student (1,186 versus 738 tokens on average). Thus, higher
+latency does not necessarily indicate slower token generation.
+
+Overall, distillation produced substantial efficiency gains in \textit{model
+size}, \textit{memory requirements}, and \textit{token-level throughput},
+although lower end-to-end latency was not achieved under the present generation
+settings. The results therefore demonstrate a considerably reduced
+computational footprint for clinical report generation while highlighting that
+inference latency is also strongly influenced by output length.
 % -----------------------------------------------------------------------------
 
 \chapter{Conclusion}
