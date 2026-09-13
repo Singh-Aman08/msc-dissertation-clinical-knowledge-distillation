@@ -1757,10 +1757,11 @@ assessed quality. DPO preference pairs were constructed only from the
 training and validation sets, while the held-out test set remained excluded
 from all training and preference construction and was reserved for final
 evaluation.
+\vspace{-15pt}
 
 \begin{table}[htbp]
 \centering
-\small
+\footnotesize
 \caption{Synthetic Dataset Composition and Experimental Splits}
 \label{tab:dataset_composition}
 \begin{tabular}{lr@{\qquad}lr}
@@ -1798,11 +1799,11 @@ Utterance in words (MLUw), grammatical diversity using normalised POS
 Shannon entropy, and semantic variation using pairwise cosine similarity
 between consultation-level embeddings. The results are summarised in
 Table~\ref{tab:consultation_diversity}.
-\vspace{-5pt}
+\vspace{-15pt}
 
 \begin{table}[H]
 \centering
-\small
+\footnotesize
 \caption{Diversity of the synthetic consultations.}
 \label{tab:consultation_diversity}
 \begin{tabular}{lll}
@@ -1843,10 +1844,11 @@ factuality, coverage, conciseness, medical tone, and readability. The
 analysis focused on the 400 reports used for training. The descriptive
 statistics for the evaluated quality dimensions are presented in
 Table~\ref{tab:teacher_quality}.
+\vspace{-15pt}
 
 \begin{table}[htbp]
 \centering
-\small
+\footnotesize
 \caption{Teacher-generated supervision quality}
 \label{tab:teacher_quality}
 \begin{tabular}{lccc}
@@ -1905,10 +1907,11 @@ personalised clinical report generation. Evaluation was conducted on
 100 held-out test cases across factuality, coverage, conciseness,
 medical tone, and readability. The descriptive statistics are presented
 in Table~\ref{tab:baseline_quality}.
+\vspace{-15pt}
 
 \begin{table}[htbp]
 \centering
-\small
+\footnotesize
 \caption{Baseline clinical quality}
 \label{tab:baseline_quality}
 \begin{tabular}{lccc}
@@ -1974,7 +1977,7 @@ and case-level changes are presented in Table~\ref{tab:baseline_sft}.
 
 \begin{table}[htbp]
 \centering
-\small
+\footnotesize
 \caption{Effect of Standard SFT on Clinical Quality}
 \label{tab:baseline_sft}
 \begin{tabular}{lccc|ccc}
@@ -2103,10 +2106,10 @@ change was calculated as
 $\Delta = \mathrm{Weighted\ SFT} - \mathrm{SFT}$, where positive values
 indicate improvement. The aggregate performance and case-level changes are
 presented in Table~\ref{tab:sft_weighted_comparison}.
-
+\vspace{-15pt}
 \begin{table}[htbp]
 \centering
-\small
+\footnotesize
 \caption{Effect of Quality-Weighted SFT Compared with Standard SFT}
 \label{tab:sft_weighted_comparison}
 \begin{tabular}{lccc|ccc}
@@ -2278,10 +2281,11 @@ conciseness, medical tone, and readability. Change was calculated as
 $\Delta = \mathrm{DPO} - \mathrm{Weighted\ SFT}$, where positive values
 indicate improvement with DPO. The aggregate performance and case-level
 changes are presented in Table~\ref{tab:weighted_dpo_comparison}.
+\vspace{-15pt}
 
 \begin{table}[htbp]
 \centering
-\small
+\footnotesize
 \caption{Effect of DPO Compared with Quality-Weighted SFT}
 \label{tab:weighted_dpo_comparison}
 \begin{tabular}{lccc|ccc}
@@ -2413,10 +2417,11 @@ in Table~\ref{tab:training_strategy_comparison}. The comparison shows a
 clear progression from the pretrained baseline through standard SFT to
 quality-weighted SFT, while DPO did not provide further improvement over
 the weighted approach.
+\vspace{-15pt}
 
 \begin{table}[htbp]
 \centering
-\small
+\footnotesize
 \caption{Clinical Quality Across Training Strategies}
 \label{tab:training_strategy_comparison}
 \begin{tabular}{lcccc}
@@ -2501,10 +2506,11 @@ Both semantic measures also showed low variability ($SD=0.014$), indicating
 that the student remained consistently close to the teacher in meaning
 across the evaluation cases. The complete similarity results are presented
 in Table~\ref{tab:teacher_student_similarity}.
+\vspace{-15pt}
 
 \begin{table}[H]
 \centering
-\small
+\footnotesize
 \caption{Teacher--Student Similarity in Weighted SFT}
 \label{tab:teacher_student_similarity}
 \begin{tabular}{lcccccc}
@@ -2529,10 +2535,11 @@ also compared across factuality, coverage, and conciseness. As shown in
 Table~\ref{tab:quality_retention}, the student retained 72.6\%, 74.8\%, and
 78.1\% of the teacher's mean factuality, coverage, and conciseness scores,
 respectively. Conciseness showed the highest relative retention.
+\vspace{-15pt}
 
 \begin{table}[H]
 \centering
-\small
+\footnotesize
 \caption{Clinical Quality Retention in Weighted SFT}
 \label{tab:quality_retention}
 \begin{tabular}{lccc}
@@ -2546,6 +2553,7 @@ Conciseness & $0.759\pm0.130$ & $0.593\pm0.198$ & 78.1\% \\
 \hline
 \end{tabular}
 \end{table}
+\vspace{-10pt}
 
 As shown in Table~\ref{tab:quality_retention}, the student did not retain
 the teacher's quality uniformly across cases, with greater variability
@@ -2597,7 +2605,7 @@ Table~\ref{tab:computational_efficiency}.
 
 \begin{table}[H]
 \centering
-\small
+\footnotesize
 \caption{Computational Efficiency Comparison Between Teacher and Student}
 \label{tab:computational_efficiency}
 \begin{tabular}{lccccc}
@@ -2645,14 +2653,14 @@ Quantitative evaluation identifies differences between the adaptation
 strategies, but does not fully capture how these differences arise in
 individual cases. Qualitative analysis was therefore conducted to provide
 a closer examination of the generated reports and identify specific
-strengths and limitations of the final Weighted SFT model.
-\paragraph{Teacher Generation Errors:}
+strengths and limitations of the final Weighted SFT model and DPO.
+\paragraph{Teacher Generation Errors}
 \vspace{-15pt}
 Teacher-generated reports occasionally contained errors that could affect the quality of the supervision signal, including unsupported interpretations, duplicated information, and inconsistent expression of uncertainty. These examples are summarised in Table~\ref{tab:teacher_errors} and highlight limitations in the supervision signal that may subsequently be transferred to the student model.
 \vspace{-15pt}
 \begin{table}[H]
 \centering
-\footnotesize
+\scriptsize
 \caption{Examples of Errors in Teacher-Generated Reports}
 \label{tab:teacher_errors}
 \begin{tabular}{p{0.20\textwidth} p{0.36\textwidth} p{0.34\textwidth}}
@@ -2685,6 +2693,7 @@ not directly established in the consultation. \\
 \hline
 \end{tabular}
 \end{table}
+\vspace{-15pt}
 \paragraph{LLM-as-a-Judge Errors}
 Although the quantitative results provide useful measures of factuality and
 coverage, lower scores do not necessarily indicate errors in the generated
@@ -2700,7 +2709,7 @@ Table~\ref{tab:judge_errors}.
 \vspace{-15pt}
 \begin{table}[H]
 \centering
-\footnotesize
+\scriptsize
 \caption{Examples of False-Negative LLM-as-a-Judge Evaluations}
 \label{tab:judge_errors}
 \begin{tabular}{p{0.18\textwidth} p{0.37\textwidth} p{0.35\textwidth}}
@@ -2736,15 +2745,120 @@ presence in the generated report. \\
 \hline
 \end{tabular}
 \end{table}
+\vspace{-15pt}
 
 \paragraph{Baseline vs. Weighted SFT}
-Qualitative comparison with the baseline demonstrates that Weighted SFT improved patient-specific grounding, section-level alignment, structural coherence, and restraint in generation. The baseline frequently propagated findings across unrelated sections and introduced unsupported patient-level information. For example, although the consultation reported only \textit{bowel problems sometimes} the baseline expanded this to \textit{hypermetropia and scoliosis-related issues} under Gastroenterology and attributed scoliosis to the patient across Respiratory, Ear Nose Throat, and Ophthalmology. In contrast, Weighted SFT mapped the reported bowel problems to Gastroenterology and restricted the explicit scoliosis finding to the Skeletal section. Similar improvements were observed in preserving consultation evidence: findings including \textit{hypermetropia,fluid in his ear,} easily chipped teeth, physical fatigue, and a structural heart abnormality were retained more faithfully, while unsupported inferences were reduced. The handling of absent findings also improved; despite the consultation specifying N/A for immunological problems, the baseline generated \textit{a weakened immune system,} whereas Weighted SFT correctly preserved N/A. This improved evidence-to-section mapping also produced a more coherent report skeleton, with patient-specific information more consistently placed within the appropriate clinical domains rather than being repeated across sections. Improvements extended to the recommendations structure: while the baseline generated broad interventions such as \textit{bracing or surgery for scoliosis} and multiple therapies not directly supported by the consultation, Weighted SFT produced a more focused set of screening and referral recommendations linked to the reported clinical findings. Nevertheless, the improvement was not complete, as the student still introduced unsupported details, such as stating that the patient's bowel problems \textit{require occasional supplementation with nasogastric tube feeding.} Overall, the comparison indicates that Weighted SFT did not merely reproduce the report template more effectively; it improved the mapping of source evidence to clinical sections and reduced unsupported patient-level elaboration, while retaining some residual limitations that are examined in the following error analysis.
+
+Qualitative comparison showed that Weighted SFT improved patient-specific
+grounding, section-level alignment, structural coherence, and restraint in
+generation by improving the mapping of source evidence to clinical sections
+and reducing unsupported patient-level elaboration compared with the
+baseline. The main differences are summarised in
+Table~\ref{tab:baseline_weighted_qualitative}.
+\vspace{-15pt}
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Qualitative Comparison of Baseline and Weighted SFT}
+\label{tab:baseline_weighted_qualitative}
+\begin{tabular}{p{0.17\textwidth} p{0.27\textwidth} p{0.29\textwidth} p{0.20\textwidth}}
+\hline
+\textbf{Aspect} & \textbf{Baseline} & \textbf{Weighted SFT} & \textbf{Effect} \\
+\hline
+
+Section grounding
+&
+Cross-section propagation of bowel problems, hypermetropia, and scoliosis.
+&
+Bowel problems placed in Gastroenterology; scoliosis restricted to Skeletal.
+&
+Better evidence-to-section mapping. \\
+
+Evidence preservation
+&
+Unsupported additions and inconsistent retention of reported findings.
+&
+Retained hypermetropia, ear fluid, chipped teeth, fatigue, and cardiac
+abnormality.
+&
+Better preservation; fewer unsupported inferences. \\
+
+Absent findings
+&
+N/A immunological finding changed to ``a weakened immune system''.
+&
+N/A correctly preserved.
+&
+Less unsupported generation. \\
+
+Report structure
+&
+Patient information repeated across unrelated sections.
+&
+Information placed within the relevant clinical domains.
+&
+Greater structural coherence. \\
+
+Recommendations
+&
+Broad or unsupported interventions, including ``bracing or surgery for
+scoliosis''.
+&
+More focused screening and referral recommendations.
+&
+Greater restraint and relevance. \\
+ \\
+
+\hline
+\end{tabular}
+\end{table}
 \paragraph{Weighted SFT Errors}
-Despite the overall improvements observed quantitatively, qualitative comparison of the consultation, teacher-generated report, and Weighted SFT output revealed several residual failure modes. First, the student occasionally failed to preserve clinically relevant patient-specific information despite its presence in the source consultation and teacher supervision. For example, the consultation reported that the child was \textit{bothered by loud noises and gets frustrated when there's too much going on} which the teacher correctly retained under Ear, Nose and Throat. However, the student omitted this finding and instead populated the section with vision-related information. Similarly, the consultation and teacher explicitly identified an undescended testicle, whereas the student reduced this established patient finding to a generic recommendation to \textit{consider a testicular examination.} These examples indicate that the student can retain the overall report structure while incompletely preserving the fine-grained mapping between patient evidence and its corresponding clinical domain.
 
-A second limitation was the generation of unsupported patient-specific elaborations. The consultation only stated that the child appeared \textit{a bit behind} developmentally, and the teacher preserved this uncertainty. In contrast, the student expanded this into specific difficulties involving \textit{rolling, sitting, walking, playing with toys, using cutlery, using zips and buttons, and toilet training} none of which were reported in the consultation. More importantly, the student occasionally blurred the boundary between syndrome-level knowledge and patient-specific evidence. For instance, characteristics described by the teacher as affecting \textit{other individuals with KBG syndrome} were incorrectly attributed directly to the patient, such as \textit{The patient has an unusual structure of their spinal bones, giving rise to\dots scoliosis} This represents a clinically important attribution error: although the generated information is medically plausible within the context of KBG syndrome, there is no evidence that the individual patient exhibited the condition.
+Despite the overall improvements, qualitative analysis identified several
+remaining failure modes in evidence preservation, unsupported elaboration,
+patient--syndrome attribution, and section-level alignment. The main examples
+are summarised in Table~\ref{tab:weighted_sft_errors}.
+\vspace{-15pt}
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Qualitative Failure Cases in Weighted SFT}
+\label{tab:weighted_sft_errors}
+\begin{tabular}{p{0.20\textwidth} p{0.37\textwidth} p{0.37\textwidth}}
+\hline
+\textbf{Failure mode} & \textbf{Source and teacher} & \textbf{Weighted SFT} \\
+\hline
 
-Finally, the student demonstrated occasional degradation of semantic alignment across report sections. Most notably, the same syndrome-level statement regarding hearing difficulties---\textit{Around 20--40\% of people with KBG syndrome experience hearing issues}---was repeated across unrelated sections, including Gastroenterology, Neurology, Dental, Education, and Behaviour and Development. This suggests that the model learned the structural template of the teacher reports but did not consistently preserve the semantic relationship between section headings and their associated syndrome-specific information. Overall, these examples indicate that Weighted SFT substantially improves the ability of the compact student model to generate structured and clinically relevant reports, but residual errors remain in evidence preservation, unsupported elaboration, and the separation of patient-specific observations from population-level syndrome knowledge. This distinction is particularly important in clinical report generation, where medically accurate information may nevertheless become misleading when incorrectly attributed to an individual patient.
+Evidence preservation &
+Loud noises causing frustration and an undescended testicle were explicitly
+reported and retained by the teacher. &
+The loud-noise finding was omitted and replaced with vision-related
+information; the undescended testicle was reduced to a generic recommendation
+for testicular examination. \\
+
+Unsupported elaboration &
+The consultation only stated that the child was ``a bit behind''
+developmentally; the teacher preserved this uncertainty. &
+Generated specific difficulties involving rolling, sitting, walking, toys,
+cutlery, zips and buttons, and toilet training. \\
+
+Patient--syndrome attribution &
+The teacher described spinal abnormalities as affecting other individuals
+with KBG syndrome. &
+Attributed the condition directly to the patient, including an ``unusual
+structure of their spinal bones'' and scoliosis. \\
+
+Section alignment &
+Syndrome-level hearing information was presented as general KBG knowledge. &
+The same hearing statement was repeated across unrelated sections, including
+Gastroenterology, Neurology, Dental, Education, and Behaviour and Development.
+\\
+
+\hline
+\end{tabular}
+\end{table}
+\paragraph{DPO Errors}
+
 % -----------------------------------------------------------------------------
 \chapter{Discussion}
 \label{chap:Discussion}
