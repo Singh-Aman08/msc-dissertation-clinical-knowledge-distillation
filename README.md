@@ -25,8 +25,7 @@ The resulting models are evaluated against an **untrained baseline, conventional
 
 ## GenROC Collaboration
 
-The project was conducted in collaboration with the **GenROC study** at the University of Bristol, which investigates genetic causes and outcomes in children with neurodevelopmental disorders. The research and findings were shared with members of the GenROC research team.
-
+The project was conducted in collaboration with the **GenROC study** at the University of Bristol, which investigates genetic causes and outcomes in children with neurodevelopmental disorders.
 [GenROC Study — University of Bristol](https://www.bristol.ac.uk/academic-child-health/research/research/genetics/genroc-study/)
 
 ## Dissertation
