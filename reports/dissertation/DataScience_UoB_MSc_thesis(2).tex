@@ -1,0 +1,4160 @@
+% The document class supplies options to control rendering of some standard
+% features in the result.  The goal is for uniform style, so some attention 
+% to detail is *vital* with all fields.  Each field (i.e., text inside the
+% curly braces below, so the MEng text inside {MEng} for instance) should 
+% take into account the following:
+%
+% - author name       should be formatted as "FirstName LastName"
+%   (not "Initial LastName" for example),
+% - supervisor name   should be formatted as "Title FirstName LastName"
+%   (where Title is "Dr." or "Prof." for example),
+% - degree programme  should be "BSc", "MEng", "MSci", "MSc" or "PhD",
+% - dissertation title should be correctly capitalised (plus you can have
+%   an optional sub-title if appropriate, or leave this field blank),
+% - dissertation type should be formatted as one of the following:
+%   * for the MEng degree programme either "enterprise" or "research" to
+%     reflect the stream,
+%   * for the MSc  degree programme "$X/Y/Z$" for a project deemed to be
+%     X%, Y% and Z% of type I, II and III.
+% - year              should be formatted as a 4-digit year of submission
+%   (so 2014 rather than the academic year, say 2013/14 say).
+
+\documentclass[ % the name of the author
+                    author={Aman Kumar Singh},
+                % the name of the supervisor
+                supervisor={Dr. Edwin Simpson},
+                % the degree programme
+                    degree={MSc},
+                % the dissertation    title (which cannot be blank)
+                     title={Quality-Aware Knowledge Distillation of Large Language Models for Efficient Personalised Clinical Report Generation},
+                % the dissertation subtitle (which can    be blank)
+                  subtitle={},
+                % the dissertation     type
+                      type={},
+                % the year of submission
+                      year={2021}]{dissertation}
+\usepackage{multicol}
+\usepackage[most]{tcolorbox}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{wrapfig}
+
+\begin{document}
+
+% =============================================================================
+
+% This section simply introduces the structural guidelines.  It can clearly
+% be deleted (or commented out) if you use the file as a template for your
+% own dissertation: everything following it is in the correct order to use 
+% as is.
+
+
+
+
+% =============================================================================
+
+% This macro creates the standard UoB title page by using information drawn
+% from the document class (meaning it is vital you select the correct degree 
+% title and so on).
+
+
+\maketitle
+
+% After the title page (which is a special case in that it is not numbered)
+% comes the front matter or preliminaries; this macro signals the start of
+% such content, meaning the pages are numbered with Roman numerals.
+
+\frontmatter
+
+% This macro creates the standard UoB declaration; on the printed hard-copy,
+% this must be physically signed by the author in the space indicated.
+
+\makedecl
+
+% LaTeX automatically generates a table of contents, plus associated lists 
+% of figures, tables and algorithms.  The former is a compulsory part of the
+% dissertation, but if you do not require the latter they can be suppressed
+% by simply commenting out the associated macro.
+
+
+
+
+% The following sections are part of the front matter, but are not generated
+% automatically by LaTeX; the use of \chapter* means they are not numbered.
+
+% -----------------------------------------------------------------------------
+\tableofcontents
+\listoffigures
+\listoftables
+\chapter*{Ethics Statement}
+ This project
+%Choose one of the following options:
+%does not require ethics approval, as reviewed by my supervisor $<$SUPERVISOR NAME$>$.
+%or
+does not require ethics approval,   
+   as reviewed by my supervisor, Dr. Edwin Simpson. 
+\chapter*{Abstract}
+Neurodevelopmental disorders (NDDs) comprise a diverse group of conditions
+whose clinical presentation can vary substantially between individuals. This
+heterogeneity can make it challenging to communicate complex clinical
+information in a way that is both accessible and tailored to an individual
+patient. The challenge is particularly pronounced for rare disorders such as
+KBG syndrome, where a personalised report must distinguish between
+characteristics supported by a patient's clinical information and those known
+to occur more broadly within the syndrome. Large language models (LLMs) offer
+considerable potential for generating such reports by synthesising complex
+clinical information into coherent patient-specific narratives. However, their
+use is constrained by hallucination, inadequate grounding in patient-specific
+evidence, privacy requirements, and substantial computational demands. Small
+language models offer a more efficient alternative, but may lack the knowledge
+and capabilities required for complex clinical generation. This motivates the
+use of knowledge distillation to transfer useful capabilities from larger
+models to compact models. This study
+therefore investigates whether knowledge distillation can be improved by
+explicitly accounting for variation in the quality of teacher-generated
+supervision. Rather than treating all teacher reports equally, the proposed
+approach assesses reports across multiple dimensions of clinical quality and
+uses these assessments to determine their influence during student training.
+The study examines whether this multidimensional quality-aware approach can
+improve clinically grounded personalised report generation in a substantially
+smaller language model.
+
+A controlled synthetic KBG syndrome report-generation pipeline was developed
+using a 70B-parameter Llama-3.3-Instruct teacher model and a 1.5B-parameter
+Qwen2.5-Instruct student model. A dataset of synthetic doctor--parent
+consultations and teacher-generated reports was constructed for training and
+evaluation. Teacher reports were assessed across factuality, coverage,
+conciseness, readability, and medical tone. Reports meeting a minimum
+factuality requirement were retained, while multidimensional quality
+assessments were incorporated into supervised fine-tuning (SFT) to determine
+the influence of individual training examples. Quality-aware SFT was evaluated
+against a baseline model, conventional SFT, and Direct Preference Optimisation
+(DPO) using clinical quality, teacher--student similarity, and
+inference-efficiency measures.
+
+Quality-aware SFT achieved the strongest overall balance of clinical report
+quality. Compared with conventional SFT, coverage increased from 0.46 to 0.55
+(+0.10) and conciseness from 0.46 to 0.59 (+0.13), with both improvements
+statistically significant. Factuality increased from 0.67 to 0.71 (+0.04),
+although this difference was not statistically significant. DPO produced no
+statistically significant improvement over quality-aware SFT across the
+evaluated clinical dimensions. The student retained 72.6--78.1\% of teacher
+performance across factuality, coverage, and conciseness while reducing
+parameter count by 46.7-fold, peak GPU memory usage by 95.7\%, and increasing
+token throughput by 36.8\%. However, per-report latency increased because the
+student generated substantially longer outputs, highlighting a trade-off
+between throughput and generation length. High semantic similarity also did
+not reliably correspond to factual correctness, demonstrating the limitations
+of similarity-based evaluation alone.
+
+Overall, the findings show that multidimensional quality-aware supervision can
+improve selected aspects of clinically grounded report generation in compact
+language models while substantially reducing computational requirements. The
+results further demonstrate that successful model compression should be
+evaluated jointly in terms of clinical quality, grounding, and computational
+efficiency rather than resource reduction alone. Within the controlled
+synthetic KBG syndrome setting, this study provides evidence that
+multidimensional quality-aware knowledge distillation is a promising approach
+for developing more efficient clinical language models, while further
+validation on real clinical data and broader medical domains remains necessary.
+
+
+
+
+
+% -----------------------------------------------------------------------------
+
+
+% -----------------------------------------------------------------------------
+
+
+\chapter*{Supporting Technologies}
+
+\begin{itemize}
+
+\item I used the \textit{Isambard-AI} high-performance computing facility for both model training and inference. Experiments were conducted using NVIDIA GH200 Grace Hopper Superchips, providing the GPU resources required for large-scale language-model inference and fine-tuning. \textit{Slurm} was used to submit, schedule, and monitor HPC jobs, while \textit{SSH} was used for secure remote access.
+
+\item I used Python as the primary programming language for model development, training, inference, data processing, and analysis. The main libraries and frameworks included:
+\begin{itemize}
+    \item \textit{PyTorch} for deep-learning model development and GPU-accelerated computation.
+    \item \textit{Hugging Face Transformers} and \textit{Datasets} for loading, configuring, and processing language models and datasets.
+    \item \textit{TRL} and \textit{Unsloth} for supervised fine-tuning, quality-weighted fine-tuning, and Direct Preference Optimization.
+    \item \textit{PEFT} for parameter-efficient fine-tuning using Low-Rank Adaptation (LoRA).
+    \item \textit{BitsAndBytes} for memory-efficient model loading and quantization.
+    \item \textit{Accelerate} for managing GPU-accelerated model computation.
+    \item \textit{vLLM} for efficient large-language-model inference.
+    \item \textit{NumPy}, \textit{pandas}, and \textit{scikit-learn} for numerical computation, data processing, and analysis.
+    \item \textit{SciPy} for statistical analysis.
+    \item \textit{Matplotlib} and \textit{Seaborn} for visualisation of experimental results.
+\end{itemize}
+
+\item I used \textit{Llama 3.3 70B Instruct} and
+\textit{Qwen2.5-1.5B-Instruct} as the primary language models for the
+knowledge-distillation experiments. \textit{Qwen3-30B-A3B-Instruct-2507}
+was used as an auxiliary large language model within the experimental
+pipeline.
+
+\item I used \textit{Jupyter/JupyterLab} for interactive experimentation and analysis and \textit{Visual Studio Code} for developing and maintaining the project codebase. \textit{Git} and \textit{GitHub} were used for version control and source-code management, while \textit{Jira} was used to organise project tasks and track development progress.
+
+\item I used a local laptop for developing and testing code and for computational tasks that did not require HPC resources. The dissertation was prepared using \LaTeX\ through \textit{Overleaf}, with \textit{Zotero} used to manage academic references.
+
+\end{itemize}
+
+
+
+
+% -----------------------------------------------------------------------------
+
+
+\chapter*{Acknowledgements}
+
+I would like to begin by expressing my sincere gratitude to my supervisor, Dr. Edwin Simpson, for his guidance, encouragement, and thoughtful feedback throughout this project. I particularly appreciated his openness to discussing research ideas and exploring different directions, as well as the independence he gave me to develop the work in my own way. At the same time, he consistently encouraged me to question my assumptions, think more critically, and push the work further. His willingness to listen, challenge, and offer advice whenever I needed it made a meaningful difference to both the research and my development as a researcher.
+
+I would also like to give a special thanks to my sister and brother-in-law, who supported me throughout this journey in ways that went well beyond the academic side of the project. From helping me think through project planning and decisions to encouraging me whenever I needed a push, they were always there for me. Their reassurance, patience, and belief in me provided a source of strength during some of the more demanding moments of the year, and I am deeply grateful to them for that.
+
+I would also like to acknowledge the Bristol Centre for Supercomputing for providing access to the Isambard-AI system, which supplied the computational resources required for the training and inference experiments undertaken in this project.
+
+Above all, I would like to thank my parents. Their love, sacrifices, and unwavering belief in me have been the foundation of my journey through education. They have supported me not only in the moments that were easy to celebrate, but also through the moments that were considerably harder. Even when we were far apart, their encouragement and faith in me never felt distant. I know that I would not be where I am today without the opportunities they have worked so hard to give me, or without the belief they have always placed in me. For that, and for everything they have done for me throughout my life, I will always be deeply grateful.
+
+Finally, I am grateful to everyone who, in one way or another, made this journey a little easier and helped me reach this point.
+
+% =============================================================================
+
+% After the front matter comes a number of chapters; under each chapter,
+% sections, subsections and even subsubsections are permissible.  The
+% pages in this part are numbered with Arabic numerals.  Note that:
+%
+% - A reference point can be marked using \label{XXX}, and then later
+%   referred to via \ref{XXX}; for example Chapter\ref{chap:context}.
+% - The chapters are presented here in one file; this can become hard
+%   to manage.  An alternative is to save the content in seprate files
+%   the use \input{XXX} to import it, which acts like the #include
+%   directive in C.
+
+\mainmatter
+
+% -----------------------------------------------------------------------------
+\chapter{Introduction}
+\label{chap:introduction}
+Neurodevelopmental disorders (NDDs) comprise a diverse group of conditions
+affecting cognition, communication, learning, behaviour, motor abilities, and
+social functioning. Clinical presentations can vary substantially even within
+the same diagnosis, in terms of the type, combination, and severity of symptoms
+\cite{gao_genetic_2025,assadourian_precision_2025}. This heterogeneity is
+particularly challenging in rare genetic NDDs, where parents may need to
+understand complex conditions and communicate their child's needs to healthcare
+professionals, who may have limited familiarity with rare disorders. A
+personalised, parent-held report could help address this challenge by combining
+patient-specific findings with condition-specific knowledge, including
+associated features and monitoring recommendations. However, producing such
+reports manually requires considerable clinical knowledge and time, limiting
+their routine use \cite{patel_descriptive_2023, carter_qualitative_2025, low_identifying_2025}.
+
+KBG syndrome (KBGS) illustrates this challenge. It is a rare genetic
+neurodevelopmental disorder associated with pathogenic variants or deletions
+involving the \textit{ANKRD11} gene, with considerable variation in clinical
+presentation between individuals \cite{martinez-cayuelas_clinical_2023}.
+Personalised reporting must therefore relate individual clinical findings to
+syndrome-level knowledge while remaining comprehensive, factually grounded,
+and understandable to its intended audience.
+
+Given these challenges, automated clinical report generation has attracted
+growing interest. Large language models (LLMs) can integrate information from
+multiple sources and generate coherent clinical narratives, supporting
+applications such as medical summarisation, documentation, and patient
+information generation
+\cite{yuan_continued_2024,rehman_advancement_2025,alabed_large_2026,
+che_llm-driven_2026,makram_ai_2024}. However, fluency does not guarantee
+clinical reliability, as LLMs may hallucinate, omit relevant information, or
+introduce inconsistencies \cite{zeba_mitigating_2026}. Clinical reports must
+therefore accurately reflect patient information, provide relevant coverage,
+and avoid unsupported claims
+\cite{rossi_future_2023,yang_knowledge_2022,dahlberg_measuring_2026}.
+Privacy requirements and the computational cost of large models can further
+limit local deployment for sensitive clinical data
+\cite{annas_hipaa_2003,noauthor_eu_nodate,zhong_considerations_2025,
+li_collm_2024}. An alternative is provided by small language models (SLMs),
+which offer lower memory and inference requirements but generally have less
+knowledge and reasoning capacity than larger models
+\cite{wang_comprehensive_2025,turki_evaluating_2025}. This motivates methods
+for transferring useful capabilities from larger models to compact models
+while retaining their efficiency advantages.
+
+Knowledge distillation provides such a mechanism by transferring useful
+capabilities from a larger teacher model to a smaller student model
+\cite{hinton_distilling_2015,wang_knowledge_2022,gou_knowledge_2021}. In
+language models, knowledge can be transferred through internal
+representations, output distributions, or generated responses
+\cite{yang_categories_2023,habib_knowledge_2024,park_relational_2019}.
+Response-based distillation is particularly relevant to generative tasks
+because teacher-generated responses provide direct, task-specific examples of
+the behaviour the student is expected to reproduce
+\cite{chen_distilling_2021}. For personalised clinical report generation, this
+provides a natural framework in which a larger model can integrate
+patient-specific information with clinical knowledge and generate reports that
+supervise a more compact student model.
+
+However, the effectiveness of response-based distillation depends not only on
+teacher capability but also on the quality of the supervision it provides.
+Teacher-generated responses may contain factual errors, unsupported claims,
+omissions, irrelevant information, or undesirable response characteristics
+\cite{zhang_lifting_2023,montenegro_what_2025,davidson_reasoning-driven_2026}.
+Because these responses become training targets, variation in their quality
+can affect knowledge transfer. Treating all responses as equally valuable
+therefore assumes uniform supervision quality that may not hold in practice.
+
+Existing approaches have addressed this problem through filtering and
+weighting \cite{liu_air_2025-1,lei_learning_2025,lee_what_2026}. Filtering
+removes responses that fail a predefined quality criterion, but may also
+discard responses that are imperfect according to one criterion while
+retaining useful information \cite{shen_logitwise_2025}. Weighting provides a less restrictive
+alternative by allowing responses to contribute to training to different
+degrees \cite{zhao_rethinking_2026}. Its effectiveness, however, depends on
+the signal used to determine each response's contribution.
+
+Recent response-based distillation methods use signals related to teacher
+reliability, example difficulty, token-level importance, or the functional
+relevance of response components
+\cite{chen_knowledge_2024,jiang_difficulty-aware_2027,tang_smartad_2026}.
+These approaches move beyond uniform supervision, but their signals generally
+capture a particular property of a response rather than its broader quality.
+A response may be reliable according to one signal while omitting important
+information or expressing it inefficiently. The limitation is therefore not
+weighting itself, but the narrow basis on which the contribution of a response
+is determined.
+
+This issue is particularly important for personalised clinical reports,
+where quality is inherently multidimensional. Factual correctness is
+necessary, but a factually correct response may still provide incomplete
+coverage of relevant patient-specific information, while greater coverage
+does not necessarily result in concise or appropriately expressed
+communication \cite{ahmad_finetuning_2026}. These dimensions provide complementary, and potentially competing, signals of teacher supervision value. A single quality or importance measure may therefore fail to capture important differences between otherwise plausible responses \cite{liu_g-eval_2023, fabbri_summeval_2021}.
+
+Multidimensional assessment of training examples has been explored in
+instruction tuning, with approaches such as Deita and XCoder using multiple
+criteria to identify and curate higher-quality training data
+\cite{liu_what_2024,wang_how_2024}. In parallel, response-based distillation
+has increasingly moved beyond treating all teacher outputs equally through
+filtering and weighting strategies
+\cite{liu_air_2025-1,lei_learning_2025,lee_what_2026}. However, the
+intersection of these approaches within response-based distillation has
+remained underexplored. Existing methods have largely
+treated example selection and response weighting as separate problems, with
+less emphasis on using multiple explicitly defined dimensions of
+teacher-response quality to determine the contribution of each response to
+the distillation objective. This leaves open the question of whether a multidimensional view of response quality can provide more informed supervision during response-based distillation.
+
+This gap is particularly relevant to personalised clinical report generation,
+where factuality, information coverage, conciseness, and communication quality
+represent distinct aspects of report quality. To the best of our knowledge,
+this dissertation is the first to investigate multidimensional quality-aware
+knowledge distillation specifically for personalised clinical report
+generation in
+neurodevelopmental disorders. The proposed approach informs each teacher-generated response's
+contribution using multiple dimensions of response quality, allowing useful
+but imperfect supervision to be retained while reducing the influence of
+lower-quality responses, rather than relying on a single retain-or-discard
+decision or notion of response importance.
+
+The approach is investigated using KBG syndrome as a controlled clinical case
+study. A synthetic patient-profile pipeline generates patient-specific
+doctor--parent consultations, which are combined with KBG syndrome reference
+knowledge to provide context for a larger teacher language model to generate
+personalised clinical reports. These reports provide response-based
+supervision for a substantially smaller student model. The quality-aware
+approach uses multiple dimensions of teacher-response quality to determine
+each response's contribution during training. The resulting student is
+compared with conventional supervised fine-tuning and Direct Preference
+Optimisation (DPO), alongside an untrained baseline.
+
+A multi-stage evaluation framework is used to assess both teacher and student reports. A rubric-based LLM-as-a-judge evaluates reports across multiple dimensions of clinical quality. To support fine-grained assessment, the evaluation uses atomic-fact decomposition for relevant dimensions and formulates other assessment criteria as atomic binary questions. These assessments also provide the signals used to determine teacher-response contributions during quality-aware distillation. Complementary lexical and semantic similarity metrics provide additional evidence of correspondence with reference texts. Finally, the student model is assessed not only for report quality but also for its practical efficiency, using model size, memory consumption, throughput, and latency.
+
+The study is guided by the following research question:
+\vspace{-0.2em}
+\begin{quote}
+\textit{Can multidimensional quality-aware knowledge distillation improve the
+clinical quality of reports generated by compact language models compared
+with conventional supervised fine-tuning?}
+\end{quote}
+\vspace{-0.2em}
+To investigate this question, the dissertation makes the following four
+contributions:
+
+\begin{itemize}[noitemsep, topsep=2pt, leftmargin=*]
+
+    \item Developed a controlled synthetic data-generation pipeline for diverse patient profiles, doctor--parent consultations, and personalised clinical reports.
+
+    \item Proposed and evaluated a multidimensional quality-aware response-based distillation framework that uses teacher-response quality to determine the contribution of individual demonstrations during student training.
+
+    \item Compared an untrained baseline, conventional SFT, quality-aware SFT, and DPO for personalised clinical report generation under a controlled experimental setting.
+
+    \item Evaluated clinical report quality, knowledge transfer, and computational efficiency using multidimensional quality measures, model size, memory consumption, throughput, and latency.
+\end{itemize}
+
+
+% -----------------------------------------------------------------------------
+
+\chapter{Background}
+\label{chap:background}
+\section{Personalised Clinical Report Generation}
+\label{sec:personalised_clinical_report_generation}
+
+\subsection{Neurogenetic and Neurodevelopmental Disorders}
+\label{sec:neurogenetic_disorders}
+
+Neurodevelopmental disorders (NDDs) comprise a heterogeneous group of
+conditions arising from atypical brain development and functioning, with
+effects on cognition, communication, learning, behaviour, and motor and
+social development. Genetic factors contribute substantially to many NDDs,
+and their clinical manifestations can vary considerably both between and
+within diagnostic categories \cite{gao_genetic_2025,assadourian_precision_2025}.
+This heterogeneity makes accurate representation of individual patient
+characteristics an important consideration in clinical documentation and
+reporting.
+
+KBG syndrome (KBGS) is a rare genetic neurodevelopmental disorder primarily
+associated with pathogenic variants or deletions involving the
+\textit{ANKRD11} gene. It is characterised by a broad and variable clinical
+spectrum that may include developmental delay, intellectual and learning
+difficulties, behavioural and neurological abnormalities, characteristic
+craniofacial features, macrodontia, short stature, and skeletal
+abnormalities. However, the presence and severity of these features vary
+substantially between individuals \cite{martinez-cayuelas_clinical_2023}.
+Consequently, a generic description of the syndrome cannot fully represent
+the clinical characteristics of a particular patient.
+\subsection{Personalised Clinical Reporting and Grounding}
+\label{sec:clinical_personalisation_grounding}
+
+Personalised clinical reporting refers to adapting clinical information to
+the characteristics, clinical presentation, and circumstances of an
+individual patient, rather than providing the same generic description of a
+condition for every patient. It aims to make clinical information more
+relevant to the individual by reflecting their specific presentation and
+circumstances \cite{yang_knowledge_2022}. Personalisation may involve
+tailoring the description of symptoms and clinical features, as well as
+diagnostic considerations, screening, monitoring, or other clinically
+relevant information according to the individual patient.
+
+This is particularly important in rare genetic and neurodevelopmental
+disorders, where individuals with the same diagnosis can exhibit different
+combinations and severities of clinical features
+\cite{martinez-cayuelas_clinical_2023}. A personalised report can therefore
+provide a more meaningful representation of an individual's condition than
+a generic disease description, with its content reflecting the patient's
+particular clinical presentation and circumstances.
+\subsection{LLM-Based Clinical Report Generation}
+\label{sec:llm_clinical_report_generation}
+
+Large language models (LLMs) have expanded automated clinical text generation across tasks including clinical summarisation, medical documentation, and patient information generation \cite{yuan_continued_2024,rehman_advancement_2025,alabed_large_2026,che_llm-driven_2026,makram_ai_2024}. Their ability to condition outputs on clinical context makes them particularly relevant to personalised report generation, where patient information can be transformed into structured, patient-specific narratives. For example, Ganzinger et al. \cite{ganzinger_automated_2025} generated German discharge summaries from structured information extracted from electronic health records, while Tariq et al. \cite{tariq_patient_2024} developed patient-sensitive radiology summaries by combining chest CT reports with patient-related characteristics and audience-specific considerations. Similarly, Piya and Beheshti \cite{piya_contextual_2025} showed that clinical summarisation can benefit from combining clinical text with structured domain knowledge retrieved from a knowledge graph. Together, these studies demonstrate how LLMs can integrate patient and contextual information from multiple sources to generate clinically relevant narratives.
+
+However, fluent generation does not guarantee clinical reliability, as LLM-generated clinical text may contain hallucinations, omissions, or inconsistencies \cite{zeba_mitigating_2026}. Evaluation in healthcare settings must therefore consider factual grounding, completeness, and communication quality alongside linguistic quality \cite{dahlberg_measuring_2026}. At the same time, deploying LLMs in healthcare requires careful consideration of privacy and governance when processing sensitive patient information, particularly when using external cloud-based services \cite{annas_hipaa_2003,noauthor_eu_nodate,zhong_considerations_2025,al-dhabyani_data_2026}. While local deployment can help keep sensitive data within the healthcare environment, it often requires substantial memory and computational resources \cite{li_collm_2024}. This trade-off between model capability, clinical reliability, privacy, and deployability motivates the investigation of smaller models suitable for reliable clinical text generation in resource-constrained healthcare settings.
+\subsection{Small Language Models}
+\label{sec:small_language_models}
+Small language models (SLMs) offer a resource-efficient alternative to large
+language models, with lower memory, storage, and inference requirements
+\cite{wang_comprehensive_2025}. This makes them attractive for healthcare
+applications where computational efficiency and local processing of sensitive
+clinical information are important \cite{garg_rise_2026}. However, their
+smaller parameter count can limit their pre-trained knowledge and reasoning
+capacity compared with larger models \cite{turki_evaluating_2025,wang_comprehensive_2025}.
+Importantly, these limitations can be mitigated through appropriate
+task-specific training, with compact models demonstrating competitive
+performance on specialised medical tasks such as biomedical language
+processing and medical reasoning \cite{kim_small_2025,rohanian_effectiveness_2022}.
+
+Recent work further shows that well-trained smaller models can approach the
+performance of substantially larger models on specialised tasks through
+targeted supervision \cite{ye_teaching_2026}. Similarly, the Qwen3 study
+demonstrates that smaller models can acquire strong capabilities from larger
+models through appropriate training \cite{yang_qwen3_2025}. These findings
+highlight that performance on specialised tasks depends not only on model
+size, but also on how effectively a model is trained and adapted. Nevertheless,
+the remaining capability gap motivates approaches for transferring useful
+knowledge from larger models to resource-efficient models, discussed in the
+following section.
+
+
+
+
+
+
+
+
+
+\section{Knowledge Distillation}
+\subsection{Fundamentals of Knowledge Distillation}
+\label{sec:kd_fundamentals}
+
+The need to transfer useful capabilities from larger models to
+resource-efficient models has motivated the use of knowledge distillation
+(KD), a knowledge-transfer and model-compression technique in which a
+smaller student model learns from a larger and typically more capable teacher
+model \cite{hinton_distilling_2015,wang_knowledge_2022}. Rather than directly
+reducing model size through techniques such as pruning or quantisation, KD
+transfers information from the teacher through additional supervision
+signals, allowing the student to learn aspects of the teacher's behaviour
+beyond conventional hard targets \cite{hinton_distilling_2015,mansourian_comprehensive_2025}.
+
+The general KD framework consists of a teacher that provides informative
+training signals and a student that is optimised to reproduce the desired
+teacher behaviour while retaining the computational advantages of its
+smaller architecture \cite{wang_knowledge_2022}. The transferred knowledge
+may take different forms, including output distributions, generated
+responses, intermediate representations, or other teacher-derived signals
+\cite{gou_knowledge_2021}. The choice of transferred knowledge depends on
+the teacher--student setting and the objective of distillation.
+
+The effectiveness of KD therefore depends on how knowledge is defined, what
+level of access is available to the teacher, and how the transferred
+information is used to train the student \cite{mansourian_comprehensive_2025}.
+These considerations have led to several complementary classifications of
+KD, including distinctions based on training configuration, teacher access,
+and the form of transferred knowledge. The approaches most relevant to
+language-model distillation are discussed below.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Screenshot 2026-08-11 162229.png}
+    \caption{Teacher--Student Framework for Knowledge Distillation
+    \cite{gou_knowledge_2021}.}
+    \label{fig:kd}
+\end{figure}
+
+\subsection{Distillation Paradigms}
+\label{sec:distillation_paradigms}
+
+Knowledge distillation can be characterised by the training configuration,
+level of teacher access, and form of knowledge transferred. These represent
+complementary aspects of the teacher--student relationship rather than
+mutually exclusive categories \cite{wang_knowledge_2022,mansourian_comprehensive_2025}.
+
+Based on training configuration, \textit{offline distillation} uses a
+pretrained, fixed teacher from which the student learns, whereas
+\textit{online distillation} trains teacher and student jointly
+\cite{hinton_distilling_2015,wang_knowledge_2022,chen_online_2020}.
+\textit{Self-distillation} transfers knowledge within the same model, such
+as across training stages or model components, without requiring a separate
+teacher \cite{furlanello_born_2018,zhang_be_2019}.
+
+Distillation can also be distinguished by teacher access.
+\textit{White-box distillation} uses internal information such as logits,
+hidden representations, or attention patterns, whereas
+\textit{black-box distillation} relies only on information exposed through
+the teacher's outputs \cite{donisch_inference_2024,shi_knowledge_2025}.
+The latter is particularly relevant when teacher parameters or internal
+representations are inaccessible.
+
+Finally, knowledge may be transferred through teacher responses, output
+probability distributions, or intermediate representations, corresponding
+to \textit{response-based}, \textit{logit-based}, and
+\textit{feature-based} distillation, respectively
+\cite{yang_categories_2023,habib_knowledge_2024,park_relational_2019}.
+Response-based distillation is particularly suited to generative language
+models because teacher-generated text provides direct task-specific
+supervision without requiring access to internal model states. This forms
+the basis for the LLM-focused distillation considered in the following
+subsection.
+\subsection{Response-Based Distillation and Teacher-Generated Supervision}
+\label{sec:response_based_distillation_llms}
+Response-based distillation transfers knowledge from a teacher model to a
+smaller student through its observable outputs rather than internal
+representations or logits. The teacher generates task-specific responses that
+are then used as supervision for the student \cite{wang_knowledge_2026}. In healthcare, this approach has
+been used to transfer clinical prediction capabilities to smaller models. For
+example, Kehl et al. used teacher-generated predictions to supervise student
+models for cancer outcome extraction from imaging reports and medical
+oncologist notes \cite{kehl_shareable_2024}. Similarly, Riaz et al. employed a
+teacher--student framework to extract overall response and disease progression
+according to RECIST from free-text radiology reports
+\cite{riaz_empirical_2025}.
+
+Beyond structured outcome extraction, the same principle can be extended to
+clinical report generation, where the desired output is a richer natural
+language representation of patient information. A teacher LLM can be provided
+with patient-specific information and relevant clinical knowledge and prompted
+to generate a personalised clinical report. These teacher-generated reports
+can then serve as supervision for a smaller student model, enabling it to learn
+both how to integrate relevant clinical information and how to communicate it
+in an appropriate clinical structure and style.
+
+However, because the student learns directly from teacher outputs, the quality
+of this supervision is critical. Errors, omissions, unsupported claims, and
+undesirable patterns may be propagated to the student
+\cite{zhang_lifting_2023,montenegro_what_2025}. Teacher-generated responses
+may also vary in factual correctness, coverage, and clinical communication
+quality \cite{davidson_reasoning-driven_2026}. Although low-quality examples
+can be filtered, this may discard useful information. An alternative is to
+weight examples according to their quality, giving greater importance to
+higher-quality responses while reducing the contribution of lower-quality ones
+\cite{kuo_not_2025}. This motivates quality-aware knowledge distillation,
+where the quality of teacher-generated supervision is explicitly incorporated
+into student training.
+
+\subsection{Quality-Aware Knowledge Distillation and Research Gap}
+\label{sec:quality_aware_kd_research_gap}
+The effectiveness of response-based knowledge distillation depends not only on
+the capability of the teacher model, but also on the quality of the supervision
+it provides \cite{wen_preparing_2020}. Because teacher-generated responses become training targets for
+the student, factual errors, omissions, irrelevant information, and undesirable
+response characteristics may also be transferred during distillation \cite{zhang_can_2024}.
+Treating all teacher responses as equally reliable therefore assumes that the
+quality of the supervision is relatively uniform, which may not always be the
+case. This has motivated quality-aware approaches that account for differences
+in the quality of teacher-generated supervision
+\cite{alba_honest_2026}.
+
+One common approach is quality-aware filtering. In this setting, teacher
+responses are evaluated using criteria such as correctness, relevance,
+semantic similarity, uncertainty, or difficulty, and responses that do not
+meet a specified criterion are removed from the training data \cite{cai_when_2026, zafar_confidence-based_2025}. For example,
+Pham et al. filter teacher-generated summaries using
+a reference-free quality measure after selecting suitable in-domain
+conversations and prompts. Their results show that filtering low-quality
+synthetic supervision can improve student performance ~\cite{pham_select_2023}. Such approaches show
+that the quality of teacher-generated responses can have an important effect
+on the usefulness of the resulting training data.
+
+However, filtering makes a binary decision about each training example. A
+response is either retained or discarded. This can be limiting when the
+quality of a response varies across different aspects. A response that falls
+just below a filtering threshold may still contain useful information, while
+a response that passes the threshold may still contain weaknesses that are
+not captured by the selected criterion \cite{shen_logitwise_2025}. Filtering can therefore remove
+partially useful supervision rather than simply removing harmful supervision.
+This issue is particularly relevant in specialised domains such as
+rare-disease report generation, where high-quality patient-specific training
+data can be difficult to obtain. Retaining imperfect but informative examples
+while reducing their influence may therefore provide an alternative to
+discarding them completely. QR-Distill, for example, discusses how quality
+filtering can reduce the range of knowledge and reasoning patterns available
+to the student \cite{lei_learning_2025}.
+
+These limitations have motivated quality-aware weighting as a different way
+of handling variation in teacher-generated supervision. Rather than deciding
+whether a response should contribute to training, weighting methods allow
+different responses to contribute to different degrees. Higher-quality
+responses can therefore have a greater influence on the training objective,
+while lower-quality responses can remain in the dataset and still provide
+potentially useful information. This provides a more gradual way of accounting
+for differences in supervision quality than a simple retain-or-discard
+decision \cite{sun_uncertainty-aware_2026}.
+
+Recent response-based distillation methods have adopted this idea of
+non-uniform supervision, although they differ in how the importance of the
+supervision is determined. Proxy-KD weights the
+distillation loss according to how reliably a proxy model represents the
+black-box teacher~\cite{chen_knowledge_2024}. RDistillRec combines
+instance-level difficulty with learned token weights for teacher-generated
+rationales~\cite{jiang_difficulty-aware_2027}. SmartAD assigns different weights to
+segments of teacher-generated trajectories according to their functional
+importance~\cite{tang_smartad_2026}. These approaches therefore move beyond treating all teacher
+responses or response components equally. However, their weighting signals
+are based on particular notions of importance, such as reliability,
+difficulty, token importance, or functional relevance.
+
+The distinction between these weighting signals becomes important when considering
+the quality of a generated response more broadly. A response may appear
+reliable according to a teacher--proxy agreement measure while still omitting
+important information. Conversely, a response may provide comprehensive
+information but use language that is unsuitable for its intended audience.
+These different aspects of response quality are not necessarily captured by a
+single measure of importance. The limitation, therefore, is not the use of
+weighting itself, but the narrow basis on which the weighting signal is
+defined. Existing approaches provide ways to determine which supervision
+should receive greater emphasis, but their weighting signals do not jointly
+account for multiple explicit dimensions of generated-response quality.
+
+A multidimensional view of training-data quality has instead been explored in
+instruction tuning. Deita evaluates instruction-tuning
+data according to complexity, quality, and diversity before selecting training
+examples~\cite{liu_what_2024}. XCoder similarly considers instruction
+complexity, response quality, and instruction diversity when selecting
+code-instruction data~\cite{wang_how_2024}. These studies show that the value of a training
+example can be considered from several different perspectives rather than
+through a single criterion. However, this multidimensional assessment
+is mainly used for data selection and curation in instruction tuning. It is
+different from using several quality dimensions to determine how strongly an
+individual teacher-generated response should influence a response-based
+distillation objective.
+
+Taken together, the literature shows two related but distinct directions.
+Quality-aware response-based distillation has introduced non-uniform
+supervision through filtering and weighting, while instruction-tuning research
+has demonstrated the value of assessing training examples across multiple
+dimensions. What remains underexplored is the use of multiple explicitly
+defined dimensions of teacher-response quality to determine the contribution
+of each teacher-generated response during response-based knowledge
+distillation. This distinction is particularly relevant to clinical report
+generation, where factual correctness, information coverage, and appropriate
+clinical expression represent different aspects of response quality. A
+response may be factually reliable but incomplete, or comprehensive but
+poorly expressed for its intended audience. These characteristics suggest
+that a single quality or importance signal may not fully capture the
+differences between teacher-generated responses in such settings.
+
+
+\section{Evaluation}
+\label{sec:evaluation}
+
+Evaluation is central to knowledge distillation because the quality of the
+final student model depends not only on its ability to generate plausible
+outputs, but also on the quality of the supervision it receives and the
+extent to which this supervision is successfully transferred
+\cite{wang_knowledge_2026}. Evaluation therefore needs to consider three
+related aspects: whether the teacher provides reliable supervision, whether
+the student preserves relevant information during knowledge transfer, and
+whether the resulting outputs are clinically useful. Importantly, the same
+evaluation signals used to assess clinical quality can also serve as quality
+signals for quality-aware knowledge distillation. By quantifying dimensions
+such as factuality, coverage, and conciseness, these signals can distinguish
+stronger from weaker teacher-generated responses and determine how much
+emphasis each supervision example should receive. Evaluation therefore
+supports both assessment of the final student model and quality-aware
+weighting of the supervision used during distillation.
+
+Clinical report quality is inherently multidimensional because clinical
+usefulness cannot be captured by a single similarity or accuracy measure.
+Recent work therefore evaluates clinical text across multiple dimensions.
+For example, DischargeSim evaluates generated discharge summaries using
+automatic metrics and an LLM-based judge across semantic coverage,
+factuality, consistency, informativeness, coherence, relevance, fluency,
+and personalisation \cite{yao_dischargesim_2025}. Similarly, CLEVER evaluates
+clinical LLM outputs across factuality, clinical relevance, and conciseness,
+highlighting the need to assess both correctness and usefulness
+\cite{kocaman_clinical_2025}. These approaches recognise that a report may
+be factually correct yet omit important information, include unnecessary
+content, or be poorly suited to its intended purpose. Evaluating these
+properties separately therefore provides a more informative assessment of
+clinical report quality.
+
+Human evaluation can provide richer judgements of these properties, but it
+is costly, time-consuming, and difficult to scale across large collections
+of generated reports \cite{yan_automatic_2026}. This has motivated structured
+evaluation approaches that define explicit criteria for assessing different
+aspects of generated text. Rubrics can specify dimensions such as factuality,
+coverage, conciseness, readability, and medical tone, allowing these
+properties to be assessed separately \cite{chen_automated_2026}. LLM-based
+judges can then apply such rubrics at scale, providing multidimensional
+quality scores without relying on a single overall judgement \cite{hashemi_llm-rubric_2024}. These scores
+can also serve as quality signals for distinguishing stronger and weaker
+teacher-generated supervision.
+
+Such evaluation can be made more fine-grained by decomposing clinical text into individual claims or atomic facts. FactEHR decomposes clinical notes into atomic facts and checks whether each is supported by the source, enabling fine-grained factuality assessment \cite{munnangi_factehr_2025}. Similarly, Ye et al. decompose complex claims into atomic facts and verify them individually against a grounding document \cite{ye_teaching_2026}. AtomiMed applies a similar approach to medical reports, using hierarchical Atomic Clinical Facts to assess whether reference facts are recovered in generated reports, providing measures of coverage and recall \cite{wang_atomimed_2026}. Another approach decomposes evaluation criteria into atomic binary questions, which an LLM evaluator answers with yes-or-no judgements; these can then be aggregated into interpretable scores for different evaluation dimensions \cite{cho_ask_2026}. Together, these approaches show how atomic decomposition can support fine-grained evaluation of factuality, coverage, and completeness rather than treating an entire report as a single unit.
+
+Alongside these structured approaches, automatic similarity measures can
+provide complementary evidence about information preservation between
+teacher-generated and student-generated reports. Metrics such as ROUGE
+\cite{lin_rouge_2004}, BLEU \cite{ward_bleu_2001}, and BERTScore
+\cite{zhang_bertscore_2020} quantify lexical or semantic similarity between
+generated and reference texts. Although these measures do not directly
+establish clinical factuality or patient-specific coverage, they can indicate
+the extent to which information expressed in a reference or teacher report
+is reflected in the student output \cite{dahlberg_measuring_2026}. They are therefore more appropriately
+treated as complementary evidence of knowledge transfer rather than as
+standalone measures of clinical quality.
+
+Finally, evaluating a compact model also requires consideration of the
+computational resources needed to produce its outputs. Measures such as
+parameter count, memory usage, inference time, and token generation speed
+provide indicators of model efficiency and practical deployability
+\cite{garg_rise_2025}. Considering clinical quality, knowledge transfer, and
+computational efficiency together therefore provides a broader basis for
+assessing the practical value of compact language models and whether
+improvements in generated text are achieved without losing the efficiency
+advantages that motivate knowledge distillation.
+
+
+\chapter{Methodology}
+\label{chap:execution}
+\section{Problem Formulation and Overall Framework}
+\label{sec:problem_formulation}
+This study investigates quality-aware response-based knowledge distillation
+for transferring personalised clinical report-generation capabilities from a
+large language model to a compact student model, with particular emphasis
+on how teacher supervision quality influences this transfer. The target task
+is the generation of clinically grounded, personalised reports for patients
+with KBG syndrome from doctor--parent consultation information and
+syndrome-level clinical knowledge.
+
+The framework follows a controlled pipeline in which synthetic data
+construction provides the task inputs, teacher generation provides the
+supervision, quality assessment determines its value, and student
+optimisation evaluates the resulting transfer. Curated patient profiles
+first introduce clinically relevant variation, which is used to generate
+patient-specific doctor--parent consultations. These consultations are
+then combined with syndrome-level clinical knowledge and provided to a
+large teacher model to generate personalised reports, forming the
+task-specific supervision data for student adaptation.
+
+Let $x_i$ denote the doctor--parent consultation for patient $i$,
+$c$ the fixed KBG syndrome clinical reference, and $T$ the teacher model.
+The teacher generates a personalised report $y_i$ as
+
+\begin{equation}
+y_i = T(x_i,c),
+\qquad
+\mathcal{D}_{\mathrm{teacher}}
+=
+\left\{(x_i,c,y_i)\right\}_{i=1}^{N},
+\end{equation}
+
+where $\mathcal{D}_{\mathrm{teacher}}$ denotes the resulting teacher
+supervision dataset. The compact student model $S_{\theta}$ is then adapted
+to model
+
+\begin{equation}
+P_{\theta}(y\mid x,c),
+\end{equation}
+
+using these teacher-generated demonstrations.
+
+Before training, the synthetic doctor--parent consultations are assessed for
+diversity and variability across patient interactions, including lexical,
+structural, grammatical, and semantic variation, to ensure that they capture
+the heterogeneous nature of realistic patient communication. The validated
+consultations are then passed to the teacher model for personalised report
+generation, after which the resulting reports undergo multidimensional
+clinical-quality assessment. This assessment evaluates each teacher-generated
+report across multiple dimensions of quality and provides the signals for
+quality-aware response-based distillation. Specifically, the resulting
+quality scores determine the relative contribution of individual teacher
+responses during student training, allowing higher-quality supervision to
+exert greater influence while reducing the contribution of lower-quality
+responses. The same quality assessments are used to construct preferred and
+less-preferred responses for Direct Preference Optimisation (DPO).
+
+The effect of quality-aware supervision is examined through a controlled
+comparison of four student configurations. The pretrained student is first
+evaluated without task-specific training to establish an untrained baseline.
+Standard supervised fine-tuning (SFT) provides the conventional
+response-based baseline, treating all teacher demonstrations equally.
+Quality-aware response-based distillation then extends SFT by assigning
+different weights to teacher demonstrations according to their assessed
+quality. Finally, DPO is applied after quality-aware distillation as a
+preference-alignment stage, using relative preferences between alternative
+clinical reports. All four conditions use the same student architecture,
+initialisation, task, and evaluation protocol, allowing the effect of the
+supervision strategy to be examined under controlled conditions.
+
+The resulting student models are evaluated not only for report quality but
+also for the extent and practicality of the transferred capabilities.
+Student-generated reports are assessed using the same multidimensional
+clinical-quality framework, covering factuality, coverage, medical tone,
+conciseness, and readability. These assessments are complemented by lexical
+and semantic similarity measures comparing student- and teacher-generated
+reports to examine knowledge transfer. Finally, computational efficiency is
+evaluated in terms of model size, memory consumption, throughput, and
+latency. Together, these evaluations provide a comprehensive assessment of
+whether quality-aware supervision improves clinical report generation,
+transfers relevant teacher knowledge, and retains the practical efficiency
+advantages of a compact student model.
+
+The overall framework is illustrated in
+Figure~\ref{fig:overall_framework}. The following sections provide the
+details of synthetic data construction, teacher and student models,
+supervised and quality-weighted training, preference alignment, and the
+evaluation framework.
+
+
+
+\begin{figure}[H]
+    \centering
+    % Replace this placeholder with the final framework diagram.
+    \includegraphics[
+        width=\textwidth,
+        height=0.6\textheight,
+        keepaspectratio
+    ]{aman.png}
+    \caption{Proposed Knowledge Distillation Framework}
+    \label{fig:overall_framework}
+\end{figure}
+
+
+% ============================================================
+% 3.2 SYNTHETIC DATA CONSTRUCTION
+% ============================================================
+
+\section{Synthetic Data Construction}
+\label{sec:data_construction}
+
+A controlled synthetic data-generation pipeline was developed to generate
+diverse doctor--parent consultations and personalised clinical reports for
+student-model training while maintaining consistency with established KBG
+syndrome knowledge. The pipeline comprised three stages:
+\textit{(i)} synthetic patient-profile construction,
+\textit{(ii)} doctor--parent consultation generation, and
+\textit{(iii)} consultation diversity assessment.
+
+
+\subsection{Synthetic Patient Profile Generation}
+\label{sec:patient_profile_generation}
+
+Synthetic patient profiles were constructed to introduce controlled variation
+in patient characteristics and parent communication styles before
+doctor--parent consultation generation. The use of varied communication
+personas was motivated in part by prior work showing that persona prompting
+can increase lexical diversity in LLM-generated text
+\cite{lahoti_improving_2023}. The profiles therefore provided structured
+patient-specific inputs and communication cues to support variation across
+synthetic consultations.
+
+Each profile comprised demographic attributes, KBG syndrome-related clinical
+features, and a parent communication persona. Clinical features were
+organised into predefined syndrome-relevant domains, including vision,
+hearing, dental, cardiac, neurological, gastrointestinal, and other medical
+characteristics. The feature pools were derived from the supplied KBG
+syndrome clinical reference material, and the complete pools and personas
+are provided in Appendix~\ref{appx:profile_pools}.
+
+For each synthetic patient, features were sampled from the predefined
+clinical domains and combined with a communication persona to form a
+structured profile with a unique identifier. Each profile was then provided
+to the language model as the basis for generating a corresponding
+doctor--parent consultation.
+
+\subsection{Doctor--Parent Consultations Generation}
+\label{sec:consultation_generation}
+The structured synthetic patient profiles were used to generate synthetic
+doctor--parent consultations with \textit{Llama-3.3-70B-Instruct},
+following established approaches to LLM-based synthetic patient--physician
+conversation generation \cite{haider_synthetic_2025}. For each case, a
+few-shot prompt incorporated the corresponding synthetic patient profile,
+parent communication persona, a fixed consultation structure, and explicit
+generation constraints. A representative consultation was provided as an
+in-context example to guide the model towards the required format. The
+complete prompt is provided in Appendix~\ref{appx:consultation_prompt}.
+
+To maintain consistency across cases, the doctor followed the same sequence
+of ten predefined questions covering the principal clinical domains.
+Variation was introduced through the synthetic patient profiles and their
+associated communication personas, allowing consultations to differ in
+clinical content, vocabulary, response style, and level of detail while
+retaining a common structure.
+
+Each consultation was generated independently and stored in JSON Lines
+format with its patient identifier and source profile. The generated
+consultations were then used for the subsequent diversity assessment.
+
+\subsection{Assessment of Consultation Diversity}
+\label{sec:consultation_diversity}
+
+Controlled variation in the synthetic patient profiles does not necessarily
+translate into diverse generated language. Consultation diversity was therefore
+assessed to determine whether profile-level variation was reflected in the
+generated consultations rather than producing repetitive linguistic patterns.
+
+Diversity was evaluated across four complementary dimensions:
+\textit{lexical, response-length, grammatical, and semantic variation}.
+Lexical diversity was measured using the Measure of Textual Lexical
+Diversity (MTLD), which is less dependent on text length
+\cite{mccarthy_mtld_2010}. Variation in parent-response length was measured
+using the standard deviation of Mean Length of Utterance (MLU)
+\cite{potratz_measurement_2022}. Grammatical variation was assessed using
+POS Shannon entropy to capture diversity in part-of-speech usage
+\cite{arora_estimating_2022}. Semantic variation was evaluated using pairwise
+cosine similarity between consultation embeddings, with lower similarity
+indicating greater semantic variation.
+
+Together, these measures assess whether profile-based generation produced
+diversity across lexical, response-length, grammatical, and semantic levels.
+% ============================================================
+% 3.2.4 TEACHER-GUIDED REPORT GENERATION
+% ============================================================
+\section{Knowledge Distillation}
+\label{sec:teacher_student_models}
+
+This section describes the teacher--student framework for transferring
+task-specific clinical report-generation capabilities from a large language
+model to a compact student model. It comprises three stages:
+\textit{(i)} task-specific training-data generation using a large teacher
+model, \textit{(ii)} standard supervised fine-tuning (SFT), and
+\textit{(iii)} quality-aware response-based distillation. The same student architecture and training data are
+used across conditions for controlled comparison.
+\subsection{Teacher and Student Models}
+\label{sec:teacher_student_models}
+The proposed framework uses a teacher--student architecture in which a
+large language model generates task-specific clinical reports that serve
+as supervision for a substantially smaller student model. The teacher
+provides the target behaviour, while the student learns to reproduce the
+same report-generation task with considerably lower model capacity. rephrase it and tighten it 
+
+\paragraph{Teacher Model:}
+The teacher model was \textit{Llama-3.3-70B-Instruct}, used to generate
+task-specific reports as supervision for the compact student model. Its role
+was to transform each synthetic doctor--parent consultation and the supplied
+KBG syndrome knowledge into a structured personalised report.
+
+For each consultation, the teacher received two explicitly separated sources
+of information: the doctor--parent consultation and a fixed KBG syndrome
+clinical reference. The consultation was the sole source of patient-specific
+information, while the reference supplied general syndrome-level knowledge,
+including relevant screening and treatment recommendations. This separation
+distinguished patient evidence from general clinical knowledge and helped
+limit unsupported patient-specific claims.
+
+A structured prompt guided the teacher to extract patient-specific findings,
+organise them into predefined clinical categories, and generate the
+corresponding personalised report. Prior work shows that prompt design and
+explicit output structures can influence the consistency and quality of
+LLM-generated clinical text
+\cite{huang_critical_2024,tang_ignitioninnovators_2024, yao_clinicians_2024}.
+This motivated the use of explicit structural and source-specific
+instructions in the present study.
+
+Each report followed a fixed 13-part structure covering the principal
+clinical domains, screening, and treatment recommendations. Within each
+section, \textit{patient-specific findings} were distinguished from
+\textit{syndrome-level information}. When information for a category was
+absent from the consultation, the teacher was instructed to output ``N/A''
+rather than infer unsupported findings, while recommendations were
+constrained by the available patient information and the provided KBG
+reference. This provided a consistent target representation across cases.
+
+Generated reports were stored with their corresponding consultations and
+metadata for subsequent quality assessment and student training. The
+complete generation prompt, clinical reference, and inference configuration
+are provided in Appendix~\ref{appx:report_prompt}.
+
+\paragraph{Student Model:}
+The compact student model was \textit{Qwen2.5-1.5B-Instruct}, trained on
+teacher-generated clinical reports to transfer task-specific
+report-generation capability at substantially lower model scale. The student
+was trained to map doctor--parent consultations to structured personalised
+reports, learning to preserve the teacher's ability to integrate
+patient-specific findings with relevant syndrome-level knowledge, follow the
+defined reporting structure, and produce clinically appropriate
+recommendations.
+
+The same \textit{Qwen2.5-1.5B-Instruct} backbone and initialisation were used
+across all student experiments, ensuring that differences in performance
+were attributable to the training strategy rather than model architecture
+or initialisation. The specific training procedures for standard SFT and
+quality-weighted SFT are described in the following sections.
+\subsection{Standard Supervised Fine-Tuning}
+
+Standard supervised fine-tuning (SFT) was used as the primary baseline for
+response-based knowledge transfer from the teacher to the compact student.
+The teacher was treated as a black-box model, with only its generated
+responses used for supervision and no access to its parameters, logits, or
+internal representations. This provides a conventional response-based
+distillation setting against which the effect of quality-aware supervision
+can be evaluated \cite{song_exploring_2023}.
+
+The student was trained on teacher-generated examples containing the
+doctor--parent consultation, the fixed KBG syndrome clinical reference, and
+the corresponding teacher-generated report. The consultation provided
+patient-specific information, while the clinical reference supplied
+syndrome-level knowledge. The teacher-generated report served as the target
+response. The training set was therefore defined as
+
+\begin{equation}
+\mathcal{D}
+=
+\left\{
+(x_i,c,y_i)
+\right\}_{i=1}^{N},
+\end{equation}
+
+where $x_i$ denotes the doctor--parent consultation for patient $i$, $c$
+denotes the fixed KBG syndrome clinical reference, $y_i$ denotes the
+corresponding teacher-generated report, and $N$ is the number of training
+examples.
+
+Given $(x_i,c)$, SFT minimises the autoregressive negative log-likelihood of
+the teacher-generated report:
+
+\begin{equation}
+\mathcal{L}_{\mathrm{SFT}}
+=
+-\frac{1}{N}
+\sum_{i=1}^{N}
+\sum_{t=1}^{|y_i|}
+\log
+p_{\theta}
+\left(
+y_{i,t}
+\mid
+x_i,c,y_{i,<t}
+\right),
+\label{eq:sft_loss}
+\end{equation}
+
+where $y_{i,t}$ is the target token at position $t$, $y_{i,<t}$ denotes the
+preceding target tokens, and $p_{\theta}$ is the probability assigned by the
+student to the target token. Minimising this objective trains the student to
+reproduce the teacher's personalised report from the same patient-specific
+and syndrome-level information.
+
+The teacher responses therefore provide direct supervision for both the
+content and organisation of the task, including the presentation of
+patient-specific findings, incorporation of relevant syndrome-level
+knowledge, and generation of screening and treatment recommendations.
+Standard SFT treats all retained examples equally, regardless of the quality
+of their corresponding teacher reports. This establishes the baseline for
+testing whether incorporating teacher-response quality improves knowledge
+transfer.
+
+The student was adapted using Low-Rank Adaptation (LoRA), which freezes the
+pretrained parameters and learns low-rank updates to selected weight
+matrices. For a pretrained weight matrix
+$W_0 \in \mathbb{R}^{d\times k}$, the adapted matrix is
+
+\begin{equation}
+W = W_0 + BA,
+\label{eq:lora_update}
+\end{equation}
+
+where $B \in \mathbb{R}^{d\times r}$ and
+$A \in \mathbb{R}^{r\times k}$ are trainable low-rank matrices with
+$r \ll \min(d,k)$. Only these low-rank parameters are updated, while
+$W_0$ remains frozen, reducing the number of trainable parameters relative
+to full fine-tuning \cite{hu_lora_2021}.
+
+The same student initialisation, training data, input formatting, and LoRA
+adaptation framework were maintained for the subsequent quality-weighted SFT
+experiments. Thus, differences between standard and quality-weighted SFT
+reflect the incorporation of teacher-response quality into the training
+objective rather than changes in model architecture or adaptation method.
+\subsection{Quality-Weighted Supervision}
+\label{sec:quality_weighted_sft}
+
+Standard supervised fine-tuning (SFT) assigns equal importance to all
+retained teacher-generated demonstrations, regardless of differences in
+their quality. In synthetic clinical data, this may allow weaker responses
+to contribute as strongly as more reliable supervision. The proposed
+quality-aware response-based distillation therefore assigns each retained
+demonstration a continuous weight based on its assessed quality, allowing
+higher-quality teacher responses to have greater influence during training.
+
+For each retained teacher-generated report $y_i$, a scalar quality score
+$q_i$ was constructed from three rubric dimensions:
+\textit{factuality}, \textit{coverage}, and \textit{medical tone}. These
+dimensions capture complementary properties of the information being
+transferred. Factuality measures whether reported information is supported
+by the available evidence, coverage measures whether relevant clinical
+information is included, and medical tone measures whether it is expressed
+in the intended clinical reporting style.
+
+Conciseness and readability were not included as weighting dimensions.
+Conciseness was defined in this study as a composite measure of factuality,
+coverage, and brevity. Including it directly in the quality score would
+therefore overlap with dimensions already represented by factuality and
+coverage and give them disproportionate influence.
+Readability was assessed separately using Flesch Reading Ease (FRE),
+Flesch--Kincaid Grade Level (FKGL), SMOG, and Dale--Chall. These measures
+primarily characterise reading difficulty and accessibility rather than
+clinical reliability or information completeness [citation needed].
+Because the generated reports showed a relatively similar readability
+range, readability was retained as an evaluation criterion rather than used
+to determine training importance.
+
+The quality score was defined as the geometric mean of the three selected
+dimensions, followed by within-batch mean normalisation:
+
+\begin{equation}
+q_i=(F_iC_iM_i)^{1/3},
+\qquad
+\tilde q_i=
+\frac{q_i}
+{\frac{1}{|\mathcal{B}|}\sum_{j\in\mathcal{B}}q_j},
+\quad i\in\mathcal{B},
+\label{eq:quality_score}
+\end{equation}
+
+where $F_i$, $C_i$, and $M_i$ denote the factuality, coverage, and
+medical-tone scores for report $i$, respectively, and $\mathcal{B}$ is the
+current training batch. The geometric mean was chosen because the three
+dimensions represent complementary requirements for useful clinical
+supervision and should contribute jointly. Unlike an arithmetic mean, it
+limits compensation between dimensions, so poor performance on one
+dimension reduces the overall score. The resulting value therefore reflects
+\textit{consistent quality} rather than average performance alone. Mean
+normalisation preserves the relative differences between examples while
+maintaining an average weight of one within each batch.
+
+Quality filtering was applied before weighting to limit the risk of
+transferring unreliable teacher supervision. Reports with a factuality score
+below $0.90$ were excluded, while those meeting the threshold were retained
+for quality-weighted training. The $0.90$ threshold was chosen as a
+conservative criterion to retain high factual reliability while avoiding
+unnecessary exclusion due to limitations in automated assessment. Manual
+review of lower-scoring cases showed that some could still be clinically
+acceptable, indicating that the automated score should not be treated as
+definitive ground truth. The threshold therefore served as a quality-control
+safeguard, after which the retained reports were further differentiated
+using their continuous quality scores.
+
+Let $\ell_{i,t}$ denote the causal language-model cross-entropy loss for
+token $t$ of report $i$, and let $m_{i,t}\in\{0,1\}$ indicate whether that
+token contributes to the supervised objective. The quality-weighted loss
+was defined as
+
+\begin{equation}
+\mathcal{L}_{\mathrm{QW}}
+=
+\frac{
+\displaystyle
+\sum_{i\in\mathcal{B}}\sum_t
+m_{i,t}\tilde q_i\ell_{i,t}}
+{
+\displaystyle
+\sum_{i\in\mathcal{B}}\sum_t m_{i,t}
+}.
+\label{eq:quality_weighted_loss}
+\end{equation}
+
+Here, the same example-level weight $\tilde q_i$ is applied to all
+supervised tokens in report $i$, while masked tokens are excluded. This
+matches the report-level quality assessment and allows higher-quality
+reports to exert greater influence while retaining lower-quality examples
+that meet the factuality criterion.
+
+All other aspects of training were held consistent with standard SFT,
+including the student architecture, initialisation, input formatting, LoRA
+adaptation, training data, and optimisation procedure. The comparison
+therefore isolates the effect of incorporating multidimensional
+teacher-response quality into the supervision objective.
+\section{Direct Preference Optimization}
+\label{sec:dpo}
+
+Following quality-weighted supervised fine-tuning, Direct Preference
+Optimization (DPO) was applied as a final preference-optimization stage.
+SFT establishes the basic task behaviour, whereas DPO provides a more direct
+way of refining the student by learning which of two responses should be
+preferred. This staged approach is motivated by Ye et al.~\cite{ye_teaching_2026},
+who first use SFT to establish the required task behaviour and subsequently
+apply DPO to correct undesirable student outputs. DPO was therefore used
+here to further align the quality-weighted student with the desired
+quality signal without requiring a separate reward model or
+reinforcement-learning stage \cite{rafailov_direct_2024}.
+
+DPO was initialized from the quality-weighted SFT model. The trained
+quality-weighted LoRA adapter remained trainable during DPO, while a
+separate copy of the quality-weighted SFT model was kept frozen as the
+reference policy. Thus, DPO refined the same student model after
+quality-aware supervised learning.
+
+For each consultation $x_i$, the teacher-generated reports were evaluated
+using the multidimensional quality criteria described in
+Section~\ref{sec:quality_weighted_sft}. The highest-scoring teacher report
+was selected as the preferred response $y_i^{w}$, while the corresponding
+report generated by the quality-weighted student was used as the rejected
+response $y_i^{l}$. Thus, the same underlying multidimensional quality
+assessment used to weight examples during quality-weighted SFT was used
+here to construct preference pairs for DPO. This changed the role of the
+quality signal from determining the contribution of each training example
+to directly encouraging the student to prefer the higher-quality teacher
+response.
+
+For a preference triple $(x,y^{w},y^{l})$, the DPO objective is
+
+\begin{equation}
+\mathcal{L}_{\mathrm{DPO}}
+=
+-\mathbb{E}
+\left[
+\log \sigma
+\left(
+\beta
+\left[
+\log
+\frac{\pi_{\theta}(y^{w}\mid x)}
+     {\pi_{\mathrm{ref}}(y^{w}\mid x)}
+-
+\log
+\frac{\pi_{\theta}(y^{l}\mid x)}
+     {\pi_{\mathrm{ref}}(y^{l}\mid x)}
+\right]
+\right)
+\right],
+\end{equation}
+
+where $\pi_{\theta}$ denotes the trainable student policy,
+$\pi_{\mathrm{ref}}$ the frozen reference policy, $\sigma$ the sigmoid
+function, and $\beta$ controls the strength of the preference signal
+\cite{rafailov_direct_2024}. The objective increases the relative
+likelihood of the preferred response with respect to the rejected response
+while regularising the updated policy towards the reference policy.
+
+The overall training strategy therefore progressed from learning the
+clinical reporting task through SFT, to incorporating multidimensional
+teacher quality through quality-weighted SFT, and finally to directly
+refining response preferences through DPO. The held-out test set was
+excluded from DPO training and retained for final evaluation.
+%============================================================
+% 3.2.5 DATA SPLITTING
+% ============================================================
+\section{Evaluation Framework}
+\label{sec:evaluation_framework}
+Generated clinical reports were evaluated using a rubric-guided
+\textit{LLM-as-a-Judge} framework, with
+\textit{Qwen3-30B-A3B-Instruct-2507} serving as the evaluator. Recent work
+has shown that LLM-based evaluation can assess generated text against
+explicit criteria and capture semantic and qualitative aspects of quality
+that are difficult to measure using surface-level metrics alone
+\cite{liu_g-eval_2023,moslemi_survey_2024}. Building on this approach, a
+task-specific rubric was used to evaluate the reports across distinct
+clinical dimensions rather than relying on a single overall judgement.
+This was particularly relevant to the clinical report generation task,
+where factual grounding, information coverage, conciseness, and appropriate
+medical expression represent distinct aspects of quality.
+
+Evaluation was conducted at two stages with distinct purposes. First,
+teacher-generated reports were evaluated to characterise the quality of the
+synthetic supervision. These assessments provided the underlying quality
+signal used in quality-weighted supervised fine-tuning and in the
+construction of DPO preference pairs. Second, the trained student variants
+were evaluated on the held-out test set using the same clinical-quality
+framework, allowing the effect of the proposed training approaches to be
+assessed consistently.
+
+Clinical-quality assessment was complemented by lexical and semantic
+similarity measures to examine the extent to which student-generated
+reports reproduced teacher-derived content. Model size and inference
+measurements were additionally used to assess the computational efficiency
+of the resulting compact models. Together, these evaluations assess both
+the clinical quality of the generated reports and the practical efficiency
+of the distilled models. The detailed quality criteria, scoring procedures,
+similarity measures, efficiency measures, and evaluation prompts are
+described in the following subsections.
+\subsection{Factuality}
+\label{sec:factuality}
+
+Factuality was assessed using fine-grained, claim-level verification to
+determine whether information in each report was supported by the available
+evidence. Claim-level evaluation enables unsupported statements to be
+identified individually rather than obscured by a report-level judgement
+\cite{min_factscore_2023,scire_fenice_2024}. Building on approaches that
+decompose generated text into atomic facts for fine-grained verification
+\cite{kim_atomic_2026}, each report was decomposed into independently
+verifiable clinical claims. This is particularly important in clinical text,
+where unsupported claims may have meaningful consequences
+\cite{bn_fact-controlled_2025,munnangi_factehr_2025}.
+
+Each claim was assigned an evidence source according to its type.
+Patient-specific claims were verified against the corresponding
+doctor--parent consultation, while syndrome-level claims were verified
+against the KBG syndrome clinical reference. Questions, non-informative
+text, duplicated information, and unsupported inferences were excluded.
+This distinction ensured that general KBG knowledge was not treated as
+evidence that a specific patient exhibited a particular characteristic.
+
+For each claim $c_i$, the LLM-based verifier assigned a binary support label:
+
+\begin{equation}
+v_i =
+\begin{cases}
+1, & \text{if } c_i \text{ is supported by its designated evidence source},\\
+0, & \text{otherwise}.
+\end{cases}
+\end{equation}
+
+A claim was considered supported when its designated source conveyed the
+same clinical meaning, allowing differences in wording or clinically
+equivalent terminology. Unsupported, contradictory, or unverifiable claims
+were assigned $v_i=0$. The resulting measure therefore captures
+\textit{source-grounded factuality} rather than general medical plausibility.
+
+The report-level factuality score was calculated as:
+
+\begin{equation}
+\mathrm{Factuality}(R)
+=
+\frac{1}{N}\sum_{i=1}^{N}v_i,
+\end{equation}
+
+where $N$ is the total number of extracted claims in report $R$. The score
+ranges from $0$ to $1$, with higher values indicating a greater proportion
+of claims supported by the designated evidence.
+
+The complete claim-decomposition and verification prompts are provided in
+Appendix~\ref{appx:factuality_claim_prompt} and Appendix~\ref{appx:factuality_verification_prompt}.
+\subsection{Coverage}
+\label{sec:coverage}
+
+Coverage was evaluated to determine whether the generated reports retained
+the clinically relevant information required for the target task. Whereas
+factuality assesses whether information stated in a report is supported by
+evidence, coverage assesses whether relevant information available in the
+source material is included. A report may therefore be factually accurate
+while remaining clinically incomplete \cite{
+song_finesure_2024}.
+
+The target reports contain three distinct information requirements:
+patient-specific findings, syndrome-level background information, and
+clinically relevant recommendations. Coverage was therefore evaluated
+separately for \textit{patient-specific coverage},
+\textit{syndrome-background coverage}, and
+\textit{recommendation coverage}. Retaining these components separately
+allows omissions within different information types to be distinguished.
+
+\paragraph{Patient-Specific Coverage.}
+
+Patient-specific coverage was assessed using a fine-grained, claim-based
+approach, following prior work on measuring the comprehensiveness of
+generated text through decomposition of source information into individual
+facts \cite{dejl_comprehensiveness_2026}. The doctor--parent consultation
+was first analysed to identify clinically meaningful information explicitly
+reported by the parent about the child. Complex statements were decomposed
+into distinct clinical claims, while non-informative and unsupported
+information was excluded. These claims formed the reference set of
+patient-specific information to be retained in the generated report.
+
+Each reference claim was then checked against the report for semantic
+equivalence, allowing differences in wording and sentence structure. The
+coverage score was calculated as:
+
+\begin{equation}
+v_i^{(k)} =
+\begin{cases}
+1, & \text{if evaluation unit } i \text{ is addressed in the report},\\
+0, & \text{otherwise},
+\end{cases}
+\qquad
+\mathrm{Coverage}_{k}
+=
+\frac{1}{N_k}
+\sum_{i=1}^{N_k}v_i^{(k)}.
+\label{eq:component_coverage}
+\end{equation}
+
+For patient-specific coverage, the evaluation units were the extracted
+clinical claims. Claims that were absent, ambiguous, or unsupported were
+assigned zero, making the measure a semantic assessment of information
+retention rather than lexical overlap.
+
+\paragraph{Syndrome Background and Recommendation Coverage.}
+
+Syndrome-background and recommendation coverage were assessed using
+feature-specific binary question--answer evaluation, following question-based
+approaches for determining whether generated text contains information
+required to answer targeted questions \cite{scialom_questeval_2021,
+moramarco_towards_2021}. For each clinical feature explicitly reported in
+the consultation, two questions were generated: one targeting relevant KBG
+syndrome background information and another targeting feature-specific
+clinical recommendations, including screening, monitoring, treatment,
+referral, or therapy where applicable.
+
+Question generation was restricted to features present in the consultation
+to focus evaluation on clinically relevant information. Each question was
+answered with either \textit{Yes} or \textit{No}, with \textit{Yes}
+assigned $1$ and \textit{No} assigned $0$. Equation~\ref{eq:component_coverage}
+was then applied to both question sets, with $k\in\{B,Rec\}$ denoting
+syndrome background and recommendations.
+
+This produced three component scores,
+$\mathrm{Coverage}_{P}$, $\mathrm{Coverage}_{B}$, and
+$\mathrm{Coverage}_{Rec}$, which were combined using an unweighted
+arithmetic mean:
+
+\begin{equation}
+\mathrm{Coverage}_{Overall}
+=
+\frac{
+\mathrm{Coverage}_{P}
++
+\mathrm{Coverage}_{B}
++
+\mathrm{Coverage}_{Rec}
+}{3}.
+\label{eq:overall_coverage}
+\end{equation}
+
+An arithmetic mean was used because the three components represent distinct
+but equally important information requirements of the target report. It
+provides an interpretable overall coverage measure while preventing any
+single component from dominating the score. The complete claim-extraction and question-generation
+procedures are provided in Appendix~\ref{appx:patient_coverage_prompt} and
+Appendix~\ref{appx:syndrome_coverage_prompt}.
+
+
+\subsection{Conciseness}
+\label{sec:conciseness}
+
+Conciseness was evaluated to determine whether reports communicated the
+required clinical information without unnecessary verbosity. Conciseness
+was treated as distinct from completeness, since a shorter report may
+achieve brevity by omitting clinically relevant information. This
+distinction is consistent with prior summarisation research that evaluates
+completeness and conciseness as separate dimensions
+\cite{song_finesure_2024}. Accordingly, conciseness was formulated as a
+composite of \textit{information retention, factual reliability, and
+brevity}, ensuring that shorter reports were not rewarded when brevity was
+achieved at the expense of clinical content or correctness.
+
+For each report $i$, token length $L_i$ was calculated using the tokenizer
+of the evaluated model. Report lengths were min--max normalised across the
+evaluation set and converted into a brevity score:
+
+\begin{equation}
+L_i^{\mathrm{norm}}
+=
+\frac{L_i-L_{\min}}{L_{\max}-L_{\min}},
+\qquad
+B_i = 1-L_i^{\mathrm{norm}},
+\end{equation}
+
+where $L_{\min}$ and $L_{\max}$ denote the minimum and maximum report
+lengths. This provides a relative measure of brevity within the evaluation
+set, with higher $B_i$ indicating a shorter report, without imposing an
+arbitrary target length.
+
+Brevity was combined with coverage and factuality to reflect the clinical
+constraints of concise reporting. Coverage ensures that relevant
+information is retained, while factuality ensures that the retained
+information remains supported by the available evidence. The resulting
+score was defined using their geometric mean:
+
+\begin{equation}
+\mathrm{Conciseness}_i
+=
+\left(
+\mathrm{Coverage}_i
+\cdot
+\mathrm{Factuality}_i
+\cdot
+B_i
+\right)^{1/3}.
+\end{equation}
+
+The geometric mean was selected over an arithmetic mean because the three
+components represent complementary requirements rather than fully
+compensatory objectives. It therefore penalises imbalance: high brevity
+cannot produce a high conciseness score when coverage or factuality is
+poor, while a comprehensive and factual report is not considered highly
+concise if it is unnecessarily long. The resulting score ranges from $0$
+to $1$, with higher values indicating a more favourable balance between
+retaining clinically relevant information, maintaining factual reliability,
+and avoiding unnecessary length.
+\subsection{Medical Tone}
+\label{sec:medical_tone}
+
+Medical tone was evaluated to determine whether generated reports
+communicated patient-specific information in a clinically appropriate,
+professional, respectful, and patient-centred manner. These dimensions were
+selected because effective clinical reporting requires not only appropriate
+medical language but also communication that is respectful of the patient
+and focused on their individual circumstances
+\cite{bowden_evaluating_nodate,rattanapitoon_beyond_2025,omar_impact_2025}.
+
+A two-stage LLM-based procedure was used to isolate and assess the language
+relevant to these criteria. First, patient-specific statements describing
+the patient's condition and associated screening or treatment
+recommendations were extracted from each report. Syndrome-level background
+and general medical information were excluded because they do not directly
+reflect how the individual patient is described or advised. Few-shot
+prompting was used for extraction, with the complete procedure provided in
+Appendix~\ref{appx:medical_tone_prompt}.
+
+The extracted statements were then evaluated using a separate few-shot LLM
+prompt based on three binary question--answer criteria:
+\textit{professionalism, respectfulness, and patient-centred
+communication}. For each statement, the evaluator answered \textit{Yes} or
+\textit{No} to the following questions: whether it used professional and
+appropriate clinical language; whether it described the patient in a
+respectful and non-stigmatising manner; and whether it communicated the
+patient's condition in a supportive and patient-focused manner. A
+\textit{Yes} response was assigned a score of $1$ and a \textit{No}
+response a score of $0$.
+
+For statement $i$ and criterion $j$, the binary score was therefore defined
+as:
+
+\begin{equation}
+s_{ij} =
+\begin{cases}
+1, & \text{if statement } i \text{ satisfies criterion } j,\\
+0, & \text{otherwise}.
+\end{cases}
+\end{equation}
+
+For each report, the proportion of statements satisfying each criterion was
+then calculated:
+
+\begin{equation}
+S_j =
+\frac{1}{N}\sum_{i=1}^{N}s_{ij},
+\qquad
+j\in\{P,R,C\},
+\end{equation}
+
+where $N$ is the number of extracted patient-specific statements, and
+$P$, $R$, and $C$ denote professionalism, respectfulness, and
+patient-centred communication, respectively. The three scores were retained
+separately because the criteria represent distinct communication properties
+and there was no principled basis for assigning different weights to them.
+This preserves interpretability while allowing specific weaknesses in
+clinical communication to be identified.
+\subsection{Readability}
+\label{sec:readability}
+
+Readability was evaluated to determine how easily the generated clinical
+reports could be understood from a linguistic perspective. This is distinct
+from medical tone: a report may use appropriate professional language while
+still being difficult to read because of complex sentence structures,
+vocabulary, or reading-level requirements. Readability was therefore
+assessed using three established measures that capture complementary
+aspects of textual difficulty.
+
+The evaluation included Flesch Reading Ease (FRE), Simple Measure of
+Gobbledygook (SMOG), and Dale--Chall. FRE provides a general measure of
+reading ease based primarily on sentence length and word complexity, with
+higher scores indicating easier text \cite{flesch_new_1948}. SMOG estimates
+the reading difficulty of a text from sentence length and the frequency of
+polysyllabic words, providing an indication of the level of education
+required for comprehension \cite{mclaughlin_smog_1969}. Dale--Chall
+incorporates sentence length and the familiarity of words, with less
+familiar vocabulary contributing to greater estimated difficulty
+\cite{crossley_large-scaled_2023}. Together, these measures capture
+different aspects of linguistic accessibility rather than relying on a
+single readability criterion.
+
+Each measure was computed independently for every generated report using
+the cleaned report text and the \texttt{textstat} implementation. The
+measures were retained separately because they use different scales and
+capture different aspects of readability; combining them into a single
+score could obscure these distinctions.
+
+
+
+\subsection{Teacher--Student Correspondence and Efficiency}
+\label{sec:complementary_evaluation}
+
+The clinical-quality measures described above assess the quality of the
+generated reports from multiple linguistic and clinical perspectives.
+To complement this multidimensional evaluation, additional measures were
+used to assess teacher--student correspondence and computational efficiency.
+These measures capture different aspects of model behaviour that are not
+directly reflected by clinical-quality scores, enabling a more complete
+assessment of the proposed distillation approach.
+
+\paragraph{Teacher--Student Correspondence.}
+
+Teacher--student correspondence was assessed by comparing each
+student-generated report with its corresponding teacher-generated report.
+The objective was to determine whether the student retained teacher-derived
+information and meaning without requiring verbatim reproduction. Lexical
+correspondence was measured using ROUGE and BLEU, which capture different
+forms of word and sequence overlap. Semantic correspondence was assessed
+using BERTScore and embedding similarity, providing complementary measures
+that are less dependent on exact wording. These measures were retained
+separately because lexical overlap and semantic similarity capture
+different aspects of teacher--student correspondence \cite{lin_rouge_2004, ward_bleu_2001, zhang_bertscore_2020}.
+
+\paragraph{Computational Efficiency.}
+
+Computational efficiency was evaluated to assess the practical benefits of
+transferring the task to a compact student model. Four complementary
+measures were considered: \textit{parameter count, inference latency, peak
+memory usage, and token generation rate}. Parameter count reflects model
+scale, inference latency measures the time required to generate a report,
+peak memory captures the maximum memory required during inference, and
+token generation rate measures generation throughput \cite{zhen_taming_2025}.
+
+Latency, peak memory, and token generation rate were measured under
+identical inference conditions and hardware for all student variants,
+ensuring that differences reflected the models rather than the evaluation
+environment. Parameter count was obtained from the respective model
+architectures. Reporting these measures alongside the multidimensional
+clinical-quality evaluation enables the quality--efficiency trade-off of
+the distilled models to be assessed .
+
+% -----------------------------------------------------------------------------
+
+\chapter{Results}
+\label{chap:evaluation}
+\section{Dataset and Supervision Characteristics}
+\subsection{Dataset and Experimental Composition}
+\label{sec:results_dataset_composition}
+
+The synthetic generation pipeline produced 800 patient-specific clinical
+cases with corresponding teacher-generated reports. To ensure reliable
+supervision, reports were filtered by factuality, retaining 600 eligible
+examples. These were divided into training, validation, and held-out test
+sets, as summarised in Table~\ref{tab:dataset_composition}.
+
+The retained reports provided the common basis for standard supervised
+fine-tuning (SFT) and quality-weighted SFT, with quality weighting
+determining the contribution of individual examples according to their
+assessed quality. DPO preference pairs were constructed only from the
+training and validation sets, while the held-out test set remained excluded
+from all training and preference construction and was reserved for final
+evaluation.
+\vspace{-15pt}
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Synthetic Dataset Composition and Experimental Splits}
+\label{tab:dataset_composition}
+\begin{tabular}{lr@{\qquad}lr}
+\hline
+\textbf{Stage} & \textbf{Number} &
+\textbf{Stage} & \textbf{Number} \\
+\hline
+Patient profiles & 800 &
+Doctor--parent consultations & 800 \\
+
+Teacher-generated reports & 800 &
+Reports with factuality $\geq 0.90$ & 600 \\
+
+Training examples & 400 &
+Validation examples & 100 \\
+
+Held-out test examples & 100 &
+DPO training preference pairs & 400 \\
+
+DPO validation preference pairs & 100 &
+& \\
+
+\hline
+\end{tabular}
+\end{table}
+\subsection{Synthetic Consultation Diversity}
+\label{sec:synthetic_consultation_diversity}
+
+The diversity of the synthetic consultations was assessed across four
+dimensions: lexical, response-length, grammatical, and semantic diversity.
+The analysis focused on substantive parent responses, which capture the
+patient-specific information underlying each consultation. Lexical diversity
+was measured using MTLD, response-length variation using Mean Length of
+Utterance in words (MLUw), grammatical diversity using normalised POS
+Shannon entropy, and semantic variation using pairwise cosine similarity
+between consultation-level embeddings. The results are summarised in
+Table~\ref{tab:consultation_diversity}.
+\vspace{-15pt}
+
+\begin{table}[H]
+\centering
+\footnotesize
+\caption{Diversity of the synthetic consultations.}
+\label{tab:consultation_diversity}
+\begin{tabular}{lll}
+\hline
+\textbf{Diversity dimension} & \textbf{Metric} & \textbf{Result} \\
+\hline
+Lexical & MTLD & $143.90 \pm 36.17$ \\
+Response length & MLUw (words) & $26.70 \pm 8.36$ \\
+Grammatical & Normalised POS entropy & $0.7993$ \\
+Semantic & Pairwise cosine similarity & $0.6505 \pm 0.0811$ \\
+\hline
+\end{tabular}
+\end{table}
+
+The consultations exhibited substantial variation in lexical choice,
+response length, grammatical structure, and semantic content. The MTLD
+of $143.90$ ($SD=36.17$) indicates considerable lexical variation across
+consultations, while the MLUw of $26.70$ words ($SD=8.36$) shows that
+parent responses also varied in length. Grammatical variation was reflected
+in a normalised POS entropy of $0.7993$, with 30 of the 36 defined
+part-of-speech categories observed, indicating broad use of grammatical
+structures.
+
+Semantic variation was reflected in a mean pairwise cosine similarity of
+$0.6505$ ($SD=0.0811$). This indicates that the consultations shared
+semantic content while retaining meaningful differences in their
+patient-specific information. Some similarity is expected because all
+consultations concern KBG syndrome and therefore share common clinical
+themes. Overall, the results indicate that the controlled generation
+process produced consultations with substantial variation in how
+patient-specific information was expressed while preserving the common
+clinical context required for the task.
+\subsection{Teacher-Generated Supervision Quality}
+\label{sec:teacher_supervision_quality}
+
+The quality of the teacher-generated reports was evaluated across
+factuality, coverage, conciseness, medical tone, and readability. The
+analysis focused on the 400 reports used for training. The descriptive
+statistics for the evaluated quality dimensions are presented in
+Table~\ref{tab:teacher_quality}.
+\vspace{-15pt}
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Teacher-generated supervision quality}
+\label{tab:teacher_quality}
+\begin{tabular}{lccc}
+\hline
+\textbf{Dimension} & \textbf{Mean $\pm$ SD} & \textbf{Median} & \textbf{Min--Max} \\
+\hline
+Factuality   & 0.98 $\pm$ 0.02 & 0.99 & 0.94--1.00 \\
+Coverage     & 0.77 $\pm$ 0.21 & 0.83 & 0.13--1.00 \\
+Conciseness  & 0.81 $\pm$ 0.11 & 0.82 & 0.40--0.99 \\
+Medical tone & 1.00 $\pm$ 0.00 & 1.00 & 1.00--1.00 \\
+\hline
+\end{tabular}
+\end{table}
+
+Factuality was consistently high, with a mean score of 0.98 and a
+relatively small standard deviation of 0.02. Coverage showed greater
+variation across reports, with a mean of 0.77 and a standard deviation
+of 0.21. Conciseness was also variable, although to a lesser extent,
+with a mean of 0.81 and a standard deviation of 0.11. Medical tone was
+consistently assigned the maximum score of 1.00.
+
+The distributions of the three continuous quality measures are shown
+in Figure~\ref{fig:teacher_quality_distribution}. Factuality scores
+were concentrated near the upper bound, whereas coverage and
+conciseness exhibited wider distributions.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{Teacher_Supervision_data.png}
+\caption{Teacher Report Quality Score Distributions}
+\label{fig:teacher_quality_distribution}
+\end{figure}
+
+Readability measures indicated that the generated reports were
+linguistically complex, with scores corresponding to difficult or
+advanced-level text (FRE: $33.71 \pm 6.43$, SMOG: $15.18 \pm 1.22$,
+Dale--Chall: $12.73 \pm 0.40$). The reports therefore exhibited a high
+level of linguistic complexity, consistent with the specialised
+terminology used in clinical reporting.
+
+Overall, the teacher-generated supervision was high in factual
+reliability but heterogeneous in other important quality dimensions.
+In particular, the variation in coverage and conciseness demonstrates
+that the training examples were not equivalent in quality. This
+heterogeneity provides the motivation for distinguishing the relative
+quality of individual examples in the quality-weighted supervised
+fine-tuning stage.
+
+\section{Baseline Performance and Effects of Supervised Fine-Tuning}
+\subsection{Baseline Performance}
+\label{sec:baseline_performance}
+
+The pretrained Qwen2.5-1.5B-Instruct model was first evaluated without
+task-specific fine-tuning to establish its starting performance for
+personalised clinical report generation. Evaluation was conducted on
+100 held-out test cases across factuality, coverage, conciseness,
+medical tone, and readability. The descriptive statistics are presented
+in Table~\ref{tab:baseline_quality}.
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Baseline clinical quality}
+\label{tab:baseline_quality}
+\begin{tabular}{lccc}
+\hline
+\textbf{Dimension} & \textbf{Mean $\pm$ SD} & \textbf{Median} & \textbf{Min--Max} \\
+\hline
+Factuality   & 0.37 $\pm$ 0.15 & 0.35 & 0.00--0.80 \\
+Coverage     & 0.50 $\pm$ 0.21 & 0.50 & 0.08--1.00 \\
+Conciseness  & 0.43 $\pm$ 0.16 & 0.42 & 0.00--0.92 \\
+Medical tone & 1.00 $\pm$ 0.00 & 1.00 & 1.00--1.00 \\
+\hline
+\end{tabular}
+\end{table}
+
+The model demonstrated useful general language-generation capabilities,
+but was not sufficiently adapted to the specific requirements of
+personalised clinical report generation. As shown in
+Table~\ref{tab:baseline_quality}, factuality was relatively low, with
+a mean score of 0.37, while coverage and conciseness achieved mean
+scores of 0.50 and 0.43, respectively. Both dimensions also showed
+substantial variation, with coverage ranging from 0.08 to 1.00 and
+conciseness from 0.00 to 0.92. These results indicate limitations in
+producing consistently grounded, complete, and appropriately concise
+reports.
+
+In contrast, medical tone remained consistently at the maximum score of
+1.00, indicating that the pretrained model could already adopt an
+appropriate clinical communication style. The distributions of
+factuality, coverage, and conciseness are shown in
+Figure~\ref{fig:baseline_distribution}. The variation across cases,
+particularly for coverage and conciseness, indicates that baseline
+performance was inconsistent rather than uniformly poor.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{Baseline_distribution.png}
+\caption{Baseline Clinical Quality Score Distributions}
+\label{fig:baseline_distribution}
+\end{figure}
+
+Readability measures also indicated linguistically complex outputs,
+with scores of FRE $4.93 \pm 34.87$, SMOG $17.06 \pm 4.60$, and
+Dale--Chall $13.98 \pm 1.81$. These results are consistent with the
+specialised terminology and relatively complex language used in
+clinical reporting, while the variation in scores indicates differences
+in linguistic complexity across reports.
+
+Overall, the pretrained model provided a useful but insufficient
+starting point for the target task. Although it could generate
+clinically styled text, its limitations in factual grounding,
+information coverage, and conciseness motivated task-specific
+adaptation. These results establish the reference point for evaluating
+the effect of standard supervised fine-tuning.
+\subsection{Effect of Standard SFT}
+\label{sec:effect_standard_sft}
+To assess the effect of task-specific supervised fine-tuning (SFT), the
+pretrained student was compared with the SFT-trained model across the
+same 100 matched test cases. Evaluation considered factuality, coverage,
+conciseness, medical tone, and readability. For each dimension, the
+change was calculated as $\Delta = \mathrm{SFT} - \mathrm{Baseline}$,
+with positive values indicating improvement. The aggregate performance
+and case-level changes are presented in Table~\ref{tab:baseline_sft}.\vspace{-15pt}
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Effect of Standard SFT on Clinical Quality}
+\label{tab:baseline_sft}
+\begin{tabular}{lccc|ccc}
+\hline
+& \multicolumn{3}{c|}{\textbf{Aggregate Performance}}
+& \multicolumn{3}{c}{\textbf{Case-level Change}} \\
+\cline{2-7}
+\textbf{Dimension} &
+\textbf{Baseline} &
+\textbf{SFT} &
+\textbf{$\Delta$} &
+\textbf{Improved} &
+\textbf{Deteriorated} &
+\textbf{Unchanged} \\
+\hline
+Factuality
+& 0.37 $\pm$ 0.15
+& 0.67 $\pm$ 0.23
+& +0.30
+& 90
+& 10
+& 0 \\
+
+Coverage
+& 0.50 $\pm$ 0.21
+& 0.46 $\pm$ 0.27
+& -0.05
+& 46
+& 50
+& 4 \\
+
+Conciseness
+& 0.43 $\pm$ 0.16
+& 0.46 $\pm$ 0.22
+& +0.03
+& 64
+& 36
+& 0 \\
+
+Medical tone
+& 1.00 $\pm$ 0.00
+& 1.00 $\pm$ 0.00
+& 0.00
+& 0
+& 0
+& 100 \\
+
+\hline
+\end{tabular}
+\end{table}
+
+As shown in Table~\ref{tab:baseline_sft}, standard SFT produced
+different effects across the evaluated dimensions. Factuality showed
+the largest improvement, increasing from 0.37 to 0.67
+($\Delta=+0.30$), with higher scores in 90 of the 100 cases. Coverage,
+in contrast, decreased slightly from 0.50 to 0.46 ($\Delta=-0.05$), with
+similar numbers of improved and deteriorated cases. Conciseness showed a
+small increase from 0.43 to 0.46 ($\Delta=+0.03$), with improvement in
+64 cases. Medical tone was unchanged, remaining at 1.00 for all cases.
+
+The distributions of the aggregate baseline and SFT scores are shown
+in Figure~\ref{fig:baseline_sft_comparison}. The variation in coverage
+and conciseness indicates that the effect of SFT was heterogeneous across
+individual consultations rather than uniformly beneficial.
+
+Readability remained linguistically complex after SFT, with scores of
+FRE $4.98 \pm 35.06$, SMOG $16.95 \pm 4.55$, and
+Dale--Chall $14.25 \pm 2.06$. The measures continued to reflect the
+specialised terminology and relatively complex language expected in
+clinical reporting, rather than indicating poor report quality in
+isolation.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{sft_distribution.png}
+\caption{Comparison of Baseline and Standard SFT}
+\label{fig:baseline_sft_comparison}
+\end{figure}
+
+To examine the consistency of these changes across matched cases, paired
+differences were calculated as
+$\Delta_i = \mathrm{SFT}_i - \mathrm{Baseline}_i$. The resulting
+distributions are shown in Figure~\ref{fig:paired_difference_sft},
+where positive values indicate improvement and negative values indicate
+deterioration.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.90\textwidth]{box_plot.png}
+\caption{Paired Differences Between Standard SFT and Baseline}
+\label{fig:paired_difference_sft}
+\end{figure}
+
+The paired analysis showed a substantial and statistically significant
+improvement in factuality, with a median increase of 0.31 and a very
+large positive rank-biserial effect ($r_{rb}=0.92$). The Wilcoxon
+signed-rank test remained significant after Holm correction
+($p<0.001$), indicating that the improvement was systematic across
+cases rather than driven by a small number of examples.
+
+Coverage showed no median change and a small negative effect
+($r_{rb}=-0.15$), which was not statistically significant
+($p=0.191$). Conciseness showed a small positive effect
+($r_{rb}=0.20$), also without statistical significance ($p=0.142$).
+Thus, SFT provided strong evidence of improvement in factuality, but
+not in coverage or conciseness.
+
+Overall, standard SFT substantially improved factual grounding while
+preserving the existing clinical reporting style. However, its limited
+effect on coverage and conciseness highlights that treating all
+teacher-generated examples equally does not guarantee balanced
+improvement across quality dimensions. This provides the basis for
+investigating whether quality-aware weighting can make supervision more
+effective in the subsequent fine-tuning stage.
+\subsection{Effect of Quality-Weighted Supervision}
+\label{sec:effect_quality_weighted}
+
+The preceding analysis established standard supervised fine-tuning (SFT)
+as the task-specific baseline. This section examines whether incorporating
+teacher-derived quality information into the training objective provides
+additional benefit over treating all training examples equally. The
+quality-weighted SFT model was therefore compared with standard SFT across
+the same 100 matched test cases. Evaluation considered factuality,
+coverage, conciseness, medical tone, and readability. For these metrics,
+change was calculated as
+$\Delta = \mathrm{Weighted\ SFT} - \mathrm{SFT}$, where positive values
+indicate improvement. The aggregate performance and case-level changes are
+presented in Table~\ref{tab:sft_weighted_comparison}.
+\vspace{-15pt}
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Effect of Quality-Weighted SFT Compared with Standard SFT}
+\label{tab:sft_weighted_comparison}
+\begin{tabular}{lccc|ccc}
+\hline
+& \multicolumn{3}{c|}{\textbf{Aggregate Performance}}
+& \multicolumn{3}{c}{\textbf{Case-level Change}} \\
+\cline{2-7}
+\textbf{Dimension}
+& \textbf{SFT}
+& \textbf{Weighted SFT}
+& \textbf{$\Delta$}
+& \textbf{Improved}
+& \textbf{Deteriorated}
+& \textbf{Unchanged} \\
+\hline
+
+Factuality
+& 0.67 $\pm$ 0.23
+& 0.71 $\pm$ 0.15
+& +0.04
+& 54
+& 46
+& 0 \\
+
+Coverage
+& 0.46 $\pm$ 0.27
+& 0.55 $\pm$ 0.22
+& +0.10
+& 54
+& 36
+& 10 \\
+
+Conciseness
+& 0.46 $\pm$ 0.22
+& 0.59 $\pm$ 0.20
+& +0.13
+& 71
+& 29
+& 0 \\
+
+Medical tone
+& 1.00 $\pm$ 0.00
+& 1.00 $\pm$ 0.00
+& 0.00
+& 0
+& 0
+& 100 \\
+
+\hline
+\end{tabular}
+\end{table}
+
+As shown in Table~\ref{tab:sft_weighted_comparison}, quality-aware
+supervision increased all three quality scores. The largest aggregate
+improvement was observed for conciseness, which increased from 0.46 to
+0.59 ($\Delta=+0.13$), followed by coverage, which increased from 0.46
+to 0.55 ($\Delta=+0.10$). Factuality showed a smaller increase from
+0.67 to 0.71 ($\Delta=+0.04$). At the case level, conciseness improved
+in 71 of the 100 cases and coverage in 54 cases, whereas factuality
+showed a more balanced pattern, improving in 54 cases and deteriorating
+in 46. The weighted model also reduced variability across all three
+dimensions, with the largest reduction observed for factuality, where
+the standard deviation decreased from 0.23 to 0.15.
+
+Medical tone was unchanged, with all 100 cases retaining the maximum
+score of 1.00, indicating that quality weighting preserved the
+appropriate clinical communication style established under standard SFT.
+Readability remained relatively complex, with FRE of
+$38.06 \pm 4.98$, SMOG of $13.06 \pm 4.55$, and Dale--Chall of
+$12.25 \pm 1.78$. These scores reflect the specialised terminology
+and complex language characteristic of clinical reporting.
+
+The aggregate score distributions for standard SFT and quality-weighted
+SFT are shown in Figure~\ref{fig:sft_weighted_comparison}, allowing the
+differences across the three quality dimensions to be compared directly.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.90\textwidth]{wght.png}
+\caption{Comparison of Standard and Quality-Weighted SFT}
+\label{fig:sft_weighted_comparison}
+\end{figure}
+
+To assess the consistency of these changes across matched cases, paired
+differences were calculated as
+$\Delta_i = \mathrm{Weighted\ SFT}_i-\mathrm{SFT}_i$. The resulting
+paired-difference distributions are shown in
+Figure~\ref{fig:weighted_paired_difference}. The mean paired changes were
+$+0.04$, $+0.10$, and $+0.13$ for factuality, coverage, and conciseness,
+respectively, with corresponding median changes of $+0.03$, $+0.08$, and
+$+0.14$. The positive medians indicate an overall shift towards the
+weighted model, although the case-level distributions show that
+improvements were not universal. The standard deviations of the paired
+differences were 0.29, 0.38, and 0.31 for factuality, coverage, and
+conciseness, respectively, indicating variation in the magnitude of
+change across consultations.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.90\textwidth]{wght_box.png}
+\caption{Paired Differences Between Quality-Weighted SFT and Standard SFT}
+\label{fig:weighted_paired_difference}
+\end{figure}
+
+Statistical significance was assessed using two-sided Wilcoxon
+signed-rank tests on the paired scores, with Holm correction across the
+three comparisons. Factuality showed a small positive rank-biserial
+effect ($r_{rb}=0.15$), but the difference was not statistically
+significant ($p=0.165$). Thus, the observed increase in factuality does
+not provide sufficient evidence of a systematic improvement over
+standard SFT.
+
+Coverage showed a statistically significant improvement after Holm
+correction ($p=0.025$), with a small-to-moderate positive effect
+($r_{rb}=0.30$). Conciseness showed the strongest effect, with a median
+improvement of 0.14, a moderate positive effect
+($r_{rb}=0.50$), and a statistically significant difference
+($p<0.001$). These results indicate that the measurable benefit of
+quality-aware supervision was concentrated primarily in coverage and
+conciseness rather than being uniform across all quality dimensions.
+
+The weighting mechanism itself was then examined to determine whether it
+differentiated the contribution of individual training examples. Each of
+the 400 training examples received a weight based on the geometric mean
+of its teacher-derived factuality, coverage, and conciseness scores. The
+resulting weights had a mean of 0.85 ($SD=0.13$), a median of 0.89, and
+a range of 0.37--1.00, with first and third quartiles of 0.77 and 0.97,
+respectively. The distribution of these weights is shown in
+Figure~\ref{fig:quality_weight_distribution}.
+
+\begin{wrapfigure}{r}{0.50\textwidth}
+\centering
+\includegraphics[width=0.48\textwidth]{distr_wght.png}
+\caption{Quality Weight Distribution}
+\label{fig:quality_weight_distribution}
+\end{wrapfigure}
+
+As shown in Figure~\ref{fig:quality_weight_distribution}, the weighting
+mechanism differentiated the contribution of training examples rather
+than assigning equal influence to all demonstrations. Most examples
+received relatively high weights, while lower-quality examples received
+smaller weights and therefore contributed less strongly to the training
+objective.
+
+Overall, quality-aware supervision improved aggregate performance across
+all three quality dimensions, with the strongest gains observed for
+coverage and conciseness. The paired analysis confirmed statistically
+significant improvements in both dimensions, whereas the increase in
+factuality was not statistically significant. Medical tone was fully
+preserved, while the weighted model also showed lower variability across
+the three quality measures and readability characteristics.
+
+Taken together, these findings indicate that incorporating teacher-derived
+quality information can provide a more effective supervision signal than
+uniform SFT, particularly for information coverage and concise report
+generation. However, the effect was dimension-dependent rather than
+universal, with the clearest measurable benefits occurring in coverage
+and conciseness rather than across every aspect of clinical report
+quality.
+\subsection{Effect of Direct Preference Optimization}
+\label{sec:effect_dpo}
+
+Following quality-weighted supervision, Direct Preference Optimization
+(DPO) was evaluated as a further preference-alignment stage. The DPO
+model was compared with quality-weighted SFT across the same 100 matched
+test cases to determine whether pairwise preference optimisation
+provided additional benefit. Evaluation considered factuality, coverage,
+conciseness, medical tone, and readability. Change was calculated as
+$\Delta = \mathrm{DPO} - \mathrm{Weighted\ SFT}$, where positive values
+indicate improvement with DPO. The aggregate performance and case-level
+changes are presented in Table~\ref{tab:weighted_dpo_comparison}.
+\vspace{-15pt}
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Effect of DPO Compared with Quality-Weighted SFT}
+\label{tab:weighted_dpo_comparison}
+\begin{tabular}{lccc|ccc}
+\hline
+& \multicolumn{3}{c|}{\textbf{Aggregate Performance}}
+& \multicolumn{3}{c}{\textbf{Case-level Change}} \\
+\cline{2-7}
+\textbf{Dimension}
+& \textbf{Weighted SFT}
+& \textbf{DPO}
+& \textbf{$\Delta$}
+& \textbf{Improved}
+& \textbf{Deteriorated}
+& \textbf{Unchanged} \\
+\hline
+
+Factuality
+& 0.71 $\pm$ 0.15
+& 0.68 $\pm$ 0.15
+& -0.03
+& 41
+& 59
+& 0 \\
+
+Coverage
+& 0.55 $\pm$ 0.22
+& 0.57 $\pm$ 0.24
+& +0.01
+& 37
+& 38
+& 25 \\
+
+Conciseness
+& 0.59 $\pm$ 0.20
+& 0.57 $\pm$ 0.15
+& -0.03
+& 39
+& 61
+& 0 \\
+
+Medical tone
+& 1.00 $\pm$ 0.00
+& 1.00 $\pm$ 0.00
+& 0.00
+& 0
+& 0
+& 100 \\
+
+\hline
+\end{tabular}
+\end{table}
+
+As shown in Table~\ref{tab:weighted_dpo_comparison}, DPO did not produce
+consistent improvements over quality-weighted SFT. Factuality decreased
+from 0.71 to 0.68 ($\Delta=-0.03$), with lower scores in 59 of the
+100 cases. Conciseness similarly decreased from 0.59 to 0.57
+($\Delta=-0.03$), with deterioration in 61 cases. Coverage showed only
+a small increase from 0.55 to 0.57 ($\Delta=+0.01$), with 37 cases
+improving, 38 deteriorating, and 25 remaining unchanged. Medical tone
+was unchanged, with all 100 cases retaining the maximum score of 1.00.
+
+The distributions of the aggregate scores are shown in
+Figure~\ref{fig:dpo_distribution}, providing a direct comparison of DPO
+and quality-weighted SFT across the three quality dimensions.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{dpo_distribution.png}
+\caption{Comparison of DPO and Quality-Weighted SFT}
+\label{fig:dpo_distribution}
+\end{figure}
+
+To examine the consistency of these differences across matched cases,
+paired differences were calculated as
+$\Delta_i = \mathrm{DPO}_i-\mathrm{Weighted\ SFT}_i$. The resulting
+paired-difference distributions are shown in
+Figure~\ref{fig:dpo_paired_difference}. The mean paired differences were
+$-0.03$, $+0.01$, and $-0.03$ for factuality, coverage, and conciseness,
+respectively, with corresponding median differences of $-0.05$, $0.00$,
+and $-0.06$. These results show a small shift in favour of quality-weighted
+SFT for factuality and conciseness, while coverage remained broadly
+unchanged.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.90\textwidth]{dpo_boxplot.png}
+\caption{Paired Differences Between DPO and Quality-Weighted SFT}
+\label{fig:dpo_paired_difference}
+\end{figure}
+
+Statistical significance was assessed using two-sided Wilcoxon
+signed-rank tests with Holm correction across the three comparisons.
+Factuality showed a small negative rank-biserial effect
+($r_{rb}=-0.23$), favouring quality-weighted SFT, but the difference was
+not statistically significant after correction ($p=0.082$). Coverage
+showed a negligible effect ($r_{rb}=0.06$, $p=0.671$), indicating no
+systematic difference between the approaches. Conciseness also favoured
+quality-weighted SFT, with a small negative effect
+($r_{rb}=-0.26$), but this difference was not statistically significant
+($p=0.056$).
+
+Thus, none of the three quality dimensions showed a statistically
+significant difference between DPO and quality-weighted SFT. Although
+the descriptive results favoured quality-weighted SFT for factuality and
+conciseness, the effect sizes were small, while coverage remained
+essentially unchanged.
+
+Readability remained relatively complex, with DPO outputs exhibiting
+the specialised terminology and linguistic characteristics expected of
+clinical reporting. The readability measures were broadly consistent
+with those observed for quality-weighted SFT, indicating that DPO did not
+produce a substantial change in the overall linguistic complexity of the
+reports.
+
+Overall, DPO did not improve upon quality-weighted SFT across the
+evaluated quality dimensions. Quality-weighted SFT retained higher
+factuality and conciseness, while coverage remained comparable, and
+medical tone was fully preserved. None of the observed differences was
+statistically significant after Holm correction. These findings suggest
+that, under the present experimental configuration, the additional
+preference-optimisation stage provided no measurable benefit beyond
+quality-aware supervised fine-tuning.
+
+\subsection{Comparative Analysis of Training Strategies}
+\label{sec:comparative_training}
+
+The overall performance of the evaluated training strategies is presented
+in Table~\ref{tab:training_strategy_comparison}. The comparison shows a
+clear progression from the pretrained baseline through standard SFT to
+quality-weighted SFT, while DPO did not provide further improvement over
+the weighted approach.
+\vspace{-15pt}
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Clinical Quality Across Training Strategies}
+\label{tab:training_strategy_comparison}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Dimension} & \textbf{Baseline} & \textbf{SFT}
+& \textbf{Weighted SFT} & \textbf{DPO} \\
+\hline
+Factuality
+& 0.37
+& 0.67
+& \textbf{0.71}
+& 0.68 \\
+
+Coverage
+& 0.50
+& 0.46
+& 0.55
+& \textbf{0.57} \\
+
+Conciseness
+& 0.43
+& 0.46
+& \textbf{0.59}
+& 0.57 \\
+
+Medical tone
+& 1.00
+& 1.00
+& 1.00
+& 1.00 \\
+\hline
+\end{tabular}
+\end{table}
+
+As shown in Table~\ref{tab:training_strategy_comparison}, standard SFT
+substantially improved factuality over the pretrained baseline, increasing
+the mean score from 0.37 to 0.67. However, coverage and conciseness
+remained similar to or slightly below baseline performance. Quality-weighted
+SFT provided further improvement across all three dimensions, increasing
+factuality from 0.67 to 0.71, coverage from 0.46 to 0.55, and conciseness
+from 0.46 to 0.59. The improvements in coverage and conciseness were
+statistically significant, whereas the increase in factuality was not.
+
+DPO achieved a slightly higher coverage score than quality-weighted SFT
+(0.57 versus 0.55), but factuality and conciseness were lower at 0.68 and
+0.57, respectively. None of these differences from quality-weighted SFT
+was statistically significant after Holm correction. Medical tone remained
+at 1.00 across all strategies, indicating preservation of the intended
+clinical reporting style.
+
+Readability also remained relatively consistent across the adapted models,
+with FRE, SMOG, and Dale--Chall scores indicating linguistically complex
+clinical text. This is consistent with the specialised vocabulary and
+terminology expected in medical reporting rather than indicating poor
+report quality in isolation.
+
+Overall, Table~\ref{tab:training_strategy_comparison} shows that
+quality-weighted SFT provided the strongest overall performance among the
+evaluated training strategies. It retained the substantial factuality
+improvement achieved through standard SFT while providing additional gains
+in coverage and conciseness. DPO did not produce a further statistically
+significant improvement over the weighted SFT model under the present
+experimental configuration.
+\section{Teacher--Student Correspondence and Efficiency}
+
+\subsection{Teacher--Student Correspondence}
+\label{sec:teacher_student_correspondence}
+
+Teacher--student correspondence was evaluated to determine how closely the
+compact student model reproduced the teacher's information and reporting
+behaviour, and whether this similarity was related to clinical quality. The
+analysis was conducted on the same 100 matched test cases and considered
+three aspects: similarity to the teacher, retention of clinical quality, and
+the relationship between teacher similarity and clinical quality.
+
+First, the similarity of Weighted SFT outputs to the teacher was assessed
+using both lexical and semantic measures. The model showed moderate lexical
+overlap, with mean ROUGE-1, ROUGE-2, ROUGE-L, and BLEU scores of 0.624,
+0.445, 0.487, and 0.350, respectively. Semantic similarity was considerably
+higher, with BERTScore F1 and embedding similarity of 0.914 and 0.967.
+Both semantic measures also showed low variability ($SD=0.014$), indicating
+that the student remained consistently close to the teacher in meaning
+across the evaluation cases. The complete similarity results are presented
+in Table~\ref{tab:teacher_student_similarity}.
+\vspace{-15pt}
+
+\begin{table}[H]
+\centering
+\footnotesize
+\caption{Teacher--Student Similarity in Weighted SFT}
+\label{tab:teacher_student_similarity}
+\begin{tabular}{lcccccc}
+\hline
+\textbf{Metric} & R-1 & R-2 & R-L & BLEU & BERTScore F1 & Embedding \\
+\hline
+\textbf{Mean} & 0.624 & 0.445 & 0.487 & 0.350 & 0.914 & 0.967 \\
+\textbf{SD} & 0.079 & 0.068 & 0.068 & 0.082 & 0.014 & 0.014 \\
+\hline
+\end{tabular}
+\end{table}
+
+As shown in Table~\ref{tab:teacher_student_similarity}, the higher semantic
+similarity compared with lexical overlap suggests that the student retained
+the information conveyed by the teacher without closely reproducing its
+exact wording. This indicates that the model captured aspects of the
+teacher's reporting behaviour rather than simply copying its surface form.
+
+Similarity to the teacher, however, does not by itself show how much clinical
+quality was retained. The teacher and Weighted SFT outputs were therefore
+also compared across factuality, coverage, and conciseness. As shown in
+Table~\ref{tab:quality_retention}, the student retained 72.6\%, 74.8\%, and
+78.1\% of the teacher's mean factuality, coverage, and conciseness scores,
+respectively. Conciseness showed the highest relative retention.
+\vspace{-15pt}
+
+\begin{table}[H]
+\centering
+\footnotesize
+\caption{Clinical Quality Retention in Weighted SFT}
+\label{tab:quality_retention}
+\begin{tabular}{lccc}
+\hline
+\textbf{Clinical quality} & \textbf{Teacher} & \textbf{Weighted SFT} &
+\textbf{Relative retention} \\
+\hline
+Factuality & $0.979\pm0.020$ & $0.710\pm0.152$ & 72.6\% \\
+Coverage & $0.739\pm0.206$ & $0.553\pm0.221$ & 74.8\% \\
+Conciseness & $0.759\pm0.130$ & $0.593\pm0.198$ & 78.1\% \\
+\hline
+\end{tabular}
+\end{table}
+
+As shown in Table~\ref{tab:quality_retention}, the student did not retain
+the teacher's quality uniformly across cases, with greater variability
+observed particularly for factuality. Nevertheless, the combination of
+high semantic similarity and substantial retention across the three quality
+measures indicates that the student transferred a substantial amount of the
+teacher's task-specific behaviour. Medical tone also remained close to the
+maximum score, while readability continued to reflect the linguistically
+complex language of clinical reporting. The main differences from the
+teacher were therefore observed in factuality, coverage, and conciseness.
+
+The next question was whether greater similarity to the teacher was
+associated with better clinical quality. Spearman rank correlations were
+therefore calculated between the six similarity measures and factuality,
+coverage, and conciseness, with Holm correction for multiple comparisons.
+Lexical similarity showed positive associations with coverage and
+conciseness. For example, ROUGE-L correlated with coverage
+($\rho=0.355$, adjusted $p=0.002$) and with conciseness
+($\rho=0.718$, adjusted $p<0.001$). In contrast, none of the similarity
+measures was significantly associated with factuality after correction.
+Embedding similarity, in particular, showed almost no relationship with
+factuality ($\rho=-0.011$, adjusted $p=1.000$).
+
+These results show that similarity to the teacher and clinical quality are
+not interchangeable. A student output can be highly similar to the
+teacher while still differing in factual quality. Teacher similarity is
+therefore useful for assessing whether information and reporting behaviour
+have been transferred, but it cannot replace direct evaluation of clinical
+quality.
+
+Overall, Weighted SFT achieved high semantic similarity to the teacher and
+retained a substantial proportion of its clinical quality, while the
+correlation analysis showed that similarity alone does not guarantee
+better factuality. Together, these findings support using teacher--student
+similarity as an indicator of knowledge transfer alongside direct
+evaluation of factuality, coverage, conciseness, readability, and medical
+tone.
+
+\subsection{Computational Efficiency}
+\label{sec:computational_efficiency}
+
+The computational benefit of distillation was evaluated by comparing the
+Llama-3.3-70B-Instruct teacher with the Qwen2.5-1.5B-Instruct student on
+the same ten consultations after a warm-up generation. Both models used a
+maximum generation length of 2,048 tokens. Model size was compared using
+parameter count, while peak GPU memory, generation latency, and throughput
+were measured during inference. The results are presented in
+Table~\ref{tab:computational_efficiency}.
+\vspace{-15pt}
+\begin{table}[H]
+\centering
+\footnotesize
+\caption{Computational Efficiency Comparison Between Teacher and Student}
+\label{tab:computational_efficiency}
+\begin{tabular}{lccccc}
+\hline
+\textbf{Model} & \textbf{Parameters} & \textbf{Peak GPU} &
+\textbf{Latency/report} & \textbf{Output} & \textbf{Throughput} \\
+& & \textbf{Memory (GB)} & \textbf{(s)} & \textbf{tokens} &
+\textbf{(tokens/s)} \\
+\hline
+Teacher
+& 70B & 39.37 & $86.84 \pm 3.66$ & 738.2 & $8.50 \pm 0.14$ \\
+Student
+& 1.5B & 1.71 & $139.31 \pm 127.45$ & 1186.4 & $11.63 \pm 4.18$ \\
+\hline
+\end{tabular}
+\end{table}
+
+As shown in Table~\ref{tab:computational_efficiency}, the student was
+substantially smaller than the teacher, with 1.5B compared with 70B
+parameters. This represents a 97.9\% reduction in model size, or a
+46.7$\times$ smaller model. Peak GPU memory was also reduced from
+39.37~GB to 1.71~GB, corresponding to a 95.7\% reduction. These results
+show that distillation substantially reduced the computational resources
+required to run the model.
+
+The student also achieved higher token generation throughput, producing
+11.63 tokens/s compared with 8.50 tokens/s for the teacher, representing
+a 36.8\% improvement. However, the student had a higher mean end-to-end
+latency, at 139.31~s compared with 86.84~s for the teacher. This difference
+is partly explained by the longer outputs produced by the student, which
+averaged 1,186 tokens compared with 738 tokens for the teacher. Therefore,
+the higher time per report does not imply slower token generation.
+
+Overall, the distilled student achieved substantial reductions in model
+size and GPU memory while providing higher token-level throughput. Although
+end-to-end latency was higher under the present generation settings, this
+was influenced by the longer output length. The results therefore
+demonstrate a substantially smaller computational footprint while
+maintaining high semantic correspondence with the teacher.
+
+
+\section{Error Analysis and Qualitative Examples}
+\label{sec:error_analysis}
+
+Quantitative evaluation identifies differences in performance between the
+adaptation strategies, but does not fully explain how these differences arise
+at the level of individual reports. Qualitative analysis was therefore
+conducted to examine the generated reports in greater detail and identify
+specific patterns of improvement and failure. The analysis focuses primarily
+on the final Weighted SFT model, with comparisons against the baseline and
+teacher-generated reports used to assess changes in patient-specific
+grounding, evidence preservation, and section-level alignment. It also
+examines limitations in the teacher supervision signal and the LLM-based
+evaluation process, providing context for interpreting the quantitative
+results. The qualitative findings are presented through representative
+examples covering teacher-generation errors, judge errors, baseline versus
+Weighted SFT behaviour, and remaining Weighted SFT failure cases.
+\paragraph{Teacher Generation Errors}
+
+Teacher-generated reports generally provided a useful supervision signal, but
+qualitative inspection identified occasional errors that could affect the
+quality of student supervision. These included unsupported interpretations,
+redundant information, and inconsistent preservation of uncertainty. The
+representative cases in Table~\ref{tab:teacher_errors} illustrate how
+syndrome-level knowledge could be introduced as patient-specific information,
+relevant findings could be duplicated across sections, and uncertainty in the
+source consultation could be inconsistently expressed in the generated report.
+
+\vspace{-8pt}
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Examples of Errors in Teacher-Generated Reports}
+\label{tab:teacher_errors}
+\begin{tabular}{p{0.20\textwidth} p{0.36\textwidth} p{0.34\textwidth}}
+\hline
+\textbf{Error type} & \textbf{Example} & \textbf{Implication} \\
+\hline
+
+Unsupported interpretation
+&
+Parent reported that the patient's teeth were brittle and easily chipped;
+the teacher additionally described weak enamel.
+&
+Syndrome-level knowledge was introduced as a patient-specific fact without
+explicit support from the consultation.
+\\
+
+Redundant information
+&
+Delayed speech was repeated under ``Education'' and
+``Behaviour and Development''.
+&
+Duplication across sections reduced report conciseness.
+\\
+
+Inconsistent uncertainty
+&
+Terms such as ``may'' or ``potential'' were used for some uncertain findings,
+but not consistently across reports.
+&
+Uncertainty in information not directly established by the consultation was
+not always preserved.
+\\
+
+\hline
+\end{tabular}
+\end{table}
+\vspace{-8pt}
+\paragraph{LLM-as-a-Judge Errors}
+
+Although the quantitative evaluation provides useful measures of factuality and
+coverage, qualitative inspection identified cases where lower scores did not
+necessarily correspond to genuine errors in the generated reports. Because
+both metrics rely on an LLM-based evaluator, some apparent errors reflected
+difficulties in recognising clinically reasonable paraphrases, preserved
+uncertainty, or information expressed in an alternative form. Representative
+false-negative judgements are summarised in Table~\ref{tab:judge_errors} and
+highlight the need for caution when interpreting individual factuality and
+coverage scores.
+
+\vspace{-8pt}
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Examples of False-Negative LLM-as-a-Judge Evaluations}
+\label{tab:judge_errors}
+\begin{tabular}{p{0.18\textwidth} p{0.37\textwidth} p{0.35\textwidth}}
+\hline
+\textbf{Metric} & \textbf{Example} & \textbf{Issue} \\
+\hline
+
+Factuality
+&
+The parent reported that the child ``sometimes doesn't respond when we
+call him'', while remaining uncertain whether this was hearing-related.
+The report stated that the child ``sometimes doesn't respond when called,
+indicating potential hearing concerns''.
+&
+The evaluator marked the hearing-related claim as unsupported despite the
+report preserving the parent's uncertainty.
+\\
+
+Factuality
+&
+A parent's description of communication difficulties was summarised in the
+report as ``speech delay''.
+&
+The evaluator judged this clinically reasonable paraphrase as unsupported,
+suggesting difficulty recognising valid abstractions of the source.
+\\
+
+Coverage
+&
+The parent reported that loud noises overwhelmed the child and caused
+frustration. The report explicitly stated that the patient ``is overwhelmed
+by loud noises and gets frustrated in very noisy environments''.
+&
+The evaluator marked the information as uncovered despite its explicit
+presence in the report.
+\\
+
+\hline
+\end{tabular}
+\end{table}
+\vspace{-8pt}
+\paragraph{Baseline vs. Weighted SFT}
+
+Qualitative comparison showed that Weighted SFT produced more patient-specific
+and clinically coherent reports than the baseline. Improvements were most
+apparent in the mapping of source evidence to the appropriate clinical
+sections, preservation of reported findings, and restraint in generating
+unsupported information. Representative differences are summarised in
+Table~\ref{tab:baseline_weighted_qualitative}.
+
+\vspace{-8pt}
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Qualitative Comparison of Baseline and Weighted SFT}
+\label{tab:baseline_weighted_qualitative}
+\begin{tabular}{p{0.18\textwidth} p{0.36\textwidth} p{0.36\textwidth}}
+\hline
+\textbf{Aspect} & \textbf{Baseline} & \textbf{Weighted SFT} \\
+\hline
+
+Section grounding
+&
+Cross-section propagation of bowel problems, hypermetropia, and scoliosis.
+&
+Bowel problems placed in Gastroenterology; scoliosis restricted to Skeletal.
+\\
+
+Evidence preservation
+&
+Unsupported additions and inconsistent retention of reported findings.
+&
+More faithful retention of reported findings, including hypermetropia, ear
+fluid, chipped teeth, fatigue, and cardiac abnormality.
+\\
+
+Absent findings
+&
+N/A immunological finding changed to ``a weakened immune system''.
+&
+N/A correctly preserved.
+\\
+
+Report structure
+&
+Patient information repeated across unrelated sections.
+&
+Information placed within the relevant clinical domains.
+\\
+
+Recommendations
+&
+Broad or unsupported interventions, including ``bracing or surgery for
+scoliosis''.
+&
+More focused screening and referral recommendations.
+\\
+
+\hline
+\end{tabular}
+\end{table}
+\vspace{-8pt}
+\paragraph{Weighted SFT Errors}
+
+
+
+Despite the overall improvements, qualitative analysis identified several
+remaining failure modes in evidence preservation, unsupported elaboration,
+patient--syndrome attribution, and section-level alignment. These cases
+illustrate how the Weighted SFT model could still introduce clinically
+plausible information that was not supported by the patient-specific evidence,
+omit relevant findings, or misplace information across report sections.
+Representative examples are summarised in Table~\ref{tab:weighted_sft_errors}.
+
+\vspace{-8pt}
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Qualitative Failure Cases in Weighted SFT}
+\label{tab:weighted_sft_errors}
+\begin{tabular}{p{0.20\textwidth} p{0.37\textwidth} p{0.37\textwidth}}
+\hline
+\textbf{Failure mode} & \textbf{Source and teacher} & \textbf{Weighted SFT} \\
+\hline
+
+Evidence preservation
+&
+The consultation reported that loud noises caused frustration and that the
+patient had an undescended testicle; both findings were retained by the
+teacher.
+&
+The loud-noise finding was omitted and replaced with vision-related
+information, while the undescended testicle was reduced to a generic
+recommendation for testicular examination.
+\\
+
+Unsupported elaboration
+&
+The consultation only stated that the child was ``a bit behind''
+developmentally, with the teacher preserving this uncertainty.
+&
+Generated specific difficulties involving rolling, sitting, walking, toys,
+cutlery, zips and buttons, and toilet training without supporting evidence.
+\\
+
+Patient--syndrome attribution
+&
+The teacher described spinal abnormalities as affecting other individuals
+with KBG syndrome rather than the patient.
+&
+Attributed the condition directly to the patient, including an ``unusual
+structure of their spinal bones'' and scoliosis.
+\\
+
+Section alignment
+&
+Syndrome-level hearing information was presented as general KBG knowledge.
+&
+The same hearing statement was repeated across unrelated sections,
+including Gastroenterology, Neurology, Dental, Education, and Behaviour and
+Development.
+\\
+
+\hline
+\end{tabular}
+\end{table}
+\vspace{-8pt}
+
+\paragraph{DPO Errors}
+Qualitative analysis of the DPO-generated reports revealed several recurring
+errors that were not fully resolved by preference optimisation. Similar to
+the errors observed in the earlier models, some reports exhibited structural
+omissions, with entire sections or clinically relevant features absent from
+the generated report despite being supported by the consultation. For
+example, information relating to vision and other patient-specific features
+was occasionally omitted, resulting in incomplete coverage of the
+corresponding clinical domains. Conversely, some reports showed redundancy,
+where the same recommendation or clinical information was repeated multiple
+times across different sections rather than being appropriately assigned to
+the most relevant section. These errors suggest that DPO did not consistently
+improve the model's ability to maintain a complete and well-organised
+representation of the consultation. In particular, while preference
+optimisation may encourage generally preferred responses, it does not
+necessarily ensure that all patient-specific information is retained or that
+related information is distributed correctly across the predefined report
+structure. The persistence of both omissions and repetitions therefore
+indicates that structural completeness and section-level information
+allocation remained challenging for the compact student model.
+
+Overall, the qualitative analysis supports the quantitative findings while
+highlighting limitations not captured by aggregate scores. Weighted SFT
+improved patient-specific grounding, evidence preservation, section-level
+alignment, and restraint, but errors remained in information preservation,
+uncertainty, and section assignment. DPO reports also showed structural
+omissions and repeated recommendations. Teacher reports contained occasional
+unsupported interpretations, while the LLM evaluator produced some
+false-negative judgements. These findings highlight the importance of both
+the distillation strategy and the reliability of the supervision and
+evaluation signals.
+% -----------------------------------------------------------------------------
+\chapter{Conclusions}
+\label{chap:Discussion}
+
+The findings provide encouraging but qualified support for the research
+question of whether multidimensional quality-aware supervision can improve
+the clinical quality of reports generated by a compact language model.
+The study developed a controlled synthetic data-generation pipeline spanning
+patient-specific profiles, synthetic doctor--parent consultations, and
+personalised clinical report generation, enabling a systematic comparison of
+an untrained baseline, conventional SFT, quality-weighted SFT, and DPO.
+Across these comparisons, Weighted SFT emerged as the strongest overall
+adaptation strategy. It built on the substantial factuality improvement
+achieved through conventional SFT while providing further statistically
+significant gains in coverage and conciseness. This pattern is particularly
+informative because conventional SFT substantially improved factuality over
+the pretrained baseline but did not produce comparable gains in coverage or
+conciseness. Quality-aware weighting therefore appears to have complemented
+conventional SFT by placing greater emphasis on teacher responses that were
+more complete and focused. The qualitative analysis provides further support
+for this interpretation, with Weighted SFT showing better preservation of
+patient-specific evidence, section-level alignment, and restraint in
+unsupported elaboration compared with the baseline, although these
+improvements were not consistent across all cases. At the same time, the
+additional improvement in factuality was not statistically significant, and
+DPO likewise produced no significant improvement over Weighted SFT.
+Beyond report quality, the student showed good semantic correspondence with
+the teacher while using substantially fewer parameters and less GPU memory
+and achieving higher token-level throughput. This demonstrates the potential
+to reproduce the behaviour of a much larger teacher within a considerably
+smaller computational footprint. Overall, the findings support
+multidimensional quality-aware supervision as a promising approach to compact
+clinical report generation, while also indicating that its benefits depend
+on the particular quality dimension and the reliability of the underlying
+supervision signal.
+
+The stronger overall performance of Weighted SFT suggests that weighting
+teacher responses according to their multidimensional quality provided a more
+informative training signal than treating all demonstrations equally. By
+jointly considering factuality, coverage, and conciseness, the weighting
+scheme increased the influence of responses that were strong across several
+aspects of report quality. This may have helped the student learn not only
+which patient-specific information to include, but also how to prioritise,
+organise, and present that information. Higher-quality demonstrations could
+therefore provide stronger examples of appropriate information selection and
+section-level structure, while reducing the influence of weaker or less
+focused responses. The qualitative findings support this interpretation:
+relative to the baseline, Weighted SFT more consistently preserved clinical
+evidence, aligned information with the appropriate report sections, and
+avoided some forms of unsupported elaboration. The gains in coverage and
+conciseness are therefore consistent with quality-aware weighting influencing
+the student's selection and organisation of information, rather than simply
+increasing the amount of information generated.
+
+The comparatively limited effect on factuality may have several possible
+explanations. First, conventional SFT had already produced a substantial
+improvement in factuality over the pretrained baseline, leaving less scope
+for Weighted SFT to improve this dimension further. The remaining factuality
+errors identified in the qualitative analysis were also often related to
+patient-specific attribution, such as presenting general KBG syndrome
+knowledge as a finding about the individual patient, or making unsupported
+clinical inferences. These types of errors may require more explicit
+supervision of the link between the source evidence and the patient rather
+than simply giving greater weight to higher-quality reports. In addition,
+the teacher reports themselves contained occasional unsupported
+interpretations and inconsistencies in handling uncertainty. This may have
+limited the extent to which quality weighting could improve factuality when
+the supervision signal was not consistently factual. Teacher factuality was
+also already high and showed less variation than coverage and conciseness,
+which may have reduced its ability to distinguish between training examples.
+Finally, because the weighting was based on the geometric mean of factuality,
+coverage, and conciseness, it favoured responses that were balanced across
+these dimensions rather than specifically prioritising factuality. The
+larger improvements observed for coverage and conciseness may therefore be
+consistent with these dimensions having greater scope to benefit from
+quality-aware weighting.
+
+The lack of further improvement with DPO may have several possible
+explanations. The DPO stage used a smaller set of preference examples, which
+may have limited the amount of information available for learning the desired
+reporting behaviour. The quality of the chosen--rejected pairs may also have
+affected the strength of the preference signal. If some pairs did not provide
+a clear distinction in clinically meaningful quality, the model may have
+learned superficial differences between the responses rather than the
+underlying principles of factuality, coverage, and conciseness. In this case,
+DPO could learn which response to prefer without necessarily learning how to
+generate a better report. DPO was also applied after Weighted SFT had already
+provided a strong supervised signal, so there may have been limited scope for
+further improvement. In addition, the preference data were derived from the
+same teacher and quality-evaluation framework, which may have limited the
+amount of new information introduced by the DPO stage. Unlike quality-weighted
+SFT, which directly adjusted the contribution of training examples according
+to their multidimensional quality, DPO learned from relative preferences
+between responses. It may therefore have been less effective at addressing
+specific patient-grounding or factuality errors when the preference signal
+did not clearly capture these aspects of clinical quality. Taken together,
+these findings suggest that adding a further optimisation stage does not
+necessarily lead to better reports when the available preference signal is
+limited or not sufficiently informative. In the present setting, direct
+supervision from high-quality and well-balanced teacher responses may
+therefore have provided a stronger basis for adaptation than the preference
+signal available to DPO.
+
+Several limitations should be considered when interpreting these findings.
+The relatively small, synthetic dataset focused on KBG syndrome provided a
+controlled setting for experimentation but limits case diversity and
+generalisability to other conditions, clinical settings, and reporting tasks.
+The teacher-generated reports and LLM-based evaluation also impose
+limitations on the supervision signal, with qualitative analysis identifying
+occasional unsupported interpretations, inconsistent uncertainty, and
+patient--syndrome attribution errors, while the evaluator produced some
+false-negative judgements. As these evaluations informed the quality weights,
+the reliability of the underlying signal is therefore an important
+consideration. The automatic metrics used in the study likewise capture
+specific aspects of textual quality but cannot fully assess clinical
+correctness, safety, or the diversity of real clinical communication. In
+addition, the geometric-mean weighting of factuality, coverage, and
+conciseness and the relatively limited DPO preference data represent specific
+design choices; alternative weighting formulations incorporating additional
+quality dimensions, or stronger and more informative preference signals, may
+produce different results. Finally, the absence of human clinical assessment
+limits conclusions about real-world usefulness and acceptability. Future work
+should therefore evaluate the approach on larger and more diverse datasets,
+explore more comprehensive quality-weighting strategies, and combine
+automated evaluation with clinician-informed assessment.
+
+
+The present study provides a proof-of-concept for quality-aware distillation
+of compact language models for personalised clinical report generation, but
+further work is needed towards clinical deployment. Future studies should
+evaluate the approach on larger and more diverse datasets, across multiple
+clinical conditions, and ultimately on appropriately de-identified real
+clinical data. Clinician-validated evaluation could strengthen assessment
+of patient-level factuality, uncertainty, safety, and clinical usefulness,
+while alternative quality-weighting formulations could incorporate additional
+dimensions and better reflect their clinical importance. Larger and more
+carefully constructed preference datasets, together with alternative
+teacher--student models and distillation strategies, could further improve
+the reliability and efficiency of the resulting models. These developments
+should be assessed within realistic clinical workflows, including clinician
+and patient/parent feedback. An important open question is whether
+quality-aware distillation can produce sufficiently small and efficient
+models that retain clinically acceptable quality and reliability across
+different clinical conditions. Addressing this question would move the
+current proof-of-concept towards a robust and efficient system for local
+clinical deployment.
+
+Ultimately, this work demonstrates the potential of quality-aware distillation
+to make capable language models more practical for privacy-conscious clinical
+applications. Continued progress could bridge the gap between large-model
+capabilities and efficient, locally deployable systems while keeping clinical
+reliability at the centre of model development.
+
+
+% =============================================================================
+
+% Finally, after the main matter, the back matter is specified.  This is
+% typically populated with just the bibliography.  LaTeX deals with these
+% in one of two ways, namely
+%
+% - inline, which roughly means the author specifies entries using the 
+%   \bibitem macro and typesets them manually, or
+% - using BiBTeX, which means entries are contained in a separate file
+%   (which is essentially a database) then imported; this is the 
+%   approach used below, with the databased being dissertation.bib.
+%
+% Either way, the each entry has a key (or identifier) which can be used
+% in the main matter to cite it, e.g., \cite{X}, \cite[Chapter 2}{Y}.
+
+\backmatter
+\bibliographystyle{unsrt}
+\bibliography{references.bib}
+
+% -----------------------------------------------------------------------------
+
+% The dissertation concludes with a set of (optional) appendices; these are 
+% the same as chapters in a sense, but once signalled as being appendices via
+% the associated macro, LaTeX manages them appropriately.
+
+\appendix
+
+\chapter{Synthetic Patient Profile Feature and Persona Pools}
+\label{appx:profile_pools}
+
+
+\section{Clinical Feature Pools}
+
+The predefined clinical feature pools used for random sampling were:
+
+\begin{itemize}
+    \item \textbf{Vision:} Astigmatism, Myopia, Hypermetropia, Squint,
+    struggles to see the board at school, often squints when looking at things,
+    sits very close to the TV or books, complains that things look blurry,
+    rubs eyes frequently when focusing.
+
+    \item \textbf{Hearing:} Otitis media, glue ear, fluid in the ear,
+    does not always respond when called, asks people to repeat themselves
+    often, turns the volume of the TV very high, seems to hear some sounds
+    but not others clearly, gets frustrated in noisy places.
+
+    \item \textbf{Teeth:} Large front teeth, weak enamel, teeth break or
+    chip easily, tooth sensitivity with cold food, needs frequent dental
+    visits, difficulty chewing harder foods.
+
+    \item \textbf{Heart:} Valve abnormality, septal defect, structural
+    heart abnormality, gets tired more quickly than other children, needs
+    regular heart check-ups, breathes faster during play, cannot keep up
+    with physical activity for long.
+
+    \item \textbf{Neurological:} Seizures, epilepsy, hypotonia, tethered
+    cord, slower milestone development, frequent falls, reduced coordination,
+    fatigue during physical activity, unusual staring or blank spells.
+
+    \item \textbf{Gastrointestinal:} Feeding difficulties, poor feeding in
+    infancy, feeding aversion, bowel problems, difficult mealtimes, picky
+    eating, refusal of certain foods, constipation, slow weight gain.
+
+    \item \textbf{Other medical features:} Scoliosis, hip dysplasia, short
+    fingers, speech delay, delayed fontanelle closure, undescended testes
+    (male), palatal abnormalities, reduced speech, difficulty being
+    understood, differences in posture or movement, delayed development,
+    and slower achievement of milestones.
+\end{itemize}
+
+\section{Parent Communication Personas}
+
+The predefined parent communication personas were:
+
+\begin{multicols}{3}
+\begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+    
+    \item Brief and reassured
+    \item Detailed and observant
+    \item Anxious and concerned
+    \item Matter-of-fact
+    \item Confused and unsure
+    \item Overwhelmed parent
+    \item Overprotective parent
+    \item Highly educated parent
+    \item Low health literacy
+    \item First-time parent
+    \item Experienced parent
+    \item Emotionally flat
+    \item Detail-dumping parent
+\end{itemize}
+\end{multicols}
+
+\chapter{Consultation Generation Prompt}
+\label{appx:consultation_prompt}
+
+The following few-shot prompt was used to generate the synthetic consultations.
+
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM
+
+You generate realistic doctor-parent consultations for children with KBG syndrome.
+
+Rules:
+
+- The doctor MUST ask the exact 10 questions provided below, in the given order, without modification.
+- Generate the complete consultation from start to finish. Every doctor question must have exactly one corresponding parent response.
+- Base every parent response only on the provided patient profile. Do not add, remove, or alter patient information.
+- Use the "parent_persona" field to determine the parent's communication style, tone, and vocabulary.
+- Each parent response must contain exactly 2-5 short sentences depending on the parent_persona.
+- If the corresponding category in the patient profile is empty or contains no symptoms, the parent's entire response must be exactly N/A.
+- Treat every consultation as a different family by varying sentence structure, wording, and expression while preserving the underlying patient information.
+- Do not introduce symptoms, diagnoses, or concerns that are not present in the patient profile.
+
+The 10 Verbatim Doctor Questions:
+
+1. Doctor: Please tell us about any problems with your child's vision or eyes.
+2. Doctor: Please tell us about problems with your child's hearing or ears.
+3. Doctor: Please tell us about the problems with your child's teeth.
+4. Doctor: Please tell us about any problems with your child's heart.
+5. Doctor: Please tell us about any problems with your child's hormones.
+6. Doctor: Please tell us about any neurological problem your child has (brain, nerves, muscle tone, fits).
+7. Doctor: Please tell us about any problems with your child's kidneys.
+8. Doctor: Please tell us about any problems with your child's immune system (ability to fight infection and vaccination responses).
+9. Doctor: Please tell us about problems with your child's gastrointestinal system (feeding, stomach, bowel).
+10. Doctor: Please use this box to tell us about any other medical problems that you haven’t been able to mention above.
+
+
+USER
+
+PROFILE
+
+{
+    "patient_id": 1,
+    "age": 4,
+    "gender": "Male",
+    "parent_persona": "detailed_observant",
+    "vision": [],
+    "hearing": [{"symptom": "Speech delay"}],
+    "teeth": [
+        {"symptom": "Weak enamel"},
+        {"symptom": "Large front teeth"}
+    ],
+    "heart": [{"symptom": "Valve abnormality"}],
+    "neurological": [
+        {"symptom": "Developmental delay"},
+        {"symptom": "Tethered cord"}
+    ],
+    "kidneys": [],
+    "immune": [],
+    "gastrointestinal": [],
+    "other_medical": [
+        {"symptom": "Palatal abnormalities"},
+        {"symptom": "Undescended testes"}
+    ]
+}
+
+Generate the consultation.
+
+
+ASSISTANT
+
+Doctor: Please tell us about any problems with your child's vision or eyes.
+Parent: We haven't noticed any issues with his eyesight. He seems to spot things normally and doesn't struggle with seeing objects or people.
+
+Doctor: Please tell us about problems with your child's hearing or ears.
+Parent: We don't think hearing is the problem, but he's quite behind when it comes to talking. He understands some of what we say, but getting words out is much harder for him than other children his age.
+
+Doctor: Please tell us about the problems with your child's teeth.
+Parent: His front teeth look much bigger than expected for his age. We've also been told the teeth are quite fragile, so we have to be careful with brushing and dental check-ups.
+
+Doctor: Please tell us about any problems with your child's heart.
+Parent: The doctors found an issue with one of the valves in his heart. We go for regular check-ups, and so far it hasn't stopped him from doing his usual activities.
+
+[Remaining doctor-parent exchanges omitted for brevity.]
+
+Doctor: Please use this box to tell us about any other medical problems that you haven't been able to mention above.
+Parent: The roof of his mouth developed differently, which has made speaking a bit harder for him. He also has one testicle that hasn't moved down properly, and that's being monitored.
+
+
+USER
+
+PATIENT_PROFILE
+
+{target patient profile inserted here}
+
+Generate the consultation.
+\end{lstlisting}
+
+
+\end{quote}
+Table~\ref{tab:consultation_config} summarises the model and generation
+parameters used for synthetic doctor--parent consultation generation.
+
+\begin{table}[htbp]
+\centering
+\caption{Configuration used for consultation generation.}
+\label{tab:consultation_config}
+\begin{tabular}{ll}
+\hline
+\textbf{Parameter} & \textbf{Value} \\
+\hline
+Model & Llama-3.3-70B-Instruct \\
+Quantisation & 8-bit \\
+Maximum new tokens & 2048 \\
+Temperature & 0.75 \\
+Top-$p$ & 0.90 \\
+Repetition penalty & 1.12 \\
+Sampling & Enabled \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+
+\chapter{Report Generation Prompt}
+\label{appx:report_prompt}
+
+The following zero-shot prompt was used to generate personalised clinical reports.
+
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM
+
+You are an expert clinical patient report synthesis engine specialising in rare genetic syndromes.
+
+Transform the doctor-parent consultation into a structured Clinical Patient Report using only:
+1. The consultation transcript.
+2. The provided clinical reference guidelines.
+
+Before writing the report, internally:
+
+1. Extract all patient findings.
+2. Assign each finding to its most appropriate clinical section.
+3. Generate the final report.
+
+Do not output this internal analysis.
+
+Rules:
+
+- Generate a concise, accurate clinical report.
+- Do not add unsupported information or assumptions.
+- "How this affects the patient" must contain only patient-specific information from the consultation.
+- "How this affects others with the syndrome" must contain only relevant syndrome-level information from the clinical reference guidelines.
+- Assign each symptom exclusively to its most appropriate clinical category.
+- Provide recommendations only for reported symptoms.
+- List recommendations as bullet points, with each recommendation directly addressing the patient's identified symptoms.
+- If any information is unavailable for a particular section, write exactly "N/A" and nothing else.
+- Ensure the final report follows all instructions before responding.
+- Use clear professional clinical language.
+
+Output MUST strictly follow this exact markdown structure:
+
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 2) CARDIOLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 3) GASTROENTEROLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 4) IMMUNOLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 5) NEUROLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 6) EAR NOSE THROAT
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 7) OPHTHALMOLOGY AND VISION
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 8) DERMATOLOGY
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 9) DENTAL
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 10) EDUCATION
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 11) BEHAVIOUR AND DEVELOPMENT
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 12) SKELETAL
+
+a) How this affects the patient:
+b) How this affects others with the syndrome:
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+
+
+USER
+
+=== CLINICAL REFERENCE GUIDELINES ===
+
+{KBG clinical reference context}
+
+=== VERBATIM DOCTOR-PARENT CONVERSATION ===
+
+{synthetic consultation transcript}
+
+Generate the complete clinical report following the strict 13-category schema layout.
+\end{lstlisting}
+
+The placeholders \texttt{\{KBG clinical reference context\}} and
+\texttt{\{synthetic consultation transcript\}} were dynamically replaced
+for each generation instance.
+
+Table~\ref{tab:report_generation_config} summarises the model and generation parameters used for personalised clinical report generation.
+
+
+\begin{table}[htbp]
+\centering
+\caption{Configuration used for clinical report generation.}
+\label{tab:report_generation_config}
+\begin{tabular}{ll}
+\hline
+\textbf{Parameter} & \textbf{Value} \\
+\hline
+Model & Llama-3.3-70B-Instruct \\
+Quantisation & 4-bit NF4 \\
+Temperature & 0.30 \\
+Sampling & Enabled \\
+\hline
+\end{tabular}
+\end{table}
+
+\chapter{Atomic Clinical Claim Extraction Prompt}
+\label{appx:factuality_claim_prompt}
+
+The following few-shot prompt was used to decompose generated clinical
+reports into atomic clinical claims prior to factuality verification.
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM
+
+You are an expert clinical information extraction assistant.
+
+Your task is to analyse a generated clinical report and extract all factual claims. The report contains two distinct types of information, and each extracted claim must be assigned to the correct category.
+
+Category 1: Patient-Specific Claims
+
+These claims are extracted from sections describing:
+"How this affects the patient"
+
+They represent factual statements about the individual patient.
+
+Category 2: Syndrome-Specific Claims
+
+These claims are extracted from sections describing:
+"How this affects others with the syndrome" and
+"Recommendations for Screening and Treatments"
+
+They represent factual statements about KBG syndrome, its effects on affected individuals in general, and general recommendations for screening, monitoring, or management of the syndrome.
+
+Instructions:
+
+- Extract all factual claims explicitly stated in the report.
+- Claims from "How this affects the patient" sections must be classified as Patient-Specific Claims.
+- Claims from "How this affects others with the syndrome" sections and the "Recommendations for Screening and Treatments" section must be classified as Syndrome-Specific Claims.
+- Decompose complex sentences into atomic claims, where each claim contains only one factual statement.
+- Extract claims faithfully.
+- Do not add, infer, explain, or reinterpret information.
+- Preserve the original meaning and perform only minimal restructuring for claim decomposition.
+- Ignore "N/A" sections as they do not contain factual claims.
+- Return only the extracted claims in the required JSON format.
+- Ensure the final output is a complete and valid JSON object.
+
+USER
+
+[Example clinical patient report]
+
+# CLINICAL PATIENT REPORT
+
+## 1) CARDIOLOGY
+
+a) How this affects the patient:
+The patient has a structural abnormality in her heart.
+
+b) How this affects others with the syndrome:
+Around 38% of people with KBG syndrome have heart conditions,
+including changes to the heart valves, holes in the heart chambers,
+and structural changes.
+
+## 2) GASTROENTEROLOGY
+
+a) How this affects the patient:
+The patient experiences bowel movement problems, causing discomfort
+and irregularity.
+
+b) How this affects others with the syndrome:
+Some people with KBG syndrome have feeding difficulties and may
+require short-term nasogastric tube feeding to supplement oral feeds.
+
+[Additional clinical sections omitted for brevity]
+
+## 13) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+
+* Regular dental check-ups to monitor tooth health and address any concerns.
+* Regular hearing reviews to address hearing concerns.
+* Cardiac review to monitor the patient's heart condition.
+* Consider physiotherapy and occupational therapy to support development.
+
+ASSISTANT
+
+{
+  "patient_specific_claims": [
+    "The patient has a structural abnormality in her heart.",
+    "The patient experiences bowel movement problems.",
+    "The patient experiences discomfort.",
+    "The patient experiences irregularity."
+  ],
+  "syndrome_specific_claims": [
+    "Around 38% of people with KBG syndrome have heart conditions.",
+    "People with KBG syndrome have changes to the heart valves.",
+    "People with KBG syndrome have holes in the heart chambers.",
+    "People with KBG syndrome have structural changes.",
+    "Some people with KBG syndrome have feeding difficulties.",
+    "Some people with KBG syndrome may require short-term nasogastric tube feeding to supplement oral feeds.",
+    "Regular dental check-ups are recommended to monitor tooth health and address concerns.",
+    "Regular hearing reviews are recommended to address hearing concerns.",
+    "Cardiac review is recommended to monitor the patient's heart condition.",
+    "Physiotherapy may be considered to support development.",
+    "Occupational therapy may be considered to support development."
+  ]
+}
+
+USER
+
+Generate the atomic clinical claims for the following generated
+patient report:
+
+{generated patient report}
+\end{lstlisting}
+
+The placeholder \texttt{\{generated patient report\}} was dynamically
+replaced with the generated report for each evaluation instance.
+
+Table~\ref{tab:factuality_claim_config} summarises the model and generation parameters used for atomic clinical claim extraction.
+
+\begin{table}[htbp]
+\centering
+\caption{Configuration used for atomic clinical claim extraction.}
+\label{tab:factuality_claim_config}
+\begin{tabular}{ll}
+\hline
+\textbf{Parameter} & \textbf{Value} \\
+\hline
+Model & Qwen3-30B-A3B-Instruct-2507 \\
+Quantisation & 4-bit NF4 \\
+Maximum new tokens & 2048 \\
+Sampling & Disabled (greedy decoding) \\
+
+\hline
+\end{tabular}
+\end{table}
+
+\chapter{Atomic Claim Factuality Verification Prompt}
+\label{appx:factuality_verification_prompt}
+
+The following zero-shot prompt was used to evaluate the factual
+grounding of the atomic clinical claims extracted from each generated
+patient report.
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM
+
+You are an expert clinical factuality evaluator.
+
+Your task is to determine whether each atomic claim is directly
+supported by the provided Reference Document.
+
+For each claim, output:
+
+1. "claim": The exact claim being evaluated.
+2. "supported": "YES" or "NO".
+
+Strict evaluation criteria:
+
+- Use ONLY the provided Reference Document.
+- Do not use external medical knowledge.
+- Do not make clinical assumptions or logical extensions.
+- A claim is YES only if the information is explicitly stated or is
+  a direct paraphrase of information in the Reference Document.
+- If a claim requires reasoning, interpretation, prediction, or
+  medical knowledge beyond the document, mark it as NO.
+- If any part of a multi-part claim is unsupported, mark the whole
+  claim as NO.
+- Evaluate patient-specific claims only against patient information
+  in the Reference Document.
+- Evaluate syndrome-specific claims only against syndrome information
+  in the Reference Document.
+
+Examples:
+
+Reference: "The patient has hearing difficulties."
+
+Claim: "The patient has hearing difficulties." -> YES
+Claim: "The patient may need hearing aids." -> NO
+Claim: "The patient may have permanent hearing loss." -> NO
+
+You MUST respond ONLY with valid JSON:
+
+{
+  "results": [
+    {"claim": "string", "supported": "YES/NO"}
+  ]
+}
+
+USER
+
+Reference Document:
+
+"""{reference_doc}"""
+
+Claims to Verify:
+
+{claims_list}
+
+Evaluate each claim strictly against the Reference Document only.
+Do not use external medical knowledge or infer missing information.
+\end{lstlisting}
+
+The placeholders \texttt{\{reference\_doc\}} and
+\texttt{\{claims\_list\}} were dynamically populated for each
+evaluation instance. Patient-specific and syndrome-specific claims
+were evaluated against their respective source information.
+
+Table~\ref{tab:factuality_verification_config} summarises the model and generation parameters used for atomic claim factuality verification.
+
+
+\begin{table}[htbp]
+\centering
+\caption{Configuration used for atomic claim factuality verification.}
+\label{tab:factuality_verification_config}
+\begin{tabular}{ll}
+\hline
+\textbf{Parameter} & \textbf{Value} \\
+\hline
+Model & Qwen3-30B-A3B-Instruct-2507 \\
+Quantisation & 4-bit NF4 \\
+Maximum new tokens & 2048 \\
+Sampling & Disabled (greedy decoding) \\
+
+\hline
+\end{tabular}
+\end{table}
+\chapter{Patient-Specific Coverage Evaluation Prompts}
+\label{appx:patient_coverage_prompt}
+
+The following prompts were used for patient-specific coverage evaluation
+using a two-stage zero-shot strategy: atomic claim extraction from the
+doctor--parent consultation followed by independent verification of each
+claim against the generated report. No task-specific demonstrations or
+labelled examples were provided.
+
+
+\section*{Stage 1: Patient-Specific Claim Extraction}
+
+A zero-shot instruction-based prompt was used to extract clinically
+meaningful patient-specific claims. Only information explicitly stated by
+the parent about the child was retained, while questions, \textit{N/A}
+responses, subjective content, unsupported inferences, and duplicates were
+excluded. Complex statements were decomposed into distinct clinical facts
+where appropriate.
+
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM
+
+You are a clinical information extraction assistant.
+Extract patient-specific clinical claims from a doctor-parent
+consultation.
+
+Rules:
+
+- Extract only clinical information explicitly stated by the parent
+  about the child.
+- Do not extract the parent's emotions, uncertainty, opinions,
+  concerns, intentions, or plans.
+- Do not infer information or use external medical knowledge.
+- Ignore doctor's questions and N/A responses.
+- Each claim should represent one clinically meaningful fact.
+- Split a statement only when it contains multiple distinct clinical facts.
+- Do not create multiple claims that describe the same clinical fact
+  using different wording.
+- Do not split out minor details such as duration, examples,
+  comparisons, or context unless they represent an important
+  clinical fact.
+- Merge closely related symptoms or details into a single meaningful
+  clinical claim.
+- Keep the original meaning with minimal rewriting.
+- Return only valid JSON containing the extracted claims.
+\end{lstlisting}
+
+The consultation was provided as the user input:
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+USER
+
+Now extract atomic patient claims from this consultation:
+
+{doctor-parent consultation}
+\end{lstlisting}
+
+
+\section*{Stage 2: Claim-Level Coverage Verification}
+
+Each extracted claim was independently evaluated against the generated
+Clinical Patient Report using a zero-shot semantic verification prompt. The
+evaluator assessed whether the report conveyed the same clinical meaning,
+allowing differences in wording, grammar, terminology, and sentence
+structure rather than requiring exact lexical matching.
+
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM
+
+You are a clinical summary coverage evaluator.
+Your task is to evaluate whether a generated patient summary covers
+a clinical claim extracted from a doctor-parent consultation.
+
+Rules:
+
+- Evaluate ONLY the provided Clinical Patient Report and Target Claim.
+- Do not use external medical knowledge or add assumptions.
+- Mark YES if the patient report conveys the same clinical meaning
+  as the target claim, even if different wording is used.
+- Treat clinically equivalent expressions as the same information.
+- Do not require exact wording.
+- Ignore minor differences in wording, grammar, tense, pronouns,
+  or non-essential details.
+- Mark NO if the clinical information in the claim is not present
+  or not supported by the patient report.
+
+Examples:
+
+"tooth pain when eating cold foods" ↔
+"tooth sensitivity to cold foods" → YES
+
+"valve issue" ↔
+"heart valve abnormality" → YES
+
+"delayed milestones" ↔
+"takes longer to achieve milestones" → YES
+
+You MUST respond ONLY with valid JSON:
+
+{
+  "results": [
+    {
+      "claim": "string",
+      "covered": "YES/NO"
+    }
+  ]
+}
+\end{lstlisting}
+
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+USER
+
+Clinical Patient Report:
+
+{generated patient report}
+
+Target Claim:
+
+{extracted patient-specific claim}
+
+Determine whether the patient report includes this clinical information.
+Return the evaluation only in the required JSON format.
+\end{lstlisting}
+
+Table~\ref{tab:patient_coverage_config} summarises the model and generation parameters used to give patient-specific coverage .
+
+\begin{table}[htbp]
+\centering
+\caption{Configuration used for patient-specific coverage evaluation.}
+\label{tab:patient_coverage_config}
+\begin{tabular}{ll}
+\hline
+\textbf{Parameter} & \textbf{Value} \\
+\hline
+Model & Qwen3-30B-A3B-Instruct-2507 \\
+Quantisation & 4-bit NF4 \\
+Maximum new tokens & 2048 \\
+Sampling & Disabled \\
+
+\hline
+\end{tabular}
+\end{table}
+
+\chapter{Syndrome Background and Recommendation Coverage Prompt}
+\label{appx:syndrome_coverage_prompt}
+
+The following prompts were used to evaluate syndrome-level background and
+recommendation coverage. A two-stage procedure was employed: few-shot
+prompting generated feature-specific evaluation questions from the
+doctor--parent consultation, followed by zero-shot verification of whether
+the generated report explicitly addressed each question.
+
+
+\section*{Question Generation Prompt}
+
+The question-generation prompt used the consultation as input and was
+provided with one illustrative doctor--parent consultation and its expected
+question set as few-shot examples.
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM
+
+You are a clinical question generation assistant.
+Your task is to read a doctor-parent consultation and generate evaluation
+questions to assess whether the patient report provides:
+
+1. Background information about how the relevant feature affects other
+   people with KBG syndrome.
+2. Relevant recommendations, screening, treatment, or management advice
+   for that feature.
+
+Rules:
+
+- Use only information explicitly stated by the parent.
+- Ignore doctor's questions and all N/A responses.
+- Do not use external medical knowledge.
+- Do not infer missing information.
+- For each clinical feature mentioned by the parent:
+  - Generate one syndrome_background question.
+  - Generate one recommendation question.
+- Keep questions short, direct, and specific.
+- Return only valid JSON.
+
+USER
+
+[Illustrative doctor-parent consultation]
+
+ASSISTANT 
+
+[
+  {
+    "question": "Does the report mention how vision problems affect
+    others with the syndrome?",
+    "category": "syndrome_background"
+  },
+  {
+    "question": "Does the report include recommendations for vision
+    problems?",
+    "category": "recommendation"
+  }
+  ...
+]
+
+USER
+
+Generate coverage questions for the following consultation.
+
+{doctor-parent consultation}
+\end{lstlisting}
+
+
+\section*{Question Validation Prompt}
+
+The generated questions were subsequently evaluated against the corresponding
+patient report using a zero-shot prompting strategy. The evaluator was
+instructed to rely exclusively on the generated report and not to introduce
+external medical knowledge or infer information not explicitly stated.
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM
+
+You are a clinical report coverage evaluator.
+Your task is to determine whether a patient report contains information
+that answers the given question.
+
+Rules:
+
+- Use only information explicitly stated in the patient report.
+- Do not use external medical knowledge.
+- Do not infer missing information.
+- Give YES only if the report provides the information requested.
+- Give NO if the information is missing, unclear, or not directly addressed.
+- For recommendation questions, give YES if the report provides any
+  explicit recommendation, screening, monitoring, treatment, referral,
+  therapy, or management advice relevant to the feature.
+- For syndrome_background questions, give YES only if the report explains
+  how the relevant feature affects people with KBG syndrome.
+- Preserve the category field from each input question.
+
+Return ONLY valid JSON:
+
+{
+  "results": [
+    {
+      "question": "string",
+      "category": "syndrome_background or recommendation",
+      "covered": "YES/NO"
+    }
+  ]
+}
+
+USER
+
+Patient Report:
+
+{generated patient report}
+
+Questions:
+
+{generated evaluation questions}
+
+Evaluate every question against the report and return the results only
+in the required JSON format.
+\end{lstlisting}
+
+
+\begin{table}[htbp]
+\centering
+\caption{Configuration used for syndrome-background and recommendation
+coverage evaluation.}
+\label{tab:syndrome_coverage_config}
+\begin{tabular}{ll}
+\hline
+\textbf{Parameter} & \textbf{Value} \\
+\hline
+Model & Qwen3-30B-A3B-Instruct-2507 \\
+Quantisation & 4-bit NF4 \\
+
+Maximum new tokens & 2048 \\
+Sampling & Disabled (\texttt{do\_sample=False}) \\
+
+\hline
+\end{tabular}
+\end{table}
+
+
+\chapter{Medical Tone Evaluation Prompt}
+\label{appx:medical_tone_prompt}
+
+The following prompts were used for the two-stage medical tone evaluation.
+Few-shot prompting was employed in both the extraction and evaluation
+stages. The first stage extracted patient-specific clinical information and
+recommendations from each generated report, while excluding syndrome-level
+background information and prevalence statistics. The second stage
+independently evaluated each extracted statement across three dimensions:
+\textit{professionalism, respectfulness, and patient-centred communication}.
+
+\begin{lstlisting}[
+    breaklines=true,
+    breakatwhitespace=false,
+    basicstyle=\footnotesize\ttfamily,
+    columns=fullflexible,
+    keepspaces=true
+]
+SYSTEM PROMPT -- EXTRACTION
+
+You are an expert clinical report extraction assistant.
+
+Your task is to extract ONLY patient-specific clinical information
+from a clinical report.
+
+Include:
+
+- Every statement under sections titled "How this affects the patient".
+- Every recommendation under sections titled
+  "Recommendations for screening and treatment".
+
+Exclude:
+
+- Any information under "How this affects others with the syndrome".
+- Prevalence statistics or general background medical information.
+
+Rules:
+
+1. Copy the text exactly as written in the report.
+2. Preserve the original wording, punctuation, and sentence boundaries.
+3. Do not merge, split, rewrite, summarize, or deduplicate statements.
+4. Ignore sections whose content is "N/A".
+5. Return the extracted statements in the same order that they appear
+   in the report.
+6. Return exactly one JSON object.
+7. The value of "extracted_sections" must be a flat list containing
+   only strings.
+8. Do not include nested lists, nested JSON objects, repeated keys,
+   explanations, or additional text outside the JSON.
+9. Return only valid JSON.
+
+Output format:
+
+{
+  "extracted_sections": [
+    "...",
+    "..."
+  ]
+}
+
+
+FEW-SHOT USER EXAMPLE -- EXTRACTION
+
+# CLINICAL PATIENT REPORT
+
+## 1) RESPIRATORY
+a) How this affects the patient: N/A
+b) How this affects others with the syndrome: N/A
+
+## 2) CARDIOLOGY
+a) How this affects the patient: The patient has a heart condition
+that requires regular check-ups at the cardiologist.
+b) How this affects others with the syndrome: Around 38% of people
+with KBG syndrome have heart conditions, including changes to the
+heart valves, holes in the heart chambers, and structural changes.
+
+.
+.
+.
+
+## 5) DENTAL
+a) How this affects the patient: The patient's teeth are brittle
+and break or chip easily.
+b) How this affects others with the syndrome: Many people with
+KBG syndrome have dental concerns, including weak enamel and
+large front teeth.
+
+## 6) RECOMMENDATIONS FOR SCREENING AND TREATMENTS
+* Regular dental check-ups to monitor the patient's brittle teeth
+* Regular hearing reviews to monitor the patient's hearing
+* Regular eyesight reviews to monitor the patient's vision
+* Regular check-ups at the cardiologist to monitor the patient's
+  heart condition
+* Speech therapy to address the patient's speech delay
+* Physiotherapy and occupational therapy to address the patient's
+  hypotonia and developmental delays
+
+
+FEW-SHOT ASSISTANT EXAMPLE -- EXTRACTION
+
+{
+  "extracted_sections": [
+    "The patient has a heart condition that requires regular check-ups at the cardiologist.",
+    "The patient experienced feeding difficulties as a baby, but this has since resolved.",
+    "The patient has hypotonia, which means her muscles are too stiff or rigid, and also experiences speech delay.",
+    "The patient's teeth are brittle and break or chip easily.",
+    "Regular dental check-ups to monitor the patient's brittle teeth.",
+    "Regular hearing reviews to monitor the patient's hearing.",
+    "Regular eyesight reviews to monitor the patient's vision.",
+    "Regular check-ups at the cardiologist to monitor the patient's heart condition.",
+    "Speech therapy to address the patient's speech delay.",
+    "Physiotherapy and occupational therapy to address the patient's hypotonia and developmental delays."
+  ]
+}
+
+
+SYSTEM PROMPT -- TONE EVALUATION
+
+You are an expert evaluator of medical tone.
+
+Evaluate the following patient-specific sections.
+
+For each section, answer the following questions:
+
+1. Professionalism:
+Does this section use professional and appropriate clinical language?
+(YES/NO)
+
+2. Respectfulness:
+Does this section describe the patient in a respectful and
+non-stigmatising manner?
+(YES/NO)
+
+3. Patient-centred communication:
+Does this section communicate the patient's condition in a
+supportive and patient-focused manner?
+(YES/NO)
+
+Return only valid JSON.
+
+
+FEW-SHOT USER EXAMPLE -- TONE EVALUATION
+
+{
+  "extracted_sections": [
+    "The patient has a heart condition that requires regular check-ups at the cardiologist.",
+    "The patient experienced feeding difficulties as a baby, but this has since resolved.",
+    "The patient's teeth are brittle and break or chip easily.",
+    "Regular dental check-ups to monitor the patient's brittle teeth.",
+    "Speech therapy to address the patient's speech delay."
+  ]
+}
+
+
+FEW-SHOT ASSISTANT EXAMPLE -- TONE EVALUATION
+
+{
+  "evaluations": [
+    {
+      "section": "The patient has a heart condition that requires regular check-ups at the cardiologist.",
+      "professionalism": "YES",
+      "respectfulness": "YES",
+      "patient_centred_communication": "YES"
+    },
+    {
+      "section": "The patient experienced feeding difficulties as a baby, but this has since resolved.",
+      "professionalism": "YES",
+      "respectfulness": "YES",
+      "patient_centred_communication": "YES"
+    },
+    {
+      "section": "The patient's teeth are brittle and break or chip easily.",
+      "professionalism": "YES",
+      "respectfulness": "YES",
+      "patient_centred_communication": "YES"
+    },
+    {
+      "section": "Regular dental check-ups to monitor the patient's brittle teeth.",
+      "professionalism": "YES",
+      "respectfulness": "YES",
+      "patient_centred_communication": "YES"
+    },
+    {
+      "section": "Speech therapy to address the patient's speech delay.",
+      "professionalism": "YES",
+      "respectfulness": "YES",
+      "patient_centred_communication": "YES"
+    }
+  ]
+}
+\end{lstlisting}
+
+Few-shot examples were provided for both stages to establish the expected
+extraction format and interpretation of the evaluation criteria. The
+extraction stage preserved the relevant patient-specific statements and
+recommendations exactly as they appeared in the report. These statements
+were then independently evaluated for professionalism, respectfulness, and
+patient-centred communication using binary \texttt{YES}/\texttt{NO}
+judgements. For each report, the score for each dimension was calculated as
+the proportion of extracted statements receiving a positive judgement.
+
+
+
+Table~\ref{tab:medical_tone_config} summarises the model and inference configuration used for medical tone evaluation.
+
+
+\begin{table}[htbp]
+\centering
+\caption{Model and inference configuration for medical tone evaluation.}
+\label{tab:medical_tone_config}
+\begin{tabular}{ll}
+\hline
+\textbf{Parameter} & \textbf{Configuration} \\
+\hline
+Model & Qwen3-30B-A3B-Instruct-2507 \\
+Quantisation & 4-bit NF4 \\
+
+Maximum new tokens & 2048 \\
+
+\hline
+\end{tabular}
+\end{table}
+\end{document}
+
+
